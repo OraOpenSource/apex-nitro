@@ -1,0 +1,20 @@
+/*** Colors ***/
+$background-color: #ECECEC !default;
+$primary-color: #2196F3 !default;
+$secondary-color: #FF5722 !default;
+$success-color: #4CAF50 !default;
+$error-color: #FF5252 !default;
+$link-color: $secondary-color !default;
+
+/*** Buttons ***/
+$button-color: $secondary-color !default;
+$button-color-disabled: #9F9F9F !default;
+$button-height: 36px !default;
+
+// Grid Variables
+$num-cols: 12 !default;
+
+/*** Navbar ***/
+$navbar-height-phone: 56px !default;
+$navbar-height-tablet: 60px !default;
+$navbar-height-desktop: 64px !default;

@@ -1,0 +1,35 @@
+{
+  "name": "apex-gulp-stack",
+  "author": "Vincent Morneau",
+  "version": "2.0.0",
+  "description": "APEX Gulp Stack",
+  "license":"MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vincentmorneau/apex-gulpfile-sass.git"
+  },
+  "scripts": {
+    "start": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "3.9.x",
+    "gulp-sass": "2.1.x",
+    "gulp-util": "3.0.x",
+    "gulp-plumber": "1.0.x",
+    "gulp-concat": "2.6.x",
+    "jshint": "2.x",
+    "gulp-jshint": "2.0.x",
+    "jshint-stylish": "2.1.x",
+    "gulp-uglify": "1.5.x",
+    "gulp-rename": "1.2.x",
+    "gulp-size": "2.0.x",
+    "gulp-sourcemaps": "1.6.x",
+    "gulp-minify-css": "1.2.x",
+    "gulp-autoprefixer": "3.1.x",
+    "gulp-if":"2.0.x",
+    "gulp-load-plugins": "1.1.x",
+    "del": "2.1.x",
+    "run-sequence": "1.1.x",
+    "browser-sync": "2.10.x"
+  }
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["demo1.js","demo2.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;ACHA;AACA;AACA;AACA","file":"app.js","sourcesContent":["function myFunction() {\r\n    console.log(\"Hello World!\");\r\n}\r\n","function myFunction2() {\r\n    console.log(\"Hello World1!\");\r\n    console.log(\"Hello World2!\");\r\n}"],"sourceRoot":"/source/"}
