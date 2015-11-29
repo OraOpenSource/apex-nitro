@@ -10,7 +10,10 @@ var gulp = require('gulp'),
     del = require('del'),
     runSequence = require('run-sequence'),
     browserSync = require('browser-sync').create(),
-    config = require('./config.json');
+    config = require('./config.json'),
+    http = require('http'),
+    https = require('https'),
+    getLocalIp = require('node-localip');
 
 // 2. SETTINGS VARIABLES
 // - - - - - - - - - - - - - - -
@@ -118,17 +121,88 @@ gulp.task('lib', function() {
 
 // Static server
 gulp.task('browser-sync', function() {
-    browserSync.init({
-        port: config.browsersync.port,
-        notify: config.browsersync.notify,
-        proxy: {
-            target: config.browsersync.proxyTarget,
-            middleware: function (req, res, next) {
-                res.setHeader('Access-Control-Allow-Origin', '*');
-                next();
-              }
-        },
-        serveStatic: ['.']
+    getLocalIp( function ( err, host ) {
+        // build the proxy
+        var proxy = (config.browsersync.apex.https ? "https://" : "http://") +
+                    config.browsersync.apex.host +
+                    config.browsersync.apex.path + "f?p=" +
+                    config.browsersync.apex.appID;
+
+        // launch browsersync
+        browserSync.init({
+            host: host,
+            port: config.browsersync.port,
+            notify: config.browsersync.notify,
+            proxy: {
+                target: proxy,
+                middleware: function (req, res, next) {
+                    res.setHeader('Access-Control-Allow-Origin', '*');
+                    next();
+                  }
+            },
+            serveStatic: ['.']
+        });
+
+        if (config.browsersync.rest.enabled) {
+            /**
+             * REST POST
+             */
+            // create a JSON object
+            var jsonObject = JSON.stringify({});
+
+            // build the proxy
+            var browsersyncHost = (config.browsersync.apex.https ? "https://" : "http://") + host + ':' + config.browsersync.port + "/";
+
+            // prepare the header
+            var postheaders = {
+                'Content-Type' : 'application/json',
+                'Content-Length' : Buffer.byteLength(jsonObject, 'utf8'),
+                'Browsersync-Host' : browsersyncHost
+            };
+
+            // the POST options
+            var optionspost = {
+                host : config.browsersync.apex.host,
+                port : config.browsersync.rest.port,
+                path : config.browsersync.apex.path +
+                        config.browsersync.rest.schema +
+                        '/browsersync/host',
+                method : 'POST',
+                headers : postheaders
+            };
+
+            // do the POST call
+            var reqPost;
+
+            if (config.browsersync.apex.https) {
+                reqPost = https.request(optionspost, function(res) {
+                    // console.log("statusCode: ", res.statusCode);
+
+                    res.on('data', function(d) {
+                        console.info('POST result:\n');
+                        process.stdout.write(d);
+                        console.info('\n\nPOST completed');
+                    });
+                });
+            } else {
+                reqPost = http.request(optionspost, function(res) {
+                    // console.log("statusCode: ", res.statusCode);
+
+                    res.on('data', function(d) {
+                        console.info('POST result:\n');
+                        process.stdout.write(d);
+                        console.info('\n\nPOST completed');
+                    });
+                });
+            }
+
+            // write the json data
+            reqPost.write(jsonObject);
+            reqPost.end();
+            reqPost.on('error', function(e) {
+                console.error(e);
+            });
+        }
     });
 });
 

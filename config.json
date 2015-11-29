@@ -1,9 +1,19 @@
 {
-    "enableSass": false,
-    "enableBrowsersync": false,
+    "enableSass": true,
+    "enableBrowsersync": true,
     "browsersync": {
-        "proxyTarget": "https://apex.oracle.com/pls/apex/f?p=59075",
         "port": 3000,
-        "notify": false
+        "notify": true,
+        "apex": {
+            "https": true,
+            "host": "apex.oracle.com",
+            "path": "/pls/apex/",
+            "appID": 59075
+        },
+        "rest": {
+            "enabled" : true,
+            "port" : 443,
+            "schema" : "apex_vmorneau"
+        }
     }
 }

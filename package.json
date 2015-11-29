@@ -6,7 +6,7 @@
   "license":"MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/vincentmorneau/apex-gulpfile-sass.git"
+    "url": "https://github.com/OraOpenSource/apex-gulp-stack.git"
   },
   "scripts": {
     "start": "gulp"
@@ -30,6 +30,7 @@
     "gulp-load-plugins": "1.1.x",
     "del": "2.1.x",
     "run-sequence": "1.1.x",
-    "browser-sync": "2.10.x"
+    "browser-sync": "2.10.x",
+    "node-localip": "0.1.x"
   }
 }
