@@ -107,7 +107,12 @@ gulp.task('css', function() {
         .pipe(plugins.if(config.enableBrowsersync, browserSync.stream({match: files.css})));
 });
 
-// Optimizes img files
+// Sequentially run tasks 'scss' and 'css'
+gulp.task('scss-css', function() {
+    runSequence('scss', 'css', function() {});
+});
+
+// Copies img files as is
 gulp.task('img', function() {
     return gulp.src(paths.src + assets.img + files.all)
         .pipe(gulp.dest(paths.dist + assets.img));
@@ -144,62 +149,53 @@ gulp.task('browser-sync', function() {
         });
 
         if (config.browsersync.rest.enabled) {
-            /**
-             * REST POST
-             */
-            // create a JSON object
-            var jsonObject = JSON.stringify({});
-
             // build the proxy
             var browsersyncHost = (config.browsersync.apex.https ? "https://" : "http://") + host + ':' + config.browsersync.port + "/";
 
-            // prepare the header
-            var postheaders = {
+            // POST Body
+            var postBody = JSON.stringify({});
+
+            // POST Headers
+            var postHeaders = {
                 'Content-Type' : 'application/json',
-                'Content-Length' : Buffer.byteLength(jsonObject, 'utf8'),
+                'Content-Length' : Buffer.byteLength(postBody, 'utf8'),
                 'Browsersync-Host' : browsersyncHost
             };
 
-            // the POST options
-            var optionspost = {
+            // POST Options
+            var postOptions = {
                 host : config.browsersync.apex.host,
                 port : config.browsersync.rest.port,
                 path : config.browsersync.apex.path +
                         config.browsersync.rest.schema +
                         '/browsersync/host',
                 method : 'POST',
-                headers : postheaders
+                headers : postHeaders
             };
 
             // do the POST call
-            var reqPost;
+            var restPOST;
 
             if (config.browsersync.apex.https) {
-                reqPost = https.request(optionspost, function(res) {
-                    // console.log("statusCode: ", res.statusCode);
-
+                restPOST = https.request(postOptions, function(res) {
                     res.on('data', function(d) {
-                        console.info('POST result:\n');
-                        process.stdout.write(d);
-                        console.info('\n\nPOST completed');
+                        console.log('POST result:');
+                        console.log(d);
                     });
                 });
             } else {
-                reqPost = http.request(optionspost, function(res) {
-                    // console.log("statusCode: ", res.statusCode);
-
+                restPOST = http.request(postOptions, function(res) {
                     res.on('data', function(d) {
-                        console.info('POST result:\n');
-                        process.stdout.write(d);
-                        console.info('\n\nPOST completed');
+                        console.log('POST result:');
+                        console.log(d);
                     });
                 });
             }
 
-            // write the json data
-            reqPost.write(jsonObject);
-            reqPost.end();
-            reqPost.on('error', function(e) {
+            // write the POST body
+            restPOST.write(postBody);
+            restPOST.end();
+            restPOST.on('error', function(e) {
                 console.error(e);
             });
         }
@@ -211,13 +207,15 @@ gulp.task('watch', function() {
     // browsersync support
     var jsWatch = (config.enableBrowsersync ? ['js-browsersync'] : ['js']);
 
+    gulp.watch(paths.src + assets.js + files.js, jsWatch);
+
     // sass support
     if (config.enableSass) {
-        gulp.watch(paths.src + assets.scss + files.scss, ['scss']);
+        gulp.watch(paths.src + assets.scss + files.scss, ['scss-css']);
+    } else {
+        gulp.watch(paths.src + assets.css + files.css, ['css']);            
     }
 
-    gulp.watch(paths.src + assets.css + files.css, ['css']);
-    gulp.watch(paths.src + assets.js + files.js, jsWatch);
     gulp.watch(paths.src + assets.img + files.all, ['img']);
     gulp.watch(paths.src + assets.lib + files.all, ['lib']);
 });
@@ -229,7 +227,7 @@ gulp.task('default', function() {
 
     // sass support
     if (config.enableSass) {
-        tasks.unshift('scss');
+        tasks.unshift('scss-css');
     } else {
         tasks.unshift('css');
     }
