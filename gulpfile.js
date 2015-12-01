@@ -48,7 +48,7 @@ var paths = {
     sassOptions = {
         errLogToConsole: true,
         sourcemap: true
-    };;
+    };
 
 // 3. TASKS
 // - - - - - - - - - - - - - - -
@@ -213,7 +213,7 @@ gulp.task('watch', function() {
     if (config.enableSass) {
         gulp.watch(paths.src + assets.scss + files.scss, ['scss-css']);
     } else {
-        gulp.watch(paths.src + assets.css + files.css, ['css']);            
+        gulp.watch(paths.src + assets.css + files.css, ['css']);
     }
 
     gulp.watch(paths.src + assets.img + files.all, ['img']);

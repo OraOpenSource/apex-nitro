@@ -8,8 +8,7 @@ Thanks to [Insum Solutions](insum.ca) for sponsoring this project.
 ## Features
 - [Browsersync](http://www.browsersync.io/)
 - SCSS Parsing
-- CSS concatenation & minification
-- JS concatenation & minification
+- CSS and JS concatenation & minification
 - [Autoprefixer](https://github.com/sindresorhus/gulp-autoprefixer)
 - Sourcemaps
 - Minified and un-minified JS & CSS output
