@@ -11,8 +11,6 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     browserSync = require('browser-sync').create(),
     config = require('./config.json'),
-    http = require('http'),
-    https = require('https'),
     getLocalIp = require('node-localip');
 
 // 2. SETTINGS VARIABLES
@@ -64,7 +62,8 @@ gulp.task('js', function() {
         .pipe(plugins.jshint())
         .pipe(plugins.jshint.reporter('jshint-stylish'))
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.concat('app.js'))
+        .pipe(plugins.if(config.javascriptConcat.enabled,
+            plugins.concat(config.javascriptConcat.finalName + '.js')))
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
         .pipe(gulp.dest(paths.dist + assets.js))
@@ -100,11 +99,13 @@ gulp.task('css', function() {
     // minify css
     return gulp.src(paths.src + assets.css + files.css)
         .pipe(plugins.plumber())
+        .pipe(plugins.if(config.cssConcat.enabled,
+            plugins.concat(config.cssConcat.finalName + '.css')))
         .pipe(plugins.minifyCss())
         .pipe(plugins.rename(renameOptions))
         .pipe(plugins.size(sizeOptions))
         .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.if(config.enableBrowsersync, browserSync.stream({match: files.css})));
+        .pipe(plugins.if(config.browsersync.enabled, browserSync.stream({match: files.css})));
 });
 
 // Sequentially run tasks 'scss' and 'css'
@@ -128,10 +129,10 @@ gulp.task('lib', function() {
 gulp.task('browser-sync', function() {
     getLocalIp( function ( err, host ) {
         // build the proxy
-        var proxy = (config.browsersync.apex.https ? "https://" : "http://") +
-                    config.browsersync.apex.host +
-                    config.browsersync.apex.path + "f?p=" +
-                    config.browsersync.apex.appID;
+        var apexQueryString = config.browsersync.apexURL.substring(config.browsersync.apexURL.indexOf("f?p="));
+        var colonsInURL = (apexQueryString.match(/:/g) || []).length;
+        var colonsToAdd = 6 - colonsInURL; // 6 is the number of colons to get to the PARAMETER_NAME
+        var proxyHost = (config.browsersync.multipleDevices ? host : 'localhost');
 
         // launch browsersync
         browserSync.init({
@@ -139,7 +140,7 @@ gulp.task('browser-sync', function() {
             port: config.browsersync.port,
             notify: config.browsersync.notify,
             proxy: {
-                target: proxy,
+                target: config.browsersync.apexURL + ":".repeat(colonsToAdd) + "G_BROWSERSYNC_HOST:" + proxyHost,
                 middleware: function (req, res, next) {
                     res.setHeader('Access-Control-Allow-Origin', '*');
                     next();
@@ -147,70 +148,18 @@ gulp.task('browser-sync', function() {
             },
             serveStatic: ['.']
         });
-
-        if (config.browsersync.rest.enabled) {
-            // build the proxy
-            var browsersyncHost = (config.browsersync.apex.https ? "https://" : "http://") + host + ':' + config.browsersync.port + "/";
-
-            // POST Body
-            var postBody = JSON.stringify({});
-
-            // POST Headers
-            var postHeaders = {
-                'Content-Type' : 'application/json',
-                'Content-Length' : Buffer.byteLength(postBody, 'utf8'),
-                'Browsersync-Host' : browsersyncHost
-            };
-
-            // POST Options
-            var postOptions = {
-                host : config.browsersync.apex.host,
-                port : config.browsersync.rest.port,
-                path : config.browsersync.apex.path +
-                        config.browsersync.rest.schema +
-                        '/browsersync/host',
-                method : 'POST',
-                headers : postHeaders
-            };
-
-            // do the POST call
-            var restPOST;
-
-            if (config.browsersync.apex.https) {
-                restPOST = https.request(postOptions, function(res) {
-                    res.on('data', function(d) {
-                        console.log('POST result:');
-                        console.log(d);
-                    });
-                });
-            } else {
-                restPOST = http.request(postOptions, function(res) {
-                    res.on('data', function(d) {
-                        console.log('POST result:');
-                        console.log(d);
-                    });
-                });
-            }
-
-            // write the POST body
-            restPOST.write(postBody);
-            restPOST.end();
-            restPOST.on('error', function(e) {
-                console.error(e);
-            });
-        }
     });
 });
 
 // Watch for changes and recompiles
 gulp.task('watch', function() {
     // browsersync support
-    var jsWatch = (config.enableBrowsersync ? ['js-browsersync'] : ['js']);
+    var jsWatch = (config.browsersync.enabled ? ['js-browsersync'] : ['js']);
 
     gulp.watch(paths.src + assets.js + files.js, jsWatch);
 
     // sass support
-    if (config.enableSass) {
+    if (config.sass.enabled) {
         gulp.watch(paths.src + assets.scss + files.scss, ['scss-css']);
     } else {
         gulp.watch(paths.src + assets.css + files.css, ['css']);
@@ -226,14 +175,14 @@ gulp.task('default', function() {
     var tasks = ['js', 'img', 'lib'];
 
     // sass support
-    if (config.enableSass) {
+    if (config.sass.enabled) {
         tasks.unshift('scss-css');
     } else {
         tasks.unshift('css');
     }
 
     // browsersync support
-    if (config.enableBrowsersync) {
+    if (config.browsersync.enabled) {
         tasks.unshift('browser-sync');
     }
 

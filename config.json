@@ -1,19 +1,20 @@
 {
-    "enableSass": true,
-    "enableBrowsersync": true,
+    "javascriptConcat": {
+        "enabled": true,
+        "finalName": "app"
+    },
+    "cssConcat": {
+        "enabled": true,
+        "finalName": "app"
+    },
+    "sass": {
+        "enabled": true
+    },
     "browsersync": {
+        "enabled": true,
         "port": 3000,
         "notify": true,
-        "apex": {
-            "https": true,
-            "host": "apex.oracle.com",
-            "path": "/pls/apex/",
-            "appID": 59075
-        },
-        "rest": {
-            "enabled" : true,
-            "port" : 443,
-            "schema" : "apex_vmorneau"
-        }
+        "apexURL": "https://apex.oracle.com/pls/apex/f?p=10344:101",
+        "multipleDevices": false
     }
 }

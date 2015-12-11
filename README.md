@@ -52,7 +52,7 @@ Note: Everything in the `/src/` folder of this repo is to be replaced by your fi
 # Changelog
 See [changelog.md](changelog.md)
 
-### That's all! Enjoy an easy Sass parsing.
+### That's all!
 
 ## Project Team
 - [Vincent Morneau](https://github.com/vincentmorneau)
