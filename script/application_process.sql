@@ -23,7 +23,8 @@ begin
     -- sets the current host to replace #APP_IMAGES#
     :G_APP_IMAGES := SUBSTR(OWA_UTIL.GET_CGI_ENV('HTTP_REFERER'), 1, INSTR(OWA_UTIL.GET_CGI_ENV('HTTP_REFERER'), '/', 1, 3));
 exception
-    when no_data_found then
+    when others then
         -- no table or no data found
+        -- in all cases, fall back to #APP_IMAGES#
         :G_APP_IMAGES := '#APP_IMAGES#';
 end;
