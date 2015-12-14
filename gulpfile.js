@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     browserSync = require('browser-sync').create(),
     config = require('./config.json'),
-    getLocalIp = require('node-localip');
+    getLocalIp = require('node-localip'),
+    clip = require('gulp-clip-empty-files');
 
 // 2. SETTINGS VARIABLES
 // - - - - - - - - - - - - - - -
@@ -40,9 +41,6 @@ var paths = {
     renameOptions = {
         suffix: '.min'
     },
-    sourcemapsOptions = {
-        loadMaps: true
-    },
     sassOptions = {
         errLogToConsole: true,
         sourcemap: true
@@ -55,7 +53,7 @@ gulp.task('clean-dist', function() {
     return del([paths.dist]);
 });
 
-// Compiles the JavaScript (error handling via plumber)
+// javascript
 gulp.task('js', function() {
     return gulp.src(paths.src + assets.js + files.js)
         .pipe(plugins.plumber())
@@ -70,68 +68,79 @@ gulp.task('js', function() {
         .pipe(plugins.uglify()).on('error', function(e) {})
         .pipe(plugins.rename(renameOptions))
         .pipe(plugins.size(sizeOptions))
+        .pipe(plugins.sourcemaps.write(paths.sourcemaps))
         .pipe(gulp.dest(paths.dist + assets.js));
 });
 
-// Compiles the JavaScript with Browsersync
+// javascript & browsersync
 gulp.task('js-browsersync', ['js'], function() {
     browserSync.reload();
 });
 
-// Compiles scss, adds autoprefixer and sourcemaps
+// scss
 gulp.task('scss', function() {
     return gulp.src(paths.src + assets.scss + files.scss)
         .pipe(plugins.plumber())
-        .pipe(plugins.sourcemaps.init(sourcemapsOptions))
+        .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass(sassOptions))
+        .pipe(plugins.if(config.cssConcat.enabled,
+            plugins.concat(config.cssConcat.finalName + '.css')))
         .pipe(plugins.autoprefixer())
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
-        .pipe(gulp.dest(paths.src + assets.css));
-});
-
-// Minifies css, injects the browser's css if Browsersync is enabled
-gulp.task('css', function() {
-    // copy un-minified css and map file to dist folder
-    gulp.src(paths.src + assets.css + files.all)
-        .pipe(gulp.dest(paths.dist + assets.css));
-
-    // minify css
-    return gulp.src(paths.src + assets.css + files.css)
-        .pipe(plugins.plumber())
-        .pipe(plugins.if(config.cssConcat.enabled,
-            plugins.concat(config.cssConcat.finalName + '.css')))
+        .pipe(gulp.dest(paths.dist + assets.css))
         .pipe(plugins.minifyCss())
         .pipe(plugins.rename(renameOptions))
         .pipe(plugins.size(sizeOptions))
+        .pipe(plugins.sourcemaps.write(paths.sourcemaps))
+        .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
         .pipe(plugins.if(config.browsersync.enabled, browserSync.stream({match: files.css})));
 });
 
-// Sequentially run tasks 'scss' and 'css'
-gulp.task('scss-css', function() {
-    runSequence('scss', 'css', function() {});
+// css
+gulp.task('css', function() {
+    return gulp.src(paths.src + assets.css + files.css)
+        .pipe(plugins.plumber())
+        .pipe(plugins.sourcemaps.init())
+        .pipe(plugins.if(config.cssConcat.enabled,
+            plugins.concat(config.cssConcat.finalName + '.css')))
+        .pipe(plugins.autoprefixer())
+        .pipe(plugins.size(sizeOptions))
+        .pipe(plugins.sourcemaps.write(paths.sourcemaps))
+        .pipe(gulp.dest(paths.dist + assets.css))
+        .pipe(plugins.minifyCss())
+        .pipe(plugins.rename(renameOptions))
+        .pipe(plugins.size(sizeOptions))
+        .pipe(plugins.sourcemaps.write(paths.sourcemaps))
+        .pipe(clip())
+        .pipe(gulp.dest(paths.dist + assets.css))
+        .pipe(plugins.if(config.browsersync.enabled, browserSync.stream({match: files.css})));
 });
 
-// Copies img files as is
+// copy img files as is
 gulp.task('img', function() {
     return gulp.src(paths.src + assets.img + files.all)
         .pipe(gulp.dest(paths.dist + assets.img));
 });
 
-// Copies lib files as is
+// copy lib files as is
 gulp.task('lib', function() {
     return gulp.src(paths.src + assets.lib + files.all)
         .pipe(gulp.dest(paths.dist + assets.lib));
 });
 
-// Static server
+// starts local server
 gulp.task('browser-sync', function() {
     getLocalIp( function ( err, host ) {
         // build the proxy
         var apexQueryString = config.browsersync.apexURL.substring(config.browsersync.apexURL.indexOf("f?p="));
         var colonsInURL = (apexQueryString.match(/:/g) || []).length;
-        var colonsToAdd = 6 - colonsInURL; // 6 is the number of colons to get to the PARAMETER_NAME
+        // 6 is the number of colons to get to the itemNames in
+        // (f?p=App:Page:Session:Request:Debug:ClearCache:itemNames:itemValues:PrinterFriendly)
+        var colonsToAdd = 6 - colonsInURL;
+
+        // either local ip address or localhost
         var proxyHost = (config.browsersync.multipleDevices ? host : 'localhost');
 
         // launch browsersync
@@ -151,7 +160,7 @@ gulp.task('browser-sync', function() {
     });
 });
 
-// Watch for changes and recompiles
+// watch for changes
 gulp.task('watch', function() {
     // browsersync support
     var jsWatch = (config.browsersync.enabled ? ['js-browsersync'] : ['js']);
@@ -160,7 +169,7 @@ gulp.task('watch', function() {
 
     // sass support
     if (config.sass.enabled) {
-        gulp.watch(paths.src + assets.scss + files.scss, ['scss-css']);
+        gulp.watch(paths.src + assets.scss + files.scss, ['scss']);
     } else {
         gulp.watch(paths.src + assets.css + files.css, ['css']);
     }
@@ -176,7 +185,7 @@ gulp.task('default', function() {
 
     // sass support
     if (config.sass.enabled) {
-        tasks.unshift('scss-css');
+        tasks.unshift('scss');
     } else {
         tasks.unshift('css');
     }
@@ -187,7 +196,7 @@ gulp.task('default', function() {
     }
 
     // run tasks
-    runSequence('clean-dist', 'watch', tasks, function() {
+    runSequence('clean-dist', tasks, 'watch', function() {
         console.log("Successfully built!");
     });
 });
