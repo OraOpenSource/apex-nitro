@@ -8,13 +8,13 @@
         "finalName": "app"
     },
     "sass": {
-        "enabled": true
+        "enabled": false
     },
     "browsersync": {
         "enabled": false,
         "port": 3000,
         "notify": true,
-        "apexURL": "https://apex.oracle.com/pls/apex/f?p=10344:101",
+        "apexURL": "",
         "multipleDevices": false
     }
 }

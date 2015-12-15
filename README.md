@@ -8,7 +8,7 @@ Thanks to [Insum Solutions](insum.ca) for sponsoring this project.
 - [Browsersync](http://www.browsersync.io/)
 - [Sass Parsing](http://sass-lang.com/)
 - CSS and JS concatenation & minification
-- [Autoprefixer](https://github.com/sindresorhus/gulp-autoprefixer)
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
 - Sourcemaps
 - Filesize indicator
 - Error handling
@@ -23,15 +23,15 @@ npm install
 ```
 
 ### Installing on Windows?
-See [dedicated wiki](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Installing-on-Windows)
+See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Installing-on-Windows)
 
 ## Configuration
-You will want to configure for your project needs. See [dedicated wiki](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Config.json).
+You will want to configure for your project needs. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Config.json).
 
 ## Run
 `npm start`
 
-## How to use
+## Usage
 From the `src` folder you can create, edit or delete any files in:
 ```
 |-/src/
@@ -51,8 +51,11 @@ Gulp will automatically compile your files to this folder structure:
     |-lib
 ```
 
+### Self-Signed SSL Browser Warning
+See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Self-Signed-SSL-Browser-Warning).
+
 ## Changelog
-See [changelog.md](changelog.md)
+See [changelog](changelog.md)
 
 ## Project Team
 - [Vincent Morneau](https://github.com/vincentmorneau)
