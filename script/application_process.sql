@@ -4,10 +4,11 @@
 declare
     l_exists number;
 begin
-    -- inserts the browsersync host
+    -- cleans and inserts the browsersync host
     if :G_BROWSERSYNC_HOST is not null then
         begin
-            execute immediate 'insert into browsersync_host values (:1)'
+            execute immediate 'delete from browsersync_host where trunc(date_cre) < trunc(sysdate)';
+            execute immediate 'insert into browsersync_host values (:1, sysdate)'
             using :G_BROWSERSYNC_HOST;
         exception
             when dup_val_on_index then
@@ -23,8 +24,7 @@ begin
     -- sets the current host to replace #APP_IMAGES#
     :G_APP_IMAGES := SUBSTR(OWA_UTIL.GET_CGI_ENV('HTTP_REFERER'), 1, INSTR(OWA_UTIL.GET_CGI_ENV('HTTP_REFERER'), '/', 1, 3));
 exception
-    when others then
+    when no_data_found then
         -- no table or no data found
-        -- in all cases, fall back to #APP_IMAGES#
         :G_APP_IMAGES := '#APP_IMAGES#';
 end;
