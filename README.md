@@ -23,7 +23,7 @@ npm install
 ```
 
 ### Installing on Windows?
-See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Installing-on-Windows)
+See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Installing-on-Windows).
 
 ## Configuration
 You will want to configure for your project needs. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Config.json).
@@ -55,7 +55,7 @@ Gulp will automatically compile your files to this folder structure:
 See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Self-Signed-SSL-Browser-Warning).
 
 ## Changelog
-See [changelog](changelog.md)
+See [changelog](changelog.md).
 
 ## Project Team
 - [Vincent Morneau](https://github.com/vincentmorneau)
