@@ -133,17 +133,20 @@ gulp.task('lib', function() {
 // starts local server
 gulp.task('browser-sync', function() {
     getLocalIp( function ( err, host ) {
-        // build the proxy
+        // takes the apex query string from the provided apex url
         var apexQueryString = config.browsersync.apexURL.substring(config.browsersync.apexURL.indexOf("f?p="));
+
+        // calculates the number of colons (:) in apexURL
         var colonsInURL = (apexQueryString.match(/:/g) || []).length;
+
         // 6 is the number of colons to get to the itemNames in
         // (f?p=App:Page:Session:Request:Debug:ClearCache:itemNames:itemValues:PrinterFriendly)
         var colonsToAdd = 6 - colonsInURL;
 
-        // either local ip address or localhost
+        // returns localhost or local ip address if needed
         var proxyHost = (config.browsersync.multipleDevices ? host : 'localhost');
 
-        // launch browsersync
+        // launch the browsersync server
         browserSync.init({
             host: host,
             port: config.browsersync.port,
