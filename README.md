@@ -13,7 +13,6 @@ Thanks to [Insum Solutions](insum.ca) for sponsoring this project.
 - Filesize indicator
 - Error handling
 
-TODO @martindsouza add gif of project in action
 
 ## Install
 ```bash
