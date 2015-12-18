@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create()
     getLocalIp = require('node-localip'),
     clip = require('gulp-clip-empty-files'),
-    util = require('./util.js');
+    util = require('./util.js'),
+    path = require('path');
 
 // 2. PREREQUISITES,
 var argv = require('yargs').argv,
@@ -37,23 +38,22 @@ if((util.isEmptyObject(config.apexURL))
 
 // 3. SETTINGS VARIABLES
 var paths = {
-        src: 'src/',
-        dist: 'dist/',
-        sourcemaps: './'
+        src: path.normalize(config.srcFolder.replace(/\/+$/, "")),
+        dist: path.normalize(config.distFolder.replace(/\/+$/, "")),
+        sourcemaps: path.normalize('./')
     },
     assets = {
-        js: 'js/',
-        css: 'css/',
-        scss: 'scss/',
-        img: 'img/',
-        lib: 'lib/'
+        js: path.normalize('/js/'),
+        css: path.normalize('/css/'),
+        scss: path.normalize('/scss/'),
+        img: path.normalize('/img/'),
+        lib: path.normalize('/lib/')
     },
     files = {
-        js: '**/*.js',
-        css: '**/*.css',
-        scss: '**/*.scss',
-        map: '**/*.map',
-        all: '**/*.*',
+        js: path.normalize('**/*.js'),
+        css: path.normalize('**/*.css'),
+        scss: path.normalize('**/*.scss'),
+        all: path.normalize('**/*.*'),
     },
     sizeOptions = {
         showFiles: true
@@ -69,7 +69,7 @@ var paths = {
 // 4. TASKS
 // cleans the dist directory
 gulp.task('clean-dist', function() {
-    return del([paths.dist]);
+    return del([paths.dist], { force: true });
 });
 
 // javascript

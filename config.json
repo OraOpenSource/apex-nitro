@@ -1,6 +1,8 @@
 {
     "sandbox": {
-        "apexURL": "https://apex.oracle.com/pls/apex/f?p=10344:LOGIN_DESKTOP"
+        "apexURL": "https://apex.oracle.com/pls/apex/f?p=10344:LOGIN_DESKTOP",
+        "srcFolder": "C:\\Sandbox\\gulp\\src",
+        "distFolder": "C:\\Sandbox\\gulp\\dist"
     },
     "material-apex": {
         "apexURL": "https://apex.oracle.com/pls/apex/f?p=12192:1"
