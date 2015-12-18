@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     util = require('./util.js'),
     path = require('path');
 
-// 2. PREREQUISITES,
+// 2. PREREQUISITES
 var argv = require('yargs').argv,
     extend = require('util')._extend,
     defaultConfig = require('./default.json'),
