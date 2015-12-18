@@ -1,0 +1,22 @@
+{
+    "apexURL": "",
+    "srcFolder": "src",
+    "distFolder": "dist",
+    "javascriptConcat": {
+        "enabled": true,
+        "finalName": "app"
+    },
+    "cssConcat": {
+        "enabled": true,
+        "finalName": "app"
+    },
+    "sass": {
+        "enabled": false
+    },
+    "browsersync": {
+        "enabled": true,
+        "port": 3000,
+        "notify": true,
+        "multipleDevices": false
+    }
+}

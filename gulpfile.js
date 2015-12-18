@@ -1,21 +1,41 @@
 // APEX Gulp Stack
-// - - - - - - - - - - - - - - -
-// This file processes all of the assets in the "src" folder
-// and outputs the finished files in the "dist" folder.
 
 // 1. LIBRARIES
-// - - - - - - - - - - - - - - -
 var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
     del = require('del'),
     runSequence = require('run-sequence'),
-    browserSync = require('browser-sync').create(),
-    config = require('./config.json'),
+    browserSync = require('browser-sync').create()
     getLocalIp = require('node-localip'),
-    clip = require('gulp-clip-empty-files');
+    clip = require('gulp-clip-empty-files'),
+    util = require('./util.js');
 
-// 2. SETTINGS VARIABLES
-// - - - - - - - - - - - - - - -
+// 2. PREREQUISITES,
+var argv = require('yargs').argv,
+    extend = require('util')._extend,
+    defaultConfig = require('./default.json'),
+    userConfig = require('./config.json'),
+    config = extend(defaultConfig, userConfig[argv.project]);
+
+if (util.isEmptyObject(config.apexURL)) {
+    console.log("Missing apexURL in your config.json file.");
+}
+
+if (util.isEmptyObject(config.srcFolder)) {
+    console.log("Missing srcFolder in your config.json file.");
+}
+
+if (util.isEmptyObject(config.distFolder)) {
+    console.log("Missing distFolder in your config.json file.");
+}
+
+if((util.isEmptyObject(config.apexURL))
+|| (util.isEmptyObject(config.srcFolder))
+|| (util.isEmptyObject(config.distFolder))) {
+    process.exit(1);
+}
+
+// 3. SETTINGS VARIABLES
 var paths = {
         src: 'src/',
         dist: 'dist/',
@@ -46,9 +66,8 @@ var paths = {
         sourcemap: true
     };
 
-// 3. TASKS
-// - - - - - - - - - - - - - - -
-// Cleans the dist directory
+// 4. TASKS
+// cleans the dist directory
 gulp.task('clean-dist', function() {
     return del([paths.dist]);
 });
@@ -134,7 +153,7 @@ gulp.task('lib', function() {
 gulp.task('browser-sync', function() {
     getLocalIp( function ( err, host ) {
         // takes the apex query string from the provided apex url
-        var apexQueryString = config.browsersync.apexURL.substring(config.browsersync.apexURL.indexOf("f?p="));
+        var apexQueryString = config.apexURL.substring(config.apexURL.indexOf("f?p="));
 
         // calculates the number of colons (:) in apexURL
         var colonsInURL = (apexQueryString.match(/:/g) || []).length;
@@ -152,7 +171,7 @@ gulp.task('browser-sync', function() {
             port: config.browsersync.port,
             notify: config.browsersync.notify,
             proxy: {
-                target: config.browsersync.apexURL + ":".repeat(colonsToAdd) + "G_BROWSERSYNC_HOST:" + proxyHost,
+                target: config.apexURL + ":".repeat(colonsToAdd) + "G_BROWSERSYNC_HOST:" + proxyHost,
                 middleware: function (req, res, next) {
                     res.setHeader('Access-Control-Allow-Origin', '*');
                     next();

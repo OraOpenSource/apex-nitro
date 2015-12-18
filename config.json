@@ -1,20 +1,8 @@
 {
-    "javascriptConcat": {
-        "enabled": true,
-        "finalName": "app"
+    "sandbox": {
+        "apexURL": "https://apex.oracle.com/pls/apex/f?p=10344:LOGIN_DESKTOP"
     },
-    "cssConcat": {
-        "enabled": true,
-        "finalName": "app"
-    },
-    "sass": {
-        "enabled": false
-    },
-    "browsersync": {
-        "enabled": false,
-        "port": 3000,
-        "notify": true,
-        "apexURL": "",
-        "multipleDevices": false
+    "material-apex": {
+        "apexURL": "https://apex.oracle.com/pls/apex/f?p=12192:1"
     }
 }
