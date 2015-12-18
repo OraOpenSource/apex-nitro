@@ -13,7 +13,6 @@ Thanks to [Insum Solutions](insum.ca) for sponsoring this project.
 - Filesize indicator
 - Error handling
 
-
 ## Install
 ```bash
 git clone https://github.com/OraOpenSource/apex-gulp-stack.git

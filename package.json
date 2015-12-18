@@ -9,7 +9,8 @@
     "url": "https://github.com/OraOpenSource/apex-gulp-stack.git"
   },
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "postinstall": "node generateConfig.js"
   },
   "devDependencies": {
     "browser-sync": "2.10.x",

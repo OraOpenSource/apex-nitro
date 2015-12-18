@@ -18,8 +18,8 @@ var argv = require('yargs').argv,
     userConfig = require('./config.json'),
     config = extend(defaultConfig, userConfig[argv.project]);
 
-if (util.isEmptyObject(config.apexURL)) {
-    console.log("Missing apexURL in your config.json file.");
+if (util.isEmptyObject(config.appURL)) {
+    console.log("Missing appURL in your config.json file.");
 }
 
 if (util.isEmptyObject(config.srcFolder)) {
@@ -30,7 +30,7 @@ if (util.isEmptyObject(config.distFolder)) {
     console.log("Missing distFolder in your config.json file.");
 }
 
-if((util.isEmptyObject(config.apexURL))
+if((util.isEmptyObject(config.appURL))
 || (util.isEmptyObject(config.srcFolder))
 || (util.isEmptyObject(config.distFolder))) {
     process.exit(1);
@@ -153,9 +153,9 @@ gulp.task('lib', function() {
 gulp.task('browser-sync', function() {
     getLocalIp( function ( err, host ) {
         // takes the apex query string from the provided apex url
-        var apexQueryString = config.apexURL.substring(config.apexURL.indexOf("f?p="));
+        var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p="));
 
-        // calculates the number of colons (:) in apexURL
+        // calculates the number of colons (:) in appURL
         var colonsInURL = (apexQueryString.match(/:/g) || []).length;
 
         // 6 is the number of colons to get to the itemNames in
@@ -171,7 +171,7 @@ gulp.task('browser-sync', function() {
             port: config.browsersync.port,
             notify: config.browsersync.notify,
             proxy: {
-                target: config.apexURL + ":".repeat(colonsToAdd) + "G_BROWSERSYNC_HOST:" + proxyHost,
+                target: config.appURL + ":".repeat(colonsToAdd) + "G_BROWSERSYNC_HOST:" + proxyHost,
                 middleware: function (req, res, next) {
                     res.setHeader('Access-Control-Allow-Origin', '*');
                     next();
