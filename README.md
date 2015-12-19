@@ -2,7 +2,7 @@
 This is a complete Gulp Stack for Oracle APEX front-end development.
 
 ## Project Sponsors
-Thanks to [Insum Solutions](insum.ca) for sponsoring this project.
+Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
 ## Features
 - [Browsersync](http://www.browsersync.io/)
@@ -27,7 +27,7 @@ See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/
 You will want to configure for your project needs. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Config.json).
 
 ## Run
-`npm start`
+`npm start -- --project=yourProjectName`
 
 ## Usage
 From the `src` folder you can create, edit or delete any files in:

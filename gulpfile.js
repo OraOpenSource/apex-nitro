@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     util = require('./util.js'),
     path = require('path');
 
-// 2. PREREQUISITES
+// 2. PREREQUISITES AND ERROR HANDLING
 var argv = require('yargs').argv,
     extend = require('util')._extend,
     defaultConfig = require('./default.json'),
@@ -152,18 +152,18 @@ gulp.task('lib', function() {
 // starts local server
 gulp.task('browser-sync', function() {
     getLocalIp( function ( err, host ) {
-        // takes the apex query string from the provided apex url
-        var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p="));
-
-        // calculates the number of colons (:) in appURL
-        var colonsInURL = (apexQueryString.match(/:/g) || []).length;
-
-        // 6 is the number of colons to get to the itemNames in
-        // (f?p=App:Page:Session:Request:Debug:ClearCache:itemNames:itemValues:PrinterFriendly)
-        var colonsToAdd = 6 - colonsInURL;
-
         // returns localhost or local ip address if needed
         var proxyHost = (config.browsersync.multipleDevices ? host : 'localhost');
+        // returns the apex host URL (before f?p=)
+        var apexHost = config.appURL.substring(0, config.appURL.indexOf("f?p="));
+        // takes the apex query string from the provided apex url
+        var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p=")).split(":");
+        // append the itemNames
+        apexQueryString[6] = [apexQueryString[6], "G_BROWSERSYNC_HOST"].filter(function(val){return val;}).join(',');
+        // append the itemValues
+        apexQueryString[7] = [apexQueryString[7], proxyHost].filter(function(val){return val;}).join(',');
+        // rebuild the query string
+        apexQueryString = apexQueryString.join(":");
 
         // launch the browsersync server
         browserSync.init({
@@ -171,7 +171,7 @@ gulp.task('browser-sync', function() {
             port: config.browsersync.port,
             notify: config.browsersync.notify,
             proxy: {
-                target: config.appURL + ":".repeat(colonsToAdd) + "G_BROWSERSYNC_HOST:" + proxyHost,
+                target: apexHost + apexQueryString,
                 middleware: function (req, res, next) {
                     res.setHeader('Access-Control-Allow-Origin', '*');
                     next();
