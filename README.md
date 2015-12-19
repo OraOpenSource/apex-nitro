@@ -1,17 +1,28 @@
 # APEX Gulp Stack
-This is a complete Gulp Stack for Oracle APEX front-end development.
+It's all about automation.
+
+Enhance your productivity with a complete Front-End Stack for Oracle APEX development.
 
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
 ## Features
 - [Browsersync](http://www.browsersync.io/)
+    - Write Javascript and CSS in your favorite code editor.
+    - As you save, changes are automatically pushed to your application, no need to refresh your browser anymore.
+    - Navigate in your application from your desktop and see your mobile device imitate your actions as you scroll and click anywhere.
 - [Sass Parsing](http://sass-lang.com/)
+    - Write Sass instead of regular CSS.
+    - Sass is automatically parsed to CSS as you write it.
 - CSS and JS concatenation & minification
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
+    - Vendor prefixes are automatically added to your CSS.
 - Sourcemaps
+    - Be able to retrace your source code from the final concatenated and minified file.
 - Filesize indicator
+    - Be notified of the difference between your source file and final file.
 - Error handling
+    - Javascript and CSS errors will trigger notifications as you save.
 
 ## Install
 ```bash
@@ -29,6 +40,9 @@ You will want to configure for your project needs. See [dedicated wiki page](htt
 ## Application Setup
 ### Application Items
 There are two mandatory application items to add. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Applications-Items).
+
+### Application Process
+There is one mandatory application process to add. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Application-Process).
 
 ## Run
 `npm start -- --project=yourProjectName`
