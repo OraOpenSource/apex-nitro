@@ -2,10 +2,14 @@ var fs = require('fs');
 
 var config = {
     "yourProject1Name": {
-        "appURL": "yourApplicationURL"
+        "appURL": "yourApplicationURL",
+        "srcFolder": "yourSrcFolder",
+        "distFolder": "yourDistFolder"
     },
     "yourProject2Name": {
-        "appURL": "yourApplicationURL"
+        "appURL": "yourApplicationURL",
+        "srcFolder": "yourSrcFolder",
+        "distFolder": "yourDistFolder"
     }
 };
 

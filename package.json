@@ -13,7 +13,7 @@
     "postinstall": "node generateConfig.js"
   },
   "devDependencies": {
-    "browser-sync": "2.10.x",
+    "browser-sync": "2.11.x",
     "del": "2.2.x",
     "gulp": "3.9.x",
     "gulp-autoprefixer": "3.1.x",
@@ -21,7 +21,7 @@
     "gulp-concat": "2.6.x",
     "gulp-if": "2.0.x",
     "gulp-jshint": "2.0.x",
-    "gulp-load-plugins": "1.1.x",
+    "gulp-load-plugins": "1.2.x",
     "gulp-minify-css": "1.2.x",
     "gulp-plumber": "1.0.x",
     "gulp-rename": "1.2.x",

@@ -9,23 +9,38 @@ var gulp = require('gulp'),
     getLocalIp = require('node-localip'),
     clip = require('gulp-clip-empty-files'),
     util = require('./util.js'),
-    path = require('path');
+    path = require('path'),
+    argv = require('yargs').argv,
+    extend = require('util')._extend;
 
 // 2. PREREQUISITES AND ERROR HANDLING
-var argv = require('yargs').argv,
-    extend = require('util')._extend,
-    defaultConfig = require('./default.json'),
+var defaultConfig = require('./default.json'),
     userConfig = require('./config.json'),
     config = extend(defaultConfig, userConfig[argv.project]);
 
+// command line syntax check
+if (typeof argv.project == "undefined") {
+    console.log("The correct syntax is: npm start -- --project=yourProjectName");
+    process.exit(1);
+}
+
+// project exists check
+if (typeof userConfig[argv.project] == "undefined") {
+    console.log("Project", argv.project ,"doesn't exists in your config.json file.");
+    process.exit(1);
+}
+
+// missing appURL check
 if (util.isEmptyObject(config.appURL)) {
     console.log("Missing appURL in your config.json file.");
 }
 
+// missing srcFolder check
 if (util.isEmptyObject(config.srcFolder)) {
     console.log("Missing srcFolder in your config.json file.");
 }
 
+// missing distFolder check
 if (util.isEmptyObject(config.distFolder)) {
     console.log("Missing distFolder in your config.json file.");
 }
@@ -153,13 +168,13 @@ gulp.task('lib', function() {
 gulp.task('browser-sync', function() {
     getLocalIp( function ( err, host ) {
         // returns localhost or local ip address if needed
-        var proxyHost = (config.browsersync.multipleDevices ? host : 'localhost');
+        var proxyHost = (config.browsersync.multipleDevices ? host : 'localhost') + "~" + config.browsersync.port;
         // returns the apex host URL (before f?p=)
         var apexHost = config.appURL.substring(0, config.appURL.indexOf("f?p="));
         // takes the apex query string from the provided apex url
         var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p=")).split(":");
         // append the itemNames
-        apexQueryString[6] = [apexQueryString[6], "G_BROWSERSYNC_HOST"].filter(function(val){return val;}).join(',');
+        apexQueryString[6] = [apexQueryString[6], "G_APP_IMAGES"].filter(function(val){return val;}).join(',');
         // append the itemValues
         apexQueryString[7] = [apexQueryString[7], proxyHost].filter(function(val){return val;}).join(',');
         // rebuild the query string

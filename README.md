@@ -37,12 +37,12 @@ See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/
 ## Configuration
 You will want to configure for your project needs. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Config.json).
 
-## Application Setup
-### Application Items
-There are two mandatory application items to add. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Applications-Items).
+## Setup
+#### Application Item
+One mandatory application item to add. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Applications-Items).
 
-### Application Process
-There is one mandatory application process to add. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Application-Process).
+#### Application Process
+One mandatory application process to add. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Application-Process).
 
 ## Run
 `npm start -- --project=yourProjectName`
