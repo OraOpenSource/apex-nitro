@@ -1,12 +1,12 @@
 {
-  "name": "apex-gulp-stack",
+  "name": "apex-frontend-boost",
   "author": "Vincent Morneau",
   "version": "2.0.0",
-  "description": "APEX Gulp Stack",
+  "description": "Enhance your productivity with a complete Front-End Stack for Oracle APEX development",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OraOpenSource/apex-gulp-stack.git"
+    "url": "https://github.com/OraOpenSource/apex-frontend-boost.git"
   },
   "scripts": {
     "start": "gulp",

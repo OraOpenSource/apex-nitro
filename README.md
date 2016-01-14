@@ -1,4 +1,4 @@
-# APEX Gulp Stack
+# APEX Front-End Boost
 It's all about automation.
 
 Enhance your productivity with a complete Front-End Stack for Oracle APEX development.
@@ -26,23 +26,23 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
 ## Install
 ```bash
-git clone https://github.com/OraOpenSource/apex-gulp-stack.git
-cd apex-gulp-stack
+git clone https://github.com/OraOpenSource/apex-frontend-boost.git
+cd apex-frontend-boost
 npm install
 ```
 
 ### Installing on Windows?
-See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Installing-on-Windows).
+[See documentation](/docs/windows.md).
 
 ## Configuration
-You will want to configure for your project needs. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Config.json).
+You will want to configure for your project. [See documentation](/docs/config.json.md).
 
 ## Setup
 #### Application Item
-One mandatory application item to add. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Applications-Items).
+One mandatory application item to add. [See documentation](/docs/application-item.md).
 
 #### Application Process
-One mandatory application process to add. See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Application-Process).
+One mandatory application process to add. [See documentation](/docs/application-process.md).
 
 ## Run
 `npm start -- --project=yourProjectName`
@@ -68,10 +68,10 @@ Gulp will automatically compile your files to this folder structure:
 ```
 
 ### Self-Signed SSL Browser Warning
-See [dedicated wiki page](https://github.com/OraOpenSource/apex-gulp-stack/wiki/Self-Signed-SSL-Browser-Warning).
+[See documentation](/docs/ssl-warning.md).
 
 ## Changelog
-See [changelog](changelog.md).
+[See changelog](changelog.md).
 
 ## Project Team
 - [Vincent Morneau](https://github.com/vincentmorneau)
