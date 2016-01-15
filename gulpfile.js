@@ -168,7 +168,7 @@ gulp.task('lib', function() {
 gulp.task('browser-sync', function() {
     getLocalIp( function ( err, host ) {
         // returns localhost or local ip address if needed
-        var proxyHost = (config.browsersync.multipleDevices ? host : 'localhost') + "~" + config.browsersync.port;
+        var proxyHost = (config.multipleDevices ? host : 'localhost') + "~" + config.browsersync.port;
         // returns the apex host URL (before f?p=)
         var apexHost = config.appURL.substring(0, config.appURL.indexOf("f?p="));
         // takes the apex query string from the provided apex url

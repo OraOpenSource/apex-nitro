@@ -48,9 +48,9 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
     "browsersync": {
         "enabled": true,
         "port": 3000,
-        "notify": true,
-        "multipleDevices": false
-    }
+        "notify": true
+    },
+    "multipleDevices": false
 }
 ```
 
@@ -109,6 +109,6 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 > This option makes browsersync alert you when a file is dynamically injected to you browser.  
 > Useful for Javascript & CSS development, as you won't have to manually refresh your browser.
 
-**`browsersync.multipleDevices`** : `boolean`, default `true`
+**`multipleDevices`** : `boolean`, default `true`
 > Turn this on if you want to use multiple devices with browsersync. Your local network IP address will be used instead of `localhost`.
 > Useful for responsive design and cross-browser testing development.

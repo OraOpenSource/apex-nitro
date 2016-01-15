@@ -67,6 +67,9 @@ Gulp will automatically compile your files to this folder structure:
     |-lib
 ```
 
+### Using with multiple devices
+[See documentation](/docs/multiple-devices.md).
+
 ### Self-Signed SSL Browser Warning
 [See documentation](/docs/ssl-warning.md).
 
