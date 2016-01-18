@@ -1,34 +1,41 @@
 # APEX Front-End Boost
+This productivity tool helps you work with web files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
-This helps APEX you work on web files (`js`, `css`, `images`, etc...) within an APEX application. It creates a local web server to host local files which allows you to work on these files locally without having to upload them to APEX or a web server each time.
+TODO Martin: include animated gif (#19) of this project in action. VMORNEAU: I think this should go here (at the top).
 
-When a file is change the APEX page will either automatically refresh (for `js` files) or reload `css` files without refreshing the page. This can cut down development time by not having to manually refresh.
+**What APEX Front-End Boost does:**
+- Creates a local web server to host your web files (`js`, `css`, `images`, etc.)
+- Watches any changes to these files and injects the new content into your browser.
+- Minifies `css` and `js` files and provides a `.min` version of your code.
+- Concatenates `css` and `js` files and provides a single file version of your code. *(optional)*
+- Parses Sass to `css` *(optional)*
+- Adds vendor prefixes to your `css` code. Example:
+    ```css
+    a { border-radius: 5px; }
+    ```
+    Becomes:
+    ```css
+    a {
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+    }
+    ```
+- Creates a Sourcemaps file of your `js`, `scss` or `css` code, so you can easily trace back the final concatenated and minified file to your original source file. Example:
+    ![](docs/sourcemaps.png)
 
-The local web server can be configured so that only you will see the changes that you make and not affect any other users until you move the files to the web server or into the APEX application. This is very helpful as you don't need to worry about causing errors or issues for others while developing. Read the docs ([apex-items](docs/application-item.md) and [application-process](docs/application-process.md)) on how to setup APEX to support this functionality.
+**What APEX Front-End Boost allows you:**
+- Cutting down on front-end development time.
+- Enhance your application performance with smaller file sizes.
+- Keep coding in your favorite code editor, without having to constantly upload anything to APEX or a web server.
+- Stop manually refresh your browser for `js` or `css` modification.
+- Stop worrying about affecting other developers. Any development done within APEX Front-End Boost affects you and only you.
+- Be notified of `js` and `css` errors as you save.
 
-TODO: include animated gif (#19) of this project in action.
-
+**Read the docs ([apex-items](docs/application-item.md) and [application-process](docs/application-process.md)) on how to setup APEX to support this functionality.**
 
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
-
-## Features
-- [Browsersync](http://www.browsersync.io/)
-    - Write Javascript and CSS in your favorite code editor.
-    - As you save, changes are automatically pushed to your application, no need to refresh your browser anymore.
-    - Navigate in your application from your desktop and see your mobile device imitate your actions as you scroll and click anywhere.
-- [Sass Parsing](http://sass-lang.com/)
-    - Write Sass instead of regular CSS.
-    - Sass is automatically parsed to CSS as you write it.
-- CSS and JS concatenation & minification
-- [Autoprefixer](https://github.com/postcss/autoprefixer)
-    - Vendor prefixes are automatically added to your CSS.
-- Sourcemaps
-    - Be able to retrace your source code from the final concatenated and minified file.
-- Filesize indicator
-    - Be notified of the difference between your source file and final file.
-- Error handling
-    - Javascript and CSS errors will trigger notifications as you save.
 
 ## Install
 ```bash
@@ -37,7 +44,7 @@ cd apex-frontend-boost
 npm install
 ```
 
-### Installing on Windows?
+#### Installing on Windows?
 [See documentation](/docs/windows.md).
 
 ## Configuration
@@ -73,11 +80,20 @@ Gulp will automatically compile your files to this folder structure:
     |-lib
 ```
 
-### Using with multiple devices
+#### Using with multiple devices
 [See documentation](/docs/multiple-devices.md).
 
-### Self-Signed SSL Browser Warning
+#### Self-Signed SSL Browser Warning
 [See documentation](/docs/ssl-warning.md).
+
+## Features
+- [Browsersync](http://www.browsersync.io/)
+- [Sass Parsing](http://sass-lang.com/)
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
+- [JSHint](http://jshint.com/)
+- [UglifyJS](https://github.com/terinjokes/gulp-uglify)
+- [Sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
+- More...
 
 ## Changelog
 [See changelog](changelog.md).
