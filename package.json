@@ -33,6 +33,7 @@
     "jshint": "2.x",
     "jshint-stylish": "2.1.x",
     "node-localip": "0.1.x",
-    "run-sequence": "1.1.x"
+    "run-sequence": "1.1.x",
+    "yargs": "3.32.x"
   }
 }
