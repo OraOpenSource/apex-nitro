@@ -9,20 +9,20 @@ TODO Martin: include animated gif (#19) of this project in action. VMORNEAU: I t
 - Minifies `css` and `js` files and provides a `.min` version of your code.
 - Concatenates `css` and `js` files and provides a single file version of your code. *(optional)*
 - Parses Sass to `css` *(optional)*
-- Adds vendor prefixes to your `css` code. Example:  
-    ```css
-    a { border-radius: 5px; }
-    ```
-    Becomes:  
-    ```css
-    a {
-        -webkit-border-radius: 5px;
-           -moz-border-radius: 5px;
-                border-radius: 5px;
-    }
-    ```
 - Creates a Sourcemaps file of your `js`, `scss` or `css` code, so you can easily trace back the final concatenated and minified file to your original source file. Example:
-    ![](docs/sourcemaps.png)
+![](docs/sourcemaps.png)
+- Adds vendor prefixes to your `css` code. Example:  
+```css
+a { border-radius: 5px; }
+```
+Becomes:  
+```css
+a {
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+```
 
 **What APEX Front-End Boost allows you:**
 - Cutting down on front-end development time.
