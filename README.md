@@ -1,7 +1,13 @@
 # APEX Front-End Boost
-It's all about automation.
 
-Enhance your productivity with a complete Front-End Stack for Oracle APEX development.
+This helps APEX you work on web files (`js`, `css`, `images`, etc...) within an APEX application. It creates a local web server to host local files which allows you to work on these files locally without having to upload them to APEX or a web server each time.
+
+When a file is change the APEX page will either automatically refresh (for `js` files) or reload `css` files without refreshing the page. This can cut down development time by not having to manually refresh.
+
+The local web server can be configured so that only you will see the changes that you make and not affect any other users until you move the files to the web server or into the APEX application. This is very helpful as you don't need to worry about causing errors or issues for others while developing. Read the docs ([apex-items](docs/application-item.md) and [application-process](docs/application-process.md)) on how to setup APEX to support this functionality.
+
+TODO: include animated gif (#19) of this project in action.
+
 
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
