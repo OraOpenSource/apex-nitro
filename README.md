@@ -9,11 +9,11 @@ TODO Martin: include animated gif (#19) of this project in action. VMORNEAU: I t
 - Minifies `css` and `js` files and provides a `.min` version of your code.
 - Concatenates `css` and `js` files and provides a single file version of your code. *(optional)*
 - Parses Sass to `css` *(optional)*
-- Adds vendor prefixes to your `css` code. Example:
+- Adds vendor prefixes to your `css` code. Example:  
     ```css
     a { border-radius: 5px; }
     ```
-    Becomes:
+    Becomes:  
     ```css
     a {
         -webkit-border-radius: 5px;
