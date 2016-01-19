@@ -192,7 +192,7 @@ gulp.task('browser-sync', function() {
                     next();
                   }
             },
-            serveStatic: ['.']
+            serveStatic: [config.distFolder]
         });
     });
 });
