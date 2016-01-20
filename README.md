@@ -13,14 +13,15 @@ TODO Martin: include animated gif (#19) of this project in action. VMORNEAU: I t
 ![](docs/sourcemaps.png)
 - Adds vendor prefixes to your `css` code. Example:  
 ```css
-a { border-radius: 5px; }
+a { display: flex }
 ```
 Becomes:  
 ```css
 a {
-    -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
-            border-radius: 5px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
 }
 ```
 
@@ -32,7 +33,7 @@ a {
 - Stop worrying about affecting other developers. Any development done within APEX Front-End Boost affects you and only you.
 - Be notified of `js` and `css` errors as you save.
 
-**Read the docs ([apex-items](docs/application-item.md) and [application-process](docs/application-process.md)) on how to setup APEX to support this functionality.**
+**Read the docs ([application-item](docs/application-item.md), [application-process](docs/application-process.md) and [build option](docs/build-option.md)) on how to setup APEX to support this functionality.**
 
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
@@ -51,11 +52,14 @@ npm install
 You will want to configure for your project. [See documentation](/docs/config.json.md).
 
 ## Setup
-#### Application Item
-One mandatory application item to add. [See documentation](/docs/application-item.md).
+#### Build Option
+One build option to add. [See documentation](/docs/build-option.md).
 
-#### Application Process
-One mandatory application process to add. [See documentation](/docs/application-process.md).
+#### Application Items
+2 application items to add. [See documentation](/docs/application-item.md).
+
+#### Application Processes
+2 application processes to add. [See documentation](/docs/application-process.md).
 
 ## Run
 `npm start -- --project=yourProjectName`

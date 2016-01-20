@@ -5,8 +5,7 @@ var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
     del = require('del'),
     runSequence = require('run-sequence'),
-    browserSync = require('browser-sync').create()
-    getLocalIp = require('node-localip'),
+    browsersync = require('browser-sync').create(),
     clip = require('gulp-clip-empty-files'),
     util = require('./util.js'),
     path = require('path'),
@@ -79,6 +78,10 @@ var paths = {
     sassOptions = {
         errLogToConsole: true,
         sourcemap: true
+    },
+    apexMiddleware = function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
     };
 
 // 4. TASKS
@@ -108,7 +111,7 @@ gulp.task('js', function() {
 
 // javascript & browsersync
 gulp.task('js-browsersync', ['js'], function() {
-    browserSync.reload();
+    browsersync.reload();
 });
 
 // scss
@@ -129,7 +132,7 @@ gulp.task('scss', function() {
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.if(config.browsersync.enabled, browserSync.stream({match: files.css})));
+        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
 });
 
 // css
@@ -149,7 +152,7 @@ gulp.task('css', function() {
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.if(config.browsersync.enabled, browserSync.stream({match: files.css})));
+        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
 });
 
 // copy img files as is
@@ -165,35 +168,31 @@ gulp.task('lib', function() {
 });
 
 // starts local server
-gulp.task('browser-sync', function() {
-    getLocalIp( function ( err, host ) {
-        // returns localhost or local ip address if needed
-        var proxyHost = (config.multipleDevices ? host : 'localhost') + "~" + config.browsersync.port;
-        // returns the apex host URL (before f?p=)
-        var apexHost = config.appURL.substring(0, config.appURL.indexOf("f?p="));
-        // takes the apex query string from the provided apex url
-        var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p=")).split(":");
-        // append the itemNames
-        apexQueryString[6] = [apexQueryString[6], "G_APP_IMAGES"].filter(function(val){return val;}).join(',');
-        // append the itemValues
-        apexQueryString[7] = [apexQueryString[7], proxyHost].filter(function(val){return val;}).join(',');
-        // rebuild the query string
-        apexQueryString = apexQueryString.join(":");
+gulp.task('browsersync', function() {
+    // returns localhost or local ip address if needed
+    var proxyHost = "localhost~" + config.browsersync.port;
+    // returns the apex host URL (before f?p=)
+    var apexHost = config.appURL.substring(0, config.appURL.indexOf("f?p="));
+    // takes the apex query string from the provided apex url
+    var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p=")).split(":");
+    // setting the session to 0 to ensure public apps are compatible
+    apexQueryString[2] = 0;
+    // append the itemNames
+    apexQueryString[6] = [apexQueryString[6], "G_BROWSERSYNC_HOST"].filter(function(val){return val;}).join(",");
+    // append the itemValues
+    apexQueryString[7] = [apexQueryString[7], proxyHost].filter(function(val){return val;}).join(",");
+    // rebuild the query string
+    apexQueryString = apexQueryString.join(":");
 
-        // launch the browsersync server
-        browserSync.init({
-            host: host,
-            port: config.browsersync.port,
-            notify: config.browsersync.notify,
-            proxy: {
-                target: apexHost + apexQueryString,
-                middleware: function (req, res, next) {
-                    res.setHeader('Access-Control-Allow-Origin', '*');
-                    next();
-                  }
-            },
-            serveStatic: [config.distFolder]
-        });
+    // launch the browsersync server
+    browsersync.init({
+        port: config.browsersync.port,
+        notify: config.browsersync.notify,
+        proxy: {
+            target: apexHost + apexQueryString,
+            middleware: apexMiddleware
+        },
+        serveStatic: [config.distFolder]
     });
 });
 
@@ -229,7 +228,7 @@ gulp.task('default', function() {
 
     // browsersync support
     if (config.browsersync.enabled) {
-        tasks.unshift('browser-sync');
+        tasks.unshift('browsersync');
     }
 
     // run tasks

@@ -17,6 +17,5 @@
         "enabled": true,
         "port": 3000,
         "notify": true
-    },
-    "multipleDevices": false
+    }
 }

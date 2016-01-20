@@ -1,17 +1,23 @@
-For an application to utilize apex-frontend-boost, you will need to add one [application process](/script/application_process.sql).
+To utilize APEX Front-End Boost, you need to add 2 application processes.
 
-- Application process name doesn't matter
-- Process Point: On New Instance (new session)
+- Application Process names don't matter.
+- Process Point: On New Instance (new session).
 
+#### set_app_images_dev  
+Build Option: `DEV_ONLY`
 ```sql
-if :G_APP_IMAGES is null then
-    -- default is #APP_IMAGES#
-    :G_APP_IMAGES := '#APP_IMAGES#';
-else
+if :G_BROWSERSYNC_HOST is not null then
     -- rebuilds the url
     :G_APP_IMAGES := OWA_UTIL.GET_CGI_ENV('REQUEST_PROTOCOL')
-        || '://' ||  replace(:G_APP_IMAGES, '~', ':') || '/';
+        || '://' ||  replace(:G_BROWSERSYNC_HOST, '~', ':') || '/';
+else
+    -- default is #APP_IMAGES#
+    :G_APP_IMAGES := '#APP_IMAGES#';
 end if;
 ```
 
-The application process takes what Gulp has been sending over to `G_APP_IMAGES` as the current host. Any device that is accessing the application through that same host will benefit from live changes and synchronization.
+#### set_app_images_prod  
+Build Option: `{Not DEV_ONLY}`
+```sql
+:G_APP_IMAGES := '#APP_IMAGES#';
+```
