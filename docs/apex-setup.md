@@ -5,9 +5,12 @@ This tool requires some slight modifications to your APEX application. These cha
 ## Build Option
 
 In Shared Components > Build Options (BO) create a new BO with the following attributes:
-- Build Option: `DEV_ONLY`
-- Status: `Include`
-- Default on Export: `Exclude`
+
+Name | Setting
+--- | ---
+Build Option | `DEV_ONLY`
+Status | `Include`
+Default on Export | `Exclude`
 
 When you copy/import this application in a different schema anything tagged with the `DEV_ONLY` BO will not be run. If you re-import back into a development environment you'll need to manually change the status to `Include`.
 
@@ -25,7 +28,7 @@ In this case all your images reference the standard `APP_IMAGES` substitution st
 Create an application process with the following:
 
 Name | Setting | Comment
---- | ---
+--- | --- | ---
 Sequence | `-999` | Ensures this happens first
 Process Point | `On Load: Before Header (page template header)` |
 Name | `OOS APEX Frontend Boost Config` |
@@ -51,7 +54,7 @@ In this case all your images reference a custom image prefix. This example will 
 #### Create Application Item
 
 Name | Setting
---- | --- | ---
+--- | ---
 Name | `G_APP_IMAGES`
 Scope | `Application`
 Session State Protection | `Restricted - May not be set from browser`
