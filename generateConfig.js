@@ -1,5 +1,5 @@
 var fs = require('fs');
-
+var configFile = 'config.json';
 var config = {
     "yourProject1Name": {
         "appURL": "yourApplicationURL",
@@ -13,6 +13,8 @@ var config = {
     }
 };
 
-fs.writeFile('config.json', JSON.stringify(config, null, 4), { flag: 'wx' }, function (err) {
-    if (err) return console.log(err);
+fs.access(configFile, fs.F_OK, function (err) {
+    err && fs.writeFile(configFile, JSON.stringify(config, null, 4), { flag: 'wx' }, function (err) {
+        if (err) return console.log(err);
+    });
 });

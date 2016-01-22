@@ -11,7 +11,8 @@
         "finalName": "app"
     },
     "sass": {
-        "enabled": false
+        "enabled": false,
+        "includePath": ""
     },
     "browsersync": {
         "enabled": true,

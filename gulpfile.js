@@ -10,12 +10,13 @@ var gulp = require('gulp'),
     util = require('./util.js'),
     path = require('path'),
     argv = require('yargs').argv,
-    extend = require('util')._extend;
+    merge = require('merge-stream'),
+    extend = require('node.extend');
 
 // 2. PREREQUISITES AND ERROR HANDLING
 var defaultConfig = require('./default.json'),
     userConfig = require('./config.json'),
-    config = extend(defaultConfig, userConfig[argv.project]);
+    config = extend(true, {}, defaultConfig, userConfig[argv.project]);
 
 // command line syntax check
 if (typeof argv.project == "undefined") {
@@ -77,7 +78,8 @@ var paths = {
     },
     sassOptions = {
         errLogToConsole: true,
-        sourcemap: true
+        sourcemap: true,
+        includePaths: [path.normalize(config.sass.includePath)]
     },
     apexMiddleware = function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -115,44 +117,39 @@ gulp.task('js-browsersync', ['js'], function() {
 });
 
 // scss
-gulp.task('scss', function() {
-    return gulp.src(paths.src + assets.scss + files.scss)
-        .pipe(plugins.plumber())
-        .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.sass(sassOptions))
-        .pipe(plugins.if(config.cssConcat.enabled,
-            plugins.concat(config.cssConcat.finalName + '.css')))
-        .pipe(plugins.autoprefixer())
-        .pipe(plugins.size(sizeOptions))
-        .pipe(plugins.sourcemaps.write(paths.sourcemaps))
-        .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.minifyCss())
-        .pipe(plugins.rename(renameOptions))
-        .pipe(plugins.size(sizeOptions))
-        .pipe(plugins.sourcemaps.write(paths.sourcemaps))
-        .pipe(clip())
-        .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
-});
+gulp.task('style', function() {
+    var sourceFiles;
 
-// css
-gulp.task('css', function() {
-    return gulp.src(paths.src + assets.css + files.css)
+    if (config.sass.enabled) {
+        sourceFiles = paths.src + assets.scss + files.scss;
+    } else {
+        sourceFiles = paths.src + assets.css + files.css;
+    }
+
+    var sourceStream = gulp.src(sourceFiles)
         .pipe(plugins.plumber())
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.if(config.cssConcat.enabled,
-            plugins.concat(config.cssConcat.finalName + '.css')))
+        .pipe(plugins.if(config.sass.enabled, plugins.sass(sassOptions)))
+        .pipe(plugins.if(config.cssConcat.enabled, plugins.concat(config.cssConcat.finalName + '.css')))
         .pipe(plugins.autoprefixer())
-        .pipe(plugins.size(sizeOptions))
+        .pipe(plugins.size(sizeOptions));
+
+    var unmin = sourceStream
+        .pipe(plugins.clone())
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
-        .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.minifyCss())
+        .pipe(gulp.dest(paths.dist + assets.css));
+
+    var min = sourceStream
+        .pipe(plugins.clone())
+        .pipe(plugins.cssnano())
         .pipe(plugins.rename(renameOptions))
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
         .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
+
+    return merge(unmin, min);
 });
 
 // copy img files as is
@@ -203,12 +200,10 @@ gulp.task('watch', function() {
 
     gulp.watch(paths.src + assets.js + files.js, jsWatch);
 
-    // sass support
-    if (config.sass.enabled) {
-        gulp.watch(paths.src + assets.scss + files.scss, ['scss']);
-    } else {
-        gulp.watch(paths.src + assets.css + files.css, ['css']);
-    }
+    gulp.watch([
+        paths.src + assets.scss + files.scss,
+        paths.src + assets.css + files.css
+    ], ['style']);
 
     gulp.watch(paths.src + assets.img + files.all, ['img']);
     gulp.watch(paths.src + assets.lib + files.all, ['lib']);
@@ -217,14 +212,7 @@ gulp.task('watch', function() {
 // Default task: builds your app
 gulp.task('default', function() {
     // default task order
-    var tasks = ['js', 'img', 'lib'];
-
-    // sass support
-    if (config.sass.enabled) {
-        tasks.unshift('scss');
-    } else {
-        tasks.unshift('css');
-    }
+    var tasks = ['js', 'style', 'img', 'lib'];
 
     // browsersync support
     if (config.browsersync.enabled) {
@@ -233,6 +221,6 @@ gulp.task('default', function() {
 
     // run tasks
     runSequence('clean-dist', tasks, 'watch', function() {
-        console.log("Successfully built!");
+        console.log("APEX Front-End Boost has successfully processed your files.");
     });
 });
