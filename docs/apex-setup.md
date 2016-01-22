@@ -62,7 +62,7 @@ Create the following Application Processes
 
 
 Name | Setting | Comment
---- | ---
+--- | --- | ---
 Sequence | `-999` | Ensures this happens first
 Process Point | `On New Instance (new session)` |
 Name | `OOS APEX Frontend Boost Config` |
@@ -87,7 +87,7 @@ end;
 Second App Process
 
 Name | Setting | Comment
---- | ---
+--- | --- | ---
 Sequence | `-999` | Ensures this happens first
 Process Point | `On New Instance (new session)` |
 Name | `OOS APEX Frontend Boost Config (Not Dev)` |
