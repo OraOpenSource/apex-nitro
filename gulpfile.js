@@ -83,6 +83,9 @@ var paths = {
     },
     apexMiddleware = function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
+        // #40: This allows APEX to know which URL to reference for static images.
+        // Don't hardcode "localhost" as it may be accessed from external IP address
+        res.setHeader('Set-Cookie', ['oos-apex-frontend-boost-app-images=//' + req.headers.host + '/']);
         next();
     };
 
@@ -166,20 +169,10 @@ gulp.task('lib', function() {
 
 // starts local server
 gulp.task('browsersync', function() {
-    // returns localhost or local ip address if needed
-    var proxyHost = "localhost~" + config.browsersync.port;
-    // returns the apex host URL (before f?p=)
+    // // returns the apex host URL (before f?p=)
     var apexHost = config.appURL.substring(0, config.appURL.indexOf("f?p="));
-    // takes the apex query string from the provided apex url
-    var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p=")).split(":");
-    // setting the session to 0 to ensure public apps are compatible
-    apexQueryString[2] = 0;
-    // append the itemNames
-    apexQueryString[6] = [apexQueryString[6], "G_BROWSERSYNC_HOST"].filter(function(val){return val;}).join(",");
-    // append the itemValues
-    apexQueryString[7] = [apexQueryString[7], proxyHost].filter(function(val){return val;}).join(",");
-    // rebuild the query string
-    apexQueryString = apexQueryString.join(":");
+    // // takes the apex query string from the provided apex url
+    var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p="))
 
     // launch the browsersync server
     browsersync.init({

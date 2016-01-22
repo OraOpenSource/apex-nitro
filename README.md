@@ -33,7 +33,7 @@ a {
 - Stop worrying about affecting other developers. Any development done within APEX Front-End Boost affects you and only you.
 - Be notified of `js` and `css` errors as you save.
 
-**Read the docs ([application-item](docs/application-item.md), [application-process](docs/application-process.md) and [build option](docs/build-option.md)) on how to setup APEX to support this functionality.**
+**Read the docs on [how to setup APEX](/docs/apex-setup.md) to support this functionality.**
 
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
@@ -52,14 +52,9 @@ npm install
 You will want to configure for your project. [See documentation](/docs/config.json.md).
 
 ## Setup
-#### Build Option
-One build option to add. [See documentation](/docs/build-option.md).
 
-#### Application Items
-2 application items to add. [See documentation](/docs/application-item.md).
+Review the [APEX Setup](/docs/apex-setup.md) docs. Options include setup for using default `APP_IMAGES` and custom image prefix (such as `G_APP_IMAGES`).
 
-#### Application Processes
-2 application processes to add. [See documentation](/docs/application-process.md).
 
 ## Run
 `npm start -- --project=yourProjectName`
