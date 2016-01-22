@@ -51,7 +51,7 @@ In this case all your images reference a custom image prefix. This example will 
 #### Create Application Item
 
 Name | Setting
---- | ---
+--- | --- | ---
 Name | `G_APP_IMAGES`
 Scope | `Application`
 Session State Protection | `Restricted - May not be set from browser`
