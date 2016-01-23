@@ -33,8 +33,6 @@ a {
 - Stop worrying about affecting other developers. Any development done within APEX Front-End Boost affects you and only you.
 - Be notified of `js` and `css` errors as you save.
 
-**Read the docs on [how to setup APEX](/docs/apex-setup.md) to support this functionality.**
-
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
@@ -47,10 +45,10 @@ npm install
 
 **Installing on Windows?** [See documentation](/docs/windows.md).
 
-## Configuration
-You will want to configure for your project. [See documentation](/docs/config.json.md).
+## APEX Front-End Boost Configuration
+You need to configure APEX Front-End Boost for your project(s). [See documentation](/docs/config.json.md).
 
-## Setup
+## APEX Application Setup
 There are two options to setup your application:
 - **Option 1) Standard**
     - 1 Build Option

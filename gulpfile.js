@@ -83,8 +83,6 @@ var paths = {
     },
     apexMiddleware = function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
-        // #40: This allows APEX to know which URL to reference for static images.
-        // Don't hardcode "localhost" as it may be accessed from external IP address
         res.setHeader('Set-Cookie', ['oos-apex-frontend-boost-app-images=//' + req.headers.host + '/']);
         next();
     };

@@ -14,7 +14,7 @@ There are two options to setup your application:
 The choice that you use is dependent on how you reference images. If you use `APP_IMAGES` throughout your application then use the first option. If you use a custom application item for the image prefix then use the second option.
 
 ## Build Option
-**Note:** This is required in both options.
+**Note: This is required in both options.**
 
 APEX Front-End Boost isn't meant to run in production. This build option is used to limit the scope of APEX Front-End Boost to the development environment only.
 
