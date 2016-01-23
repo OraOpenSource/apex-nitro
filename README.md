@@ -33,11 +33,8 @@ a {
 - Stop worrying about affecting other developers. Any development done within APEX Front-End Boost affects you and only you.
 - Be notified of `js` and `css` errors as you save.
 
-<<<<<<< HEAD
-=======
 **Read the docs on [how to setup APEX](/docs/apex-setup.md) to support this functionality.**
 
->>>>>>> origin/master
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
@@ -54,18 +51,16 @@ npm install
 You will want to configure for your project. [See documentation](/docs/config.json.md).
 
 ## Setup
-<<<<<<< HEAD
-An APEX setup is required to get going with APEX Front-End Boost:
-- 1 build option
-- 2 application items
-- 2 application processes
+There are two options to setup your application:
+- **Option 1) Standard**
+    - 1 Build Option
+    - 1 Application Process
+- **Option 2) Custom Application Item**
+    - 1 Build Option
+    - 1 Application Item
+    - 2 Application Processes
 
-**Read the docs ([application-setup](docs/application-setup.md)) on how to setup APEX to support this functionality.**
-=======
-
-Review the [APEX Setup](/docs/apex-setup.md) docs. Options include setup for using default `APP_IMAGES` and custom image prefix (such as `G_APP_IMAGES`).
-
->>>>>>> origin/master
+Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate option for your project.
 
 ## Run
 `npm start -- --project=yourProjectName`
