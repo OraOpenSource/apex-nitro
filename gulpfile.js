@@ -138,7 +138,8 @@ gulp.task('style', function() {
     var unmin = sourceStream
         .pipe(plugins.clone())
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
-        .pipe(gulp.dest(paths.dist + assets.css));
+        .pipe(gulp.dest(paths.dist + assets.css))
+        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
 
     var min = sourceStream
         .pipe(plugins.clone())
