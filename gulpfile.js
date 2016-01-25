@@ -131,27 +131,26 @@ gulp.task('style', function() {
         .pipe(plugins.plumber())
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.if(config.sass.enabled, plugins.sass(sassOptions)))
-        .pipe(plugins.if(config.cssConcat.enabled, plugins.concat(config.cssConcat.finalName + '.css')))
-        .pipe(plugins.autoprefixer())
-        .pipe(plugins.size(sizeOptions));
+        .pipe(plugins.if(config.cssConcat.enabled, plugins.concat(config.cssConcat.finalName + '.css')));
 
     var unmin = sourceStream
         .pipe(plugins.clone())
-        .pipe(plugins.sourcemaps.write(paths.sourcemaps))
-        .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
+        .pipe(plugins.autoprefixer())
+        .pipe(plugins.size(sizeOptions))
+        .pipe(plugins.sourcemaps.write(paths.sourcemaps));
 
     var min = sourceStream
         .pipe(plugins.clone())
+        .pipe(plugins.autoprefixer())
         .pipe(plugins.cssnano())
         .pipe(plugins.rename(renameOptions))
         .pipe(plugins.size(sizeOptions))
-        .pipe(plugins.sourcemaps.write(paths.sourcemaps))
+        .pipe(plugins.sourcemaps.write(paths.sourcemaps));
+
+    return merge(unmin, min)
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
         .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
-
-    return merge(unmin, min);
 });
 
 // copy img files as is
