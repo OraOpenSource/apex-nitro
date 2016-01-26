@@ -74,7 +74,7 @@ Session State Protection | `Restricted - May not be set from browser`
 > - &G_APP_IMAGES.css/app#MIN#.css
 
 #### Application Processes
-In `Shared Components > Application Procecsses` create these two new application processes with the following attributes:
+In `Shared Components > Application Processes` create these two new application processes with the following attributes:
 
 **1st application process:**
 
@@ -82,7 +82,7 @@ Name | Setting | Comment
 --- | --- | ---
 Sequence | `-999` | Ensures this happens first
 Process Point | `On New Instance (new session)` |
-Name | `OOS APEX Front-End Boost Config` |
+Name | `OOS APEX Front-End Boost (Dev)` |
 Source | *see below* |
 Build Option | `DEV_ONLY` | For security reasons only want this to happen in a controlled development environment
 
@@ -106,7 +106,7 @@ Name | Setting | Comment
 --- | --- | ---
 Sequence | `-999` | Ensures this happens first
 Process Point | `On New Instance (new session)` |
-Name | `OOS APEX Front-End Boost Config (Not Dev)` |
+Name | `OOS APEX Front-End Boost (Not Dev)` |
 Source | *see below* |
 Build Option | `{Not DEV_ONLY} ` | Will run in non-dev environments
 
