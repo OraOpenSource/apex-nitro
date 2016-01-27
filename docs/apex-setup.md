@@ -81,7 +81,7 @@ In `Shared Components > Application Processes` create these two new application 
 Name | Setting | Comment
 --- | --- | ---
 Sequence | `-999` | Ensures this happens first
-Process Point | `On New Instance (new session)` |
+Process Point | `On Load: Before Header (page template header)` |
 Name | `OOS APEX Front-End Boost (Dev)` |
 Source | *see below* |
 Build Option | `DEV_ONLY` | For security reasons only want this to happen in a controlled development environment
