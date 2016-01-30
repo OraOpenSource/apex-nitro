@@ -1,4 +1,4 @@
-# APEX Setup
+# APEX Application Setup
 
 APEX Front-End Boost requires some slight modifications to your APEX application. These changes are required in order to have your APEX application communicate with APEX Front-End Boost.
 

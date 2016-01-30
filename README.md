@@ -1,37 +1,32 @@
 # APEX Front-End Boost
 This productivity tool helps you work with web files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
-TODO Martin: include animated gif (#19) of this project in action. VMORNEAU: I think this should go here (at the top).
+APEX Front-End Boost is first and foremost a personal local web server that hosts and distributes your files to your APEX application.
+
+TODO Martin: include animated gif (#19) of this project in action.
 
 **What APEX Front-End Boost does:**
-- Creates a local web server to host your web files (`js`, `css`, `images`, etc.)
-- Watches any changes to these files and injects the new content into your browser.
-- Minifies `css` and `js` files and provides a `.min` version of your code.
-- Concatenates `css` and `js` files and provides a single file version of your code. *(optional)*
-- Parses Sass to `css` *(optional)*
-- Creates a Sourcemaps file of your `js`, `scss` or `css` code, so you can easily trace back the final concatenated and minified file to your original source file. Example:
-![](docs/sourcemaps.png)
-- Adds vendor prefixes to your `css` code. Example:  
-```css
-a { display: flex }
-```
-Becomes:  
-```css
-a {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-}
-```
+- Minifies `css` and `js` files.
+- Concatenates `css` and `js` files. *(optional)*
+- Parses `scss` to `css`. *(optional)*
+- Generates sourcemaps of  `js`, `scss` and `css`.
+- Adds vendor prefixes to `css`.
 
 **What APEX Front-End Boost allows you:**
 - Cutting down on front-end development time.
-- Enhance your application performance with smaller file sizes.
+- Enhance your application performance due to smaller file sizes.
 - Keep coding in your favorite code editor, without having to constantly upload anything to APEX or a web server.
-- Stop manually refresh your browser for `js` or `css` modification.
+- Stop manual refresh of your browser to get `js` and `css` modification.
 - Stop worrying about affecting other developers. Any development done within APEX Front-End Boost affects you and only you.
 - Be notified of `js` and `css` errors as you save.
+
+It makes responsive development easier by synchronizing multiple devices together. Your desktop, tablet and mobile device will imitate each others actions (scrolling, clicking, typing) as long as you've got APEX Front-End Boost running.
+
+It eliminates the need for refreshing the browser. As soon as you save your code in the text editor, you get automatic code injection / reloading in the browser.
+
+All of it is very much instantaneous.
+
+APEX Front-End Boost does make coding faster, richer and prettier, in addition to providing a better performance to the browser.
 
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
@@ -97,6 +92,8 @@ Gulp will automatically compile your files to this folder structure:
 - [UglifyJS](https://github.com/terinjokes/gulp-uglify)
 - [Sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
 - More...
+
+[See features examples](/docs/examples.md).
 
 ## Changelog
 [See changelog](changelog.md).

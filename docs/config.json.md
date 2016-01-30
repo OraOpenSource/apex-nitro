@@ -1,3 +1,5 @@
+# APEX Front-End Boost Configuration
+
 A basic `config.json` file is generated when the project's installed:
 ```json
 {
