@@ -77,7 +77,6 @@ var paths = {
         suffix: '.min'
     },
     sassOptions = {
-        errLogToConsole: true,
         sourcemap: true,
         includePaths: [path.normalize(config.sass.includePath)]
     },
@@ -130,7 +129,7 @@ gulp.task('style', function() {
     var sourceStream = gulp.src(sourceFiles)
         .pipe(plugins.plumber())
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.if(config.sass.enabled, plugins.sass(sassOptions)))
+        .pipe(plugins.if(config.sass.enabled, plugins.sass(sassOptions).on('error', plugins.sass.logError)))
         .pipe(plugins.if(config.cssConcat.enabled, plugins.concat(config.cssConcat.finalName + '.css')));
 
     var unmin = sourceStream
