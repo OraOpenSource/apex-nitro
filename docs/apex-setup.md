@@ -105,9 +105,11 @@ end;
 Name | Setting | Comment
 --- | --- | ---
 Sequence | `-999` | Ensures this happens first
-Process Point | `On New Instance (new session)` |
+Process Point | `On Load: Before Header (page template header)` |
 Name | `OOS APEX Front-End Boost (Not Dev)` |
 Source | *see below* |
+Condition Type | `Value of Item / Column in Expression 1 Is NULL` | Ensures this happens only once per session
+Condition Expression 1 | G_APP_IMAGES |
 Build Option | `{Not DEV_ONLY} ` | Will run in non-dev environments
 
 *Source:*
