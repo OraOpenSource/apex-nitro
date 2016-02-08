@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     path = require('path'),
     argv = require('yargs').argv,
     merge = require('merge-stream'),
-    extend = require('node.extend');
+    extend = require('node.extend'),
+    scssToLess = require('gulp-scss-to-less');
 
 // 2. PREREQUISITES AND ERROR HANDLING
 var defaultConfig = require('./default.json'),
@@ -61,14 +62,17 @@ var paths = {
         js: path.normalize('/js/'),
         css: path.normalize('/css/'),
         scss: path.normalize('/scss/'),
+        less: path.normalize('/less/'),
         img: path.normalize('/img/'),
         lib: path.normalize('/lib/')
     },
+    allSubFolders = '**/',
     files = {
-        js: path.normalize('**/*.js'),
-        css: path.normalize('**/*.css'),
-        scss: path.normalize('**/*.scss'),
-        all: path.normalize('**/*.*'),
+        js: path.normalize('*.js'),
+        css: path.normalize('*.css'),
+        scss: path.normalize('*.scss'),
+        less: path.normalize('*.less'),
+        all: path.normalize('*.*'),
     },
     sizeOptions = {
         showFiles: true
@@ -149,19 +153,27 @@ gulp.task('style', function() {
     return merge(unmin, min)
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
+        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: allSubFolders + files.css})));
 });
 
 // copy img files as is
 gulp.task('img', function() {
-    return gulp.src(paths.src + assets.img + files.all)
+    return gulp.src(paths.src + assets.img + allSubFolders + files.all)
         .pipe(gulp.dest(paths.dist + assets.img));
 });
 
 // copy lib files as is
 gulp.task('lib', function() {
-    return gulp.src(paths.src + assets.lib + files.all)
+    return gulp.src(paths.src + assets.lib + allSubFolders + files.all)
         .pipe(gulp.dest(paths.dist + assets.lib));
+});
+
+// creates a less file for theme roller
+gulp.task('themeroller', function(){
+    return gulp.src(config.themeroller.files)
+        .pipe(scssToLess())
+        .pipe(plugins.concat('themeroller.less'))
+        .pipe(gulp.dest(paths.dist + assets.less));
 });
 
 // starts local server
@@ -188,21 +200,31 @@ gulp.task('watch', function() {
     // browsersync support
     var jsWatch = (config.browsersync.enabled ? ['js-browsersync'] : ['js']);
 
-    gulp.watch(paths.src + assets.js + files.js, jsWatch);
+    gulp.watch(paths.src + assets.js + allSubFolders + files.js, jsWatch);
 
     gulp.watch([
-        paths.src + assets.scss + files.scss,
-        paths.src + assets.css + files.css
+        paths.src + assets.scss + allSubFolders + files.scss,
+        paths.src + assets.css + allSubFolders + files.css
     ], ['style']);
 
-    gulp.watch(paths.src + assets.img + files.all, ['img']);
-    gulp.watch(paths.src + assets.lib + files.all, ['lib']);
+    // theme roller support
+    if (config.themeroller.enabled) {
+        gulp.watch(paths.src + assets.scss + allSubFolders + files.scss, ['themeroller']);
+    }
+
+    gulp.watch(paths.src + assets.img + allSubFolders + files.all, ['img']);
+    gulp.watch(paths.src + assets.lib + allSubFolders + files.all, ['lib']);
 });
 
 // Default task: builds your app
 gulp.task('default', function() {
     // default task order
     var tasks = ['js', 'style', 'img', 'lib'];
+
+    // theme roller support
+    if (config.themeroller.enabled) {
+        tasks.unshift('themeroller');
+    }
 
     // browsersync support
     if (config.browsersync.enabled) {
