@@ -45,14 +45,22 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
         "finalName": "app"
     },
     "sass": {
-        "enabled": false
+        "enabled": false,
+        "includePath": ""
+    },
+    "less": {
+        "enabled": false,
+        "includePath": ""
     },
     "browsersync": {
         "enabled": true,
         "port": 3000,
         "notify": true
     },
-    "multipleDevices": false
+    "themeroller":{
+        "enabled": false,
+        "files" : []
+    }
 }
 ```
 
@@ -97,7 +105,20 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 **`sass.enabled`** : `boolean`, default `false`
 > Turns on and off the sass parsing feature.
 
-*If sass enabled, css concatenation will be disabled. It's up to you to properly concatenate files in sass (using imports)*
+**`sass.includePath`** : `string`
+> Include a path to an external sass folder. Allows to use the `@import` feature from within that folder.
+
+*When using Sass, please ensure that Less is turned off.*
+
+### Less
+
+**`less.enabled`** : `boolean`, default `false`
+> Turns on and off the less parsing feature.
+
+**`less.includePath`** : `string`
+> Include a path to an external less folder. Allows to use the `@import` feature from within that folder.
+
+*When using Less, please ensure that Sass is turned off.*
 
 ### Browsersync
 
@@ -111,6 +132,10 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 > This option makes browsersync alert you when a file is dynamically injected to you browser.  
 > Useful for Javascript & CSS development, as you won't have to manually refresh your browser.
 
-**`multipleDevices`** : `boolean`, default `true`
-> Turn this on if you want to use multiple devices with browsersync. Your local network IP address will be used instead of `localhost`.
-> Useful for responsive design and cross-browser testing development.
+### Theme Roller
+
+**`themeroller.enabled`** : `boolean`, default `false`
+> Turns on and off the Theme Roller feature. This will generate a `less` file that you can import into your application theme style. It will add editable variables to theme roller.
+
+**`themeroller.paths`** : `array`
+> Include the order of `scss` files to be parsed by theme roller.

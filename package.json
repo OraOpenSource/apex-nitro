@@ -26,6 +26,7 @@
     "gulp-plumber": "1.0.x",
     "gulp-rename": "1.2.x",
     "gulp-sass": "2.1.x",
+    "gulp-less": "3.0.x",
     "gulp-size": "2.0.x",
     "gulp-sourcemaps": "1.6.x",
     "gulp-uglify": "1.5.x",

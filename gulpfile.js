@@ -7,12 +7,12 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     browsersync = require('browser-sync').create(),
     clip = require('gulp-clip-empty-files'),
-    util = require('./util.js'),
     path = require('path'),
     argv = require('yargs').argv,
     merge = require('merge-stream'),
     extend = require('node.extend'),
-    scssToLess = require('gulp-scss-to-less');
+    util = require('./util/util.js'),
+    scssToLess = require('./util/scssToLess.js');
 
 // 2. PREREQUISITES AND ERROR HANDLING
 var defaultConfig = require('./default.json'),
@@ -28,6 +28,12 @@ if (typeof argv.project == "undefined") {
 // project exists check
 if (typeof userConfig[argv.project] == "undefined") {
     console.log("Project", argv.project ,"doesn't exists in your config.json file.");
+    process.exit(1);
+}
+
+// sass or less, not both
+if (config.sass.enabled && config.less.enabled) {
+    console.log("Choose either Sass or Less (not both) as the CSS preprocessor for project", argv.project);
     process.exit(1);
 }
 
@@ -84,6 +90,9 @@ var paths = {
         sourcemap: true,
         includePaths: [path.normalize(config.sass.includePath)]
     },
+    lessOptions = {
+        paths: [path.normalize(config.less.includePath)]
+    },
     apexMiddleware = function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Set-Cookie', ['oos-apex-frontend-boost-app-images=//' + req.headers.host + '/']);
@@ -126,6 +135,8 @@ gulp.task('style', function() {
 
     if (config.sass.enabled) {
         sourceFiles = paths.src + assets.scss + files.scss;
+    } else if (config.less.enabled) {
+        sourceFiles = paths.src + assets.less + files.less;
     } else {
         sourceFiles = paths.src + assets.css + files.css;
     }
@@ -134,6 +145,7 @@ gulp.task('style', function() {
         .pipe(plugins.plumber())
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.if(config.sass.enabled, plugins.sass(sassOptions).on('error', plugins.sass.logError)))
+        .pipe(plugins.if(config.less.enabled, plugins.less(lessOptions)))
         .pipe(plugins.if(config.cssConcat.enabled, plugins.concat(config.cssConcat.finalName + '.css')));
 
     var unmin = sourceStream
