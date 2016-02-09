@@ -93,6 +93,9 @@ var paths = {
     lessOptions = {
         paths: [path.normalize(config.less.includePath)]
     },
+    cssnanoOptions = {
+        safe: true
+    },
     apexMiddleware = function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Set-Cookie', ['oos-apex-frontend-boost-app-images=//' + req.headers.host + '/']);
@@ -157,7 +160,7 @@ gulp.task('style', function() {
     var min = sourceStream
         .pipe(plugins.clone())
         .pipe(plugins.autoprefixer())
-        .pipe(plugins.cssnano())
+        .pipe(plugins.cssnano(cssnanoOptions))
         .pipe(plugins.rename(renameOptions))
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps));
