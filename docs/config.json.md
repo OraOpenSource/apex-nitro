@@ -59,6 +59,7 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
     },
     "themeroller":{
         "enabled": false,
+        "finalName": "themeroller",
         "files" : []
     }
 }
@@ -136,6 +137,10 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 
 **`themeroller.enabled`** : `boolean`, default `false`
 > Turns on and off the Theme Roller feature. This will generate a `less` file that you can import into your application theme style. It will add editable variables to theme roller.
+
+**`themeroller.finalName`** : `string`, default `themeroller`
+> Represents the name of the final less file, after concatenation from the array `themeroller.paths`.  
+> Only applies if `themeroller.enabled` is `true`.
 
 **`themeroller.paths`** : `array`
 > Include the order of `scss` files to be parsed by theme roller.
