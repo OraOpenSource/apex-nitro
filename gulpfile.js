@@ -186,8 +186,8 @@ gulp.task('lib', function() {
 // creates a less file for theme roller
 gulp.task('themeroller', function(){
     return gulp.src(config.themeroller.files)
-        .pipe(scssToLess())
-        .pipe(plugins.concat('themeroller.less'))
+        .pipe(plugins.if(config.sass.enabled, scssToLess()))
+        .pipe(plugins.concat(config.themeroller.finalName + '.less'))
         .pipe(gulp.dest(paths.dist + assets.less));
 });
 
@@ -219,12 +219,16 @@ gulp.task('watch', function() {
 
     gulp.watch([
         paths.src + assets.scss + allSubFolders + files.scss,
+        paths.src + assets.less + allSubFolders + files.less,
         paths.src + assets.css + allSubFolders + files.css
     ], ['style']);
 
     // theme roller support
     if (config.themeroller.enabled) {
-        gulp.watch(paths.src + assets.scss + allSubFolders + files.scss, ['themeroller']);
+        gulp.watch([
+            paths.src + assets.scss + allSubFolders + files.scss,
+            paths.src + assets.less + allSubFolders + files.less
+        ], ['themeroller']);
     }
 
     gulp.watch(paths.src + assets.img + allSubFolders + files.all, ['img']);
@@ -236,8 +240,8 @@ gulp.task('default', function() {
     // default task order
     var tasks = ['js', 'style', 'img', 'lib'];
 
-    // theme roller support
-    if (config.themeroller.enabled) {
+    // theme roller support for sass or less files
+    if (config.themeroller.enabled && (config.sass.enabled || config.less.enabled)) {
         tasks.unshift('themeroller');
     }
 

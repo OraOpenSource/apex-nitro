@@ -25,6 +25,7 @@
     },
     "themeroller":{
         "enabled": false,
+        "finalName": "themeroller",
         "files" : []
     }
 }
