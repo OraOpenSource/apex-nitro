@@ -14,9 +14,18 @@
         "enabled": false,
         "includePath": ""
     },
+    "less": {
+        "enabled": false,
+        "includePath": ""
+    },
     "browsersync": {
         "enabled": true,
         "port": 3000,
         "notify": true
+    },
+    "themeroller":{
+        "enabled": false,
+        "finalName": "themeroller",
+        "files" : []
     }
 }

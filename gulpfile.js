@@ -7,11 +7,12 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     browsersync = require('browser-sync').create(),
     clip = require('gulp-clip-empty-files'),
-    util = require('./util.js'),
     path = require('path'),
     argv = require('yargs').argv,
     merge = require('merge-stream'),
-    extend = require('node.extend');
+    extend = require('node.extend'),
+    util = require('./util/util.js'),
+    scssToLess = require('./util/scssToLess.js');
 
 // 2. PREREQUISITES AND ERROR HANDLING
 var defaultConfig = require('./default.json'),
@@ -27,6 +28,12 @@ if (typeof argv.project == "undefined") {
 // project exists check
 if (typeof userConfig[argv.project] == "undefined") {
     console.log("Project", argv.project ,"doesn't exists in your config.json file.");
+    process.exit(1);
+}
+
+// sass or less, not both
+if (config.sass.enabled && config.less.enabled) {
+    console.log("Choose either Sass or Less (not both) as the CSS preprocessor for project", argv.project);
     process.exit(1);
 }
 
@@ -61,14 +68,17 @@ var paths = {
         js: path.normalize('/js/'),
         css: path.normalize('/css/'),
         scss: path.normalize('/scss/'),
+        less: path.normalize('/less/'),
         img: path.normalize('/img/'),
         lib: path.normalize('/lib/')
     },
+    allSubFolders = '**/',
     files = {
-        js: path.normalize('**/*.js'),
-        css: path.normalize('**/*.css'),
-        scss: path.normalize('**/*.scss'),
-        all: path.normalize('**/*.*'),
+        js: path.normalize('*.js'),
+        css: path.normalize('*.css'),
+        scss: path.normalize('*.scss'),
+        less: path.normalize('*.less'),
+        all: path.normalize('*.*'),
     },
     sizeOptions = {
         showFiles: true
@@ -79,6 +89,12 @@ var paths = {
     sassOptions = {
         sourcemap: true,
         includePaths: [path.normalize(config.sass.includePath)]
+    },
+    lessOptions = {
+        paths: [path.normalize(config.less.includePath)]
+    },
+    cssnanoOptions = {
+        safe: true
     },
     apexMiddleware = function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -122,6 +138,8 @@ gulp.task('style', function() {
 
     if (config.sass.enabled) {
         sourceFiles = paths.src + assets.scss + files.scss;
+    } else if (config.less.enabled) {
+        sourceFiles = paths.src + assets.less + files.less;
     } else {
         sourceFiles = paths.src + assets.css + files.css;
     }
@@ -130,6 +148,7 @@ gulp.task('style', function() {
         .pipe(plugins.plumber())
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.if(config.sass.enabled, plugins.sass(sassOptions).on('error', plugins.sass.logError)))
+        .pipe(plugins.if(config.less.enabled, plugins.less(lessOptions)))
         .pipe(plugins.if(config.cssConcat.enabled, plugins.concat(config.cssConcat.finalName + '.css')));
 
     var unmin = sourceStream
@@ -141,7 +160,7 @@ gulp.task('style', function() {
     var min = sourceStream
         .pipe(plugins.clone())
         .pipe(plugins.autoprefixer())
-        .pipe(plugins.cssnano())
+        .pipe(plugins.cssnano(cssnanoOptions))
         .pipe(plugins.rename(renameOptions))
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps));
@@ -149,19 +168,27 @@ gulp.task('style', function() {
     return merge(unmin, min)
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
-        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: files.css})));
+        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: allSubFolders + files.css})));
 });
 
 // copy img files as is
 gulp.task('img', function() {
-    return gulp.src(paths.src + assets.img + files.all)
+    return gulp.src(paths.src + assets.img + allSubFolders + files.all)
         .pipe(gulp.dest(paths.dist + assets.img));
 });
 
 // copy lib files as is
 gulp.task('lib', function() {
-    return gulp.src(paths.src + assets.lib + files.all)
+    return gulp.src(paths.src + assets.lib + allSubFolders + files.all)
         .pipe(gulp.dest(paths.dist + assets.lib));
+});
+
+// creates a less file for theme roller
+gulp.task('themeroller', function(){
+    return gulp.src(config.themeroller.files)
+        .pipe(plugins.if(config.sass.enabled, scssToLess()))
+        .pipe(plugins.concat(config.themeroller.finalName + '.less'))
+        .pipe(gulp.dest(paths.dist + assets.less));
 });
 
 // starts local server
@@ -188,21 +215,35 @@ gulp.task('watch', function() {
     // browsersync support
     var jsWatch = (config.browsersync.enabled ? ['js-browsersync'] : ['js']);
 
-    gulp.watch(paths.src + assets.js + files.js, jsWatch);
+    gulp.watch(paths.src + assets.js + allSubFolders + files.js, jsWatch);
 
     gulp.watch([
-        paths.src + assets.scss + files.scss,
-        paths.src + assets.css + files.css
+        paths.src + assets.scss + allSubFolders + files.scss,
+        paths.src + assets.less + allSubFolders + files.less,
+        paths.src + assets.css + allSubFolders + files.css
     ], ['style']);
 
-    gulp.watch(paths.src + assets.img + files.all, ['img']);
-    gulp.watch(paths.src + assets.lib + files.all, ['lib']);
+    // theme roller support
+    if (config.themeroller.enabled) {
+        gulp.watch([
+            paths.src + assets.scss + allSubFolders + files.scss,
+            paths.src + assets.less + allSubFolders + files.less
+        ], ['themeroller']);
+    }
+
+    gulp.watch(paths.src + assets.img + allSubFolders + files.all, ['img']);
+    gulp.watch(paths.src + assets.lib + allSubFolders + files.all, ['lib']);
 });
 
 // Default task: builds your app
 gulp.task('default', function() {
     // default task order
     var tasks = ['js', 'style', 'img', 'lib'];
+
+    // theme roller support for sass or less files
+    if (config.themeroller.enabled && (config.sass.enabled || config.less.enabled)) {
+        tasks.unshift('themeroller');
+    }
 
     // browsersync support
     if (config.browsersync.enabled) {
