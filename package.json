@@ -12,7 +12,7 @@
     "start": "gulp",
     "postinstall": "node generateConfig.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "browser-sync": "2.11.x",
     "del": "2.2.x",
     "gulp": "3.9.x",
