@@ -61,6 +61,9 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
         "enabled": false,
         "finalName": "themeroller",
         "files" : []
+    },
+    "rtl": {
+        "enabled": false
     }
 }
 ```
@@ -144,3 +147,10 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 
 **`themeroller.paths`** : `array`
 > Include the order of `scss` files to be parsed by theme roller.
+
+### RTLCSS
+
+**`rtl.enabled`** : `boolean`, default `false`
+> Turns on and off automatic `css` transformation from Left-To-Right (LTR) to Right-To-Left (RTL) languages.
+> Produces a `.rtl` version of your css files
+> Example: `app.css` also produces `app.rtl.css`

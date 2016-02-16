@@ -9,11 +9,13 @@ APEX Front-End Boost is first and foremost a personal local web server that host
 TODO Martin: include animated gif (#19) of this project in action.
 
 **What APEX Front-End Boost does:**
-- Minifies `css` and `js` files.
-- Concatenates `css` and `js` files. *(optional)*
-- Parses `scss` to `css`. *(optional)*
-- Generates sourcemaps of  `js`, `scss` and `css`.
-- Adds vendor prefixes to `css`.
+- Minifies `css` and `js`.
+- Generates  `js` and `css` sourcemaps.
+- Adds `css` vendor prefixes.
+- Concatenates `css` and `js`. *(optional)*
+- Parses `scss` and `less` to `css`. *(optional)*
+- Generates APEX Theme Roller configuration. *(optional)*
+- Transforms `css` to RTL format. *(optional)*
 
 **What APEX Front-End Boost allows you:**
 - Cutting down on front-end development time.
@@ -66,6 +68,7 @@ From the `src` folder you can create, edit or delete any files in:
 ```
 |-/src/
 	|-scss
+	|-less
     |-css
     |-img
     |-js
@@ -89,11 +92,13 @@ Gulp will automatically compile your files to this folder structure:
 
 ## Features
 - [Browsersync](http://www.browsersync.io/)
-- [Sass Parsing](http://sass-lang.com/)
+- [Sass](http://sass-lang.com/)
+- [Less](http://lesscss.org/)
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
 - [JSHint](http://jshint.com/)
 - [UglifyJS](https://github.com/terinjokes/gulp-uglify)
 - [Sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
+- [RTLCSS](https://github.com/MohammadYounes/rtlcss)
 - More...
 
 [See features examples](/docs/examples.md).
