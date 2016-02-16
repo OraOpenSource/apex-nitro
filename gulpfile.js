@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     merge = require('merge-stream'),
     extend = require('node.extend'),
     util = require('./util/util.js'),
-    scssToLess = require('./util/scssToLess.js');
+    scssToLess = require('./util/scssToLess.js'),
+    rtlcss = require('./util/rtlcss.js');
 
 // 2. PREREQUISITES AND ERROR HANDLING
 var defaultConfig = require('./default.json'),
@@ -115,8 +116,7 @@ gulp.task('js', function() {
         .pipe(plugins.jshint())
         .pipe(plugins.jshint.reporter('jshint-stylish'))
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.if(config.javascriptConcat.enabled,
-            plugins.concat(config.javascriptConcat.finalName + '.js')))
+        .pipe(plugins.if(config.javascriptConcat.enabled, plugins.concat(config.javascriptConcat.finalName + '.js')))
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
         .pipe(gulp.dest(paths.dist + assets.js))
@@ -168,6 +168,9 @@ gulp.task('style', function() {
     return merge(unmin, min)
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
+        .pipe(plugins.if(config.rtl.enabled, rtlcss()))
+        .pipe(plugins.if(config.rtl.enabled, plugins.rename({suffix: '.rtl'})))
+        .pipe(plugins.if(config.rtl.enabled, gulp.dest(paths.dist + assets.css)))
         .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: allSubFolders + files.css})));
 });
 

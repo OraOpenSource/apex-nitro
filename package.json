@@ -37,6 +37,7 @@
     "run-sequence": "1.1.x",
     "yargs": "3.32.x",
     "node.extend": "1.1.x",
-    "merge-stream": "1.0.x"
+    "merge-stream": "1.0.x",
+    "rtlcss": "1.7.x"
   }
 }

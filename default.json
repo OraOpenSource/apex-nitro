@@ -27,5 +27,8 @@
         "enabled": false,
         "finalName": "themeroller",
         "files" : []
+    },
+    "rtl": {
+        "enabled": false
     }
 }
