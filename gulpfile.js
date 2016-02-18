@@ -196,9 +196,9 @@ gulp.task('themeroller', function(){
 
 // starts local server
 gulp.task('browsersync', function() {
-    // // returns the apex host URL (before f?p=)
+    // returns the apex host URL (before f?p=)
     var apexHost = config.appURL.substring(0, config.appURL.indexOf("f?p="));
-    // // takes the apex query string from the provided apex url
+    // takes the apex query string from the provided apex url
     var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p="))
 
     // launch the browsersync server
