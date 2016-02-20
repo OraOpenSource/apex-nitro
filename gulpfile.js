@@ -11,13 +11,13 @@ var gulp = require('gulp'),
     argv = require('yargs').argv,
     merge = require('merge-stream'),
     extend = require('node.extend'),
-    util = require('./lib/util.js'),
-    scssToLess = require('./lib/scssToLess.js'),
-    rtlcss = require('./lib/rtlcss.js');
+    util = require('./lib/util'),
+    scssToLess = require('./lib/scssToLess'),
+    rtlcss = require('./lib/rtlcss');
 
 // 2. PREREQUISITES AND ERROR HANDLING
-var defaultConfig = require('./default.json'),
-    userConfig = require('./config.json'),
+var defaultConfig = require('./default'),
+    userConfig = require('./config'),
     config = extend(true, {}, defaultConfig, userConfig[argv.project]);
 
 // command line syntax check
