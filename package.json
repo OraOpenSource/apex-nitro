@@ -38,6 +38,6 @@
     "yargs": "4.1.x",
     "node.extend": "1.1.x",
     "merge-stream": "1.0.x",
-    "rtlcss": "1.7.x"
+    "rtlcss": "2.0.x"
   }
 }

@@ -217,25 +217,19 @@ gulp.task('browsersync', function() {
 gulp.task('watch', function() {
     // browsersync support
     var jsWatch = (config.browsersync.enabled ? ['js-browsersync'] : ['js']);
-
-    gulp.watch(paths.src + assets.js + allSubFolders + files.js, jsWatch);
-
-    gulp.watch([
-        paths.src + assets.scss + allSubFolders + files.scss,
-        paths.src + assets.less + allSubFolders + files.less,
-        paths.src + assets.css + allSubFolders + files.css
-    ], ['style']);
+    gulp.watch(allSubFolders + files.js, { cwd: paths.src + assets.js }, jsWatch);
+    gulp.watch(allSubFolders + files.scss, { cwd: paths.src + assets.scss }, ['style']);
+    gulp.watch(allSubFolders + files.less, { cwd: paths.src + assets.less }, ['style']);
+    gulp.watch(allSubFolders + files.css, { cwd: paths.src + assets.css }, ['style']);
 
     // theme roller support
     if (config.themeroller.enabled) {
-        gulp.watch([
-            paths.src + assets.scss + allSubFolders + files.scss,
-            paths.src + assets.less + allSubFolders + files.less
-        ], ['themeroller']);
+        gulp.watch(allSubFolders + files.scss, { cwd: paths.src + assets.scss }, ['themeroller']);
+        gulp.watch(allSubFolders + files.less, { cwd: paths.src + assets.less }, ['themeroller']);
     }
 
-    gulp.watch(paths.src + assets.img + allSubFolders + files.all, ['img']);
-    gulp.watch(paths.src + assets.lib + allSubFolders + files.all, ['lib']);
+    gulp.watch(allSubFolders + files.all, { cwd: paths.src + assets.img }, ['img']);
+    gulp.watch(allSubFolders + files.all, { cwd: paths.src + assets.lib }, ['lib']);
 });
 
 // Default task: builds your app

@@ -75,7 +75,7 @@ From the `src` folder you can create, edit or delete any files in:
     |-lib
 ```
 
-Gulp will automatically compile your files to this folder structure:
+APEX Front-End Boost will automatically compile your files to this folder structure:
 ```
 |-/dist/
     |-css
