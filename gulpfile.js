@@ -168,6 +168,7 @@ gulp.task('style', function() {
     return merge(unmin, min)
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
+        .pipe(plugins.if(config.browsersync.enabled, browsersync.stream({match: allSubFolders + files.css})))
         .pipe(plugins.if(config.rtl.enabled, rtlcss()))
         .pipe(plugins.if(config.rtl.enabled, plugins.rename({suffix: '.rtl'})))
         .pipe(plugins.if(config.rtl.enabled, gulp.dest(paths.dist + assets.css)))

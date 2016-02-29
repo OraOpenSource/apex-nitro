@@ -107,5 +107,5 @@ APEX Front-End Boost will automatically compile your files to this folder struct
 [See changelog](changelog.md).
 
 ## Project Team
-- [Vincent Morneau](https://github.com/vincentmorneau)
+- [Vincent Morneau](https://twitter.com/vincentmorneau)
 - [Martin Giffy D'Souza](https://github.com/martindsouza)
