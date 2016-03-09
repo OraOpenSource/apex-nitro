@@ -63,6 +63,10 @@ Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate
 ## Run
 `npm start -- --project=yourProjectName`
 
+**Running on Windows?**
+- Execute `apex-frontend-boost` shortcut
+- Enter project name
+
 ## Usage
 From the `src` folder you can create, edit or delete any files in:
 ```

@@ -11,9 +11,9 @@ var gulp = require('gulp'),
     argv = require('yargs').argv,
     merge = require('merge-stream'),
     extend = require('node.extend'),
-    util = require('./lib/util'),
-    scssToLess = require('./lib/scssToLess'),
-    rtlcss = require('./lib/rtlcss');
+    util = require('./bin/util'),
+    scssToLess = require('./bin/scssToLess'),
+    rtlcss = require('./bin/rtlcss');
 
 // 2. PREREQUISITES AND ERROR HANDLING
 var defaultConfig = require('./default'),
