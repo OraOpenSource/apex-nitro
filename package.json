@@ -27,7 +27,7 @@
     "gulp-rename": "1.2.x",
     "gulp-sass": "2.2.x",
     "gulp-less": "3.0.x",
-    "gulp-size": "2.0.x",
+    "gulp-size": "2.1.x",
     "gulp-sourcemaps": "1.6.x",
     "gulp-uglify": "1.5.x",
     "gulp-util": "3.0.x",
@@ -35,7 +35,7 @@
     "jshint": "2.x",
     "jshint-stylish": "2.1.x",
     "run-sequence": "1.1.x",
-    "yargs": "4.2.x",
+    "yargs": "4.3.x",
     "node.extend": "1.1.x",
     "merge-stream": "1.0.x",
     "rtlcss": "2.0.x"

@@ -3,7 +3,7 @@ var gutil = require('gulp-util');
 var ext = gutil.replaceExtension;
 
 module.exports = function() {
-	var lessToScss = function(file, enc, cb) {
+	var scssToLess = function(file, enc, cb) {
 
 		file.contents = new Buffer(
 			file.contents.toString()
@@ -14,6 +14,8 @@ module.exports = function() {
 				.replace(/\$(\w+)/g, "@$1")
 				.replace(/@extend ([\w\-\.]+);/g, "&:extend( $1 );")
 				.replace(/ !default/g, '')
+				.replace(/',/g, ',')
+				.replace(/'\./g, '.')
 				.replace(/#{([^}]+)}/g, "~\"$1\"")
 				.replace(/~\"@(\w+)\"/g, "@{$1}")
 				.replace(/adjust-hue\(/g, 'spin(')
@@ -33,5 +35,5 @@ module.exports = function() {
 		this.push(file);
 		cb();
 	};
-	return through.obj(lessToScss);
+	return through.obj(scssToLess);
 };
