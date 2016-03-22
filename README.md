@@ -6,7 +6,7 @@ This productivity tool helps you work with web files (`js`, `css`, `images`, etc
 
 APEX Front-End Boost is first and foremost a personal local web server that hosts and distributes your files to your APEX application.
 
-TODO Martin: include animated gif (#19) of this project in action.
+![demo](/media/demo-main.gif)
 
 **What APEX Front-End Boost does:**
 - Minifies `css` and `js`.
