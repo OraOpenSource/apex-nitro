@@ -67,6 +67,10 @@ Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate
 - Execute `apex-frontend-boost` shortcut
 - Enter project name
 
+**[Running a real OS](http://stackoverflow.com/research/developer-survey-2016#technology-desktop-operating-system)? Linux/OSx Shortcut:**
+- `./apex-frontend-boost.sh`
+- Enter project name
+
 ## Usage
 From the `src` folder you can create, edit or delete any files in:
 ```
