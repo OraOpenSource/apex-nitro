@@ -33,7 +33,8 @@ In this case all your images reference the standard `APP_IMAGES` substitution st
 
 **Note:** Using this approach has a small known issue. When a page validation fails (ex required item is null and page is submitted), `APP_IMAGES` will **not** point APEX Front-End Boost. Instead it will point to the default location from APEX. There is currently no known fix for this as you can not run a process when a validation fails. For more information please read [What Happens When a Validation Fails?](https://docs.oracle.com/database/121/HTMDB/bldr_validate.htm#HTMDB29158) in the APEX documentation.
 
-In `Shared Components > Application Items` create a new application item with the following attributes:
+#### Application Processes
+In `Shared Components > Application Processes` create a new application process with the following attributes:
 
 Name | Setting | Comment
 --- | --- | ---
