@@ -15,18 +15,19 @@ var gulp = require('gulp'),
     scssToLess = require('./lib/scssToLess'),
     rtlcss = require('./lib/rtlcss');
 
+
 // 2. PREREQUISITES AND ERROR HANDLING
 var defaultConfig = require('./default'),
     userConfig = require('./config'),
     config = extend(true, {}, defaultConfig, userConfig[argv.project]);
 
-// command line syntax check
+// command line syntax
 if (typeof argv.project == "undefined") {
     console.log("The correct syntax is: npm start -- --project=yourProjectName");
     process.exit(1);
 }
 
-// project exists check
+// project exists
 if (typeof userConfig[argv.project] == "undefined") {
     console.log("Project", argv.project ,"doesn't exists in your config.json file.");
     process.exit(1);
@@ -38,17 +39,17 @@ if (config.sass.enabled && config.less.enabled) {
     process.exit(1);
 }
 
-// missing appURL check
+// missing appURL
 if (util.isEmptyObject(config.appURL)) {
     console.log("Missing appURL in your config.json file.");
 }
 
-// missing srcFolder check
+// missing srcFolder
 if (util.isEmptyObject(config.srcFolder)) {
     console.log("Missing srcFolder in your config.json file.");
 }
 
-// missing distFolder check
+// missing distFolder
 if (util.isEmptyObject(config.distFolder)) {
     console.log("Missing distFolder in your config.json file.");
 }
@@ -57,6 +58,23 @@ if((util.isEmptyObject(config.appURL))
 || (util.isEmptyObject(config.srcFolder))
 || (util.isEmptyObject(config.distFolder))) {
     process.exit(1);
+}
+
+// missing config.header.packageJsonPath
+if (config.header.enabled) {
+    if (util.isEmptyObject(config.header.packageJsonPath)) {
+        console.log("Missing packageJsonPath in your config.json file.");
+        process.exit(1);
+    } else {
+        var pkg = require(config.header.packageJsonPath + "package.json");
+        var banner = ['/*!',
+          ' * <%= pkg.name %> - <%= pkg.description %>',
+          ' * @version v<%= pkg.version %>',
+          ' * @link <%= pkg.homepage %>',
+          ' * @license <%= pkg.license %>',
+          ' */',
+          ''].join('\n');
+    }
 }
 
 // 3. SETTINGS VARIABLES
@@ -81,6 +99,9 @@ var paths = {
         less: path.normalize('*.less'),
         all: path.normalize('*.*'),
     },
+    uglifyOptions = {
+        preserveComments: "license"
+    }
     sizeOptions = {
         showFiles: true
     },
@@ -115,12 +136,13 @@ gulp.task('js', function() {
         .pipe(plugins.plumber())
         .pipe(plugins.jshint())
         .pipe(plugins.jshint.reporter('jshint-stylish'))
+        .pipe(plugins.if(config.header.enabled, plugins.header(banner, { pkg : pkg } )))
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.if(config.javascriptConcat.enabled, plugins.concat(config.javascriptConcat.finalName + '.js')))
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
         .pipe(gulp.dest(paths.dist + assets.js))
-        .pipe(plugins.uglify()).on('error', function(e) {})
+        .pipe(plugins.uglify(uglifyOptions)).on('error', function(e) {})
         .pipe(plugins.rename(renameOptions))
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
@@ -146,6 +168,7 @@ gulp.task('style', function() {
 
     var sourceStream = gulp.src(sourceFiles)
         .pipe(plugins.plumber())
+        .pipe(plugins.if(config.header.enabled, plugins.header(banner, { pkg : pkg } )))
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.if(config.sass.enabled, plugins.sass(sassOptions).on('error', plugins.sass.logError)))
         .pipe(plugins.if(config.less.enabled, plugins.less(lessOptions)))

@@ -36,6 +36,10 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
     "appURL": "",
     "srcFolder": "src",
     "distFolder": "dist",
+    "header": {
+        "enabled": false,
+        "packageJsonPath": ""
+    },
     "javascriptConcat": {
         "enabled": true,
         "finalName": "app"
@@ -93,6 +97,25 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 > Represents the name of the final file, after concatenation.  
 > Only applies if `javascriptConcat.enabled` is `true`.  
 > Will become `app.js` and `app.min.js`
+
+### Header
+
+**`header.enabled`** : `boolean`, default `true`
+> Turns on and off the automatic header comment block feature.
+
+**`header.packageJsonPath`** : `string`
+> Represents the path to your project's `package.json` file.
+> Only applies if `header.enabled` is `true`.  
+> Will output a standardized comment block at the start of `js` and `css` files.  
+> Example:
+```js
+/*!
+ * apex-frontend-boost - Enhance your productivity with a complete Front-End Stack for Oracle APEX development
+ * @version v2.0.0
+ * @link https://github.com/OraOpenSource/apex-frontend-boost
+ * @license MIT
+ */
+```
 
 ### CSS Concatenation
 

@@ -1,10 +1,51 @@
 # Features Examples
 
 ## Browsersync
-VMORNEAU TODO
+![demo](../media/demo-main.gif)
 
 ## Sass
-VMORNEAU TODO
+You write:
+```scss
+$primary-color: #333;
+
+body {
+    color: $primary-color;
+}
+
+nav {
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        display: block;
+    }
+}
+```
+Gets parsed to:
+```css
+body {
+    color: #333;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a {
+    display: block;
+}
+```
 
 ## Autoprefixer
 You write:

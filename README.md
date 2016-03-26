@@ -10,13 +10,14 @@ APEX Front-End Boost is a personal local web server that hosts and distributes y
 ![demo](/media/demo-main.gif)
 
 ## What APEX Front-End Boost does
-- Minifies `css` and `js`.
+- Minifies `js` and `css`.
 - Generates  `js` and `css` sourcemaps.
 - Adds `css` vendor prefixes.
-- Concatenates `css` and `js`. *(optional)*
+- Concatenates `js` and `css`. *(optional)*
 - Parses `scss` and `less` to `css`. *(optional)*
 - Generates APEX Theme Roller configuration. *(optional)*
 - Transforms `css` to RTL format. *(optional)*
+- Adds a standardized header comment block to `js` and `css` files. *(optional)*
 
 ## How APEX Front-End Boost helps you
 - Cut down on front-end development time.
@@ -105,6 +106,7 @@ APEX Front-End Boost will automatically compile your files to this folder struct
 - [JSHint](http://jshint.com/)
 - [UglifyJS](https://github.com/terinjokes/gulp-uglify)
 - [Sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
+- [Header](https://github.com/tracker1/gulp-header)
 - [RTLCSS](https://github.com/MohammadYounes/rtlcss)
 - More...
 

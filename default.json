@@ -2,6 +2,10 @@
     "appURL": "",
     "srcFolder": "src",
     "distFolder": "dist",
+    "header": {
+        "enabled": false,
+        "packageJsonPath": ""
+    },
     "javascriptConcat": {
         "enabled": true,
         "finalName": "app"

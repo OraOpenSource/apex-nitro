@@ -57,6 +57,21 @@ begin
 end;
 ```
 
+Your application need to reference `#APP_IMAGES#`.
+> *Examples:*  
+> - #APP_IMAGES#js/app#MIN#.js  
+> - #APP_IMAGES#css/app#MIN#.css
+
+This can be done at multiple levels:
+- **Application level**
+    - Shared Components > User Interfaces > User Interface Details > JavaScript / Cascading Style Sheets > File URLs
+- **Theme level**
+    - Shared Components > Themes > Create / Edit Theme > JavaScript and Cascading Style Sheets > File URLs
+- **Template level**
+    - Shared Components > Templates > Edit Page Template > JavaScript / Cascading Style Sheet > File URLs
+- **Page level**
+    - Page Designer > Page X > JavaScript / CSS > File URLs
+
 ## Option 2) Custom Application Item
 In this case all your images reference a custom image prefix. This example will use `G_APP_IMAGES` which can be replaced with any application item.
 

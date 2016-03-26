@@ -1,10 +1,6 @@
 #Changelog
 ##2.0.0
-This Release.. TODO
-- Added Browsersync support
-- Browsersync and Sass are now optional
-- Added a config.json file for user configuration
-- Lots of code refactoring
+- Complete project overhaul. Read documentation for a complete list of features.
 
 ##1.4.0
 - Updated dependencies
