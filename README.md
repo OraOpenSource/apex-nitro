@@ -31,8 +31,6 @@ It makes responsive development easier by synchronizing multiple devices togethe
 
 It eliminates the need for refreshing the browser. As soon as you save your code in the text editor, you get automatic code injection / reloading in the browser.
 
-
-
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
@@ -91,9 +89,6 @@ APEX Front-End Boost will automatically compile your files to this folder struct
     |-js
     |-lib
 ```
-
-### Using with multiple devices
-[See documentation](/docs/multiple-devices.md).
 
 ### Self-Signed SSL Browser Warning
 [See documentation](/docs/ssl-warning.md).
