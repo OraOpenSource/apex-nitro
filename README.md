@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/OraOpenSource/apex-frontend-boost.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-frontend-boost)
 [![Dependency Status](https://david-dm.org/OraOpenSource/apex-frontend-boost.svg)](https://david-dm.org/OraOpenSource/apex-frontend-boost)
 
-APEX Front-End Boost makes coding faster, easier, and prettier. This productivity tool helps you work with web files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
+APEX Front-End Boost makes coding faster, easier, and prettier. This productivity tool helps you work with static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
 APEX Front-End Boost is a personal local web server that hosts and distributes your files to your APEX application.
 
