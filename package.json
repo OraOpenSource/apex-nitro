@@ -1,12 +1,26 @@
 {
   "name": "apex-frontend-boost",
-  "author": "Vincent Morneau",
-  "version": "2.0.0",
+  "author": "OraOpenSource",
+  "version": "2.1.0",
   "description": "Enhance your productivity with a complete Front-End Stack for Oracle APEX development",
   "license": "MIT",
+  "keywords": [
+    "oracle",
+    "apex",
+    "orclapex",
+    "css",
+    "javascript",
+    "front-end",
+    "responsive",
+    "framework",
+    "web"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/OraOpenSource/apex-frontend-boost.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OraOpenSource/apex-frontend-boost/issues"
   },
   "scripts": {
     "start": "gulp",
@@ -28,7 +42,7 @@
     "gulp-sass": "2.3.x",
     "gulp-less": "3.0.x",
     "gulp-size": "2.1.x",
-    "gulp-sourcemaps": "2.0.x-alpha",
+    "gulp-sourcemaps": "2.0.0-alpha",
     "gulp-uglify": "1.5.x",
     "gulp-util": "3.0.x",
     "gulp-clone": "1.0.x",
