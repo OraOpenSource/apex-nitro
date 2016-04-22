@@ -34,6 +34,11 @@ It eliminates the need for refreshing the browser. As soon as you save your code
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
+## System Requirements
+- [Node.js](https://nodejs.org) 4.4 (or more)
+- [Oracle APEX](https://apex.oracle.com) 5 (or more) for [Application Setup Option 1](/docs/apex-setup.md)
+- [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
+
 ## Install
 ```bash
 git clone https://github.com/OraOpenSource/apex-frontend-boost.git
