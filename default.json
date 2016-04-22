@@ -6,12 +6,12 @@
         "enabled": false,
         "packageJsonPath": ""
     },
-    "javascriptConcat": {
-        "enabled": true,
+    "jsConcat": {
+        "enabled": false,
         "finalName": "app"
     },
     "cssConcat": {
-        "enabled": true,
+        "enabled": false,
         "finalName": "app"
     },
     "sass": {

@@ -138,7 +138,7 @@ gulp.task('js', function() {
         .pipe(plugins.jshint.reporter('jshint-stylish'))
         .pipe(plugins.if(config.header.enabled, plugins.header(banner, { pkg : pkg } )))
         .pipe(plugins.sourcemaps.init())
-        .pipe(plugins.if(config.javascriptConcat.enabled, plugins.concat(config.javascriptConcat.finalName + '.js')))
+        .pipe(plugins.if(config.jsConcat.enabled, plugins.concat(config.jsConcat.finalName + '.js')))
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps))
         .pipe(gulp.dest(paths.dist + assets.js))

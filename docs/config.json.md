@@ -40,7 +40,7 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
         "enabled": false,
         "packageJsonPath": ""
     },
-    "javascriptConcat": {
+    "jsConcat": {
         "enabled": true,
         "finalName": "app"
     },
@@ -90,12 +90,12 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 
 ### Javascript Concatenation
 
-**`javascriptConcat.enabled`** : `boolean`, default `true`
+**`jsConcat.enabled`** : `boolean`, default `true`
 > Turns on and off the javascript concatenation feature.
 
-**`javascriptConcat.finalName`** : `string`, default `app`
+**`jsConcat.finalName`** : `string`, default `app`
 > Represents the name of the final file, after concatenation.  
-> Only applies if `javascriptConcat.enabled` is `true`.  
+> Only applies if `jsConcat.enabled` is `true`.  
 > Will become `app.js` and `app.min.js`
 
 ### Header
