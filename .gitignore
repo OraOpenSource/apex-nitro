@@ -3,3 +3,8 @@ node_modules
 
 # Files
 config.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
