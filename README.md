@@ -40,13 +40,14 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 - [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
 
 ## Install
+On the command line:
 ```bash
-git clone https://github.com/OraOpenSource/apex-frontend-boost.git
-cd apex-frontend-boost
-npm install
+npm install apex-frontend-boost
 ```
 
-*Installing on Windows? [See documentation](/docs/windows.md).*
+*Having problems installing on Windows? [See documentation](/docs/windows.md).*  
+
+*Having problems installing on Linux? [See documentation](/docs/linux.md).*
 
 ## Configuration
 You need to configure APEX Front-End Boost for your project(s). [See documentation](/docs/config.json.md).
