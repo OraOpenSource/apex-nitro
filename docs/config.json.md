@@ -41,11 +41,11 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
         "packageJsonPath": ""
     },
     "jsConcat": {
-        "enabled": true,
+        "enabled": false,
         "finalName": "app"
     },
     "cssConcat": {
-        "enabled": true,
+        "enabled": false,
         "finalName": "app"
     },
     "sass": {
@@ -88,19 +88,9 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 > This is the path to your application dist folder.
 > If nothing is filled, the current repository will be used with the `/dist/` folder.
 
-### Javascript Concatenation
-
-**`jsConcat.enabled`** : `boolean`, default `true`
-> Turns on and off the javascript concatenation feature.
-
-**`jsConcat.finalName`** : `string`, default `app`
-> Represents the name of the final file, after concatenation.  
-> Only applies if `jsConcat.enabled` is `true`.  
-> Will become `app.js` and `app.min.js`
-
 ### Header
 
-**`header.enabled`** : `boolean`, default `true`
+**`header.enabled`** : `boolean`, default `false`
 > Turns on and off the automatic header comment block feature.
 
 **`header.packageJsonPath`** : `string`
@@ -117,9 +107,19 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
  */
 ```
 
+### Javascript Concatenation
+
+**`jsConcat.enabled`** : `boolean`, default `false`
+> Turns on and off the javascript concatenation feature.
+
+**`jsConcat.finalName`** : `string`, default `app`
+> Represents the name of the final file, after concatenation.  
+> Only applies if `jsConcat.enabled` is `true`.  
+> Will become `app.js` and `app.min.js`
+
 ### CSS Concatenation
 
-**`cssConcat.enabled`** : `boolean`, default `true`
+**`cssConcat.enabled`** : `boolean`, default `false`
 > Turns on and off the css concatenation feature.
 
 **`cssConcat.finalName`** : `string`, default `app`
