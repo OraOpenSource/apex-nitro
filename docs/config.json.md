@@ -1,4 +1,4 @@
-# APEX Front-End Boost Configuration
+# Configuration
 
 A basic `config.json` file is generated when the project's installed:
 ```json
@@ -16,19 +16,18 @@ A basic `config.json` file is generated when the project's installed:
 }
 ```
 
-It needs to be configured to your project needs. Example:
+It needs to be configured to each one of your projects. Example:
 ```json
 {
     "sandbox": {
         "appURL": "https://apex.oracle.com/pls/apex/f?p=10344:101",
         "srcFolder": "C:\\APEX\\sandbox\\src",
-        "distFolder": "C:\\APEX\\sandbox\\dist",
-        "sass": {
-            "enabled": true
-        }
+        "distFolder": "C:\\APEX\\sandbox\\dist"
     }
 }
 ```
+
+*Both srcFolder and distFolder can be written as a relative path as well.*  
 
 It is only mandatory to fill out the `appURL` in `config.json`. The rest is optional and will be substituted from `default.json`:
 ```json
@@ -72,7 +71,7 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 }
 ```
 
-##Read below for more information about each fields.
+## Read below for more information about each fields.
 
 ### Application
 
