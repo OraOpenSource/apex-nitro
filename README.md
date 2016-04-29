@@ -68,11 +68,11 @@ Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate
 `npm start -- --project=yourProjectName`
 
 **Running on Windows?**
-- Execute `apex-frontend-boost` shortcut
+- Launch `apex-frontend-boost.bat`
 - Enter project name
 
 **Running on Linux/OSx?**
-- `./apex-frontend-boost.sh`
+- Execute `./apex-frontend-boost.sh`
 - Enter project name
 
 ## Usage

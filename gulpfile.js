@@ -39,17 +39,17 @@ if (config.sass.enabled && config.less.enabled) {
     process.exit(1);
 }
 
-// missing appURL
+// missing project appURL
 if (util.isEmptyObject(config.appURL)) {
     console.log("Missing appURL in your config.json file.");
 }
 
-// missing srcFolder
+// missing project srcFolder
 if (util.isEmptyObject(config.srcFolder)) {
     console.log("Missing srcFolder in your config.json file.");
 }
 
-// missing distFolder
+// missing project distFolder
 if (util.isEmptyObject(config.distFolder)) {
     console.log("Missing distFolder in your config.json file.");
 }
@@ -60,7 +60,7 @@ if((util.isEmptyObject(config.appURL))
     process.exit(1);
 }
 
-// missing config.header.packageJsonPath
+// missing project header.packageJsonPath
 if (config.header.enabled) {
     if (util.isEmptyObject(config.header.packageJsonPath)) {
         console.log("Missing packageJsonPath in your config.json file.");
@@ -119,7 +119,6 @@ var paths = {
         safe: true
     },
     apexMiddleware = function (req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Set-Cookie', ['oos-apex-frontend-boost-app-images=//' + req.headers.host + '/']);
         next();
     };
@@ -218,19 +217,13 @@ gulp.task('themeroller', function(){
         .pipe(gulp.dest(paths.dist + assets.less));
 });
 
-// starts local server
+// launch browsersync server
 gulp.task('browsersync', function() {
-    // returns the apex host URL (before f?p=)
-    var apexHost = config.appURL.substring(0, config.appURL.indexOf("f?p="));
-    // takes the apex query string from the provided apex url
-    var apexQueryString = config.appURL.substring(config.appURL.indexOf("f?p="))
-
-    // launch the browsersync server
     browsersync.init({
         port: config.browsersync.port,
         notify: config.browsersync.notify,
         proxy: {
-            target: apexHost + apexQueryString,
+            target: config.appURL,
             middleware: apexMiddleware
         },
         serveStatic: [config.distFolder]
@@ -252,6 +245,7 @@ gulp.task('watch', function() {
         gulp.watch(allSubFolders + files.less, { cwd: paths.src + assets.less }, ['themeroller']);
     }
 
+    // img and lib
     gulp.watch(allSubFolders + files.all, { cwd: paths.src + assets.img }, ['img']);
     gulp.watch(allSubFolders + files.all, { cwd: paths.src + assets.lib }, ['lib']);
 });
