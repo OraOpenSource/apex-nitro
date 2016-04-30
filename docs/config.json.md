@@ -1,4 +1,4 @@
-# APEX Front-End Boost Configuration
+# Configuration
 
 A basic `config.json` file is generated when the project's installed:
 ```json
@@ -16,19 +16,18 @@ A basic `config.json` file is generated when the project's installed:
 }
 ```
 
-It needs to be configured to your project needs. Example:
+It needs to be configured to each one of your projects. Example:
 ```json
 {
     "sandbox": {
         "appURL": "https://apex.oracle.com/pls/apex/f?p=10344:101",
         "srcFolder": "C:\\APEX\\sandbox\\src",
-        "distFolder": "C:\\APEX\\sandbox\\dist",
-        "sass": {
-            "enabled": true
-        }
+        "distFolder": "C:\\APEX\\sandbox\\dist"
     }
 }
 ```
+
+*Both srcFolder and distFolder can be written as a relative path as well.*  
 
 It is only mandatory to fill out the `appURL` in `config.json`. The rest is optional and will be substituted from `default.json`:
 ```json
@@ -40,12 +39,12 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
         "enabled": false,
         "packageJsonPath": ""
     },
-    "javascriptConcat": {
-        "enabled": true,
+    "jsConcat": {
+        "enabled": false,
         "finalName": "app"
     },
     "cssConcat": {
-        "enabled": true,
+        "enabled": false,
         "finalName": "app"
     },
     "sass": {
@@ -59,6 +58,8 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
     "browsersync": {
         "enabled": true,
         "port": 3000,
+        "uiPort": 3001,
+        "weinrePort": 8080,
         "notify": true
     },
     "themeroller":{
@@ -72,7 +73,7 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 }
 ```
 
-##Read below for more information about each fields.
+## Read below for more information about each fields.
 
 ### Application
 
@@ -88,19 +89,9 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 > This is the path to your application dist folder.
 > If nothing is filled, the current repository will be used with the `/dist/` folder.
 
-### Javascript Concatenation
-
-**`javascriptConcat.enabled`** : `boolean`, default `true`
-> Turns on and off the javascript concatenation feature.
-
-**`javascriptConcat.finalName`** : `string`, default `app`
-> Represents the name of the final file, after concatenation.  
-> Only applies if `javascriptConcat.enabled` is `true`.  
-> Will become `app.js` and `app.min.js`
-
 ### Header
 
-**`header.enabled`** : `boolean`, default `true`
+**`header.enabled`** : `boolean`, default `false`
 > Turns on and off the automatic header comment block feature.
 
 **`header.packageJsonPath`** : `string`
@@ -117,9 +108,19 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
  */
 ```
 
+### Javascript Concatenation
+
+**`jsConcat.enabled`** : `boolean`, default `false`
+> Turns on and off the javascript concatenation feature.
+
+**`jsConcat.finalName`** : `string`, default `app`
+> Represents the name of the final file, after concatenation.  
+> Only applies if `jsConcat.enabled` is `true`.  
+> Will become `app.js` and `app.min.js`
+
 ### CSS Concatenation
 
-**`cssConcat.enabled`** : `boolean`, default `true`
+**`cssConcat.enabled`** : `boolean`, default `false`
 > Turns on and off the css concatenation feature.
 
 **`cssConcat.finalName`** : `string`, default `app`
@@ -153,7 +154,13 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 > Turns on and off the browsersync feature.
 
 **`browsersync.port`** : `int`, default `3000`
-> This is the port that browsersync will use to serve your static files.
+> This is the port that browsersync uses to serve your static files.
+
+**`browsersync.uiPort`** : `int`, default `3001`
+> Browsersync includes a user-interface that is accessed via a separate port.
+
+**`browsersync.weinrePort`** : `int`, default `8080`
+> This is the weinre port that browsersync uses.
 
 **`browsersync.notify`** : `boolean`, default `true`
 > This option makes browsersync alert you when a file is dynamically injected to you browser.  
