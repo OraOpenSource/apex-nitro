@@ -58,6 +58,8 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
     "browsersync": {
         "enabled": true,
         "port": 3000,
+        "uiPort": 3001,
+        "weinrePort": 8080,
         "notify": true
     },
     "themeroller":{
@@ -152,7 +154,13 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
 > Turns on and off the browsersync feature.
 
 **`browsersync.port`** : `int`, default `3000`
-> This is the port that browsersync will use to serve your static files.
+> This is the port that browsersync uses to serve your static files.
+
+**`browsersync.uiPort`** : `int`, default `3001`
+> Browsersync includes a user-interface that is accessed via a separate port.
+
+**`browsersync.weinrePort`** : `int`, default `8080`
+> This is the weinre port that browsersync uses.
 
 **`browsersync.notify`** : `boolean`, default `true`
 > This option makes browsersync alert you when a file is dynamically injected to you browser.  

@@ -226,7 +226,13 @@ gulp.task('browsersync', function() {
             target: config.appURL,
             middleware: apexMiddleware
         },
-        serveStatic: [config.distFolder]
+        serveStatic: [config.distFolder],
+        ui: {
+            port: config.browsersync.uiPort,
+            weinre: {
+                port: config.browsersync.weinrePort
+            }
+        }
     });
 });
 

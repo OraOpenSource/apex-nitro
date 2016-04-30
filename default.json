@@ -25,6 +25,8 @@
     "browsersync": {
         "enabled": true,
         "port": 3000,
+        "uiPort": 3001,
+        "weinrePort": 8080,
         "notify": true
     },
     "themeroller":{
