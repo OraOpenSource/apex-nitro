@@ -34,14 +34,20 @@ It eliminates the need for refreshing the browser. As soon as you save your code
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
+## System Requirements
+- [Node.js](https://nodejs.org) 4.4 (or more)
+- [Oracle APEX](https://apex.oracle.com) 5 (or more) for [Application Setup Option 1](/docs/apex-setup.md)
+- [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
+
 ## Install
+On the command line:
 ```bash
-git clone https://github.com/OraOpenSource/apex-frontend-boost.git
-cd apex-frontend-boost
-npm install
+npm install apex-frontend-boost
 ```
 
-*Installing on Windows? [See documentation](/docs/windows.md).*
+*Having problems installing on Windows? [See documentation](/docs/windows.md).*  
+
+*Having problems installing on Linux? [See documentation](/docs/linux.md).*
 
 ## Configuration
 You need to configure APEX Front-End Boost for your project(s). [See documentation](/docs/config.json.md).
@@ -62,11 +68,11 @@ Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate
 `npm start -- --project=yourProjectName`
 
 **Running on Windows?**
-- Execute `apex-frontend-boost` shortcut
+- Launch `apex-frontend-boost.bat`
 - Enter project name
 
 **Running on Linux/OSx?**
-- `./apex-frontend-boost.sh`
+- Execute `./apex-frontend-boost.sh`
 - Enter project name
 
 ## Usage
