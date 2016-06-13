@@ -87,6 +87,7 @@ var paths = {
         js: path.normalize('/js/'),
         css: path.normalize('/css/'),
         scss: path.normalize('/scss/'),
+        sass: path.normalize('/sass/'),
         less: path.normalize('/less/'),
         img: path.normalize('/img/'),
         lib: path.normalize('/lib/')
@@ -96,6 +97,7 @@ var paths = {
         js: path.normalize('*.js'),
         css: path.normalize('*.css'),
         scss: path.normalize('*.scss'),
+        sass: path.normalize('*.sass'),
         less: path.normalize('*.less'),
         all: path.normalize('*.*'),
     },
@@ -153,12 +155,15 @@ gulp.task('js-browsersync', ['js'], function() {
     browsersync.reload();
 });
 
-// scss
+// style
 gulp.task('style', function() {
     var sourceFiles;
 
     if (config.sass.enabled) {
-        sourceFiles = paths.src + assets.scss + files.scss;
+        sourceFiles = [
+            paths.src + assets.scss + files.scss,
+            paths.src + assets.sass + files.sass
+        ];
     } else if (config.less.enabled) {
         sourceFiles = paths.src + assets.less + files.less;
     } else {
@@ -242,12 +247,14 @@ gulp.task('watch', function() {
     var jsWatch = (config.browsersync.enabled ? ['js-browsersync'] : ['js']);
     gulp.watch(allSubFolders + files.js, { cwd: paths.src + assets.js }, jsWatch);
     gulp.watch(allSubFolders + files.scss, { cwd: paths.src + assets.scss }, ['style']);
+    gulp.watch(allSubFolders + files.sass, { cwd: paths.src + assets.sass }, ['style']);
     gulp.watch(allSubFolders + files.less, { cwd: paths.src + assets.less }, ['style']);
     gulp.watch(allSubFolders + files.css, { cwd: paths.src + assets.css }, ['style']);
 
     // theme roller support
     if (config.themeroller.enabled) {
         gulp.watch(allSubFolders + files.scss, { cwd: paths.src + assets.scss }, ['themeroller']);
+        gulp.watch(allSubFolders + files.sass, { cwd: paths.src + assets.sass }, ['themeroller']);
         gulp.watch(allSubFolders + files.less, { cwd: paths.src + assets.less }, ['themeroller']);
     }
 

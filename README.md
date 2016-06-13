@@ -40,10 +40,20 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 - [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
 
 ## Install
-On the command line:
+
+#### via Git
+```bash
+git clone https://github.com/OraOpenSource/apex-frontend-boost.git
+cd apex-frontend-boost		
+npm install
+```
+
+#### via npm
 ```bash
 npm install apex-frontend-boost
 ```
+
+*Note: installing via npm automatically creates a `\node_modules\` directory and installs APEX Front-End Boost within. Please use only if you understand what that entails, otherwise use the Git method.*
 
 *Having problems installing on Windows? [See documentation](/docs/windows.md).*  
 
@@ -71,7 +81,7 @@ Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate
 - Launch `apex-frontend-boost.bat`
 - Enter project name
 
-**Running on Linux/OSx?**
+**Running on Linux/OS X?**
 - Execute `./apex-frontend-boost.sh`
 - Enter project name
 
