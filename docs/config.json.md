@@ -69,6 +69,9 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
     },
     "rtl": {
         "enabled": false
+    },
+    "imageOptimization": {
+       "enabled": false
     }
 }
 ```
@@ -160,3 +163,11 @@ Name | Type | Default | Description
 
 > Produces a `.rtl` version of your css files
 > Example: `app.css` also produces `app.rtl.css`
+
+### Image Optimization
+
+Name | Type | Default | Description
+-- | -- | -- | --
+`imageOptimization.enabled` | boolean | `false` | Turns on and off automatic image lossless optimizers.
+
+> Minifies images in the `/img/` folder.

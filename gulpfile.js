@@ -205,6 +205,7 @@ gulp.task('style', function() {
 // copy img files as is
 gulp.task('img', function() {
     return gulp.src(paths.src + assets.img + allSubFolders + files.all)
+        .pipe(plugins.if(config.imageOptimization.enabled, plugins.imagemin()))
         .pipe(gulp.dest(paths.dist + assets.img));
 });
 

@@ -47,6 +47,7 @@
     "gulp-util": "3.0.x",
     "gulp-clone": "1.0.x",
     "gulp-header": "1.8.x",
+    "gulp-imagemin": "3.0.x",
     "jshint": "2.x",
     "jshint-stylish": "2.2.x",
     "run-sequence": "1.2.x",
