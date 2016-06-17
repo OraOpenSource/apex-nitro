@@ -46,7 +46,7 @@
     "gulp-uglify": "1.5.x",
     "gulp-util": "3.0.x",
     "gulp-clone": "1.0.x",
-    "gulp-header": "1.7.x",
+    "gulp-header": "1.8.3",
     "jshint": "2.x",
     "jshint-stylish": "2.1.x",
     "run-sequence": "1.1.x",
