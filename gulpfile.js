@@ -16,7 +16,10 @@ var gulp = require('gulp'),
     rtlcss = require('./lib/rtlcss');
     validate = require('jsonschema').validate,
     schema = require('./lib/defaultSchema'),
-    fs = require("fs");
+    fs = require("fs"),
+    mkdirp = require('mkdirp');
+
+const chalk = require('chalk');
 
 // 2. PREREQUISITES AND ERROR HANDLING
 
@@ -25,14 +28,14 @@ var userConfigJSON = fs.readFileSync("config.json");
 
 // validates if user config.json is valid JSON
 if (!util.isValidJSON(userConfigJSON)) {
-    console.log("Your config.json file is not a valid JSON object.");
-    console.log("Try using a JSON Linter such as: http://jsonlint.com/");
+    console.log(chalk.red.bold("Your config.json file is not a valid JSON object."));
+    console.log(chalk.red.bold("Try using a JSON Linter such as: http://jsonlint.com/"));
     process.exit();
 }
 
 // validates command line syntax
 if (typeof argv.project == "undefined") {
-    console.log("The correct syntax is: npm start -- --project=yourProjectName");
+    console.log(chalk.red.bold("The correct syntax is: npm start -- --project=yourProjectName"));
     process.exit();
 }
 
@@ -42,14 +45,14 @@ var defaultConfig = require('./default'),
 
 // validate if project exists
 if (typeof userConfig[argv.project] == "undefined") {
-    console.log("Project", argv.project, "doesn't exist in your config.json file.");
+    console.log(chalk.red.bold("Project", argv.project, "doesn't exist in your config.json file."));
     process.exit();
 }
 
 // user config json schema validation
 var userConfigSchema = validate(userConfig[argv.project], schema);
 if (userConfigSchema.errors.length > 0) {
-    console.log("Your config.json file is not valid. See errors below:");
+    console.log(chalk.red.bold("Your config.json file is not valid. See errors below:"));
     console.log(userConfigSchema.errors.map(function(elem){
         return (elem.property + " " + elem.message).replace("instance", argv.project);
     }).join("\n"));
@@ -61,26 +64,21 @@ var config = extend(true, {}, defaultConfig, userConfig[argv.project]);
 
 // sass or less, not both
 if (config.sass.enabled && config.less.enabled) {
-    console.log("Choose either Sass or Less (not both) as the CSS preprocessor for project", argv.project);
+    console.log(chalk.red.bold("Choose either Sass or Less (not both) as the CSS preprocessor for project", argv.project));
     process.exit();
 }
 
 // missing project header.packageJsonPath
 if (config.header.enabled) {
-    if (util.isEmptyObject(config.header.packageJsonPath)) {
-        console.log("Missing packageJsonPath in your config.json file.");
-        process.exit();
-    } else {
-        var pkg = require(config.header.packageJsonPath + "package.json");
-        var banner = ['/*!',
-          ' * <%= pkg.name %> - <%= pkg.description %>',
-          ' * @author v<%= pkg.author %>',
-          ' * @version v<%= pkg.version %>',
-          ' * @link <%= pkg.homepage %>',
-          ' * @license <%= pkg.license %>',
-          ' */',
-          ''].join('\n');
-    }
+    var pkg = require(config.header.packageJsonPath + "package.json");
+    var banner = ['/*!',
+      ' * <%= pkg.name %> - <%= pkg.description %>',
+      ' * @author v<%= pkg.author %>',
+      ' * @version v<%= pkg.version %>',
+      ' * @link <%= pkg.homepage %>',
+      ' * @license <%= pkg.license %>',
+      ' */',
+      ''].join('\n');
 }
 
 // 3. SETTINGS VARIABLES
@@ -130,6 +128,30 @@ var paths = {
         res.setHeader('Set-Cookie', ['oos-apex-frontend-boost-app-images=//' + req.headers.host + '/']);
         next();
     };
+
+// build directory structure
+// js img and lib are mandatory
+var dirs = [
+    paths.src + assets.js,
+    paths.src + assets.img,
+    paths.src + assets.lib
+];
+
+// sass less and css are based on user config
+if (config.sass.enabled || config.less.enabled) {
+    if (config.sass.enabled) {
+        dirs.push(paths.src + assets.scss);
+    } else {
+        dirs.push(paths.src + assets.less);
+    }
+} else {
+    dirs.push(paths.src + assets.css);
+}
+
+// create directory structure if doesn't exist yet
+for (var i = 0; i < dirs.length; i++) {
+    mkdirp.sync(dirs[i]);
+}
 
 // 4. TASKS
 // cleans the dist directory
@@ -291,6 +313,9 @@ gulp.task('default', function() {
 
     // run tasks
     runSequence('clean-dist', tasks, 'watch', function() {
-        console.log("APEX Front-End Boost has successfully processed your files.");
+        console.log(chalk.green.bold("APEX Front-End Boost has successfully processed your files."));
+        console.log(chalk.cyan.bold("Now open up your favorite code editor and modify any file within:"));
+        console.log(dirs);
+        console.log(chalk.cyan.bold("All files belonging in the directories above are made available to use in APEX"));
     });
 });
