@@ -1,0 +1,128 @@
+{
+    "type": "object",
+    "properties": {
+        "appURL": {
+            "type": "string"
+        },
+        "srcFolder": {
+            "type": "string"
+        },
+        "distFolder": {
+            "type": "string"
+        },
+        "jsConcat": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "finalName": {
+                    "type": "string"
+                }
+            }
+        },
+        "cssConcat": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "finalName": {
+                    "type": "string"
+                }
+            }
+        },
+        "sass": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "includePath": {
+                    "type": "string"
+                }
+            }
+        },
+        "less": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "includePath": {
+                    "type": "string"
+                }
+            }
+        },
+        "browsersync": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "uiPort": {
+                    "type": "integer"
+                },
+                "weinrePort": {
+                    "type": "integer"
+                },
+                "notify": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "themeroller": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "finalName": {
+                    "type": "string"
+                },
+                "files": {
+                    "type": "array",
+                    "items": {}
+                }
+            }
+        },
+        "header": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "packageJsonPath": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "packageJsonPath"
+            ]
+        },
+        "rtl": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "imageOptimization": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "required": [
+        "appURL",
+        "srcFolder",
+        "distFolder"
+    ]
+}

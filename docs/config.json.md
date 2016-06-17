@@ -35,10 +35,6 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
     "appURL": "",
     "srcFolder": "src",
     "distFolder": "dist",
-    "header": {
-        "enabled": false,
-        "packageJsonPath": ""
-    },
     "jsConcat": {
         "enabled": false,
         "finalName": "app"
@@ -66,6 +62,10 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
         "enabled": false,
         "finalName": "themeroller",
         "files" : []
+    },
+    "header": {
+        "enabled": false,
+        "packageJsonPath": ""
     },
     "rtl": {
         "enabled": false
@@ -98,7 +98,8 @@ Name | Type | Default | Description
 ```js
 /*!
  * apex-frontend-boost - Enhance your productivity with a complete Front-End Stack for Oracle APEX development
- * @version v2.0.0
+ * @author OraOpenSource
+ * @version v2.2
  * @link https://github.com/OraOpenSource/apex-frontend-boost
  * @license MIT
  */

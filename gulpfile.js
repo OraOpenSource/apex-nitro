@@ -14,61 +14,67 @@ var gulp = require('gulp'),
     util = require('./lib/util'),
     scssToLess = require('./lib/scssToLess'),
     rtlcss = require('./lib/rtlcss');
-
+    validate = require('jsonschema').validate,
+    schema = require('./lib/defaultSchema'),
+    fs = require("fs");
 
 // 2. PREREQUISITES AND ERROR HANDLING
-var defaultConfig = require('./default'),
-    userConfig = require('./config'),
-    config = extend(true, {}, defaultConfig, userConfig[argv.project]);
 
-// command line syntax
+// read the user config.json
+var userConfigJSON = fs.readFileSync("config.json");
+
+// validates if user config.json is valid JSON
+if (!util.isValidJSON(userConfigJSON)) {
+    console.log("Your config.json file is not a valid JSON object.");
+    console.log("Try using a JSON Linter such as: http://jsonlint.com/");
+    process.exit();
+}
+
+// validates command line syntax
 if (typeof argv.project == "undefined") {
     console.log("The correct syntax is: npm start -- --project=yourProjectName");
-    process.exit(1);
+    process.exit();
 }
 
-// project exists
+// import default config and user config
+var defaultConfig = require('./default'),
+    userConfig = require('./config');
+
+// validate if project exists
 if (typeof userConfig[argv.project] == "undefined") {
-    console.log("Project", argv.project ,"doesn't exists in your config.json file.");
-    process.exit(1);
+    console.log("Project", argv.project, "doesn't exist in your config.json file.");
+    process.exit();
 }
+
+// user config json schema validation
+var userConfigSchema = validate(userConfig[argv.project], schema);
+if (userConfigSchema.errors.length > 0) {
+    console.log("Your config.json file is not valid. See errors below:");
+    console.log(userConfigSchema.errors.map(function(elem){
+        return (elem.property + " " + elem.message).replace("instance", argv.project);
+    }).join("\n"));
+    process.exit();
+}
+
+// merge default config with user config
+var config = extend(true, {}, defaultConfig, userConfig[argv.project]);
 
 // sass or less, not both
 if (config.sass.enabled && config.less.enabled) {
     console.log("Choose either Sass or Less (not both) as the CSS preprocessor for project", argv.project);
-    process.exit(1);
-}
-
-// missing project appURL
-if (util.isEmptyObject(config.appURL)) {
-    console.log("Missing appURL in your config.json file.");
-}
-
-// missing project srcFolder
-if (util.isEmptyObject(config.srcFolder)) {
-    console.log("Missing srcFolder in your config.json file.");
-}
-
-// missing project distFolder
-if (util.isEmptyObject(config.distFolder)) {
-    console.log("Missing distFolder in your config.json file.");
-}
-
-if((util.isEmptyObject(config.appURL))
-|| (util.isEmptyObject(config.srcFolder))
-|| (util.isEmptyObject(config.distFolder))) {
-    process.exit(1);
+    process.exit();
 }
 
 // missing project header.packageJsonPath
 if (config.header.enabled) {
     if (util.isEmptyObject(config.header.packageJsonPath)) {
         console.log("Missing packageJsonPath in your config.json file.");
-        process.exit(1);
+        process.exit();
     } else {
         var pkg = require(config.header.packageJsonPath + "package.json");
         var banner = ['/*!',
           ' * <%= pkg.name %> - <%= pkg.description %>',
+          ' * @author v<%= pkg.author %>',
           ' * @version v<%= pkg.version %>',
           ' * @link <%= pkg.homepage %>',
           ' * @license <%= pkg.license %>',
@@ -170,6 +176,7 @@ gulp.task('style', function() {
         sourceFiles = paths.src + assets.css + files.css;
     }
 
+    // creates the source stream that will be used for unmin and min versions
     var sourceStream = gulp.src(sourceFiles)
         .pipe(plugins.plumber())
         .pipe(plugins.if(config.header.enabled, plugins.header(banner, { pkg : pkg } )))
@@ -178,12 +185,14 @@ gulp.task('style', function() {
         .pipe(plugins.if(config.less.enabled, plugins.less(lessOptions)))
         .pipe(plugins.if(config.cssConcat.enabled, plugins.concat(config.cssConcat.finalName + '.css')));
 
+    // creates the unmin css
     var unmin = sourceStream
         .pipe(plugins.clone())
         .pipe(plugins.autoprefixer())
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps));
 
+    // creates the min css
     var min = sourceStream
         .pipe(plugins.clone())
         .pipe(plugins.autoprefixer())
@@ -192,6 +201,7 @@ gulp.task('style', function() {
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps));
 
+    // adds the unmin and the min version to the stream
     return merge(unmin, min)
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
