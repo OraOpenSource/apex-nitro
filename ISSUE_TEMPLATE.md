@@ -18,3 +18,6 @@
 
 ### Web Server
 [Example: ORDS 3.0.3, Tomcat 7]
+
+### Your `config.json` file
+[Paste code]

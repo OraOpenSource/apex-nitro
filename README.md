@@ -40,6 +40,8 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 - [Oracle APEX](https://apex.oracle.com) 5 (or more) for [Application Setup Option 1](/docs/apex-setup.md)
 - [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
 
+*Note: Having `Cross Origin Sharing Requests` issues? [See CORS documentation](/docs/cors.md).*
+
 ## Install
 
 #### via Git
@@ -76,15 +78,20 @@ There are two options to setup your application:
 Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate option for your project.
 
 ## Run
-`npm start -- --project=yourProjectName`
+**On the command line:**  
+```bash
+npm start -- --project=yourProjectName
+```
 
-**Running on Windows?**
+**or use Windows shortcut:**
 - Launch `apex-frontend-boost.bat`
 - Enter project name
 
-**Running on Linux/OS X?**
+**or use Linux/OS X shortcut:**
 - Execute `./apex-frontend-boost.sh`
 - Enter project name
+
+*Note: If you encounter errors while executing the steps above, you may need to use an elevated command line (run as administrator).*
 
 ## Usage
 From the `src` folder you can create, edit or delete any files in:
