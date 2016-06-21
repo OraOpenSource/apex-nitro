@@ -57,6 +57,7 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 - [Node.js](https://nodejs.org) 4.4 (or more)
 - [Oracle APEX](https://apex.oracle.com) 5 (or more) for [Application Setup Option 1](/docs/apex-setup.md)
 - [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
+- [Git](https://git-scm.com/downloads)
 
 *Having `Cross Origin Sharing Requests` issues? [See CORS documentation](/docs/cors.md).*
 
