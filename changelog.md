@@ -1,4 +1,15 @@
 # Changelog
+## 2.1.1
+- Greatly enhanced the project error handling to provide more details and hints to the user.
+- The `/src/` folder is now automatically created if it doesn't exist yet.
+- Added `.sass` file support in addition to the existing `.scss` support.
+- Docs: Added a documentation notice on ORDS issues.
+- Docs: Added an advice to use an elevated command line (run as admin).
+- Docs: Changed some of the project terminology.
+- Docs: Provided two different installation options (Git and npm).
+- Docs: Enhanced the documentation for `config.json`
+- Created project issue template for better support going forward.
+
 ## 2.1.0
 - Project is now available on npm
 - Fixed a bug preventing from doing POST on Chrome

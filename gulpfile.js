@@ -14,67 +14,71 @@ var gulp = require('gulp'),
     util = require('./lib/util'),
     scssToLess = require('./lib/scssToLess'),
     rtlcss = require('./lib/rtlcss');
+    validate = require('jsonschema').validate,
+    schema = require('./lib/defaultSchema'),
+    fs = require("fs"),
+    mkdirp = require('mkdirp');
 
+const chalk = require('chalk');
 
 // 2. PREREQUISITES AND ERROR HANDLING
-var defaultConfig = require('./default'),
-    userConfig = require('./config'),
-    config = extend(true, {}, defaultConfig, userConfig[argv.project]);
 
-// command line syntax
+// read the user config.json
+var userConfigJSON = fs.readFileSync("config.json");
+
+// validates if user config.json is valid JSON
+if (!util.isValidJSON(userConfigJSON)) {
+    console.log(chalk.red.bold("Your config.json file is not a valid JSON object."));
+    console.log(chalk.red.bold("Try using a JSON Linter such as: http://jsonlint.com/"));
+    process.exit();
+}
+
+// validates command line syntax
 if (typeof argv.project == "undefined") {
-    console.log("The correct syntax is: npm start -- --project=yourProjectName");
-    process.exit(1);
+    console.log(chalk.red.bold("The correct syntax is: npm start -- --project=yourProjectName"));
+    process.exit();
 }
 
-// project exists
+// import default config and user config
+var defaultConfig = require('./default'),
+    userConfig = require('./config');
+
+// validate if project exists
 if (typeof userConfig[argv.project] == "undefined") {
-    console.log("Project", argv.project ,"doesn't exists in your config.json file.");
-    process.exit(1);
+    console.log(chalk.red.bold("Project", argv.project, "doesn't exist in your config.json file."));
+    process.exit();
 }
+
+// user config json schema validation
+var userConfigSchema = validate(userConfig[argv.project], schema);
+if (userConfigSchema.errors.length > 0) {
+    console.log(chalk.red.bold("Your config.json file is not valid. See errors below:"));
+    console.log(userConfigSchema.errors.map(function(elem){
+        return (elem.property + " " + elem.message).replace("instance", argv.project);
+    }).join("\n"));
+    process.exit();
+}
+
+// merge default config with user config
+var config = extend(true, {}, defaultConfig, userConfig[argv.project]);
 
 // sass or less, not both
 if (config.sass.enabled && config.less.enabled) {
-    console.log("Choose either Sass or Less (not both) as the CSS preprocessor for project", argv.project);
-    process.exit(1);
-}
-
-// missing project appURL
-if (util.isEmptyObject(config.appURL)) {
-    console.log("Missing appURL in your config.json file.");
-}
-
-// missing project srcFolder
-if (util.isEmptyObject(config.srcFolder)) {
-    console.log("Missing srcFolder in your config.json file.");
-}
-
-// missing project distFolder
-if (util.isEmptyObject(config.distFolder)) {
-    console.log("Missing distFolder in your config.json file.");
-}
-
-if((util.isEmptyObject(config.appURL))
-|| (util.isEmptyObject(config.srcFolder))
-|| (util.isEmptyObject(config.distFolder))) {
-    process.exit(1);
+    console.log(chalk.red.bold("Choose either Sass or Less (not both) as the CSS preprocessor for project", argv.project));
+    process.exit();
 }
 
 // missing project header.packageJsonPath
 if (config.header.enabled) {
-    if (util.isEmptyObject(config.header.packageJsonPath)) {
-        console.log("Missing packageJsonPath in your config.json file.");
-        process.exit(1);
-    } else {
-        var pkg = require(config.header.packageJsonPath + "package.json");
-        var banner = ['/*!',
-          ' * <%= pkg.name %> - <%= pkg.description %>',
-          ' * @version v<%= pkg.version %>',
-          ' * @link <%= pkg.homepage %>',
-          ' * @license <%= pkg.license %>',
-          ' */',
-          ''].join('\n');
-    }
+    var pkg = require(config.header.packageJsonPath + "package.json");
+    var banner = ['/*!',
+      ' * <%= pkg.name %> - <%= pkg.description %>',
+      ' * @author v<%= pkg.author %>',
+      ' * @version v<%= pkg.version %>',
+      ' * @link <%= pkg.homepage %>',
+      ' * @license <%= pkg.license %>',
+      ' */',
+      ''].join('\n');
 }
 
 // 3. SETTINGS VARIABLES
@@ -87,6 +91,7 @@ var paths = {
         js: path.normalize('/js/'),
         css: path.normalize('/css/'),
         scss: path.normalize('/scss/'),
+        sass: path.normalize('/sass/'),
         less: path.normalize('/less/'),
         img: path.normalize('/img/'),
         lib: path.normalize('/lib/')
@@ -96,6 +101,7 @@ var paths = {
         js: path.normalize('*.js'),
         css: path.normalize('*.css'),
         scss: path.normalize('*.scss'),
+        sass: path.normalize('*.sass'),
         less: path.normalize('*.less'),
         all: path.normalize('*.*'),
     },
@@ -122,6 +128,30 @@ var paths = {
         res.setHeader('Set-Cookie', ['oos-apex-frontend-boost-app-images=//' + req.headers.host + '/']);
         next();
     };
+
+// build directory structure
+// js img and lib are mandatory
+var dirs = [
+    paths.src + assets.js,
+    paths.src + assets.img,
+    paths.src + assets.lib
+];
+
+// sass less and css are based on user config
+if (config.sass.enabled || config.less.enabled) {
+    if (config.sass.enabled) {
+        dirs.push(paths.src + assets.scss);
+    } else {
+        dirs.push(paths.src + assets.less);
+    }
+} else {
+    dirs.push(paths.src + assets.css);
+}
+
+// create directory structure if doesn't exist yet
+for (var i = 0; i < dirs.length; i++) {
+    mkdirp.sync(dirs[i]);
+}
 
 // 4. TASKS
 // cleans the dist directory
@@ -153,18 +183,22 @@ gulp.task('js-browsersync', ['js'], function() {
     browsersync.reload();
 });
 
-// scss
+// style
 gulp.task('style', function() {
     var sourceFiles;
 
     if (config.sass.enabled) {
-        sourceFiles = paths.src + assets.scss + files.scss;
+        sourceFiles = [
+            paths.src + assets.scss + files.scss,
+            paths.src + assets.sass + files.sass
+        ];
     } else if (config.less.enabled) {
         sourceFiles = paths.src + assets.less + files.less;
     } else {
         sourceFiles = paths.src + assets.css + files.css;
     }
 
+    // creates the source stream that will be used for unmin and min versions
     var sourceStream = gulp.src(sourceFiles)
         .pipe(plugins.plumber())
         .pipe(plugins.if(config.header.enabled, plugins.header(banner, { pkg : pkg } )))
@@ -173,12 +207,14 @@ gulp.task('style', function() {
         .pipe(plugins.if(config.less.enabled, plugins.less(lessOptions)))
         .pipe(plugins.if(config.cssConcat.enabled, plugins.concat(config.cssConcat.finalName + '.css')));
 
+    // creates the unmin css
     var unmin = sourceStream
         .pipe(plugins.clone())
         .pipe(plugins.autoprefixer())
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps));
 
+    // creates the min css
     var min = sourceStream
         .pipe(plugins.clone())
         .pipe(plugins.autoprefixer())
@@ -187,6 +223,7 @@ gulp.task('style', function() {
         .pipe(plugins.size(sizeOptions))
         .pipe(plugins.sourcemaps.write(paths.sourcemaps));
 
+    // adds the unmin and the min version to the stream
     return merge(unmin, min)
         .pipe(clip())
         .pipe(gulp.dest(paths.dist + assets.css))
@@ -200,6 +237,7 @@ gulp.task('style', function() {
 // copy img files as is
 gulp.task('img', function() {
     return gulp.src(paths.src + assets.img + allSubFolders + files.all)
+        .pipe(plugins.if(config.imageOptimization.enabled, plugins.imagemin()))
         .pipe(gulp.dest(paths.dist + assets.img));
 });
 
@@ -242,12 +280,14 @@ gulp.task('watch', function() {
     var jsWatch = (config.browsersync.enabled ? ['js-browsersync'] : ['js']);
     gulp.watch(allSubFolders + files.js, { cwd: paths.src + assets.js }, jsWatch);
     gulp.watch(allSubFolders + files.scss, { cwd: paths.src + assets.scss }, ['style']);
+    gulp.watch(allSubFolders + files.sass, { cwd: paths.src + assets.sass }, ['style']);
     gulp.watch(allSubFolders + files.less, { cwd: paths.src + assets.less }, ['style']);
     gulp.watch(allSubFolders + files.css, { cwd: paths.src + assets.css }, ['style']);
 
     // theme roller support
     if (config.themeroller.enabled) {
         gulp.watch(allSubFolders + files.scss, { cwd: paths.src + assets.scss }, ['themeroller']);
+        gulp.watch(allSubFolders + files.sass, { cwd: paths.src + assets.sass }, ['themeroller']);
         gulp.watch(allSubFolders + files.less, { cwd: paths.src + assets.less }, ['themeroller']);
     }
 
@@ -273,6 +313,9 @@ gulp.task('default', function() {
 
     // run tasks
     runSequence('clean-dist', tasks, 'watch', function() {
-        console.log("APEX Front-End Boost has successfully processed your files.");
+        console.log(chalk.green.bold("APEX Front-End Boost has successfully processed your files."));
+        console.log(chalk.cyan.bold("Now open up your favorite code editor and modify any file within:"));
+        console.log(dirs);
+        console.log(chalk.cyan.bold("All files belonging in the directories above are made available to use in APEX"));
     });
 });

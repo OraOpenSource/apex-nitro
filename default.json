@@ -2,10 +2,6 @@
     "appURL": "",
     "srcFolder": "src",
     "distFolder": "dist",
-    "header": {
-        "enabled": false,
-        "packageJsonPath": ""
-    },
     "jsConcat": {
         "enabled": false,
         "finalName": "app"
@@ -34,7 +30,14 @@
         "finalName": "themeroller",
         "files" : []
     },
+    "header": {
+        "enabled": false,
+        "packageJsonPath": ""
+    },
     "rtl": {
         "enabled": false
+    },
+    "imageOptimization": {
+       "enabled": false
     }
 }

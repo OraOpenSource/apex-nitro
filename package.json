@@ -1,59 +1,63 @@
 {
-  "name": "apex-frontend-boost",
-  "author": "OraOpenSource",
-  "version": "2.1.0",
-  "description": "Enhance your productivity with a complete Front-End Stack for Oracle APEX development",
-  "license": "MIT",
-  "keywords": [
-    "oracle",
-    "apex",
-    "orclapex",
-    "css",
-    "javascript",
-    "front-end",
-    "responsive",
-    "framework",
-    "web"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/OraOpenSource/apex-frontend-boost.git"
-  },
-  "bugs": {
-    "url": "https://github.com/OraOpenSource/apex-frontend-boost/issues"
-  },
-  "scripts": {
-    "start": "gulp",
-    "postinstall": "node generateConfig.js"
-  },
-  "dependencies": {
-    "browser-sync": "2.12.x",
-    "del": "2.2.x",
-    "gulp": "3.9.x",
-    "gulp-autoprefixer": "3.1.x",
-    "gulp-clip-empty-files": "0.1.x",
-    "gulp-concat": "2.6.x",
-    "gulp-if": "2.0.x",
-    "gulp-jshint": "2.0.x",
-    "gulp-load-plugins": "1.2.x",
-    "gulp-cssnano": "2.1.x",
-    "gulp-plumber": "1.1.x",
-    "gulp-rename": "1.2.x",
-    "gulp-sass": "2.3.x",
-    "gulp-less": "3.0.x",
-    "gulp-size": "2.1.x",
-    "gulp-sourcemaps": "2.0.0-alpha",
-    "gulp-uglify": "1.5.x",
-    "gulp-util": "3.0.x",
-    "gulp-clone": "1.0.x",
-    "gulp-header": "1.7.x",
-    "jshint": "2.x",
-    "jshint-stylish": "2.1.x",
-    "run-sequence": "1.1.x",
-    "yargs": "4.6.x",
-    "node.extend": "1.1.x",
-    "merge-stream": "1.0.x",
-    "rtlcss": "2.0.x",
-    "through2": "2.0.x"
-  }
+    "name": "apex-frontend-boost",
+    "author": "OraOpenSource",
+    "version": "2.1.1",
+    "description": "Enhance your productivity with a complete Front-End Stack for Oracle APEX development",
+    "license": "MIT",
+    "keywords": [
+        "oracle",
+        "apex",
+        "orclapex",
+        "css",
+        "javascript",
+        "front-end",
+        "responsive",
+        "framework",
+        "web"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/OraOpenSource/apex-frontend-boost.git"
+    },
+    "bugs": {
+        "url": "https://github.com/OraOpenSource/apex-frontend-boost/issues"
+    },
+    "scripts": {
+        "start": "gulp",
+        "postinstall": "node generateConfig.js"
+    },
+    "dependencies": {
+        "browser-sync": "2.13.x",
+        "chalk": "1.1.x",
+        "del": "2.2.x",
+        "gulp": "3.9.x",
+        "gulp-autoprefixer": "3.1.x",
+        "gulp-clip-empty-files": "0.1.x",
+        "gulp-clone": "1.0.x",
+        "gulp-concat": "2.6.x",
+        "gulp-cssnano": "2.1.x",
+        "gulp-header": "1.8.x",
+        "gulp-if": "2.0.x",
+        "gulp-imagemin": "3.0.x",
+        "gulp-jshint": "2.0.x",
+        "gulp-less": "3.1.x",
+        "gulp-load-plugins": "1.2.x",
+        "gulp-plumber": "1.1.x",
+        "gulp-rename": "1.2.x",
+        "gulp-sass": "2.3.x",
+        "gulp-size": "2.1.x",
+        "gulp-sourcemaps": "2.0.0-alpha",
+        "gulp-uglify": "1.5.x",
+        "gulp-util": "3.0.x",
+        "jshint": "2.x",
+        "jshint-stylish": "2.2.x",
+        "jsonschema": "1.1.x",
+        "merge-stream": "1.0.x",
+        "mkdirp": "0.5.x",
+        "node.extend": "1.1.x",
+        "rtlcss": "2.0.x",
+        "run-sequence": "1.2.x",
+        "through2": "2.0.x",
+        "yargs": "4.7.x"
+    }
 }
