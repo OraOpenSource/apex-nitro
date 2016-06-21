@@ -10,17 +10,14 @@
 - [Project Sponsors](#project-sponsors)
 - [System Requirements](#system-requirements)
 - [Install](#install)
-	- [via Git](#via-git)
-	- [via npm](#via-npm)
 - [Upgrade](#upgrade)
-	- [via Git](#via-git)
-	- [via npm](#via-npm)
 - [Configuration](#configuration)
-- [APEX Application Setup](#apex-application-setup)
+- [APEX Setup](#apex-setup)
 - [Run](#run)
 - [Usage](#usage)
 - [Features](#features)
 - [Changelog](#changelog)
+- [Project Team](#project-team)
 
 ## What APEX Front-End Boost is
 APEX Front-End Boost is a personal local web server that hosts and distributes your files to your APEX application.
@@ -65,21 +62,13 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
 ## Install
 - Open the command line
-- Go to the APEX Front-End Boost directory
-
-#### via Git
+- Go to your desired APEX Front-End Boost directory
+- Execute
 ```bash
 git clone https://github.com/OraOpenSource/apex-frontend-boost.git
 cd apex-frontend-boost		
 npm install
 ```
-
-#### via npm
-```bash
-npm install apex-frontend-boost
-```
-
-*Note: installing via npm automatically creates a `\node_modules\` directory and installs APEX Front-End Boost within. Please use only if you understand what that entails, otherwise use the Git method.*
 
 *Having problems installing on Windows? [See documentation](/docs/windows.md).*  
 
@@ -88,23 +77,17 @@ npm install apex-frontend-boost
 ## Upgrade
 - Open the command line
 - Go to your APEX Front-End Boost directory
-
-#### via Git
+- Execute
 ```bash
 git fetch origin
 git reset --hard origin/master
 npm install
 ```
 
-#### via npm
-```bash
-npm install apex-frontend-boost
-```
-
 ## Configuration
 You need to configure APEX Front-End Boost for your project(s). [See documentation](/docs/config.json.md).
 
-## APEX Application Setup
+## APEX Setup
 There are two options to setup your application:
 - **Option 1) Standard**
     - 1 Build Option
