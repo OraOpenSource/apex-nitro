@@ -1,5 +1,8 @@
 # Changelog
 ## 2.1.1
+- Removed `npm` as an install option for simplicity.
+
+## 2.1.1
 - Greatly enhanced the project error handling to provide more details and hints to the user.
 - The `/src/` folder is now automatically created if it doesn't exist yet.
 - Added `.sass` file support in addition to the existing `.scss` support.
