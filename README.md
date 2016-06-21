@@ -3,13 +3,33 @@
 [![Build Status](https://travis-ci.org/OraOpenSource/apex-frontend-boost.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-frontend-boost)
 [![Dependency Status](https://david-dm.org/OraOpenSource/apex-frontend-boost.svg)](https://david-dm.org/OraOpenSource/apex-frontend-boost)
 
-APEX Front-End Boost makes coding faster, easier, and prettier. This productivity tool helps you work with static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
+- [What APEX Front-End Boost is](#what-apex-front-end-boost-is)
+	- [What APEX Front-End Boost does](#what-apex-front-end-boost-does)
+	- [How APEX Front-End Boost helps you](#how-apex-front-end-boost-helps-you)
+	- [Other benefits](#other-benefits)
+- [Project Sponsors](#project-sponsors)
+- [System Requirements](#system-requirements)
+- [Install](#install)
+	- [via Git](#via-git)
+	- [via npm](#via-npm)
+- [Upgrade](#upgrade)
+	- [via Git](#via-git)
+	- [via npm](#via-npm)
+- [Configuration](#configuration)
+- [APEX Application Setup](#apex-application-setup)
+- [Run](#run)
+- [Usage](#usage)
+- [Features](#features)
+- [Changelog](#changelog)
 
+## What APEX Front-End Boost is
 APEX Front-End Boost is a personal local web server that hosts and distributes your files to your APEX application.
+
+APEX Front-End Boost makes coding faster, easier, and prettier. This productivity tool helps you work with static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
 ![demo](/media/demo-main.gif)
 
-## What APEX Front-End Boost does
+#### What APEX Front-End Boost does
 - Minifies `js` and `css`.
 - Generates  `js` and `css` sourcemaps.
 - Adds `css` vendor prefixes.
@@ -20,7 +40,7 @@ APEX Front-End Boost is a personal local web server that hosts and distributes y
 - Adds a standardized header comment block to `js` and `css` files. *(optional)*
 - Minifies images seamlessly *(optional)*
 
-## How APEX Front-End Boost helps you
+#### How APEX Front-End Boost helps you
 - Cut down on front-end development time.
 - Enhance your application performance due to smaller file sizes.
 - Keep coding in your favorite code editor, without having to constantly upload anything to APEX or a web server.
@@ -28,6 +48,7 @@ APEX Front-End Boost is a personal local web server that hosts and distributes y
 - Stop affecting other developers. **Any development done within APEX Front-End Boost affects you and only you**.
 - Be notified of `js` and `css` errors as you save.
 
+#### Other benefits
 It makes responsive development easier by synchronizing multiple devices together. Your desktop, tablet and mobile device will imitate each others actions (scrolling, clicking, typing) as long as you've got APEX Front-End Boost running.
 
 It eliminates the need for refreshing the browser. As soon as you save your code in the text editor, you get automatic code injection / reloading in the browser.
@@ -40,9 +61,11 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 - [Oracle APEX](https://apex.oracle.com) 5 (or more) for [Application Setup Option 1](/docs/apex-setup.md)
 - [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
 
-*Note: Having `Cross Origin Sharing Requests` issues? [See CORS documentation](/docs/cors.md).*
+*Having `Cross Origin Sharing Requests` issues? [See CORS documentation](/docs/cors.md).*
 
 ## Install
+- Open the command line
+- Go to the APEX Front-End Boost directory
 
 #### via Git
 ```bash
@@ -61,6 +84,22 @@ npm install apex-frontend-boost
 *Having problems installing on Windows? [See documentation](/docs/windows.md).*  
 
 *Having problems installing on Linux? [See documentation](/docs/linux.md).*
+
+## Upgrade
+- Open the command line
+- Go to your APEX Front-End Boost directory
+
+#### via Git
+```bash
+git fetch origin
+git reset --hard origin/master
+npm install
+```
+
+#### via npm
+```bash
+npm install apex-frontend-boost
+```
 
 ## Configuration
 You need to configure APEX Front-End Boost for your project(s). [See documentation](/docs/config.json.md).
@@ -114,8 +153,7 @@ APEX Front-End Boost will automatically compile your files to this folder struct
     |-lib
 ```
 
-### Self-Signed SSL Browser Warning
-[See documentation](/docs/ssl-warning.md).
+*Having problems regarding Self-Signed SSL Browser Warning? [See documentation](/docs/ssl-warning.md).*
 
 ## Features
 - [Browsersync](http://www.browsersync.io/)
