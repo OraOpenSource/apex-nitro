@@ -58,6 +58,6 @@
         "rtlcss": "2.0.x",
         "run-sequence": "1.2.x",
         "through2": "2.0.x",
-        "yargs": "4.7.x"
+        "yargs": "4.8.0"
     }
 }
