@@ -38,9 +38,9 @@ In `Shared Components > Application Processes` create a new application process 
 
 Name | Setting | Comment
 --- | --- | ---
+Name | `OOS APEX Front-End Boost Config` |
 Sequence | `-999` | Ensures this happens first
 Process Point | `On Load: Before Header (page template header)` |
-Name | `OOS APEX Front-End Boost Config` |
 Source | *see below* |
 Build Option | `DEV_ONLY` | For security reasons only want this to happen in a controlled development environment
 
