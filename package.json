@@ -27,7 +27,7 @@
         "postinstall": "node generateConfig.js"
     },
     "dependencies": {
-        "browser-sync": "2.13.x",
+        "browser-sync": "2.14.0",
         "chalk": "1.1.x",
         "del": "2.2.x",
         "gulp": "3.9.x",
