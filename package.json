@@ -47,7 +47,7 @@
         "gulp-sass": "2.3.x",
         "gulp-size": "2.1.x",
         "gulp-sourcemaps": "2.0.0-alpha",
-        "gulp-uglify": "1.5.x",
+        "gulp-uglify": "2.0.0",
         "gulp-util": "3.0.x",
         "jshint": "2.x",
         "jshint-stylish": "2.2.x",
