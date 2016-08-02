@@ -1,5 +1,3 @@
-// APEX Gulp Stack
-
 // 1. LIBRARIES
 var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
@@ -270,7 +268,8 @@ gulp.task('browsersync', function() {
             weinre: {
                 port: config.browsersync.weinrePort
             }
-        }
+        },
+        ghostMode: config.browsersync.ghostMode
     });
 });
 

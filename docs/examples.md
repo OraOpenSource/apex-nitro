@@ -1,7 +1,7 @@
 # Features Examples
 
 ## Browsersync
-![demo](../media/demo-main.gif)
+![demo](demo-main.gif)
 
 ## Sass
 You write:

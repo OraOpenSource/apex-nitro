@@ -1,5 +1,8 @@
 # Changelog
-## 2.1.1
+## 2.1.3
+- Added a config option `config.browsersync.ghostMode` to enable/disable the mirroring of clicks, scrolls and typing across devices.
+
+## 2.1.2
 - Removed `npm` as an install option for simplicity.
 
 ## 2.1.1

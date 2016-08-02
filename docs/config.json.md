@@ -56,7 +56,8 @@ It is only mandatory to fill out the `appURL` in `config.json`. The rest is opti
         "port": 3000,
         "uiPort": 3001,
         "weinrePort": 8080,
-        "notify": true
+        "notify": true,
+        "ghostMode": true
     },
     "themeroller":{
         "enabled": false,
@@ -146,6 +147,7 @@ Name | Type | Default | Description
 `browsersync.uiPort` | int | `3001` | Browsersync includes a user-interface that is accessed via a separate port.
 `browsersync.weinrePort` | int | `8080` | This is the weinre port that browsersync uses.
 `browsersync.notify` | boolean | `true` | This option makes browsersync alert you when a file is dynamically injected to you browser.
+`browsersync.ghostMode` | boolean | `true` | This option makes clicking, scrolling and typing being replicated on all devices.
 
 > Useful for Javascript & CSS development, as you won't have to manually refresh your browser.
 

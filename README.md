@@ -24,7 +24,7 @@ APEX Front-End Boost is a personal local web server that hosts and distributes y
 
 APEX Front-End Boost makes coding faster, easier, and prettier. This productivity tool helps you work with static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
-![demo](/media/demo-main.gif)
+![demo](/docs/demo-main.gif)
 
 #### What APEX Front-End Boost does
 - Minifies `js` and `css`.
@@ -75,7 +75,7 @@ npm install
 
 *Having problems installing on Linux? [See documentation](/docs/linux.md).*
 
-## Upgrade
+## Update
 - Open the command line
 - Go to your APEX Front-End Boost directory
 - Execute

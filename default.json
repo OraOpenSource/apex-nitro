@@ -23,7 +23,8 @@
         "port": 3000,
         "uiPort": 3001,
         "weinrePort": 8080,
-        "notify": true
+        "notify": true,
+        "ghostMode": true
     },
     "themeroller":{
         "enabled": false,
