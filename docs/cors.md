@@ -7,8 +7,12 @@ Starting from ORDS `3.0.3`, a new security rule concerning `Cross Origin Sharing
 
 This occurs when the server is using ORDS `3.0.3`, `3.0.4` or `3.0.5`.
 
-For Apache, please follow the message and set the ProxyPreserveHost parameter to On.
-
+For Apache, there are 2 options
+   1- set the ProxyPreserveHost parameter to On.
+   2- RequestHeader set Origin http://<Externally accessible dns>:<port>/  
+        For example : RequestHeader set Origin http://apexworld.com:80/
+      - This forces the origin http header to a value.
+   
 Otherwise until then please use ORDS `3.0.2` or less, as the error does **NOT** occur.
 
 Here are some related forum topics:
