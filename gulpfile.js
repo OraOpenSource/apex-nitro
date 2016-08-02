@@ -239,10 +239,20 @@ gulp.task('img', function() {
         .pipe(gulp.dest(paths.dist + assets.img));
 });
 
+// watch for img changes
+gulp.task('img-watch', ['img'], function() {
+    browsersync.reload();
+});
+
 // copy lib files as is
 gulp.task('lib', function() {
     return gulp.src(paths.src + assets.lib + allSubFolders + files.all)
         .pipe(gulp.dest(paths.dist + assets.lib));
+});
+
+// copy lib files as is
+gulp.task('lib-watch', ['lib'], function() {
+    browsersync.reload();
 });
 
 // creates a less file for theme roller
@@ -290,9 +300,13 @@ gulp.task('watch', function() {
         gulp.watch(allSubFolders + files.less, { cwd: paths.src + assets.less }, ['themeroller']);
     }
 
-    // img and lib
-    gulp.watch(allSubFolders + files.all, { cwd: paths.src + assets.img }, ['img']);
-    gulp.watch(allSubFolders + files.all, { cwd: paths.src + assets.lib }, ['lib']);
+    // img
+    var imgWatch = (config.browsersync.enabled ? ['img-watch'] : ['img']);
+    gulp.watch(allSubFolders + files.all, { cwd: paths.src + assets.img }, imgWatch);
+
+    // lib
+    var libWatch = (config.browsersync.enabled ? ['lib-watch'] : ['lib']);
+    gulp.watch(allSubFolders + files.all, { cwd: paths.src + assets.lib }, libWatch);
 });
 
 // Default task: builds your app
