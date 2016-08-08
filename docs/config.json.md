@@ -92,9 +92,17 @@ Name | Type | Default | Description
 Name | Type | Default | Description
 -- | -- | -- | --
 `header.enabled` | boolean | `false` | Turns on and off the automatic header comment block feature.
-`header.packageJsonPath` | string | | Represents the path to your project's `package.json` file. Only applies if `header.enabled` is `true`.
+`header.packageJsonPath` | string | | Points to your project's `package.json` file. Only applies if `header.enabled` is `true`.
 
-> Will output a standardized comment block at the start of `js` and `css` files.  
+> config.json example:
+```json
+"header": {
+    "enabled": true,
+    "packageJsonPath": "../project/package.json"
+}
+```
+
+> Doing so will output a standardized comment block at the start of `js` and `css` files.  
 > Example:
 ```js
 /*!

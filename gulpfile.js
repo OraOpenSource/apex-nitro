@@ -1,4 +1,5 @@
 // 1. LIBRARIES
+try {
 var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
     del = require('del'),
@@ -15,9 +16,12 @@ var gulp = require('gulp'),
     validate = require('jsonschema').validate,
     schema = require('./lib/defaultSchema'),
     fs = require("fs"),
-    mkdirp = require('mkdirp');
-
-const chalk = require('chalk');
+    mkdirp = require('mkdirp'),
+    chalk = require('chalk');
+} catch (e) {
+    console.error('Your installation is missing dependencies. Please execute "npm install" again.');
+    process.exit();
+}
 
 // 2. PREREQUISITES AND ERROR HANDLING
 
@@ -68,15 +72,20 @@ if (config.sass.enabled && config.less.enabled) {
 
 // missing project header.packageJsonPath
 if (config.header.enabled) {
-    var pkg = require(config.header.packageJsonPath + "package.json");
-    var banner = ['/*!',
-      ' * <%= pkg.name %> - <%= pkg.description %>',
-      ' * @author v<%= pkg.author %>',
-      ' * @version v<%= pkg.version %>',
-      ' * @link <%= pkg.homepage %>',
-      ' * @license <%= pkg.license %>',
-      ' */',
-      ''].join('\n');
+    try {
+        var pkg = require(config.header.packageJsonPath);
+        var banner = ['/*!',
+          ' * <%= pkg.name %> - <%= pkg.description %>',
+          ' * @author v<%= pkg.author %>',
+          ' * @version v<%= pkg.version %>',
+          ' * @link <%= pkg.homepage %>',
+          ' * @license <%= pkg.license %>',
+          ' */',
+          ''].join('\n');
+    } catch (e) {
+        console.log(chalk.red.bold("Your 'config.header.packageJsonPath' is invalid. It should point to your package.json file."));
+        process.exit();
+    }
 }
 
 // 3. SETTINGS VARIABLES
