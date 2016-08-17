@@ -1,23 +1,30 @@
 // 1. LIBRARIES
 try {
-var gulp = require('gulp'),
-    plugins = require('gulp-load-plugins')(),
-    del = require('del'),
-    runSequence = require('run-sequence'),
-    browsersync = require('browser-sync').create(),
-    clip = require('gulp-clip-empty-files'),
-    path = require('path'),
-    argv = require('yargs').argv,
-    merge = require('merge-stream'),
-    extend = require('node.extend'),
-    util = require('./lib/util'),
-    scssToLess = require('./lib/scssToLess'),
-    rtlcss = require('./lib/rtlcss'),
-    validate = require('jsonschema').validate,
-    schema = require('./lib/defaultSchema'),
-    fs = require("fs"),
-    mkdirp = require('mkdirp'),
-    chalk = require('chalk');
+    // required hack to make updateNotifier work as intended in a gulpfile
+    delete process.env.npm_config_username;
+    delete process.env.npm_package_name;
+    delete process.env.npm_config_heading;
+
+    var gulp = require('gulp'),
+        plugins = require('gulp-load-plugins')(),
+        del = require('del'),
+        runSequence = require('run-sequence'),
+        browsersync = require('browser-sync').create(),
+        clip = require('gulp-clip-empty-files'),
+        path = require('path'),
+        argv = require('yargs').argv,
+        merge = require('merge-stream'),
+        extend = require('node.extend'),
+        util = require('./lib/util'),
+        scssToLess = require('./lib/scssToLess'),
+        rtlcss = require('./lib/rtlcss'),
+        validate = require('jsonschema').validate,
+        schema = require('./lib/defaultSchema'),
+        fs = require("fs"),
+        mkdirp = require('mkdirp');
+
+    const chalk = require('chalk');
+    const updateNotifier = require('update-notifier');
 } catch (e) {
     console.error('Your installation is missing dependencies. Please execute "npm install" again.');
     process.exit();
@@ -339,5 +346,6 @@ gulp.task('default', function() {
         console.log(chalk.cyan.bold("Now open up your favorite code editor and modify any file within:"));
         console.log(dirs);
         console.log(chalk.cyan.bold("All files belonging in the directories above are made available to use in APEX"));
+        util.isUpToDate();
     });
 });
