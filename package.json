@@ -46,7 +46,7 @@
         "gulp-rename": "1.2.x",
         "gulp-sass": "2.3.x",
         "gulp-size": "2.1.x",
-        "gulp-sourcemaps": "2.0.0-alpha",
+        "gulp-sourcemaps": "2.0.1",
         "gulp-uglify": "2.0.x",
         "gulp-util": "3.0.x",
         "jshint": "2.x",
