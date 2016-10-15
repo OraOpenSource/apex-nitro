@@ -59,11 +59,9 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 - [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
 - [Git](https://git-scm.com/downloads)
 
-*Having `Cross Origin Sharing Requests` issues? [See CORS documentation](/docs/cors.md).*
-
 ## Install
 - Open the command line
-- Go to your desired APEX Front-End Boost directory
+- Go to your desired installation directory
 - Execute
 ```bash
 git clone https://github.com/OraOpenSource/apex-frontend-boost.git
@@ -72,7 +70,6 @@ npm install
 ```
 
 *Having problems installing on Windows? [See documentation](/docs/windows.md).*  
-
 *Having problems installing on Linux? [See documentation](/docs/linux.md).*
 
 ## Update

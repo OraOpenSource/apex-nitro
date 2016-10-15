@@ -1,6 +1,9 @@
 # Changelog
 ## 2.1.3
-- Added a config option `config.browsersync.ghostMode` to enable/disable the mirroring of clicks, scrolls and typing across devices.
+- **APEX Front-End Boost is now usable on ORDS 3.0.3 and up.**
+- Adds an option `config.browsersync.ghostMode` to enable/disable the mirroring of clicks, scrolls and typing across devices.
+- Reloads the browser for any changes made inside `img` and `lib` folders.
+- Notifies you when APEX Front-End Boost has a new version
 
 ## 2.1.2
 - Removed `npm` as an install option for simplicity.

@@ -21,10 +21,9 @@ try {
         validate = require('jsonschema').validate,
         schema = require('./lib/defaultSchema'),
         fs = require("fs"),
-        mkdirp = require('mkdirp');
-
-    const chalk = require('chalk');
-    const updateNotifier = require('update-notifier');
+        mkdirp = require('mkdirp'),
+        chalk = require('chalk'),
+        updateNotifier = require('update-notifier');
 } catch (e) {
     console.error('Your installation is missing dependencies. Please execute "npm install" again.');
     process.exit();
@@ -83,14 +82,14 @@ if (config.header.enabled) {
         var pkg = require(config.header.packageJsonPath);
         var banner = ['/*!',
           ' * <%= pkg.name %> - <%= pkg.description %>',
-          ' * @author v<%= pkg.author %>',
+          ' * @author <%= pkg.author %>',
           ' * @version v<%= pkg.version %>',
           ' * @link <%= pkg.homepage %>',
           ' * @license <%= pkg.license %>',
           ' */',
           ''].join('\n');
     } catch (e) {
-        console.log(chalk.red.bold("Your 'config.header.packageJsonPath' is invalid. It should point to your package.json file."));
+        console.log(chalk.red.bold("Your 'config.header.packageJsonPath' is invalid. It should point to your project package.json file."));
         process.exit();
     }
 }
@@ -141,6 +140,9 @@ var paths = {
     apexMiddleware = function (req, res, next) {
         res.setHeader('Set-Cookie', ['oos-apex-frontend-boost-app-images=//' + req.headers.host + '/']);
         next();
+    },
+    apexProxyReq = function(req, res, next) {
+        req.setHeader('Origin', req.agent.protocol + '//' + req._headers.host);
     };
 
 // build directory structure
@@ -286,7 +288,8 @@ gulp.task('browsersync', function() {
         notify: config.browsersync.notify,
         proxy: {
             target: config.appURL,
-            middleware: apexMiddleware
+            middleware: apexMiddleware,
+            proxyReq: [apexProxyReq]
         },
         serveStatic: [config.distFolder],
         ui: {

@@ -3,10 +3,10 @@
 APEX Front-End Boost requires some slight modifications to your APEX application. These changes are required in order to have your APEX application communicate with APEX Front-End Boost.
 
 There are two options to setup your application:
-- **Option 1) Standard**
+- **[Option 1) Standard](#option-1-standard)**
     - 1 Build Option
     - 1 Application Process
-- **Option 2) Custom Application Item**
+- **[Option 2) Custom Application Item](#option-2-custom-application-item)**
     - 1 Build Option
     - 1 Application Item
     - 2 Application Processes
