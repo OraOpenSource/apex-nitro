@@ -22,7 +22,7 @@
 ## What APEX Front-End Boost is
 APEX Front-End Boost is a personal local web server that hosts and distributes your files to your APEX application.
 
-APEX Front-End Boost makes coding faster, easier, and prettier. This productivity tool helps you work with static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
+APEX Front-End Boost makes coding faster and easier. This productivity tool helps you work with static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
 ![demo](/docs/demo-main.gif)
 
@@ -46,9 +46,9 @@ APEX Front-End Boost makes coding faster, easier, and prettier. This productivit
 - Be notified of `js` and `css` errors as you save.
 
 #### Other benefits
-It makes responsive development easier by synchronizing multiple devices together. Your desktop, tablet and mobile device will imitate each others actions (scrolling, clicking, typing) as long as you've got APEX Front-End Boost running.
-
-It eliminates the need for refreshing the browser. As soon as you save your code in the text editor, you get automatic code injection / reloading in the browser.
+- Makes responsive development easier by synchronizing multiple devices together.
+- All devices (desktop, tablet, mobile, etc.) will imitate each others actions (scrolling, clicking, typing).
+- Eliminates the need for refreshing the browser. As soon as you save your code in the text editor, you get automatic code injection / reloading in the browser.
 
 ## Project Sponsors
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
