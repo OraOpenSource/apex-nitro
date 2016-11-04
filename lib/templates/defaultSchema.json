@@ -103,14 +103,6 @@
                 "packageJsonPath"
             ]
         },
-        "rtl": {
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                }
-            }
-        },
         "imageOptimization": {
             "type": "object",
             "properties": {

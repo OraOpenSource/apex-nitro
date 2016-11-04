@@ -1,4 +1,15 @@
 # Changelog
+## 2.2.0
+- Added `npm` back
+- New installation method
+- New web interface to configure projects
+- New CLI interface with custom commands
+    - `afeb config <project>`
+    - `afeb launch <project>`
+    - `afeb help <command>`
+    - `afeb -v`
+- Dropped RTLCSS
+
 ## 2.1.3
 - **APEX Front-End Boost is now usable on ORDS 3.0.3 and up.**
 - Adds an option `config.browsersync.ghostMode` to enable/disable the mirroring of clicks, scrolls and typing across devices.

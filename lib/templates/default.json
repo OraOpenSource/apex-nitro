@@ -1,7 +1,7 @@
 {
     "appURL": "",
-    "srcFolder": "src",
-    "distFolder": "dist",
+    "srcFolder": "",
+    "distFolder": "",
     "jsConcat": {
         "enabled": false,
         "finalName": "app"
@@ -34,9 +34,6 @@
     "header": {
         "enabled": false,
         "packageJsonPath": ""
-    },
-    "rtl": {
-        "enabled": false
     },
     "imageOptimization": {
        "enabled": false

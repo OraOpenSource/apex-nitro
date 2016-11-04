@@ -27,7 +27,7 @@ nav {
     }
 }
 ```
-Gets parsed to:
+Compiles into:
 ```css
 body {
     color: #333;
@@ -52,7 +52,7 @@ You write:
 ```css
 a { display: flex }
 ```
-Gets parsed to:
+Compiles into:
 ```css
 a {
     display: -webkit-box;
@@ -69,7 +69,7 @@ function myFunction() {
     console.log("Hello World!");
 }
 ```
-Gets parsed to:
+Compiles into:
 ```javascript
 function myFunction(){console.log("Hello World!")}
 ```
