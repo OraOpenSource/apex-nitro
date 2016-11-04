@@ -10,8 +10,8 @@
 - [Project Sponsors](#project-sponsors)
 - [System Requirements](#system-requirements)
 - [Install](#install)
-- [Configuration](#configuration)
 - [APEX Setup](#apex-setup)
+- [Project Configuration](#configuration)
 - [Run](#run)
 - [Usage](#usage)
 - [Features](#features)
@@ -52,7 +52,7 @@ APEX Front-End Boost makes coding faster and easier. This productivity tool help
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
 ## System Requirements
-- [Node.js](https://nodejs.org) 6 (or more)
+- [Node.js](https://nodejs.org)
 
 ## Install
 ```
@@ -62,24 +62,14 @@ npm install -g apex-frontend-boost
 *Having problems installing on Windows? [See documentation](/docs/windows.md).*  
 *Having problems installing on Linux? [See documentation](/docs/linux.md).*
 
-## Configuration
-You need to configure APEX Front-End Boost for your project(s). [See documentation](/docs/config.md).
-todo
+## APEX Setup
+[See documentation](/docs/apex-setup.md) to choose the most appropriate option for your project.
+
+## Project Configuration
 ```
 afeb config <project>
 ```
-
-## APEX Setup
-There are two options to setup your application:
-- **Option 1) Standard**
-    - 1 Build Option
-    - 1 Application Process
-- **Option 2) Custom Application Item**
-    - 1 Build Option
-    - 1 Application Item
-    - 2 Application Processes
-
-Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate option for your project.
+[See documentation](/docs/config.md) to configure APEX Front-End Boost for your project.
 
 ## Run
 ```
@@ -112,9 +102,9 @@ APEX Front-End Boost will automatically compile your files and push it to your a
 - [Sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
 - [Header](https://github.com/tracker1/gulp-header)
 - [imagemin](https://github.com/sindresorhus/gulp-imagemin)
-- More...
+- More
 
-[See features examples](/docs/examples.md).
+[See examples](/docs/examples.md).
 
 ## Changelog
 [See changelog](changelog.md).

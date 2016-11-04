@@ -52,7 +52,16 @@ var notifier = update({
     packageVersion: pkg.version
 });
 
-notifier.notify();
+if (notifier.update) {
+    notifier.notify({
+        defer: false,
+        message: chalk.bold('APEX Front-End Boost') + ' update available ' +
+            chalk.dim(notifier.update.current) +
+            chalk.reset(' → ') +
+            chalk.green(notifier.update.latest) +
+            ' \nRun:\n' + chalk.cyan.bold('npm install -g apex-frontend-boost')
+    });
+}
 
 // No other arguments given
 if (typeof cmd.args[0] === 'undefined') {

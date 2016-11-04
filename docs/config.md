@@ -1,11 +1,8 @@
 # Configuration
 
-todo
 ```
 afeb config <project>
 ```
-
-*Both srcFolder and distFolder can be written as a relative path as well.*  
 
 ## Options
 
