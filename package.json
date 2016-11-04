@@ -45,7 +45,7 @@
     "gulp-if": "2.0.x",
     "gulp-imagemin": "3.1.x",
     "gulp-jshint": "2.0.x",
-    "gulp-less": "3.1.x",
+    "gulp-less": "3.2.x",
     "gulp-load-plugins": "1.4.x",
     "gulp-plumber": "1.1.x",
     "gulp-rename": "1.2.x",
