@@ -60,16 +60,10 @@
                 "enabled": {
                     "type": "boolean"
                 },
-                "port": {
-                    "type": "integer"
-                },
-                "uiPort": {
-                    "type": "integer"
-                },
-                "weinrePort": {
-                    "type": "integer"
-                },
                 "notify": {
+                    "type": "boolean"
+                },
+                "ghostMode": {
                     "type": "boolean"
                 }
             }
