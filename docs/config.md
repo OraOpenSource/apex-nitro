@@ -49,7 +49,7 @@ Name | Type | Default | Description
 -- | -- | -- | --
 `Enabled` | boolean | `false` | Turns on and off the Browsersync feature.
 `Notify` | boolean | `true` | This option makes Browsersync alert you when a file is dynamically injected to you browser.
-`Ghost Mode` | boolean | `true` | This option makes clicking, scrolling and typing being replicated on all devices.
+`Ghost Mode` | boolean | `false` | This option makes clicking, scrolling and typing being replicated on all devices.
 
 ### Header
 

@@ -21,7 +21,7 @@
     "browsersync": {
         "enabled": true,
         "notify": true,
-        "ghostMode": true
+        "ghostMode": false
     },
     "themeroller":{
         "enabled": false,
