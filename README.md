@@ -4,18 +4,16 @@
 [![Dependency Status](https://david-dm.org/OraOpenSource/apex-frontend-boost.svg)](https://david-dm.org/OraOpenSource/apex-frontend-boost)
 
 - [What APEX Front-End Boost is](#what-apex-front-end-boost-is)
-	- [What APEX Front-End Boost does](#what-apex-front-end-boost-does)
-	- [How APEX Front-End Boost helps you](#how-apex-front-end-boost-helps-you)
+	- [What it does](#what-apex-front-end-boost-does)
+	- [How it helps you](#how-apex-front-end-boost-helps-you)
 	- [Other benefits](#other-benefits)
 - [Project Sponsors](#project-sponsors)
 - [System Requirements](#system-requirements)
 - [Install](#install)
-- [Upgrade](#upgrade)
-- [Configuration](#configuration)
 - [APEX Setup](#apex-setup)
+- [Project Configuration](#configuration)
 - [Run](#run)
 - [Usage](#usage)
-- [Features](#features)
 - [Changelog](#changelog)
 - [Project Team](#project-team)
 
@@ -26,18 +24,17 @@ APEX Front-End Boost makes coding faster and easier. This productivity tool help
 
 ![demo](/docs/demo-main.gif)
 
-#### What APEX Front-End Boost does
+#### What it does
 - Minifies `js` and `css`.
 - Generates  `js` and `css` sourcemaps.
 - Adds `css` vendor prefixes.
 - Concatenates `js` and `css`. *(optional)*
 - Parses `scss` and `less` to `css`. *(optional)*
 - Generates APEX Theme Roller configuration. *(optional)*
-- Transforms `css` to RTL format. *(optional)*
 - Adds a standardized header comment block to `js` and `css` files. *(optional)*
 - Minifies images seamlessly *(optional)*
 
-#### How APEX Front-End Boost helps you
+#### How it helps you
 - Cut down on front-end development time.
 - Enhance your application performance due to smaller file sizes.
 - Keep coding in your favorite code editor, without having to constantly upload anything to APEX or a web server.
@@ -54,64 +51,29 @@ APEX Front-End Boost makes coding faster and easier. This productivity tool help
 Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
 ## System Requirements
-- [Node.js](https://nodejs.org) 4.4 (or more)
-- [Oracle APEX](https://apex.oracle.com) 5 (or more) for [Application Setup Option 1](/docs/apex-setup.md)
-- [Oracle APEX](https://apex.oracle.com) 4-5 (or more) for [Application Setup Option 2](/docs/apex-setup.md)
-- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org)
 
 ## Install
-- Open the command line
-- Go to your desired installation directory
-- Execute
-```bash
-git clone https://github.com/OraOpenSource/apex-frontend-boost.git
-cd apex-frontend-boost		
-npm install
+```
+npm install -g apex-frontend-boost
 ```
 
 *Having problems installing on Windows? [See documentation](/docs/windows.md).*  
 *Having problems installing on Linux? [See documentation](/docs/linux.md).*
 
-## Update
-- Open the command line
-- Go to your APEX Front-End Boost directory
-- Execute
-```bash
-git fetch origin
-git reset --hard origin/master
-npm install
-```
-
-## Configuration
-You need to configure APEX Front-End Boost for your project(s). [See documentation](/docs/config.json.md).
-
 ## APEX Setup
-There are two options to setup your application:
-- **Option 1) Standard**
-    - 1 Build Option
-    - 1 Application Process
-- **Option 2) Custom Application Item**
-    - 1 Build Option
-    - 1 Application Item
-    - 2 Application Processes
+[See documentation](/docs/apex-setup.md) to choose the most appropriate option for your project.
 
-Review the [APEX Setup](/docs/apex-setup.md) docs to choose the most appropriate option for your project.
+## Project Configuration
+```
+afeb config <project>
+```
+[See documentation](/docs/config.md) to configure APEX Front-End Boost for your project.
 
 ## Run
-**On the command line:**  
-```bash
-npm start -- --project=yourProjectName
 ```
-
-**or use Windows shortcut:**
-- Launch `apex-frontend-boost.bat`
-- Enter project name
-
-**or use Linux/OS X shortcut:**
-- Execute `./apex-frontend-boost.sh`
-- Enter project name
-
-*Note: If you encounter errors while executing the steps above, you may need to use an elevated command line (run as administrator).*
+afeb launch <project>
+```
 
 ## Usage
 From the `src` folder you can create, edit or delete any files in:
@@ -125,31 +87,11 @@ From the `src` folder you can create, edit or delete any files in:
     |-lib
 ```
 
-APEX Front-End Boost will automatically compile your files to this folder structure:
-```
-|-/dist/
-    |-css
-    |-img
-    |-js
-    |-lib
-```
+APEX Front-End Boost will automatically compile your files and push it to your application.
 
-*Having problems regarding Self-Signed SSL Browser Warning? [See documentation](/docs/ssl-warning.md).*
+*Seeing self-signed SSL browser warnings? [See documentation](/docs/ssl-warning.md).*
 
-## Features
-- [Browsersync](http://www.browsersync.io/)
-- [Sass](http://sass-lang.com/)
-- [Less](http://lesscss.org/)
-- [Autoprefixer](https://github.com/postcss/autoprefixer)
-- [JSHint](http://jshint.com/)
-- [UglifyJS](https://github.com/terinjokes/gulp-uglify)
-- [Sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
-- [Header](https://github.com/tracker1/gulp-header)
-- [RTLCSS](https://github.com/MohammadYounes/rtlcss)
-- [imagemin](https://github.com/sindresorhus/gulp-imagemin)
-- More...
-
-[See features examples](/docs/examples.md).
+[See examples](/docs/examples.md).
 
 ## Changelog
 [See changelog](changelog.md).

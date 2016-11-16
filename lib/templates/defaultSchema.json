@@ -57,19 +57,10 @@
         "browsersync": {
             "type": "object",
             "properties": {
-                "enabled": {
+                "notify": {
                     "type": "boolean"
                 },
-                "port": {
-                    "type": "integer"
-                },
-                "uiPort": {
-                    "type": "integer"
-                },
-                "weinrePort": {
-                    "type": "integer"
-                },
-                "notify": {
+                "ghostMode": {
                     "type": "boolean"
                 }
             }
@@ -102,14 +93,6 @@
             "required": [
                 "packageJsonPath"
             ]
-        },
-        "rtl": {
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                }
-            }
         },
         "imageOptimization": {
             "type": "object",
