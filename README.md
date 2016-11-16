@@ -14,7 +14,6 @@
 - [Project Configuration](#configuration)
 - [Run](#run)
 - [Usage](#usage)
-- [Features](#features)
 - [Changelog](#changelog)
 - [Project Team](#project-team)
 
@@ -91,18 +90,6 @@ From the `src` folder you can create, edit or delete any files in:
 APEX Front-End Boost will automatically compile your files and push it to your application.
 
 *Seeing self-signed SSL browser warnings? [See documentation](/docs/ssl-warning.md).*
-
-## Features
-- [Browsersync](http://www.browsersync.io/)
-- [Sass](http://sass-lang.com/)
-- [Less](http://lesscss.org/)
-- [Autoprefixer](https://github.com/postcss/autoprefixer)
-- [JSHint](http://jshint.com/)
-- [UglifyJS](https://github.com/terinjokes/gulp-uglify)
-- [Sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
-- [Header](https://github.com/tracker1/gulp-header)
-- [imagemin](https://github.com/sindresorhus/gulp-imagemin)
-- More
 
 [See examples](/docs/examples.md).
 

@@ -19,7 +19,6 @@
         "includePath": ""
     },
     "browsersync": {
-        "enabled": true,
         "notify": true,
         "ghostMode": false
     },
