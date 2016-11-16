@@ -6,7 +6,7 @@ var nopt = require('nopt'),
     afeb = require('../lib');
 
 try {
-    var browsersync = require('browser-sync').create(),
+    var browsersync = require('browser-sync'),
         chalk = require('chalk'),
         del = require('del'),
         gulp = require('gulp'),
@@ -15,10 +15,7 @@ try {
         merge = require('merge-stream'),
         mkdirp = require('mkdirp'),
         extend = require('node.extend'),
-        runSequence = require('run-sequence'),
-        scssToLess = require('../lib/util/scssToLess'),
-        util = require('../lib/util/util'),
-        validations = require('../lib/util/validations');
+        runSequence = require('run-sequence');
 } catch (e) {
     console.error('Your installation is not complete. Please execute: npm install -g apex-frontend-boost');
     process.exit();
