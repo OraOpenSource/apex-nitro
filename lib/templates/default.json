@@ -1,14 +1,14 @@
 {
     "appURL": "",
-    "srcFolder": "src",
-    "distFolder": "dist",
+    "srcFolder": "",
+    "distFolder": "",
     "jsConcat": {
         "enabled": false,
-        "finalName": "app"
+        "finalName": ""
     },
     "cssConcat": {
         "enabled": false,
-        "finalName": "app"
+        "finalName": ""
     },
     "sass": {
         "enabled": false,
@@ -19,24 +19,17 @@
         "includePath": ""
     },
     "browsersync": {
-        "enabled": true,
-        "port": 3000,
-        "uiPort": 3001,
-        "weinrePort": 8080,
         "notify": true,
-        "ghostMode": true
+        "ghostMode": false
     },
     "themeroller":{
         "enabled": false,
-        "finalName": "themeroller",
+        "finalName": "",
         "files" : []
     },
     "header": {
         "enabled": false,
         "packageJsonPath": ""
-    },
-    "rtl": {
-        "enabled": false
     },
     "imageOptimization": {
        "enabled": false
