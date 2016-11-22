@@ -64,7 +64,7 @@
     "node.extend": "1.1.x",
     "nopt": "^3.0.6",
     "opn": "^4.0.2",
-    "portscanner": "^1.0.0",
+    "portscanner": "^2.1.0",
     "run-sequence": "1.2.x",
     "through2": "2.0.x",
     "update-notifier": "1.0.x"
