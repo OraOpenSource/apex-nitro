@@ -1,6 +1,6 @@
 {
   "name": "apex-frontend-boost",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "author": "OraOpenSource",
   "description": "Boost your JavaScript and CSS productivity in Oracle APEX",
   "license": "MIT",
@@ -21,9 +21,6 @@
   },
   "bugs": {
     "url": "https://github.com/OraOpenSource/apex-frontend-boost/issues"
-  },
-  "scripts": {
-    "postinstall": "node lib/util/generateConfig.js"
   },
   "main": "lib/index.js",
   "bin": {

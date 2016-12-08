@@ -1,4 +1,13 @@
 # Changelog
+## 2.2.3
+- Bug fixes
+
+## 2.2.2
+- Bug fixes
+
+## 2.2.1
+- Bug fixes
+
 ## 2.2.0
 - Added `npm` back
 - New installation method

@@ -5,22 +5,6 @@ var nopt = require('nopt'),
     pkg = require('../package.json'),
     afeb = require('../lib');
 
-try {
-    var browsersync = require('browser-sync'),
-        chalk = require('chalk'),
-        del = require('del'),
-        gulp = require('gulp'),
-        clip = require('gulp-clip-empty-files'),
-        plugins = require('gulp-load-plugins')(),
-        merge = require('merge-stream'),
-        mkdirp = require('mkdirp'),
-        extend = require('node.extend'),
-        runSequence = require('run-sequence');
-} catch (e) {
-    console.error('Your installation is not complete. Please execute: npm install -g apex-frontend-boost');
-    process.exit();
-}
-
 // Options that can be passed to commands
 var options = {
     "config": String,
