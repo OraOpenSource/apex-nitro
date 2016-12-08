@@ -30,8 +30,5 @@
     "header": {
         "enabled": false,
         "packageJsonPath": ""
-    },
-    "imageOptimization": {
-       "enabled": false
     }
 }

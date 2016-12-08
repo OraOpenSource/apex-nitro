@@ -32,7 +32,6 @@ APEX Front-End Boost makes coding faster and easier. This productivity tool help
 - Parses `scss` and `less` to `css`. *(optional)*
 - Generates APEX Theme Roller configuration. *(optional)*
 - Adds a standardized header comment block to `js` and `css` files. *(optional)*
-- Minifies images seamlessly *(optional)*
 
 #### How it helps you
 - Cut down on front-end development time.
@@ -76,7 +75,7 @@ afeb launch <project>
 ```
 
 ## Usage
-From the `src` folder you can create, edit or delete any files in:
+Create, edit or delete any file within the `src` folder:
 ```
 |-/src/
 	|-scss
@@ -87,7 +86,7 @@ From the `src` folder you can create, edit or delete any files in:
     |-lib
 ```
 
-APEX Front-End Boost will automatically compile your files and push it to your application.
+APEX Front-End Boost will compile your files and push it to your APEX application.
 
 *Seeing self-signed SSL browser warnings? [See documentation](/docs/ssl-warning.md).*
 

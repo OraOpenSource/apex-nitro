@@ -1,4 +1,7 @@
 # Changelog
+## 2.2.4
+- Dropped image optimization feature. [See why.](https://github.com/OraOpenSource/apex-frontend-boost/issues/164)
+
 ## 2.2.3
 - Bug fixes
 

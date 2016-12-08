@@ -63,9 +63,3 @@ Name | Type | Default | Description
 `Enabled` | boolean | `false` | Enables the Theme Roller feature. This will generate a `less` file that you can import into your application theme style. It will add editable variables to theme roller.
 `Final Name` | string | `themeroller` | Represents the name of the final Less file, after concatenating the files array.
 `Files` | array | | Include the order of `scss` or `less` files to be parsed by Theme Roller.
-
-### Image Optimization
-
-Name | Type | Default | Description
--- | -- | -- | --
-`Enabled` | boolean | `false` | Enables automatic image lossless optimizers.

@@ -93,14 +93,6 @@
             "required": [
                 "packageJsonPath"
             ]
-        },
-        "imageOptimization": {
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                }
-            }
         }
     },
     "required": [
