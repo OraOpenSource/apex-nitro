@@ -18,9 +18,9 @@
 - [Project Team](#project-team)
 
 ## What APEX Front-End Boost is
-APEX Front-End Boost is a personal local web server that hosts and distributes your files to your APEX application.
+APEX Front-End Boost is a local web server that hosts and distributes your static files to your APEX application.
 
-APEX Front-End Boost makes coding faster and easier. This productivity tool helps you work with static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
+APEX Front-End Boost makes coding faster and easier. It helps you manage static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
 ![demo](/docs/demo-main.gif)
 
