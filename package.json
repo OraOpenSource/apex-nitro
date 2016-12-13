@@ -55,7 +55,6 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "merge-stream": "1.0.x",
-    "mkdirp": "0.5.x",
     "node.extend": "1.1.x",
     "nopt": "^3.0.6",
     "opn": "^4.0.2",

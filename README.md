@@ -57,8 +57,9 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 npm install -g apex-frontend-boost
 ```
 
-*Having problems installing on Windows? [See documentation](/docs/windows.md).*  
-*Having problems installing on Linux? [See documentation](/docs/linux.md).*
+[*Having problems on Windows?*](/docs/windows.md)  
+[*Having problems on Mac OS?*](/docs/macOS.md)  
+[*Having problems on Linux?*](/docs/linux.md)
 
 ## APEX Setup
 [See documentation](/docs/apex-setup.md) to choose the most appropriate option for your project.
@@ -88,12 +89,12 @@ Create, edit or delete any file within the `src` folder:
 
 APEX Front-End Boost will compile your files and push it to your APEX application.
 
-*Seeing self-signed SSL browser warnings? [See documentation](/docs/ssl-warning.md).*
+[*Seeing self-signed SSL browser warnings?*](/docs/ssl-warning.md)
 
-[See examples](/docs/examples.md).
+[See examples.](/docs/examples.md)
 
 ## Changelog
-[See changelog](changelog.md).
+[See changelog.](changelog.md)
 
 ## Project Team
 - [Vincent Morneau](https://github.com/vincentmorneau)
