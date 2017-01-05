@@ -30,5 +30,12 @@
     "header": {
         "enabled": false,
         "packageJsonPath": ""
+    },
+    "apex": {
+        "openBuilder": true
+    },
+    "sqlcl": {
+        "path": "sql",
+        "connectString": "user/pass@server:port/sid"
     }
 }

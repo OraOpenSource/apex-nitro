@@ -93,6 +93,14 @@ APEX Front-End Boost will compile your files and push it to your APEX applicatio
 
 [See examples.](/docs/examples.md)
 
+## Publish to APEX
+Once you are done developing, you may want to publish the code to *APEX Shared Components - Application Static Files*.
+
+```
+afeb publish <project>
+```
+[See documentation](/docs/publish.md) to get SQLcl running on your environment.
+
 ## Changelog
 [See changelog.](changelog.md)
 
