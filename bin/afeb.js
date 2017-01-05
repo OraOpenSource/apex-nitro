@@ -8,14 +8,16 @@ var nopt = require('nopt'),
 // Options that can be passed to commands
 var options = {
     "config": String,
-    "launch": String
+    "launch": String,
+    "publish": String
 }
 
 // Shorthands for the above commands
 var shorthands = {
     "v": "--version",
     "c": "config",
-    "l": "launch"
+    "l": "launch",
+    "p": "publish"
 }
 
 var parsed = nopt(options, shorthands);
