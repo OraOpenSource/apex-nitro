@@ -1,4 +1,11 @@
 # Changelog
+## 2.3.0
+- **Auto Upload to APEX** (`afeb publish <project>`)
+- Adds an option to launch the APEX Builder alongside the application when doing `afeb launch <project>`
+- Removed restriction on folder names. Folders can be anything now.
+- Performance enhancements
+- Bug fixes
+
 ## 2.2.4
 - Dropped image optimization feature. [See why.](https://github.com/OraOpenSource/apex-frontend-boost/issues/164)
 
