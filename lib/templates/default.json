@@ -36,6 +36,6 @@
     },
     "sqlcl": {
         "path": "sql",
-        "connectString": "user/pass@server:port/sid"
+        "connectString": ""
     }
 }
