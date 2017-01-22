@@ -36,6 +36,7 @@
     },
     "sqlcl": {
         "path": "sql",
-        "connectString": ""
+        "connectString": "",
+        "apexVersion": ""
     }
 }
