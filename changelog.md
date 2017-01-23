@@ -1,5 +1,5 @@
 # Changelog
-## 2.3.0
+## 3.0.0
 - **Auto Upload to APEX** (`afeb publish <project>`)
 - Adds an option to launch the APEX Builder alongside the application when doing `afeb launch <project>`
 - Removed restriction on folder names. Folders can be anything now.

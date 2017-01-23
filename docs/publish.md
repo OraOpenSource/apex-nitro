@@ -12,7 +12,7 @@ You can setup SQLcl by doing `afeb config <project>`.
 Under "Advanced", two parameters will be required:
 
 Name | Type | Default | Description
--- | -- | -- | --
+--- | --- | --- | ---
 `Path` | string | `sql` | Enter the path to SQLcl. If it's been added to PATH (environment variable), it is `sql`. Otherwise enter a full path. Example: `C:\sqlcl\sql`
 `Database Connect String` | string | `user/pass@server:port/sid` | Enter your database schema information for SQLcl to log in. Format should follow `user/pass@server:port/sid`.
 
