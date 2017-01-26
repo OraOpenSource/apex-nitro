@@ -1,6 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
+# afeb binary file
+bin/afeb.js eol=lf
+
 # Custom for Visual Studio
 *.cs     diff=csharp
 

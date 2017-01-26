@@ -3,7 +3,7 @@
 var nopt = require('nopt'),
     update = require('update-notifier'),
     pkg = require('../package.json'),
-    afeb = require('../lib');
+    afeb = require('../lib'); 
 
 // Options that can be passed to commands
 var options = {
