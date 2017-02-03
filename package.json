@@ -42,7 +42,7 @@
     "gulp-if": "2.0.x",
     "gulp-jshint": "2.0.x",
     "gulp-less": "3.3.x",
-    "gulp-load-plugins": "1.4.x",
+    "gulp-load-plugins": "1.5.0",
     "gulp-plumber": "1.1.x",
     "gulp-rename": "1.2.x",
     "gulp-sass": "2.3.x",
