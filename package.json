@@ -61,6 +61,6 @@
     "portscanner": "^2.1.0",
     "run-sequence": "1.2.x",
     "through2": "2.0.x",
-    "update-notifier": "1.0.x"
+    "update-notifier": "2.0.0"
   }
 }
