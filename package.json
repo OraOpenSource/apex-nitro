@@ -27,11 +27,10 @@
     "afeb": "./bin/afeb.js"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "apex-publish-static-files": "1.0.x",
     "browser-sync": "^2.17.5",
     "chalk": "1.1.x",
     "del": "2.2.x",
-    "express": "4.14.x",
     "gulp": "3.9.x",
     "gulp-autoprefixer": "3.1.x",
     "gulp-clip-empty-files": "0.1.x",
@@ -42,7 +41,7 @@
     "gulp-if": "2.0.x",
     "gulp-jshint": "2.0.x",
     "gulp-less": "3.3.x",
-    "gulp-load-plugins": "1.4.x",
+    "gulp-load-plugins": "1.5.x",
     "gulp-plumber": "1.1.x",
     "gulp-rename": "1.2.x",
     "gulp-sass": "2.3.x",
@@ -52,15 +51,14 @@
     "gulp-util": "3.0.x",
     "jshint": "2.x",
     "jshint-stylish": "2.2.x",
+    "json-local-configurator": "1.0.x",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "merge-stream": "1.0.x",
-    "node.extend": "1.1.x",
     "nopt": "^4.0.1",
     "opn": "^4.0.2",
     "portscanner": "^2.1.0",
     "run-sequence": "1.2.x",
-    "through2": "2.0.x",
-    "update-notifier": "1.0.x"
+    "update-notifier": "2.1.x"
   }
 }

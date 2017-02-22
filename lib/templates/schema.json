@@ -1,0 +1,219 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "Root",
+    "description": "Configuration for an APEX Front-End Boost project",
+    "properties": {
+        "appURL": {
+            "type": "string",
+            "title": "Application URL",
+            "description": "This is the URL to your APEX application homepage.",
+            "placeholder": "Example: https://apex.oracle.com/pls/apex/f?p=12192"
+        },
+        "srcFolder": {
+            "type": "string",
+            "title": "Source Folder",
+            "description": "This is where you do the coding. It should point to a local directory.",
+            "placeholder": "Example: C:\\project\\src"
+        },
+        "distFolder": {
+            "type": "string",
+            "title": "Distributable Folder",
+            "description": "This is where the files will be compiled. It should point to a local directory.",
+            "placeholder": "Example: C:\\project\\dist"
+        },
+        "jsConcat": {
+            "type": "object",
+            "title": "JavaScript Concatenation",
+            "description": "Feature that concatenates all JavaScript files into one.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "description": "Enables the JavaScript concatenation feature."
+                },
+                "finalName": {
+                    "type": "string",
+                    "title": "Concatenated Name",
+                    "description": "This is the name of the concatenated file.",
+                    "placeholder": "Example: app"
+                }
+            },
+            "required": [
+                "enabled"
+            ],
+            "dependencies": {
+                "finalName": ["enabled"]
+            }
+        },
+        "cssConcat": {
+            "type": "object",
+            "title": "CSS Concatenation",
+            "description": "Feature that concatenates all CSS files into one.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "description": "Enables the CSS concatenation feature."
+                },
+                "finalName": {
+                    "type": "string",
+                    "title": "Concatenated Name",
+                    "description": "This is the name of the concatenated file.",
+                    "placeholder": "Example: app"
+                }
+            },
+            "required": [
+                "enabled"
+            ],
+            "dependencies": {
+                "finalName": ["enabled"]
+            }
+        },
+        "sass": {
+            "type": "object",
+            "title": "Sass",
+            "description": "Use Sass as the CSS Preprocessor in your project.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "description": "Enables the Sass parsing feature."
+                },
+                "includePath": {
+                    "type": "string",
+                    "title": "Include Path",
+                    "description": "Include a path to an external Sass folder. Allows to use the `@import` feature from within that folder.",
+                    "placeholder": "Example: C:\\AnotherProject\\Sass"
+                }
+            },
+            "required": [
+                "enabled"
+            ]
+        },
+        "less": {
+            "type": "object",
+            "title": "Less",
+            "description": "Use Less as the CSS Preprocessor in your project.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "description": "Enables the Less parsing feature."
+                },
+                "includePath": {
+                    "type": "string",
+                    "title": "Include Path",
+                    "description": "Include a path to an external Less folder. Allows to use the `@import` feature from within that folder.",
+                    "placeholder": "Example: C:\\AnotherProject\\Less"
+                }
+            },
+            "required": [
+                "enabled"
+            ]
+        },
+        "browsersync": {
+            "type": "object",
+            "title": "Browser",
+            "description": "Additionnal options on the browser behavior when using APEX Front-End Boost.",
+            "properties": {
+                "notify": {
+                    "type": "boolean",
+                    "title": "Notify",
+                    "description": "This option makes APEX Front-End Boost alert you when a file is dynamically injected to you browser."
+
+                },
+                "ghostMode": {
+                    "type": "boolean",
+                    "title": "Ghost Mode",
+                    "description": "This option makes clicking, scrolling and typing being replicated on all devices."
+                }
+            },
+            "required": [
+                "notify",
+                "ghostMode"
+            ]
+        },
+        "header": {
+            "type": "object",
+            "title": "Header",
+            "description": "This feature adds an automatic comment block at the top of your CSS and JavaScript files with your project information.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "description": "Enables the automatic header comment block feature."
+                },
+                "packageJsonPath": {
+                    "type": "string",
+                    "title": "package.json Path",
+                    "description": "Points to your project's `package.json` file.",
+                    "placeholder": "Example: C:\\project\\package.json"
+                }
+            },
+            "required": [
+                "enabled"
+            ],
+            "dependencies": {
+                "packageJsonPath": ["enabled"]
+            }
+        },
+        "apex": {
+            "type": "object",
+            "title": "APEX",
+            "description": "Determines if the APEX builder should open alongside the application itself.",
+            "properties": {
+                "openBuilder": {
+                    "type": "boolean",
+                    "title": "Open Builder",
+                    "description": "Opens the APEX builder."
+                }
+            },
+            "required": [
+                "openBuilder"
+            ]
+        },
+        "sqlcl": {
+            "type": "object",
+            "title": "SQLcl",
+            "description": "Required if you want to publish your files to APEX automatically.",
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "title": "Path",
+                    "description": "Enter the path to SQLcl. If it's been added to PATH (environment variable), it is `sql`. Otherwise enter a full path. Example: `C:\\sqlcl\\sql`",
+                    "placeholder": "Example: C:\\sqlcl\\sql"
+                },
+                "connectString": {
+                    "type": "string",
+                    "title": "Database Connect String",
+                    "description": "Enter your database schema information for SQLcl to log in. Format should follow `user/pass@server:port/sid`",
+                    "placeholder": "Example: user/pass@server:port/sid"
+                }
+            }
+        },
+        "themeroller": {
+            "type": "object",
+            "title": "Themeroller",
+            "description": "This feature will generate a `less` file that you can import into your application theme style. It will add editable variables to theme roller.",
+            "properties": {
+                "files": {
+                    "type": "array",
+                    "title": "Files.",
+                    "description": "Include the list of `scss` or `less` files to be parsed by Theme Roller.",
+                    "items": {
+                        "type": "string",
+                        "title": "File",
+                        "description": "File",
+                        "placeholder": "Example: C:\\project\\Sass\\app.scss"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "appURL",
+        "srcFolder",
+        "distFolder"
+    ]
+}

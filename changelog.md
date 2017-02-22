@@ -1,4 +1,7 @@
 # Changelog
+## 3.1.0
+- Separated npm modules (publish feature, config feature)
+
 ## 3.0.0
 - **Auto Upload to APEX** (`afeb publish <project>`)
 - Adds an option to launch the APEX Builder alongside the application when doing `afeb launch <project>`

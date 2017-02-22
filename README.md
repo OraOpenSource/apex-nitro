@@ -3,21 +3,6 @@
 [![Build Status](https://travis-ci.org/OraOpenSource/apex-frontend-boost.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-frontend-boost)
 [![Dependency Status](https://david-dm.org/OraOpenSource/apex-frontend-boost.svg)](https://david-dm.org/OraOpenSource/apex-frontend-boost)
 
-- [What APEX Front-End Boost is](#what-apex-front-end-boost-is)
-	- [What it does](#what-it-does)
-	- [How it helps you](#how-it-helps-you)
-	- [Other benefits](#other-benefits)
-- [Project Sponsors](#project-sponsors)
-- [System Requirements](#system-requirements)
-- [Install](#install)
-- [APEX Setup](#apex-setup)
-- [Project Configuration](#project-configuration)
-- [Run](#run)
-- [Usage](#usage)
-- [Publish to APEX](#publish-to-apex)
-- [Changelog](#changelog)
-- [Project Team](#project-team)
-
 ## What APEX Front-End Boost is
 APEX Front-End Boost is a local web server that hosts and distributes your static files to your APEX application.
 
