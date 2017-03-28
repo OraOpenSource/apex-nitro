@@ -61,7 +61,7 @@ package.json Path | string | | Points to your project's `package.json` file.
 Name | Type | Default | Description
 --- | --- | --- | ---
 Open Builder | boolean | `true` | Determines if the APEX builder should open alongside the application itself.
-filesDirectory | string | `application` | Determines where the files should be uploaded in APEX (choices: `application`, `workspace`, `theme`)
+apexDestination | string | `application` | Determines where the files should be uploaded in APEX (choices: `application`, `workspace`, `theme`)
 
 ### SQLcl
 

@@ -168,9 +168,9 @@
 					"title": "Open Builder",
 					"description": "Opens the APEX builder."
 				},
-				"filesDirectory": {
+				"apexDestination": {
 					"type": "string",
-					"title": "APEX Files Directory",
+					"title": "APEX Files Destination",
 					"description": "This is used for the 'publish' feature and will determine where the files should be uploaded.",
 					"enum": [
 						"application",
