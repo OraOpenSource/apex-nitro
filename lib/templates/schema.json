@@ -167,6 +167,16 @@
 					"type": "boolean",
 					"title": "Open Builder",
 					"description": "Opens the APEX builder."
+				},
+				"filesDirectory": {
+					"type": "string",
+					"title": "APEX Files Directory",
+					"description": "This is used for the 'publish' feature and will determine where the files should be uploaded.",
+					"enum": [
+						"application",
+						"workspace",
+						"theme"
+					]
 				}
 			},
 			"required": [

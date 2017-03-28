@@ -74,9 +74,9 @@ Create, edit or delete any file within the `src` folder:
 
 APEX Front-End Boost will compile your files and push it to your APEX application.
 
-[*Seeing self-signed SSL browser warnings?*](/docs/ssl-warning.md)
-
 [See examples.](/docs/examples.md)
+
+[*Seeing self-signed SSL browser warnings?*](/docs/ssl-warning.md)
 
 ## Publish to APEX
 Once you are done developing, you may want to publish the code to *APEX Shared Components - Application Static Files*.
@@ -89,6 +89,6 @@ afeb publish <project>
 ## Changelog
 [See changelog.](changelog.md)
 
-## Project Team
+## Team
 - [Vincent Morneau](https://github.com/vincentmorneau)
 - [Martin Giffy D'Souza](https://github.com/martindsouza)

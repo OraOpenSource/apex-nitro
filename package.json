@@ -55,8 +55,6 @@
     "jshint": "2.x",
     "jshint-stylish": "2.2.x",
     "json-local-configurator": "1.0.x",
-    "less": "^2.7.1",
-    "less-loader": "^3.0.0",
     "merge-stream": "1.0.x",
     "nopt": "^4.0.1",
     "opn": "^4.0.2",

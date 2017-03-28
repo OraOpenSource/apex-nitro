@@ -1,4 +1,14 @@
 # Changelog
+## 3.1.2
+- `afeb publish` can now upload to:
+	- Application Static Files
+	- Workspace Static Files
+	- Theme Files
+- fixes a Theme Roller issue (#190) 
+
+## 3.1.1
+- Refactoring
+
 ## 3.1.0
 - Separated npm modules (publish feature, config feature)
 
