@@ -68,5 +68,10 @@
   "devDependencies": {
     "ava": "^0.19.1",
     "xo": "^0.18.0"
+  },
+  "xo": {
+    "ignores": [
+      "examples/**/*.js"
+    ]
   }
 }
