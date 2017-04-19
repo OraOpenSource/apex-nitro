@@ -1,11 +1,9 @@
 # APEX Front-End Boost
 
-[![Build Status](https://travis-ci.org/OraOpenSource/apex-frontend-boost.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-frontend-boost) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-frontend-boost.svg)](https://david-dm.org/OraOpenSource/apex-frontend-boost) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+[![npm](https://img.shields.io/npm/v/apex-frontend-boost.svg)]() [![Build Status](https://travis-ci.org/OraOpenSource/apex-frontend-boost.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-frontend-boost) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-frontend-boost.svg)](https://david-dm.org/OraOpenSource/apex-frontend-boost) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-## What APEX Front-End Boost is
-APEX Front-End Boost is a local web server that hosts and distributes your static files to your APEX application.
-
-APEX Front-End Boost makes coding faster and easier. It helps you manage static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
+## What is it
+APEX Front-End Boost makes coding faster and easier. It hosts and distributes static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
 ![demo](/docs/demo.gif)
 
@@ -42,8 +40,8 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 npm install -g apex-frontend-boost
 ```
 
-[*Having problems on Windows?*](/docs/windows.md)  
-[*Having problems on Mac OS?*](/docs/macOS.md)  
+[*Having problems on Windows?*](/docs/windows.md)
+[*Having problems on Mac OS?*](/docs/macOS.md)
 [*Having problems on Linux?*](/docs/linux.md)
 
 ## APEX Setup

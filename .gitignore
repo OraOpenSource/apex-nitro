@@ -1,6 +1,9 @@
 # Folders
 node_modules
 
+# Examples
+examples/*/dist
+
 # Logs
 logs
 *.log

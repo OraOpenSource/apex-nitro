@@ -1,0 +1,16 @@
+{
+	"name": "webpack-demo",
+	"author": "Vincent Morneau",
+	"version": "1.0.0",
+	"description": "AFEB Webpack Demo",
+	"link": "http://vmorneau.me",
+	"license": "MIT",
+	"dependencies": {
+		"lodash": "^4.17.4"
+	},
+	"xo": {
+		"globals": [
+			"apex"
+		]
+	}
+}

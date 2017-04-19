@@ -1,5 +1,5 @@
 import test from 'ava';
-// Import afeb from '.';
+// Import _app from '.';
 
 test('launch', t => {
 	t.pass();

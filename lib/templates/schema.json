@@ -22,86 +22,152 @@
 			"description": "This is where the files will be compiled. It should point to a local directory.",
 			"placeholder": "Example: C:\\project\\dist"
 		},
-		"jsConcat": {
+		"js": {
 			"type": "object",
-			"title": "JavaScript Concatenation",
-			"description": "Feature that concatenates all JavaScript files into one.",
+			"title": "JavaScript",
+			"description": "TODO",
 			"properties": {
-				"enabled": {
-					"type": "boolean",
-					"title": "Enabled",
-					"description": "Enables the JavaScript concatenation feature."
-				},
-				"finalName": {
+				"processor": {
 					"type": "string",
-					"title": "Concatenated Name",
+					"title": "Processor",
+					"description": "TODO",
+					"enum": [
+						"default",
+						"webpack"
+					]
+				},
+				"concat": {
+					"type": "boolean",
+					"title": "Concatenate JavaScript Files",
+					"description": "Enable this to concatenate all your JavaScript files into one."
+				},
+				"concatFilename": {
+					"type": "string",
+					"title": "Concatenated JavaScript Filename",
+					"description": "This is the name of the concatenated file.",
+					"placeholder": "Example: app"
+				},
+				"entries": {
+					"type": "array",
+					"title": "Entries",
+					"description": "TODO",
+					"items": {
+						"type": "string",
+						"title": "Entry",
+						"description": "Entry",
+						"placeholder": "Example: C:\\project\\js\\app.js",
+						"required": true
+					}
+				},
+				"bundleFilename": {
+					"type": "string",
+					"title": "Bundled JavaScript Filename",
+					"description": "This is the name of the bundle file.",
+					"placeholder": "Example: bundle"
+				},
+				"library": {
+					"type": "boolean",
+					"title": "Expose as a library",
+					"description": "Expose your bundles to your app as a global library."
+				},
+				"libraryName": {
+					"type": "string",
+					"title": "Library Name",
 					"description": "This is the name of the concatenated file.",
 					"placeholder": "Example: app"
 				}
 			},
 			"required": [
-				"enabled"
+				"processor",
+				"concat",
+				"library"
 			],
-			"dependencies": {
-				"finalName": ["enabled"]
-			}
-		},
-		"cssConcat": {
-			"type": "object",
-			"title": "CSS Concatenation",
-			"description": "Feature that concatenates all CSS files into one.",
-			"properties": {
-				"enabled": {
-					"type": "boolean",
-					"title": "Enabled",
-					"description": "Enables the CSS concatenation feature."
+			"requiredIf": [{
+					"property": "concatFilename",
+					"dependsOn": "concat",
+					"value": true
 				},
-				"finalName": {
+				{
+					"property": "entries",
+					"dependsOn": "processor",
+					"value": "webpack"
+				},
+				{
+					"property": "bundleFilename",
+					"dependsOn": "processor",
+					"value": "webpack"
+				},
+				{
+					"property": "libraryName",
+					"dependsOn": "library",
+					"value": true
+				}
+			],
+			"showIf": [{
+					"property": "concat",
+					"dependsOn": "processor",
+					"value": "default"
+				},
+				{
+					"property": "concatFilename",
+					"dependsOn": "concat",
+					"value": true
+				},
+				{
+					"property": "entries",
+					"dependsOn": "processor",
+					"value": "webpack"
+				},
+				{
+					"property": "bundleFilename",
+					"dependsOn": "processor",
+					"value": "webpack"
+				},
+				{
+					"property": "library",
+					"dependsOn": "processor",
+					"value": "webpack"
+				},
+				{
+					"property": "libraryName",
+					"dependsOn": "library",
+					"value": true
+				}
+			]
+		},
+		"css": {
+			"type": "object",
+			"title": "CSS",
+			"description": "TODO",
+			"properties": {
+				"language": {
 					"type": "string",
-					"title": "Concatenated Name",
+					"title": "Language",
+					"description": "TODO",
+					"enum": [
+						"css",
+						"sass",
+						"less"
+					]
+				},
+				"concat": {
+					"type": "boolean",
+					"title": "Concatenate CSS Files",
+					"description": "Enable this to concatenate all your CSS files into one."
+				},
+				"concatFilename": {
+					"type": "string",
+					"title": "Concatenated CSS Filename",
 					"description": "This is the name of the concatenated file.",
 					"placeholder": "Example: app"
-				}
-			},
-			"required": [
-				"enabled"
-			],
-			"dependencies": {
-				"finalName": ["enabled"]
-			}
-		},
-		"sass": {
-			"type": "object",
-			"title": "Sass",
-			"description": "Use Sass as the CSS Preprocessor in your project.",
-			"properties": {
-				"enabled": {
-					"type": "boolean",
-					"title": "Enabled",
-					"description": "Enables the Sass parsing feature."
 				},
-				"includePath": {
+				"sassIncludePath": {
 					"type": "string",
 					"title": "Include Path",
 					"description": "Include a path to an external Sass folder. Allows to use the `@import` feature from within that folder.",
 					"placeholder": "Example: C:\\AnotherProject\\Sass"
-				}
-			},
-			"required": [
-				"enabled"
-			]
-		},
-		"less": {
-			"type": "object",
-			"title": "Less",
-			"description": "Use Less as the CSS Preprocessor in your project.",
-			"properties": {
-				"enabled": {
-					"type": "boolean",
-					"title": "Enabled",
-					"description": "Enables the Less parsing feature."
 				},
-				"includePath": {
+				"lessIncludePath": {
 					"type": "string",
 					"title": "Include Path",
 					"description": "Include a path to an external Less folder. Allows to use the `@import` feature from within that folder.",
@@ -109,7 +175,44 @@
 				}
 			},
 			"required": [
-				"enabled"
+				"language",
+				"concat"
+			],
+			"requiredIf": [{
+				"property": "concatFilename",
+				"dependsOn": "concat",
+				"value": true
+			}],
+			"showIf": [{
+					"property": "concat",
+					"dependsOn": "language",
+					"value": "css"
+				},
+				{
+					"property": "concatFilename",
+					"dependsOn": "concat",
+					"value": true
+				},
+				{
+					"property": "sass",
+					"dependsOn": "language",
+					"value": "sass"
+				},
+				{
+					"property": "sassIncludePath",
+					"dependsOn": "language",
+					"value": "sass"
+				},
+				{
+					"property": "less",
+					"dependsOn": "language",
+					"value": "less"
+				},
+				{
+					"property": "lessIncludePath",
+					"dependsOn": "language",
+					"value": "less"
+				}
 			]
 		},
 		"browsersync": {
@@ -153,10 +256,7 @@
 			},
 			"required": [
 				"enabled"
-			],
-			"dependencies": {
-				"packageJsonPath": ["enabled"]
-			}
+			]
 		},
 		"apex": {
 			"type": "object",
@@ -180,7 +280,8 @@
 				}
 			},
 			"required": [
-				"openBuilder"
+				"openBuilder",
+				"apexDestination"
 			]
 		},
 		"sqlcl": {
@@ -215,7 +316,8 @@
 						"type": "string",
 						"title": "File",
 						"description": "File",
-						"placeholder": "Example: C:\\project\\Sass\\app.scss"
+						"placeholder": "Example: C:\\project\\Sass\\app.scss",
+						"required": true
 					}
 				}
 			}

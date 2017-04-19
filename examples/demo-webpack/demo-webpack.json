@@ -1,0 +1,34 @@
+{
+	"appURL": "https://localhost:50443/ords/f?p=111",
+	"srcFolder": "CHANGE_ME\\demo-webpack\\src",
+	"distFolder": "CHANGE_ME\\demo-webpack\\dist",
+	"js": {
+		"processor": "webpack",
+		"concat": false,
+		"entries": ["CHANGE_ME\\demo-webpack\\src\\js\\app.js"],
+		"bundleFilename": "bundle",
+		"library": true,
+		"libraryName": "demo"
+	},
+	"css": {
+		"language": "css",
+		"concat": true,
+		"concatFilename": "app"
+	},
+	"browsersync": {
+		"notify": false,
+		"ghostMode": false
+	},
+	"header": {
+		"enabled": true,
+		"packageJsonPath": "CHANGE_ME\\demo-webpack\\package.json"
+	},
+	"apex": {
+		"openBuilder": false,
+		"apexDestination": "application"
+	},
+	"sqlcl": {
+		"path": "sql",
+		"connectString": "OOS_USER/oracle@localhost:50521/xe"
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"appURL": "https://localhost:50443/ords/f?p=113",
+	"srcFolder": "CHANGE_ME\\demo-promises\\src",
+	"distFolder": "CHANGE_ME\\demo-promises\\dist",
+	"js": {
+		"processor": "default",
+		"concat": false,
+		"library": false
+	},
+	"css": {
+		"language": "css",
+		"concat": false
+	},
+	"browsersync": {
+		"notify": true,
+		"ghostMode": false
+	},
+	"header": {
+		"enabled": false
+	},
+	"apex": {
+		"openBuilder": false,
+		"apexDestination": "application"
+	}
+}
