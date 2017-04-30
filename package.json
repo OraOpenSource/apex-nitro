@@ -57,7 +57,7 @@
     "json-local-configurator": "1.0.x",
     "merge-stream": "1.0.x",
     "nopt": "^4.0.1",
-    "opn": "^4.0.2",
+    "opn": "^5.0.0",
     "portscanner": "^2.1.0",
     "run-sequence": "1.2.x",
     "through2": "^2.0.3",
