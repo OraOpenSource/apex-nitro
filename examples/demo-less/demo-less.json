@@ -1,18 +1,17 @@
 {
-	"appURL": "https://localhost:50443/ords/f?p=113",
-	"srcFolder": "CHANGE_ME\\demo-promises\\src",
-	"distFolder": "CHANGE_ME\\demo-promises\\dist",
+	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
+	"srcFolder": "CHANGE_ME\\demo-sass\\src",
+	"distFolder": "CHANGE_ME\\demo-sass\\dist",
 	"js": {
 		"processor": "default",
-		"concat": false,
-		"library": false
+		"concat": false
 	},
 	"css": {
-		"language": "css",
+		"language": "less",
 		"concat": false
 	},
 	"browsersync": {
-		"notify": true,
+		"notify": false,
 		"ghostMode": false
 	},
 	"header": {

@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/apex-frontend-boost.svg)]() [![Build Status](https://travis-ci.org/OraOpenSource/apex-frontend-boost.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-frontend-boost) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-frontend-boost.svg)](https://david-dm.org/OraOpenSource/apex-frontend-boost) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 ## What is it
-APEX Front-End Boost makes coding faster and easier. It hosts and distributes static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
+APEX Front-End Boost makes coding faster and easier by hosting and distributing static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
 ![demo](/docs/demo.gif)
 
@@ -34,6 +34,7 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
 ## System Requirements
 - [Node.js](https://nodejs.org)
+* [SQLcl](http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html) *(optional, used for the publish feature)*
 
 ## Install
 ```
@@ -72,12 +73,12 @@ Create, edit or delete any file within the `src` folder:
 
 APEX Front-End Boost will compile your files and push it to your APEX application.
 
-[See examples.](/docs/examples.md)
+[See examples.](/examples/readme.md)
 
 [*Seeing self-signed SSL browser warnings?*](/docs/ssl-warning.md)
 
 ## Publish to APEX
-Once you are done developing, you may want to publish the code to *APEX Shared Components - Application Static Files*.
+Once you are done developing, you may want to publish your files to *APEX Shared Components - Application Static Files*.
 
 ```
 afeb publish <project>

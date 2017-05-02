@@ -25,12 +25,12 @@
 		"js": {
 			"type": "object",
 			"title": "JavaScript",
-			"description": "TODO",
+			"description": "Settings for serving JavaScript to your application.",
 			"properties": {
 				"processor": {
 					"type": "string",
 					"title": "Processor",
-					"description": "TODO",
+					"description": "Choose how your JavaScript will be processed. The webpack option allows to use ES6.",
 					"enum": [
 						"default",
 						"webpack"
@@ -50,7 +50,7 @@
 				"entries": {
 					"type": "array",
 					"title": "Entries",
-					"description": "TODO",
+					"description": "A webpack entry would be an ES6 file that will be processed and compiled into a bundle (ES5 compatible).",
 					"items": {
 						"type": "string",
 						"title": "Entry",
@@ -138,12 +138,12 @@
 		"css": {
 			"type": "object",
 			"title": "CSS",
-			"description": "TODO",
+			"description": "Settings for serving CSS to your application.",
 			"properties": {
 				"language": {
 					"type": "string",
 					"title": "Language",
-					"description": "TODO",
+					"description": "Your source files stylesheet language. APEX Front-End Boost will always generate CSS files out of these.",
 					"enum": [
 						"css",
 						"sass",

@@ -5,6 +5,7 @@ const util = require('./util');
 const level1 = require('./level1');
 
 module.exports = {
+	// invokes a synchronous ajax process that hangs for 5 seconds
 	ajaxSync: () => {
 		ajax.sync()
 			.then(data => {
@@ -12,6 +13,7 @@ module.exports = {
 			}, util.error);
 	},
 
+	// invokes an asynchronous ajax process that hangs for 5 seconds
 	ajaxAsync: () => {
 		ajax.async()
 			.then(data => {
@@ -19,8 +21,22 @@ module.exports = {
 			}, util.error);
 	},
 
+	// invokes two consecutive asynchronous ajax process that hangs for 5 seconds
+	ajaxTwice: () => {
+		ajax.async()
+			.then(data => {
+				console.log('ajaxTwice1 is resolved:', data);
+				return ajax.async();
+			}, util.error)
+			.then(data => {
+				console.log('ajaxTwice2 is resolved:', data);
+			}, util.error);
+	},
+
+	// exposes the level1 module
 	level1,
 
+	// exposes a function that uses Lodash from npm
 	lodash: () => {
 		const object = {
 			a: [{

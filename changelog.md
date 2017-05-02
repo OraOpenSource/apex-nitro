@@ -1,4 +1,9 @@
 # Changelog
+### 3.2.0
+- Added `webpack` option, which allows to use ES6 as part of your JavaScript development.
+- Added 6 examples (demos)
+- Added a test suite, ensuring the 6 examples works before publishing AFEB
+
 ### 3.1.3
 - Minor: changes `publish` parameter name
 

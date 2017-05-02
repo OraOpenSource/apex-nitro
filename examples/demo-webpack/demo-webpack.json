@@ -1,5 +1,5 @@
 {
-	"appURL": "https://localhost:50443/ords/f?p=111",
+	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:1",
 	"srcFolder": "CHANGE_ME\\demo-webpack\\src",
 	"distFolder": "CHANGE_ME\\demo-webpack\\dist",
 	"js": {
@@ -12,23 +12,16 @@
 	},
 	"css": {
 		"language": "css",
-		"concat": true,
-		"concatFilename": "app"
+		"concat": false
 	},
 	"browsersync": {
 		"notify": false,
 		"ghostMode": false
 	},
 	"header": {
-		"enabled": true,
-		"packageJsonPath": "CHANGE_ME\\demo-webpack\\package.json"
+		"enabled": false
 	},
 	"apex": {
-		"openBuilder": false,
-		"apexDestination": "application"
-	},
-	"sqlcl": {
-		"path": "sql",
-		"connectString": "OOS_USER/oracle@localhost:50521/xe"
+		"openBuilder": false
 	}
 }

@@ -1,5 +1,5 @@
 module.exports = {
 	level2: () => {
-		console.log("demo.level1.level2...");
+		console.log(`Greetings from level1.js`);
 	}
 };

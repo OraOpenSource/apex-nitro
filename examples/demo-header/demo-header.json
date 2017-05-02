@@ -1,11 +1,10 @@
 {
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
-	"srcFolder": "CHANGE_ME\\demo-simple\\src",
-	"distFolder": "CHANGE_ME\\demo-simple\\dist",
+	"srcFolder": "CHANGE_ME\\demo-header\\src",
+	"distFolder": "CHANGE_ME\\demo-header\\dist",
 	"js": {
 		"processor": "default",
-		"concat": false,
-		"library": false
+		"concat": false
 	},
 	"css": {
 		"language": "css",
@@ -16,7 +15,8 @@
 		"ghostMode": false
 	},
 	"header": {
-		"enabled": false
+		"enabled": true,
+		"packageJsonPath": "CHANGE_ME\\demo-header\\package.json"
 	},
 	"apex": {
 		"openBuilder": false
