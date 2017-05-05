@@ -1,4 +1,5 @@
 {
+	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:1",
 	"srcFolder": "CHANGE_ME\\demo-webpack\\src",
 	"distFolder": "CHANGE_ME\\demo-webpack\\dist",

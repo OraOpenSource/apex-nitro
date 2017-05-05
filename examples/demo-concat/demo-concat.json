@@ -1,4 +1,5 @@
 {
+	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
 	"srcFolder": "CHANGE_ME\\demo-concat\\src",
 	"distFolder": "CHANGE_ME\\demo-concat\\dist",

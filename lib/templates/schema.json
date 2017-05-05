@@ -4,6 +4,15 @@
 	"title": "Root",
 	"description": "Configuration for an APEX Front-End Boost project",
 	"properties": {
+		"mode": {
+			"type": "string",
+			"title": "Mode",
+			"default": "basic",
+			"enum": [
+				"basic",
+				"advanced"
+			]
+		},
 		"appURL": {
 			"type": "string",
 			"title": "Application URL",
@@ -324,8 +333,46 @@
 		}
 	},
 	"required": [
+		"mode",
 		"appURL",
-		"srcFolder",
-		"distFolder"
-	]
+		"srcFolder"
+	],
+	"requiredIf": [{
+		"property": "distFolder",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}],
+	"showIf": [{
+		"property": "distFolder",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}, {
+		"property": "js",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}, {
+		"property": "css",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}, {
+		"property": "browsersync",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}, {
+		"property": "header",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}, {
+		"property": "apex",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}, {
+		"property": "sqlcl",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}, {
+		"property": "themeroller",
+		"dependsOn": "mode",
+		"value": "advanced"
+	}]
 }
