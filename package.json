@@ -36,7 +36,7 @@
     "chalk": "1.1.x",
     "del": "2.2.x",
     "gulp": "3.9.x",
-    "gulp-autoprefixer": "3.1.x",
+    "gulp-autoprefixer": "4.0.0",
     "gulp-clip-empty-files": "0.1.x",
     "gulp-clone": "1.0.x",
     "gulp-concat": "2.6.x",
