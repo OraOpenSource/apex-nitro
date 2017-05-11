@@ -9,7 +9,7 @@ const launch = require('./lib/commands/launch');
 
 test('get-config-all', t => {
 	const config = configurator.getConfig({
-		module: 'afeb',
+		modules: ['apex-nitro', 'afeb'],
 		mapping: templates.mapping()
 	});
 
@@ -21,7 +21,7 @@ test('get-config-all', t => {
 test('get-config-project', t => {
 	try {
 		configurator.getConfig({
-			module: 'afeb',
+			modules: ['apex-nitro', 'afeb'],
 			project: 'invalidproject',
 			mapping: templates.mapping()
 		});

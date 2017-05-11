@@ -2,12 +2,12 @@
 When you are done developing, you might want to publish your new code directly to your APEX application.
 
 ```
-afeb publish <project>
+apex-nitro publish <project>
 ```
 
-APEX Front-End Boost uses SQLcl to make an API call that inserts your local files into the APEX tables (`wwv_flow_api.create_app_static_file`).
+APEX Nitro uses SQLcl to make an API call that inserts your local files into the APEX tables (`wwv_flow_api.create_app_static_file`).
 
-You can setup SQLcl by doing `afeb config <project>`.
+You can setup SQLcl by doing `apex-nitro config <project>`.
 
 Under "Advanced", two parameters will be required:
 

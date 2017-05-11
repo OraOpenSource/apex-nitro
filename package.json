@@ -1,5 +1,5 @@
 {
-  "name": "apex-frontend-boost",
+  "name": "apex-nitro",
   "version": "3.1.3",
   "author": "OraOpenSource",
   "description": "Boost your JavaScript and CSS productivity in Oracle APEX",
@@ -20,23 +20,23 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OraOpenSource/apex-frontend-boost.git"
+    "url": "https://github.com/OraOpenSource/apex-nitro.git"
   },
   "bugs": {
-    "url": "https://github.com/OraOpenSource/apex-frontend-boost/issues"
+    "url": "https://github.com/OraOpenSource/apex-nitro/issues"
   },
   "main": "lib/index.js",
   "bin": {
-    "afeb": "./bin/afeb.js"
+    "apex-nitro": "./bin/apex-nitro.js"
   },
   "dependencies": {
     "apex-publish-static-files": "1.0.x",
     "babili-webpack-plugin": "0.0.11",
-    "browser-sync": "^2.17.5",
+    "browser-sync": "2.18.x",
     "chalk": "1.1.x",
     "del": "2.2.x",
     "gulp": "3.9.x",
-    "gulp-autoprefixer": "3.1.x",
+    "gulp-autoprefixer": "4.0.x",
     "gulp-clip-empty-files": "0.1.x",
     "gulp-clone": "1.0.x",
     "gulp-concat": "2.6.x",
@@ -55,19 +55,19 @@
     "gulp-util": "3.0.x",
     "jshint": "2.x",
     "jshint-stylish": "2.2.x",
-    "json-local-configurator": "1.1.x",
+    "json-local-configurator": "1.2.x",
     "merge-stream": "1.0.x",
-    "nopt": "^4.0.1",
-    "opn": "^5.0.0",
-    "portscanner": "^2.1.0",
+    "nopt": "4.0.x",
+    "opn": "5.0.x",
+    "portscanner": "2.1.x",
     "run-sequence": "1.2.x",
-    "through2": "^2.0.3",
+    "through2": "2.0.x",
     "update-notifier": "2.1.x",
-    "webpack": "^2.4.0"
+    "webpack": "2.5.x"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
-    "xo": "^0.18.0"
+    "ava": "0.19.x",
+    "xo": "0.18.x"
   },
   "xo": {
     "ignores": [

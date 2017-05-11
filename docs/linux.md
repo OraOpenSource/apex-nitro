@@ -4,11 +4,11 @@
 #### Installation issues
 If you run into permission issues when installing, execute this instead:
 ```
-sudo npm install -g apex-frontend-boost
+sudo npm install -g apex-nitro
 ```
 
 #### Other
-If you installed node from the package manager, you may run into issues when installing `apex-frontend-boost` - and in particular, for one of the node dependencies `node-sass`. The reason for this is that this package tries to run a node script using the `node` command, rather than `nodejs`. To get around this, we need a binary for `node` on the classpath - we can create a symbolic link for `/usr/bin/node` that points to `/usr/bin/nodejs`.
+If you installed node from the package manager, you may run into issues when installing `apex-nitro` - and in particular, for one of the node dependencies `node-sass`. The reason for this is that this package tries to run a node script using the `node` command, rather than `nodejs`. To get around this, we need a binary for `node` on the classpath - we can create a symbolic link for `/usr/bin/node` that points to `/usr/bin/nodejs`.
 
 The package `nodejs` installs the node binary to `nodejs`.
 
@@ -42,4 +42,4 @@ $ which node
 /usr/bin/node
 ```
 
-Now, the installation of `node-sass` should complete without a drama, and more broadly, the installation of `apex-frontend-boost`.
+Now, the installation of `node-sass` should complete without issues, and allow a successful installation of `apex-nitro`.

@@ -2,7 +2,7 @@
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"type": "object",
 	"title": "Root",
-	"description": "Configuration for an APEX Front-End Boost project",
+	"description": "Configuration for an APEX Nitro project",
 	"properties": {
 		"mode": {
 			"type": "string",
@@ -152,7 +152,7 @@
 				"language": {
 					"type": "string",
 					"title": "Language",
-					"description": "Your source files stylesheet language. APEX Front-End Boost will always generate CSS files out of these.",
+					"description": "Your source files stylesheet language. APEX Nitro will always generate CSS files out of these.",
 					"enum": [
 						"css",
 						"sass",
@@ -227,12 +227,12 @@
 		"browsersync": {
 			"type": "object",
 			"title": "Browser",
-			"description": "Additionnal options on the browser behavior when using APEX Front-End Boost.",
+			"description": "Additionnal options on the browser behavior when using APEX Nitro.",
 			"properties": {
 				"notify": {
 					"type": "boolean",
 					"title": "Notify",
-					"description": "This option makes APEX Front-End Boost alert you when a file is dynamically injected to you browser."
+					"description": "This option makes APEX Nitro alert you when a file is dynamically injected to you browser."
 
 				},
 				"ghostMode": {

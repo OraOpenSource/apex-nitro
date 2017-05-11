@@ -1,9 +1,9 @@
-# APEX Front-End Boost
+# APEX Nitro
 
-[![npm](https://img.shields.io/npm/v/apex-frontend-boost.svg)]() [![Build Status](https://travis-ci.org/OraOpenSource/apex-frontend-boost.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-frontend-boost) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-frontend-boost.svg)](https://david-dm.org/OraOpenSource/apex-frontend-boost) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+[![npm](https://img.shields.io/npm/v/apex-nitro.svg)]() [![Build Status](https://travis-ci.org/OraOpenSource/apex-nitro.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-nitro) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-nitro.svg)](https://david-dm.org/OraOpenSource/apex-nitro) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 ## What is it
-APEX Front-End Boost makes coding faster and easier by hosting and distributing static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
+APEX Nitro makes coding faster and easier by hosting and distributing static files (`js`, `css`, `images`, etc.) more efficiently within an APEX application.
 
 ![demo](/docs/demo.gif)
 
@@ -21,7 +21,7 @@ APEX Front-End Boost makes coding faster and easier by hosting and distributing 
 - Enhance your application performance due to smaller file sizes.
 - Keep coding in your favorite code editor, without having to constantly upload anything to APEX or a web server.
 - Stop manual refresh of your browser to get `js` and `css` modification.
-- Stop affecting other developers. **Any development done within APEX Front-End Boost affects you and only you**.
+- Stop affecting other developers. **Any development done within APEX Nitro affects you and only you**.
 - Be notified of `js` and `css` errors as you save.
 
 #### Other benefits
@@ -38,7 +38,7 @@ Thanks to [Insum Solutions](http://insum.ca/) for sponsoring this project.
 
 ## Install
 ```
-npm install -g apex-frontend-boost
+npm install -g apex-nitro
 ```
 
 [*Having problems on Windows?*](/docs/windows.md)
@@ -50,13 +50,14 @@ npm install -g apex-frontend-boost
 
 ## Project Configuration
 ```
-afeb config <project>
+apex-nitro config <project>
 ```
-[See documentation](/docs/config.md) to configure APEX Front-End Boost for your project.
+
+This will open a documented web page with the appropriate configuration options.
 
 ## Run
 ```
-afeb launch <project>
+apex-nitro launch <project>
 ```
 
 ## Usage
@@ -71,18 +72,19 @@ Create, edit or delete any file within the `src` folder:
     |-lib
 ```
 
-APEX Front-End Boost will compile your files and push it to your APEX application.
+APEX Nitro will compile your files and push it to your APEX application.
 
 [See examples.](/examples/readme.md)
 
 [*Seeing self-signed SSL browser warnings?*](/docs/ssl-warning.md)
 
 ## Publish to APEX
-Once you are done developing, you may want to publish your files to *APEX Shared Components - Application Static Files*.
+When you are done developing, you may want to publish your files to the APEX Shared Components.
 
 ```
-afeb publish <project>
+apex-nitro publish <project>
 ```
+
 [See documentation](/docs/publish.md) to get SQLcl running on your environment.
 
 ## Changelog

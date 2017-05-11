@@ -1,23 +1,23 @@
 ### Issue Description
 [Explain]
 
-### APEX Front-End Boost Version
-[Example: v2.1.1]
+### APEX Nitro Version
+[Example: v4.0.0]
 
 ### Operating System
 [Example: Windows]
 
 ### Node Version
-[Example: v4.4.5]
+[Example: v6.9.1]
 
 ### Browser
 [Example: Chrome v50]
 
 ### APEX Version
-[Example: v5.0.3]
+[Example: v5.1.1]
 
 ### Web Server
-[Example: ORDS 3.0.3, Tomcat 7]
+[Example: ORDS 3.0.9, Tomcat 7]
 
-### Your `config.json` file
-[Paste code]
+### Project configuration screenshot
+[Paste image]

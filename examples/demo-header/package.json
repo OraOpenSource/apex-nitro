@@ -1,7 +1,7 @@
 {
-  "name": "afeb-demo-simple",
+  "name": "demo-header",
   "version": "1.0.0",
   "author": "OraOpenSource",
-  "description": "Demo App for AFEB demo header",
+  "description": "Demo App for APEX Nitro demo header",
   "license": "MIT"
 }
