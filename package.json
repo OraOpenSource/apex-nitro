@@ -2,7 +2,7 @@
   "name": "apex-nitro",
   "version": "4.0.0-beta.1",
   "author": "OraOpenSource",
-  "description": "Boost your JavaScript and CSS productivity in Oracle APEX",
+  "description": "Your essential APEX companion",
   "license": "MIT",
   "scripts": {
     "test": "xo && ava"

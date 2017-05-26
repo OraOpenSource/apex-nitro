@@ -52,11 +52,9 @@ apex-nitro launch <project>
 Create, edit or delete any file within the `src` folder:
 ```
 |-/src/
-	|-scss
-	|-less
     |-css
-    |-img
     |-js
+    |-img
     |-lib
 ```
 
