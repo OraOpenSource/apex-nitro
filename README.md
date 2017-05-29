@@ -1,6 +1,6 @@
 <h1 align="center">
 	<br>
-	<img width="400" src="https://raw.githubusercontent.com/OraOpenSource/apex-nitro/master/docs/header.png" alt="APEX Nitro">
+	<img src="https://raw.githubusercontent.com/OraOpenSource/apex-nitro/master/docs/header.png" alt="APEX Nitro">
 	<br>
 	<br>
 	<br>
