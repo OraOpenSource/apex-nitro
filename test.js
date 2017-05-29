@@ -324,3 +324,38 @@ test.serial.cb('demo-webpack', t => {
 		t.end();
 	});
 });
+
+test.serial.cb('demo-typescript', t => {
+	t.plan(1);
+
+	const config = {
+		"mode": "advanced",
+		"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
+		"srcFolder": "CHANGE_ME\\demo-typescript\\src",
+		"distFolder": "CHANGE_ME\\demo-typescript\\dist",
+		"js": {
+			"processor": "typescript",
+			"tsConcat": true,
+			"tsConcatFilename": "app"
+		},
+		"css": {
+			"language": "css",
+			"concat": true
+		},
+		"browsersync": {
+			"notify": false,
+			"ghostMode": false
+		},
+		"header": {
+			"enabled": false
+		},
+		"apex": {
+			"openBuilder": false
+		}
+	};
+
+	launch(['demo-typescript'], undefined, config, () => {
+		t.pass();
+		t.end();
+	});
+});
