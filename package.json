@@ -51,7 +51,7 @@
     "gulp-sass": "2.3.x",
     "gulp-size": "2.1.x",
     "gulp-sourcemaps": "2.6.x",
-    "gulp-typescript": "^3.1.x",
+    "gulp-typescript": "3.1.x",
     "gulp-uglify": "2.1.x",
     "gulp-util": "3.0.x",
     "jshint": "2.x",
@@ -63,7 +63,7 @@
     "portscanner": "2.1.x",
     "run-sequence": "1.2.x",
     "through2": "2.0.x",
-    "typescript": "^2.3.x",
+    "typescript": "2.3.x",
     "update-notifier": "2.1.x",
     "webpack": "2.5.x"
   },
