@@ -329,28 +329,28 @@ test.serial.cb('demo-typescript', t => {
 	t.plan(1);
 
 	const config = {
-		"mode": "advanced",
-		"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
-		"srcFolder": "CHANGE_ME\\demo-typescript\\src",
-		"distFolder": "CHANGE_ME\\demo-typescript\\dist",
-		"js": {
-			"processor": "typescript",
-			"tsConcat": true,
-			"tsConcatFilename": "app"
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-typescript/src'),
+		distFolder: path.resolve('./examples/demo-typescript/dist'),
+		js: {
+			processor: 'typescript',
+			tsConcat: true,
+			tsConcatFilename: 'app'
 		},
-		"css": {
-			"language": "css",
-			"concat": true
+		css: {
+			language: 'css',
+			concat: false
 		},
-		"browsersync": {
-			"notify": false,
-			"ghostMode": false
+		browsersync: {
+			notify: false,
+			ghostMode: false
 		},
-		"header": {
-			"enabled": false
+		header: {
+			enabled: false
 		},
-		"apex": {
-			"openBuilder": false
+		apex: {
+			openBuilder: false
 		}
 	};
 
