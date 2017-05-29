@@ -10,7 +10,7 @@
 	},
 	"css": {
 		"language": "css",
-		"concat": true
+		"concat": false
 	},
 	"browsersync": {
 		"notify": false,
