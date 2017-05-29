@@ -42,7 +42,7 @@
 					"description": "Choose how your JavaScript will be processed. The webpack option allows to use ES6.",
 					"enum": [
 						"default",
-            "typescript",
+						"typescript",
 						"webpack"
 					]
 				},
@@ -117,6 +117,11 @@
 					"property": "concat",
 					"dependsOn": "processor",
 					"value": "default"
+				},
+				{
+					"property": "concat",
+					"dependsOn": "processor",
+					"value": "typescript"
 				},
 				{
 					"property": "concatFilename",
