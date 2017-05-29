@@ -42,6 +42,7 @@
 					"description": "Choose how your JavaScript will be processed. The webpack option allows to use ES6.",
 					"enum": [
 						"default",
+            "typescript",
 						"webpack"
 					]
 				},
