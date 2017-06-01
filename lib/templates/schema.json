@@ -42,6 +42,7 @@
 					"description": "Choose how your JavaScript will be processed. The webpack option allows to use ES6.",
 					"enum": [
 						"default",
+						"typescript",
 						"webpack"
 					]
 				},
@@ -84,16 +85,33 @@
 					"title": "Library Name",
 					"description": "This is the name of the concatenated file.",
 					"placeholder": "Example: app"
+				},
+				"tsConcat": {
+					"type": "boolean",
+					"title": "Concatenate TypeScript Files",
+					"description": "Enable this to concatenate all your TypeScript files into one."
+				},
+				"tsConcatFilename": {
+					"type": "string",
+					"title": "Concatenated TypeScript Filename",
+					"description": "This is the name of the concatenated file.",
+					"placeholder": "Example: app"
 				}
 			},
 			"required": [
 				"processor",
 				"concat",
-				"library"
+				"library",
+				"tsConcat"
 			],
 			"requiredIf": [{
 					"property": "concatFilename",
 					"dependsOn": "concat",
+					"value": true
+				},
+				{
+					"property": "tsConcatFilename",
+					"dependsOn": "tsConcat",
 					"value": true
 				},
 				{
@@ -118,8 +136,18 @@
 					"value": "default"
 				},
 				{
+					"property": "tsConcat",
+					"dependsOn": "processor",
+					"value": "typescript"
+				},
+				{
 					"property": "concatFilename",
 					"dependsOn": "concat",
+					"value": true
+				},
+				{
+					"property": "tsConcatFilename",
+					"dependsOn": "tsConcat",
 					"value": true
 				},
 				{
