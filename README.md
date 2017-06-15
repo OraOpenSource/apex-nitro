@@ -25,7 +25,7 @@ APEX Nitro makes coding faster and easier by hosting and distributing static fil
 For a complete list of feature, [read the documentation](/docs/features.md).
 
 ## System Requirements
-- [Node.js](https://nodejs.org)
+- [Node.js](https://nodejs.org) *Minimum version: 6*
 * [SQLcl](http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html) *(optional, used for the publish feature)*
 
 ## Install
