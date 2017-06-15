@@ -46,11 +46,11 @@ end;
 Which one of the expressions above is right for you?
 
 Substitution String | Files Location | How to Reference
---- | ---
-apex_application.g_flow_images | Application Static Files | `#APP_IMAGES#js/app#MIN#.js`<br>`#APP_IMAGES#css/app#MIN#.css`
-apex_application.g_company_images | Workspace Static Files | `#WORKSPACE_IMAGES#js/app#MIN#.js`<br>`#WORKSPACE_IMAGES#css/app#MIN#.css`
-apex_application.g_theme_file_prefix | Theme Static Files | `#THEME_IMAGES#js/app#MIN#.js`<br>`#THEME_IMAGES#css/app#MIN#.css`
-:G_APP_IMAGES | Custom Application Item that contains the path of your files. Name could be different. | `&G_APP_IMAGES.js/app#MIN#.js`<br>`&G_APP_IMAGES.css/app#MIN#.css`
+--- | --- | ---
+apex_application.g_flow_images | Application Static Files | `#APP_IMAGES#js/app#MIN#.js` <br> `#APP_IMAGES#css/app#MIN#.css`
+apex_application.g_company_images | Workspace Static Files | `#WORKSPACE_IMAGES#js/app#MIN#.js` <br> `#WORKSPACE_IMAGES#css/app#MIN#.css`
+apex_application.g_theme_file_prefix | Theme Static Files | `#THEME_IMAGES#js/app#MIN#.js` <br> `#THEME_IMAGES#css/app#MIN#.css`
+:G_APP_IMAGES | Custom Application Item that contains the path of your files. Name could be different. | `&G_APP_IMAGES.js/app#MIN#.js` <br> `&G_APP_IMAGES.css/app#MIN#.css`
 
 In APEX, you can reference your files at many levels
 
