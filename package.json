@@ -31,10 +31,10 @@
   },
   "dependencies": {
     "apex-publish-static-files": "1.0.x",
-    "babili-webpack-plugin": "0.0.11",
+    "babili-webpack-plugin": "0.1.x",
     "browser-sync": "2.18.x",
     "chalk": "1.1.x",
-    "del": "2.2.x",
+    "del": "3.0.x",
     "gulp": "3.9.x",
     "gulp-autoprefixer": "4.0.x",
     "gulp-clip-empty-files": "0.1.x",
@@ -59,13 +59,13 @@
     "json-local-configurator": "1.2.x",
     "merge-stream": "1.0.x",
     "nopt": "4.0.x",
-    "opn": "5.0.x",
+    "opn": "5.1.x",
     "portscanner": "2.1.x",
     "run-sequence": "1.2.x",
     "through2": "2.0.x",
     "typescript": "2.3.x",
-    "update-notifier": "2.1.x",
-    "webpack": "2.5.x"
+    "update-notifier": "2.2.x",
+    "webpack": "2.6.x"
   },
   "devDependencies": {
     "ava": "0.19.x",
