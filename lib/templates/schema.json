@@ -1,3 +1,4 @@
+
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"type": "object",
@@ -106,69 +107,69 @@
 			],
 			"requiredIf": [{
 					"property": "concatFilename",
-					"dependsOn": "concat",
-					"value": true
+					"dependsOn": ["processor", "concat"],
+					"value": ["default", true]
 				},
 				{
 					"property": "tsConcatFilename",
-					"dependsOn": "tsConcat",
-					"value": true
+					"dependsOn": ["processor", "tsConcat"],
+					"value": ["typescript", true]
 				},
 				{
 					"property": "entries",
-					"dependsOn": "processor",
-					"value": "webpack"
+					"dependsOn": ["processor"],
+					"value": ["webpack"]
 				},
 				{
 					"property": "bundleFilename",
-					"dependsOn": "processor",
-					"value": "webpack"
+					"dependsOn": ["processor"],
+					"value": ["webpack"]
 				},
 				{
 					"property": "libraryName",
-					"dependsOn": "library",
-					"value": true
+					"dependsOn": ["processor", "library"],
+					"value": ["webpack", true]
 				}
 			],
 			"showIf": [{
 					"property": "concat",
-					"dependsOn": "processor",
-					"value": "default"
-				},
-				{
-					"property": "tsConcat",
-					"dependsOn": "processor",
-					"value": "typescript"
+					"dependsOn": ["processor"],
+					"value": ["default"]
 				},
 				{
 					"property": "concatFilename",
-					"dependsOn": "concat",
-					"value": true
+					"dependsOn": ["processor", "concat"],
+					"value": ["default", true]
+				},
+				{
+					"property": "tsConcat",
+					"dependsOn": ["processor"],
+					"value": ["typescript"]
 				},
 				{
 					"property": "tsConcatFilename",
-					"dependsOn": "tsConcat",
-					"value": true
+					"dependsOn": ["processor", "tsConcat"],
+					"value": ["typescript", true]
 				},
 				{
 					"property": "entries",
-					"dependsOn": "processor",
-					"value": "webpack"
+					"dependsOn": ["processor"],
+					"value": ["webpack"]
 				},
 				{
 					"property": "bundleFilename",
-					"dependsOn": "processor",
-					"value": "webpack"
+					"dependsOn": ["processor"],
+					"value": ["webpack"]
 				},
 				{
 					"property": "library",
-					"dependsOn": "processor",
-					"value": "webpack"
+					"dependsOn": ["processor"],
+					"value": ["webpack"]
 				},
 				{
 					"property": "libraryName",
-					"dependsOn": "library",
-					"value": true
+					"dependsOn": ["processor", "library"],
+					"value": ["webpack", true]
 				}
 			]
 		},
@@ -217,38 +218,28 @@
 			],
 			"requiredIf": [{
 				"property": "concatFilename",
-				"dependsOn": "concat",
-				"value": true
+				"dependsOn": ["language", "concat"],
+				"value": ["css", true]
 			}],
 			"showIf": [{
 					"property": "concat",
-					"dependsOn": "language",
-					"value": "css"
+					"dependsOn": ["language"],
+					"value": ["css"]
 				},
 				{
 					"property": "concatFilename",
-					"dependsOn": "concat",
-					"value": true
-				},
-				{
-					"property": "sass",
-					"dependsOn": "language",
-					"value": "sass"
+					"dependsOn": ["language", "concat"],
+					"value": ["css", true]
 				},
 				{
 					"property": "sassIncludePath",
-					"dependsOn": "language",
-					"value": "sass"
-				},
-				{
-					"property": "less",
-					"dependsOn": "language",
-					"value": "less"
+					"dependsOn": ["language"],
+					"value": ["sass"]
 				},
 				{
 					"property": "lessIncludePath",
-					"dependsOn": "language",
-					"value": "less"
+					"dependsOn": ["language"],
+					"value": ["less"]
 				}
 			]
 		},
@@ -293,7 +284,12 @@
 			},
 			"required": [
 				"enabled"
-			]
+			],
+			"showIf": [{
+				"property": "packageJsonPath",
+				"dependsOn": ["enabled"],
+				"value": [true]
+			}]
 		},
 		"apex": {
 			"type": "object",
@@ -303,7 +299,7 @@
 				"openBuilder": {
 					"type": "boolean",
 					"title": "Open Builder",
-					"description": "Opens the APEX builder."
+					"description": "Opens the APEX builder when launching APEX Nitro."
 				},
 				"apexDestination": {
 					"type": "string",
@@ -328,17 +324,166 @@
 			"properties": {
 				"path": {
 					"type": "string",
-					"title": "Path",
-					"description": "Enter the path to SQLcl. If it's been added to PATH (environment variable), it is `sql`. Otherwise enter a full path. Example: `C:\\sqlcl\\sql`",
+					"title": "SQLcl Path",
+					"description": "Enter the path to SQLcl. If it's been added to your environment variable, it should be `sql`. Otherwise enter a full path. Example: `C:\\sqlcl\\sql`",
 					"placeholder": "Example: C:\\sqlcl\\sql"
 				},
-				"connectString": {
+				"connectionType": {
 					"type": "string",
-					"title": "Database Connect String",
-					"description": "Enter your database schema information for SQLcl to log in. Format should follow `user/pass@server:port/sid`",
-					"placeholder": "Example: user/pass@server:port/sid"
+					"title": "Connection Type",
+					"description": "Select your connection type",
+					"enum": [
+						"basic",
+						"custom"
+					]
+				},
+				"username": {
+					"type": "string",
+					"title": "User",
+					"description": "Enter your user"
+				},
+				"password": {
+					"type": "password",
+					"title": "Password (Optional)",
+					"description": "If you do not enter your password here, it will be prompted to you when using [apex-nitro publish project]",
+					"placeholder": "Enter your password"
+				},
+				"host": {
+					"type": "string",
+					"title": "host",
+					"description": "Enter your host.",
+					"placeholder": "Example: localhost"
+				},
+				"port": {
+					"type": "string",
+					"title": "port",
+					"description": "Enter your port.",
+					"default": "1521",
+					"placeholder": "Example: 1521"
+				},
+				"basicType": {
+					"type": "string",
+					"title": "Connection Type",
+					"description": "",
+					"default": "sid",
+					"enum": [
+						"sid",
+						"service name",
+						"tns"
+					]
+				},
+				"sid": {
+					"type": "string",
+					"title": "SID",
+					"description": "Enter the [SID] for user/pass@db:port:[SID]",
+					"placeholder": "Example: xe"
+				},
+				"serviceName": {
+					"type": "string",
+					"title": "Service Name",
+					"description": "Enter the [SERVICE NAME] for user/pass@db:port/[SERVICE NAME]",
+					"placeholder": "Example: xe"
+				},
+				"tns": {
+					"type": "string",
+					"title": "TNS",
+					"description": "Enter the [TNS] for user/pass@[TNS]",
+					"placeholder": "Example: DEV1"
+				},
+				"connectionString": {
+					"type": "string",
+					"title": "Connection String",
+					"description": "Enter your connection string.",
+					"placeholder": "Example: barry/oracle@localhost:1521/orcl"
 				}
-			}
+			},
+			"requiredIf": [
+				{
+					"property": "username",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "host",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "port",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "basicType",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "sid",
+					"dependsOn": ["connectionType", "basicType"],
+					"value": ["basic", "sid"]
+				},
+				{
+					"property": "serviceName",
+					"dependsOn": ["connectionType", "basicType"],
+					"value": ["basic", "service name"]
+				},
+				{
+					"property": "tns",
+					"dependsOn": ["connectionType", "basicType"],
+					"value": ["basic", "tns"]
+				},
+				{
+					"property": "connectionString",
+					"dependsOn": ["connectionType"],
+					"value": ["custom"]
+				}
+			],
+			"showIf": [{
+				"property": "username",
+				"dependsOn": ["connectionType"],
+				"value": ["basic"]
+			},
+			{
+				"property": "password",
+				"dependsOn": ["connectionType"],
+				"value": ["basic"]
+			},
+			{
+				"property": "host",
+				"dependsOn": ["connectionType"],
+				"value": ["basic"]
+			},
+			{
+				"property": "port",
+				"dependsOn": ["connectionType"],
+				"value": ["basic"]
+			},
+			{
+				"property": "basicType",
+				"dependsOn": ["connectionType"],
+				"value": ["basic"]
+			},
+			{
+				"property": "sid",
+				"dependsOn": ["connectionType", "basicType"],
+				"value": ["basic", "sid"]
+			},
+			{
+				"property": "serviceName",
+				"dependsOn": ["connectionType", "basicType"],
+				"value": ["basic", "service name"]
+			},
+			{
+				"property": "tns",
+				"dependsOn": ["connectionType", "basicType"],
+				"value": ["basic", "tns"]
+			},
+			{
+				"property": "connectionString",
+				"dependsOn": ["connectionType"],
+				"value": ["custom"]
+			}]
 		},
 		"themeroller": {
 			"type": "object",
@@ -367,40 +512,40 @@
 	],
 	"requiredIf": [{
 		"property": "distFolder",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}],
 	"showIf": [{
 		"property": "distFolder",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}, {
 		"property": "js",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}, {
 		"property": "css",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}, {
 		"property": "browsersync",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}, {
 		"property": "header",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}, {
 		"property": "apex",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}, {
 		"property": "sqlcl",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}, {
 		"property": "themeroller",
-		"dependsOn": "mode",
-		"value": "advanced"
+		"dependsOn": ["mode"],
+		"value": ["advanced"]
 	}]
 }
