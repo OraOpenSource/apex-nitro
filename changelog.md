@@ -1,6 +1,16 @@
 # Changelog
 
-## 4.0.0
+## 4.0.0-beta2
+- APEX Nitro now compiles the files before publishing them to the Shared Components
+- Simplifies APEX setup
+- Configuration Tool
+	- Now you can add project from the web interface
+	- Password fields don't show in clear text anymore
+- Supports TypeScript as a JavaScript engine
+- [Other bug fixes](https://github.com/OraOpenSource/apex-nitro/milestone/13?closed=1)
+
+
+## 4.0.0-beta1
 
 - APEX Front-End Boost is rebranded to APEX Nitro
 - Adds a basic mode, where only App URL and Source Folder is needed
