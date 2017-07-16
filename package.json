@@ -52,7 +52,7 @@
     "gulp-size": "2.1.x",
     "gulp-sourcemaps": "2.6.x",
     "gulp-typescript": "3.2.x",
-    "gulp-uglify": "3.0.x",
+    "gulp-uglify": "2.1.x",
     "gulp-util": "3.0.x",
     "jshint": "2.x",
     "jshint-stylish": "2.2.x",
