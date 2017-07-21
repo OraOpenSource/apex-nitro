@@ -1,13 +1,19 @@
-# [![APEX Nitro](docs/header.png)](https://github.com/OraOpenSource/apex-nitro)
+<h1 align="center">
+	<br>
+	<img src="https://raw.githubusercontent.com/OraOpenSource/apex-nitro/master/docs/header.png" alt="APEX Nitro">
+	<br>
+	<br>
+	<br>
+</h1>
 
 > Your essential APEX companion
 
 [![npm](https://img.shields.io/npm/v/apex-nitro.svg)]() [![Build Status](https://travis-ci.org/OraOpenSource/apex-nitro.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-nitro) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-nitro.svg)](https://david-dm.org/OraOpenSource/apex-nitro) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-APEX Nitro makes coding faster and easier by hosting and distributing static files  more efficiently within an APEX application.
+APEX Nitro makes coding faster and easier by syncing static files more efficiently within an APEX application.
 
 ## Why APEX Nitro?
-- Synchronizes your APEX app files from your computer
+- Synchronizes your static files to APEX
 - Synchronizes your devices together
 - Merges your files into one
 - Minifies your files for faster execution time
@@ -19,7 +25,7 @@ APEX Nitro makes coding faster and easier by hosting and distributing static fil
 For a complete list of feature, [read the documentation](/docs/features.md).
 
 ## System Requirements
-- [Node.js](https://nodejs.org)
+- [Node.js](https://nodejs.org) *Minimum version: 6*
 * [SQLcl](http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html) *(optional, used for the publish feature)*
 
 ## Install
@@ -60,7 +66,7 @@ Create, edit or delete any file within the `src` folder:
 
 APEX Nitro will compile your files and synchronize them to your APEX application.
 
-[Try our examples.](/examples/readme.md)
+[Try our examples.](/examples/)
 
 [*Seeing self-signed SSL browser warnings?*](/docs/ssl-warning.md)
 

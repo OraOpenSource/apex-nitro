@@ -1,14 +1,14 @@
 import test from 'ava';
 
 const path = require('path');
-const configurator = require('json-local-configurator');
+const npc = require('node-package-configurator');
 
 const templates = require('./lib/templates/templates');
 const validations = require('./lib/util/validations');
 const launch = require('./lib/commands/launch');
 
 test('get-config-all', t => {
-	const config = configurator.getConfig({
+	const config = npc.getConfig({
 		modules: ['apex-nitro', 'afeb'],
 		mapping: templates.mapping()
 	});
@@ -20,7 +20,7 @@ test('get-config-all', t => {
 
 test('get-config-project', t => {
 	try {
-		configurator.getConfig({
+		npc.getConfig({
 			modules: ['apex-nitro', 'afeb'],
 			project: 'invalidproject',
 			mapping: templates.mapping()
