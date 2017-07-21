@@ -31,14 +31,16 @@ Build Option | `DEVELOPMENT_ONLY` | Ensures this only gets run in a development 
 declare
 	l_cookie owa_cookie.cookie;
 begin
-	l_cookie := owa_cookie.get('oos-apex-nitro');
+	if owa_util.get_cgi_env('X-Nitrified') = 'Y' then
+		l_cookie := owa_cookie.get('oos-apex-nitro');
 
-	if l_cookie.vals.count > 0 then
-		-- Use one of the following depending on your files location
-		-- apex_application.g_flow_images := l_cookie.vals(1);
-		-- apex_application.g_company_images := l_cookie.vals(1);
-		-- apex_application.g_theme_file_prefix := l_cookie.vals(1);
-		-- :G_APP_IMAGES := l_cookie.vals(1);
+		if l_cookie.vals.count > 0 then
+			-- Use one of the following depending on your files location
+			-- apex_application.g_flow_images := l_cookie.vals(1);
+			-- apex_application.g_company_images := l_cookie.vals(1);
+			-- apex_application.g_theme_file_prefix := l_cookie.vals(1);
+			-- :G_APP_IMAGES := l_cookie.vals(1);
+		end if;
 	end if;
 end;
 ```
