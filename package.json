@@ -65,11 +65,10 @@
     "through2": "2.0.x",
     "typescript": "2.4.x",
     "update-notifier": "2.2.x",
-    "uglify-save-license": "0.4.x",
-    "webpack": "3.2.x"
+    "webpack": "3.3.x"
   },
   "devDependencies": {
-    "ava": "0.20.x",
+    "ava": "0.21.x",
     "xo": "0.18.x"
   },
   "xo": {
