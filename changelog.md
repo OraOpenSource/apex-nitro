@@ -1,10 +1,20 @@
 # Changelog
 
+## 4.0.0-beta4
+
+- Simplifies APEX Setup, **[please review yours](https://github.com/OraOpenSource/apex-nitro/blob/master/docs/setup.md)**
+	- No longer requires a cookie
+	- [Fixes a bug](https://github.com/OraOpenSource/apex-nitro/issues/198) when server was localhost, thanks to @fuzziebrain
+- **If you were using the publish feature, please review your project configuration by doing `apex-nitro config <your project>`**
+- Bug fixes on the publish feature
+
 ## 4.0.0-beta3
+
 - Rolling back one dependency because it broke the minification process
 	- gulp-uglify from 3.0.x to 2.1.x
 
 ## 4.0.0-beta2
+
 - APEX Nitro now compiles the files before publishing them to the Shared Components
 - Simplifies APEX setup
 - Configuration Tool

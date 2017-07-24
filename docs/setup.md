@@ -8,7 +8,7 @@ APEX Nitro isn't meant to run in production. A build option is used to limit APE
 
 Head to `Shared Components > Build Options` and create a new build option with the following attributes:
 
-Name | Setting
+Attribute | Value
 --- | ---
 Build Option | `DEVELOPMENT_ONLY`
 Status | `Include`
@@ -19,7 +19,7 @@ Default on Export | `Exclude`
 ### Application Process
 Head to `Shared Components > Application Processes` and create a new application process with the following attributes:
 
-Setting | Value | Comment
+Attribute | Value | Comment
 --- | --- | ---
 Name | `APEX Nitro` |
 Sequence | `-999` | Ensures this happens first
