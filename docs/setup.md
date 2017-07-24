@@ -1,10 +1,10 @@
 # APEX Setup
 
-APEX Nitro requires some modifications to your app.
+APEX Nitro requires some modifications in your APEX application.
 
 ### Build Option
 
-APEX Nitro isn't meant to run in production. This build option is used to limit the scope of APEX Nitro to the development environment only.
+APEX Nitro isn't meant to run in production. A build option is used to limit APEX Nitro to the development environment.
 
 Head to `Shared Components > Build Options` and create a new build option with the following attributes:
 
@@ -14,44 +14,46 @@ Build Option | `DEVELOPMENT_ONLY`
 Status | `Include`
 Default on Export | `Exclude`
 
-When you import an application in a different schema, anything tagged with the `DEVELOPMENT_ONLY` build option will not be run. If you re-import back into a development environment you'll need to manually change the status to `Include`.
+*Note: When you import an application in a different schema, anything tagged with the `DEVELOPMENT_ONLY` build option will not be run. If you re-import back into a development environment you'll need to manually change the status to `Include`.*
 
 ### Application Process
 Head to `Shared Components > Application Processes` and create a new application process with the following attributes:
 
-Name | Setting | Comment
+Setting | Value | Comment
 --- | --- | ---
-Name | `OOS APEX Nitro` |
+Name | `APEX Nitro` |
 Sequence | `-999` | Ensures this happens first
 Process Point | `On Load: Before Header (page template header)` |
-Source | *see below* |
+Condition | *see below #1* |
+Source | *see below #2* |
 Build Option | `DEVELOPMENT_ONLY` | Ensures this only gets run in a development environment
 
-```plsql
-declare
-	l_cookie owa_cookie.cookie;
-begin
-	l_cookie := owa_cookie.get('oos-apex-nitro');
-
-	if l_cookie.vals.count > 0 then
-		-- Use one of the following depending on your files location
-		-- apex_application.g_flow_images := l_cookie.vals(1);
-		-- apex_application.g_company_images := l_cookie.vals(1);
-		-- apex_application.g_theme_file_prefix := l_cookie.vals(1);
-		-- :G_APP_IMAGES := l_cookie.vals(1);
-	end if;
-end;
+**#1 (condition)*
+```sql
+owa_util.get_cgi_env('APEX-Nitro') is not null
 ```
 
-Which one of the expressions above is right for you?
+**#2 (source)*
+```sql
+-- Use one of the following depending on your files location
+apex_application.g_flow_images := owa_util.get_cgi_env('APEX-Nitro');
+-- apex_application.g_company_images := owa_util.get_cgi_env('APEX-Nitro');
+-- apex_application.g_theme_file_prefix := owa_util.get_cgi_env('APEX-Nitro');
+-- :G_APP_IMAGES := owa_util.get_cgi_env('APEX-Nitro');
+```
 
-Substitution String | Files Location | How to Reference
+Which one of the commented expression above is right for you?
+
+Substitution String | Purpose | How to Use Examples
 --- | --- | ---
 apex_application.g_flow_images | Application Static Files | `#APP_IMAGES#js/app#MIN#.js` <br> `#APP_IMAGES#css/app#MIN#.css`
 apex_application.g_company_images | Workspace Static Files | `#WORKSPACE_IMAGES#js/app#MIN#.js` <br> `#WORKSPACE_IMAGES#css/app#MIN#.css`
 apex_application.g_theme_file_prefix | Theme Static Files | `#THEME_IMAGES#js/app#MIN#.js` <br> `#THEME_IMAGES#css/app#MIN#.css`
 :G_APP_IMAGES | Custom Application Item that contains the path of your files. Name could be different. | `&G_APP_IMAGES.js/app#MIN#.js` <br> `&G_APP_IMAGES.css/app#MIN#.css`
 
+---
+
+### References
 In APEX, you can reference your files at many levels
 
 Level | Access Point
