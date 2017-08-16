@@ -37,17 +37,15 @@ npm install -g apex-nitro
 [*Having problems on Mac OS?*](/docs/macOS.md)
 [*Having problems on Linux?*](/docs/linux.md)
 
-## Setup
-[See documentation](/docs/setup.md) to choose the most appropriate option for your project.
-
-*Coming from APEX Front-End Boost? Make sure to review the setup, as some options have changed.*
+## APEX Setup
+[See documentation](/docs/setup.md) as you have to make one small modification to your APEX application.
 
 ## Project Configuration
+Before you can use APEX Nitro, execute the command below to configure your project.
+
 ```
 apex-nitro config <project>
 ```
-
-Before you can use APEX Nitro, execute the command above and follow the steps to configure your project.
 
 ## Run
 ```
