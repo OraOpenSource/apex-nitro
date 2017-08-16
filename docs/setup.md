@@ -1,20 +1,6 @@
 # APEX Setup
 
-APEX Nitro requires some modifications in your APEX application.
-
-### Build Option
-
-APEX Nitro isn't meant to run in production. A build option is used to limit APEX Nitro to the development environment.
-
-Head to `Shared Components > Build Options` and create a new build option with the following attributes:
-
-Attribute | Value
---- | ---
-Build Option | `DEVELOPMENT_ONLY`
-Status | `Include`
-Default on Export | `Exclude`
-
-*Note: When you import an application in a different schema, anything tagged with the `DEVELOPMENT_ONLY` build option will not be run. If you re-import back into a development environment you'll need to manually change the status to `Include`.*
+APEX Nitro requires one modification to your APEX application.
 
 ### Application Process
 Head to `Shared Components > Application Processes` and create a new application process with the following attributes:
@@ -25,8 +11,7 @@ Name | `APEX Nitro` |
 Sequence | `-999` | Ensures this happens first
 Process Point | `On Load: Before Header (page template header)` |
 Condition | *see below #1* |
-Source | *see below #2* |
-Build Option | `DEVELOPMENT_ONLY` | Ensures this only gets run in a development environment
+Source | *see below #2* | Choose `PL/SQL Expression`
 
 **#1 (condition)*
 ```sql
@@ -58,7 +43,7 @@ In APEX, you can reference your files at many levels
 
 Level | Access Point
 --- | ---
-Application | Shared Components > User Interfaces > User Interface Details > JavaScript / Cascading Style Sheets > File URLs
-Theme | Shared Components > Themes > Create / Edit Theme > JavaScript and Cascading Style Sheets > File URLs
-Template | Shared Components > Templates > Edit Page Template > JavaScript / Cascading Style Sheet > File URLs
-Page | Page Designer > Page X > JavaScript / CSS > File URLs
+Application | `Shared Components` > `User Interfaces` > `User Interface Details` > `JavaScript / Cascading Style Sheets` > `File URLs`
+Theme | `Shared Components` > `Themes` > `Create / Edit Theme` > `JavaScript and Cascading Style Sheets` > `File URLs`
+Template | `Shared Components` > `Templates` > `Edit Page Template` > `JavaScript / Cascading Style Sheet` > `File URLs`
+Page | `Page Designer` > `Page X` > `JavaScript / CSS` > `File URLs`
