@@ -1,11 +1,28 @@
 import test from 'ava';
 
+const fs = require('fs');
 const path = require('path');
 const npc = require('node-package-configurator');
 
 const templates = require('./lib/templates/templates');
 const validations = require('./lib/util/validations');
 const launch = require('./lib/commands/launch');
+
+// Recursive loop through a given folder to find all files
+// Found here https://stackoverflow.com/a/20525865/2524979
+function getFiles(dir, files = []) {
+	fs.readdirSync(dir).forEach(filename => {
+		const filepath = path.join(dir, filename);
+
+		if (fs.statSync(filepath).isDirectory()) {
+			getFiles(filepath, files);
+		} else {
+			files.push(path.resolve(filepath));
+		}
+	});
+
+	return files;
+}
 
 test('get-config-all', t => {
 	const config = npc.getConfig({
@@ -107,7 +124,15 @@ test.serial.cb('demo-basic', t => {
 	};
 
 	launch(['demo-basic'], undefined, config, () => {
-		t.pass();
+		const expected = [
+			path.resolve('./examples/demo-basic/src/css/app.css'),
+			path.resolve('./examples/demo-basic/src/js/app.js')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-basic/src/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
 		t.end();
 	});
 });
@@ -142,7 +167,21 @@ test.serial.cb('demo-simple', t => {
 	};
 
 	launch(['demo-simple'], undefined, config, () => {
-		t.pass();
+		const expected = [
+			path.resolve('./examples/demo-simple/dist/css/app.css'),
+			path.resolve('./examples/demo-simple/dist/css/app.css.map'),
+			path.resolve('./examples/demo-simple/dist/css/app.min.css'),
+			path.resolve('./examples/demo-simple/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-simple/dist/js/app.js'),
+			path.resolve('./examples/demo-simple/dist/js/app.js.map'),
+			path.resolve('./examples/demo-simple/dist/js/app.min.js'),
+			path.resolve('./examples/demo-simple/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-simple/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
 		t.end();
 	});
 });
@@ -178,7 +217,21 @@ test.serial.cb('demo-concat', t => {
 	};
 
 	launch(['demo-concat'], undefined, config, () => {
-		t.pass();
+		const expected = [
+			path.resolve('./examples/demo-concat/dist/css/app.css'),
+			path.resolve('./examples/demo-concat/dist/css/app.css.map'),
+			path.resolve('./examples/demo-concat/dist/css/app.min.css'),
+			path.resolve('./examples/demo-concat/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-concat/dist/js/app.js'),
+			path.resolve('./examples/demo-concat/dist/js/app.js.map'),
+			path.resolve('./examples/demo-concat/dist/js/app.min.js'),
+			path.resolve('./examples/demo-concat/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-concat/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
 		t.end();
 	});
 });
@@ -213,7 +266,21 @@ test.serial.cb('demo-header', t => {
 	};
 
 	launch(['demo-header'], undefined, config, () => {
-		t.pass();
+		const expected = [
+			path.resolve('./examples/demo-header/dist/css/app.css'),
+			path.resolve('./examples/demo-header/dist/css/app.css.map'),
+			path.resolve('./examples/demo-header/dist/css/app.min.css'),
+			path.resolve('./examples/demo-header/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-header/dist/js/app.js'),
+			path.resolve('./examples/demo-header/dist/js/app.js.map'),
+			path.resolve('./examples/demo-header/dist/js/app.min.js'),
+			path.resolve('./examples/demo-header/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-header/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
 		t.end();
 	});
 });
@@ -248,7 +315,21 @@ test.serial.cb('demo-less', t => {
 	};
 
 	launch(['demo-less'], undefined, config, () => {
-		t.pass();
+		const expected = [
+			path.resolve('./examples/demo-less/dist/css/app.css'),
+			path.resolve('./examples/demo-less/dist/css/app.css.map'),
+			path.resolve('./examples/demo-less/dist/css/app.min.css'),
+			path.resolve('./examples/demo-less/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-less/dist/js/app.js'),
+			path.resolve('./examples/demo-less/dist/js/app.js.map'),
+			path.resolve('./examples/demo-less/dist/js/app.min.js'),
+			path.resolve('./examples/demo-less/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-less/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
 		t.end();
 	});
 });
@@ -282,7 +363,70 @@ test.serial.cb('demo-sass', t => {
 	};
 
 	launch(['demo-sass'], undefined, config, () => {
-		t.pass();
+		const expected = [
+			path.resolve('./examples/demo-sass/dist/css/app.css'),
+			path.resolve('./examples/demo-sass/dist/css/app.css.map'),
+			path.resolve('./examples/demo-sass/dist/css/app.min.css'),
+			path.resolve('./examples/demo-sass/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-sass/dist/js/app.js'),
+			path.resolve('./examples/demo-sass/dist/js/app.js.map'),
+			path.resolve('./examples/demo-sass/dist/js/app.min.js'),
+			path.resolve('./examples/demo-sass/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-sass/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-typescript', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-typescript/src'),
+		distFolder: path.resolve('./examples/demo-typescript/dist'),
+		js: {
+			processor: 'typescript',
+			tsConcat: true,
+			tsConcatFilename: 'app'
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-typescript'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-typescript/dist/css/app.css'),
+			path.resolve('./examples/demo-typescript/dist/css/app.css.map'),
+			path.resolve('./examples/demo-typescript/dist/css/app.min.css'),
+			path.resolve('./examples/demo-typescript/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-typescript/dist/js/app.js'),
+			path.resolve('./examples/demo-typescript/dist/js/app.js.map'),
+			path.resolve('./examples/demo-typescript/dist/js/app.min.js'),
+			path.resolve('./examples/demo-typescript/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-typescript/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
 		t.end();
 	});
 });
@@ -320,42 +464,22 @@ test.serial.cb('demo-webpack', t => {
 	};
 
 	launch(['demo-webpack'], undefined, config, () => {
-		t.pass();
-		t.end();
-	});
-});
+		const expected = [
+			path.resolve('./examples/demo-webpack/dist/css/app.css'),
+			path.resolve('./examples/demo-webpack/dist/css/app.css.map'),
+			path.resolve('./examples/demo-webpack/dist/css/app.min.css'),
+			path.resolve('./examples/demo-webpack/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-webpack/dist/img/banana.gif'),
+			path.resolve('./examples/demo-webpack/dist/js/bundle.js'),
+			path.resolve('./examples/demo-webpack/dist/js/bundle.js.map'),
+			path.resolve('./examples/demo-webpack/dist/js/bundle.min.js'),
+			path.resolve('./examples/demo-webpack/dist/js/bundle.min.js.map')
+		].sort();
 
-test.serial.cb('demo-typescript', t => {
-	t.plan(1);
+		const files = getFiles(path.resolve('./examples/demo-webpack/dist/'));
+		files.sort();
 
-	const config = {
-		mode: 'advanced',
-		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
-		srcFolder: path.resolve('./examples/demo-typescript/src'),
-		distFolder: path.resolve('./examples/demo-typescript/dist'),
-		js: {
-			processor: 'typescript',
-			tsConcat: true,
-			tsConcatFilename: 'app'
-		},
-		css: {
-			language: 'css',
-			concat: false
-		},
-		browsersync: {
-			notify: false,
-			ghostMode: false
-		},
-		header: {
-			enabled: false
-		},
-		apex: {
-			openBuilder: false
-		}
-	};
-
-	launch(['demo-typescript'], undefined, config, () => {
-		t.pass();
+		t.deepEqual(files, expected);
 		t.end();
 	});
 });
