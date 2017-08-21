@@ -33,7 +33,7 @@
     "apex-publish-static-files": "1.0.x",
     "babili-webpack-plugin": "0.1.x",
     "browser-sync": "2.18.x",
-    "chalk": "2.0.x",
+    "chalk": "2.1.x",
     "del": "3.0.x",
     "gulp": "3.9.x",
     "gulp-autoprefixer": "4.0.x",
@@ -61,14 +61,14 @@
     "nopt": "4.0.x",
     "opn": "5.1.x",
     "portscanner": "2.1.x",
-    "run-sequence": "2.0.x",
+    "run-sequence": "2.1.x",
     "through2": "2.0.x",
     "typescript": "2.4.x",
     "update-notifier": "2.2.x",
-    "webpack": "3.3.x"
+    "webpack": "3.5.x"
   },
   "devDependencies": {
-    "ava": "0.21.x",
+    "ava": "0.22.x",
     "xo": "0.18.x"
   },
   "xo": {
