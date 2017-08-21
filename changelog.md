@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.0.0-beta5
+
+- Simplifies APEX Setup: Build Option is no longer necessary
+- Adds more unit tests for a stronger build
+- Bug fixes
+
 ## 4.0.0-beta4
 
 - Simplifies APEX Setup, **[please review yours](https://github.com/OraOpenSource/apex-nitro/blob/master/docs/setup.md)**
