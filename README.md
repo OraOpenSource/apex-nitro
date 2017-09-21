@@ -25,13 +25,15 @@ APEX Nitro makes coding faster and easier by syncing static files more efficient
 For a complete list of feature, [read the documentation](/docs/features.md).
 
 ## System Requirements
-- [Node.js](https://nodejs.org) *Minimum version: 6*
-* [SQLcl](http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html) *(optional, used for the publish feature)*
+- [Node.js](https://nodejs.org) *>= v6*
+* [SQLcl](http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html) *>= v17.2 (optional, used for the publish feature)*
 
 ## Install
 ```
 npm install -g apex-nitro
 ```
+
+*Note: you might encounter a few deprecation warnings during the installation. This is normal and we monitor these packages upon every release of APEX Nitro.*
 
 [*Having problems on Windows?*](/docs/windows.md)
 [*Having problems on Mac OS?*](/docs/macOS.md)
