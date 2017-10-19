@@ -55,7 +55,7 @@ apex-nitro launch <project>
 ```
 
 ## Usage
-Create, edit or delete any file within the `src` folder:
+Create, edit or delete any file within the `/src/` folder:
 ```
 |-/src/
     |-css
@@ -78,6 +78,9 @@ apex-nitro publish <project>
 ```
 
 [See documentation](/docs/publish.md) to get SQLcl running on your environment.
+
+## Troubleshoot
+[See the most common issues.](/docs/troubleshoot.md)
 
 ## Changelog
 [See changelog.](changelog.md)
