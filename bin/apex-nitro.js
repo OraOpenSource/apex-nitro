@@ -6,6 +6,11 @@ const update = require('update-notifier');
 const pkg = require('../package.json');
 const nitro = require('../lib');
 
+// Workaround for MacOS which doesn't allow to sigint
+process.on('SIGINT', function() {
+	process.exit();
+});
+
 // Options that can be passed to commands
 const options = {
 	config: String,
