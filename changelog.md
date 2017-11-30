@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.1.0
+- **Support APEX Plugin development**
+- Adds Java 9 support for the publish feature
+- Simplifies the APEX Nitro config structure
+- Enhances overall documentation
+
+## 4.0.0
+- Release candidate for the previous betas.
+
 ## 4.0.0-beta5
 
 - Simplifies APEX Setup: Build Option is no longer necessary
