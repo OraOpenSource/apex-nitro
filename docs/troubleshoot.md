@@ -3,6 +3,11 @@ Here are the most common issues people are having.
 
 Please submit an issue on Github if you can't find a solution to your problem.
 
+#### Problems with the command line options?
+Run `apex-nitro help`
+
+![](img/apex-nitro-help.png)
+
 #### EPERM: operation not permitted
 Sometimes when you are trying to launch a project with `apex-nitro launch <project>`, you might get an error like this:
 
@@ -34,3 +39,16 @@ This section is inspired by SQL Developer, and allows you to enter your database
 4- custom connect string
 
 APEX Nitro doesn't provide any way of validating your connection info. Please validate it yourself in SQL Developer if `apex-nitro publish <project>` doesn't work.
+
+##### Self-signed SSL Warnings
+When using APEX Nitro, you may encounter browser warnings before running your APEX application for the first time:
+
+![](img/self-signed-warning-1.png)
+
+This is normal because you are serving the files from your own computer with self-signed certificates. Please continue.
+
+You will access your APEX application normally, except for this icon near your browser's URL:
+
+![](img/self-signed-warning-2.png)
+
+This is normal and it will only occur on your development environment.

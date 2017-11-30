@@ -13,12 +13,12 @@ Process Point | `On Load: Before Header (page template header)` |
 Condition | *see below #1* |
 Source | *see below #2* | Choose `PL/SQL Expression`
 
-**#1 (condition)*
+* *#1 (condition)*
 ```sql
 owa_util.get_cgi_env('APEX-Nitro') is not null
 ```
 
-**#2 (source)*
+* *#2 (source)*
 ```sql
 -- Use one of the following depending on your files location
 apex_application.g_flow_images := owa_util.get_cgi_env('APEX-Nitro');
@@ -36,6 +36,8 @@ apex_application.g_company_images | Workspace Static Files | `#WORKSPACE_IMAGES#
 apex_application.g_theme_file_prefix | Theme Static Files | `#THEME_IMAGES#js/app#MIN#.js` <br> `#THEME_IMAGES#css/app#MIN#.css`
 :G_APEX_NITRO_IMAGES | Custom Application Item that contains the path of your files. Supports APEX plugin development | `&G_APEX_NITRO_IMAGES.js/app#MIN#.js` <br> `&G_APEX_NITRO_IMAGES.css/app#MIN#.css`
 
+![](img/apex-nitro-application-process.png)
+
 ---
 
 ### References
@@ -48,6 +50,8 @@ Theme | `Shared Components` > `Themes` > `Create / Edit Theme` > `JavaScript and
 Template | `Shared Components` > `Templates` > `Edit Page Template` > `JavaScript / Cascading Style Sheet` > `File URLs`
 Page | `Page Designer` > `Page X` > `JavaScript / CSS` > `File URLs`
 
+![](img/apex-nitro-references.png)
+
 ---
 
 ### APEX Plugin Development
@@ -55,8 +59,7 @@ APEX Nitro supports plugin development as well. There is one additional setting 
 
 - Add an application item called `G_APEX_NITRO_IMAGES`
 - In your application process code (see above), use `:G_APEX_NITRO_IMAGES := owa_util.get_cgi_env('APEX-Nitro');`
-- In your plugin, under the section `Files`, add `&G_APEX_NITRO_IMAGES.` to the File Prefix:
-![](plugin.png)
+- In your plugin, under the section `Files`, add `&G_APEX_NITRO_IMAGES.` to the File Prefix: ![](img/apex-nitro-plugin.png)
 
 Note:
 - In the development environment, G_APEX_NITRO_IMAGES will be populated, and the plugin files will point to the APEX Nitro files.

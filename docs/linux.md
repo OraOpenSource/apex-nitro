@@ -1,6 +1,5 @@
 ## Linux
 
-
 #### Installation issues
 If you run into permission issues when installing, execute this instead:
 ```

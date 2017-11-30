@@ -5,7 +5,7 @@ When you are done developing, you might want to publish your new code directly t
 apex-nitro publish <project>
 ```
 
-APEX Nitro uses SQLcl to make an API call that inserts your local files into the APEX tables (`wwv_flow_api.create_app_static_file`).
+![](img/apex-nitro-publish.png)
 
 You can setup SQLcl by doing `apex-nitro config <project>`.
 
@@ -20,4 +20,4 @@ Name | Type | Default | Description
 
 **Error: command failed**: Please verify the parameters above. The CLI cannot validate them and will crash if `Path` or `Database Connect String` are invalid.
 
-The publish feature will work given that these parameters are valid.
+The publish feature will only work if these parameters are valid.
