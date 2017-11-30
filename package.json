@@ -63,12 +63,12 @@
     "portscanner": "2.1.x",
     "run-sequence": "^2.2.0",
     "through2": "2.0.x",
-    "typescript": "^2.5.3",
+    "typescript": "^2.6.2",
     "update-notifier": "^2.3.0",
-    "webpack": "^3.8.1"
+    "webpack": "3.8.x"
   },
   "devDependencies": {
-    "ava": "0.22.x",
+    "ava": "0.24.x",
     "xo": "0.18.x"
   },
   "xo": {
