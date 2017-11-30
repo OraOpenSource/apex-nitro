@@ -30,7 +30,7 @@
     "apex-nitro": "./bin/apex-nitro.js"
   },
   "dependencies": {
-    "apex-publish-static-files": "1.0.x",
+    "apex-publish-static-files": "2.0.x",
     "babili-webpack-plugin": "0.1.x",
     "browser-sync": "2.18.x",
     "chalk": "^2.2.0",
