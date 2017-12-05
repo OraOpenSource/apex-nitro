@@ -35,7 +35,7 @@ https://github.com/sass/node-sass/releases/tag/v3.13.1
 
 It is usually related to your Node.js environment that was updated. One of APEX Nitro's dependency (node-sass) sometimes gets corrupted. This is a known issue for node-sass.
 
-The solution is simple, just run `npm rebuild node-sass` and try again.
+The solution is simple: just run `npm rebuild -g node-sass` and try again.
 
 Reference: https://github.com/sass/node-sass/issues/1764
 
