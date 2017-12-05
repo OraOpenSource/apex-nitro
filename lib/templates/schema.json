@@ -245,8 +245,8 @@
 		},
 		"browsersync": {
 			"type": "object",
-			"title": "Browser",
-			"description": "Additionnal options on the browser behavior when using APEX Nitro.",
+			"title": "Other",
+			"description": "Additionnal options when using APEX Nitro.",
 			"properties": {
 				"notify": {
 					"type": "boolean",

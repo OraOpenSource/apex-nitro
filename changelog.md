@@ -2,9 +2,11 @@
 
 ## 4.1.0
 - **Support APEX Plugin development**
+- **New notification system**
 - Adds Java 9 support for the publish feature
 - Simplifies the APEX Nitro config structure
 - Enhances overall documentation
+- Better performance at load time
 
 ## 4.0.0
 - Release candidate for the previous betas.
