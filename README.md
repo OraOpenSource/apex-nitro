@@ -1,18 +1,17 @@
 <h1 align="center">
 	<br>
-	<img src="https://raw.githubusercontent.com/OraOpenSource/apex-nitro/master/docs/header.png" alt="APEX Nitro">
-	<br>
+	<img src="https://raw.githubusercontent.com/OraOpenSource/apex-nitro/master/docs/img/header.png" alt="APEX Nitro" width="600">
 	<br>
 	<br>
 </h1>
 
 > Your essential APEX companion
 
-[![npm](https://img.shields.io/npm/v/apex-nitro.svg)]() [![Build Status](https://travis-ci.org/OraOpenSource/apex-nitro.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-nitro) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-nitro.svg)](https://david-dm.org/OraOpenSource/apex-nitro) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+[![npm](https://img.shields.io/npm/v/apex-nitro.svg)](https://www.npmjs.com/package/apex-nitro) [![Build Status](https://travis-ci.org/OraOpenSource/apex-nitro.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-nitro) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-nitro.svg)](https://david-dm.org/OraOpenSource/apex-nitro) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 APEX Nitro makes coding faster and easier by syncing static files more efficiently within an APEX application.
 
-## Why APEX Nitro?
+## What APEX Nitro does
 - Synchronizes your static files to APEX
 - Synchronizes your devices together
 - Merges your files into one
@@ -35,9 +34,7 @@ npm install -g apex-nitro
 
 *Note: you might encounter a few deprecation warnings during the installation. This is normal and we monitor these packages upon every release of APEX Nitro.*
 
-[*Having problems on Windows?*](/docs/windows.md)
-[*Having problems on Mac OS?*](/docs/macOS.md)
-[*Having problems on Linux?*](/docs/linux.md)
+*Having problems on [Windows?](/docs/windows.md) [macOS?](/docs/macOS.md) [Linux?](/docs/linux.md)*
 
 ## APEX Setup
 [See documentation](/docs/setup.md) as you have to make one small modification to your APEX application.
@@ -49,10 +46,14 @@ Before you can use APEX Nitro, execute the command below to configure your proje
 apex-nitro config <project>
 ```
 
+![](docs/img/apex-nitro-config.png)
+
 ## Run
 ```
 apex-nitro launch <project>
 ```
+
+![](docs/img/apex-nitro-launch.png)
 
 ## Usage
 Create, edit or delete any file within the `/src/` folder:
@@ -68,14 +69,14 @@ APEX Nitro will compile your files and synchronize them to your APEX application
 
 [Try our examples.](/examples/)
 
-[*Seeing self-signed SSL browser warnings?*](/docs/ssl-warning.md)
-
 ## Publish to APEX
 When you are done developing, you may want to publish your files to the APEX Shared Components.
 
 ```
 apex-nitro publish <project>
 ```
+
+![](docs/img/apex-nitro-publish.png)
 
 [See documentation](/docs/publish.md) to get SQLcl running on your environment.
 

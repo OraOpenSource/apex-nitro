@@ -483,3 +483,325 @@ test.serial.cb('demo-webpack', t => {
 		t.end();
 	});
 });
+
+test.serial.cb('demo-error-js', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-error-js/src'),
+		distFolder: path.resolve('./examples/demo-error-js/dist'),
+		js: {
+			processor: 'default',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-error-js'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-error-js/dist/css/app.css'),
+			path.resolve('./examples/demo-error-js/dist/css/app.css.map'),
+			path.resolve('./examples/demo-error-js/dist/css/app.min.css'),
+			path.resolve('./examples/demo-error-js/dist/css/app.min.css.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-error-js/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-warning-js', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-warning-js/src'),
+		distFolder: path.resolve('./examples/demo-warning-js/dist'),
+		js: {
+			processor: 'default',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-warning-js'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-warning-js/dist/css/app.css'),
+			path.resolve('./examples/demo-warning-js/dist/css/app.css.map'),
+			path.resolve('./examples/demo-warning-js/dist/css/app.min.css'),
+			path.resolve('./examples/demo-warning-js/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-warning-js/dist/js/app.js'),
+			path.resolve('./examples/demo-warning-js/dist/js/app.js.map'),
+			path.resolve('./examples/demo-warning-js/dist/js/app.min.js'),
+			path.resolve('./examples/demo-warning-js/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-warning-js/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-error-css', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-error-css/src'),
+		distFolder: path.resolve('./examples/demo-error-css/dist'),
+		js: {
+			processor: 'default',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-error-css'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-error-css/dist/js/app.js'),
+			path.resolve('./examples/demo-error-css/dist/js/app.js.map'),
+			path.resolve('./examples/demo-error-css/dist/js/app.min.js'),
+			path.resolve('./examples/demo-error-css/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-error-css/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-error-sass', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-error-sass/src'),
+		distFolder: path.resolve('./examples/demo-error-sass/dist'),
+		js: {
+			processor: 'default',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'sass',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-error-sass'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-error-sass/dist/js/app.js'),
+			path.resolve('./examples/demo-error-sass/dist/js/app.js.map'),
+			path.resolve('./examples/demo-error-sass/dist/js/app.min.js'),
+			path.resolve('./examples/demo-error-sass/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-error-sass/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-error-less', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-error-less/src'),
+		distFolder: path.resolve('./examples/demo-error-less/dist'),
+		js: {
+			processor: 'default',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'less',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-error-less'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-error-less/dist/js/app.js'),
+			path.resolve('./examples/demo-error-less/dist/js/app.js.map'),
+			path.resolve('./examples/demo-error-less/dist/js/app.min.js'),
+			path.resolve('./examples/demo-error-less/dist/js/app.min.js.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-error-less/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-error-typescript', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-error-typescript/src'),
+		distFolder: path.resolve('./examples/demo-error-typescript/dist'),
+		js: {
+			processor: 'typescript',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-error-typescript'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-error-typescript/dist/css/app.css'),
+			path.resolve('./examples/demo-error-typescript/dist/css/app.css.map'),
+			path.resolve('./examples/demo-error-typescript/dist/css/app.min.css'),
+			path.resolve('./examples/demo-error-typescript/dist/css/app.min.css.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-error-typescript/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-error-webpack', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-error-webpack/src'),
+		distFolder: path.resolve('./examples/demo-error-webpack/dist'),
+		js: {
+			processor: 'webpack',
+			concat: false,
+			entries: [path.resolve('./examples/demo-error-webpack/src/js/app.js')],
+			bundleFilename: 'bundle',
+			library: true,
+			libraryName: 'demo'
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-error-webpack'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-error-webpack/dist/css/app.css'),
+			path.resolve('./examples/demo-error-webpack/dist/css/app.css.map'),
+			path.resolve('./examples/demo-error-webpack/dist/css/app.min.css'),
+			path.resolve('./examples/demo-error-webpack/dist/css/app.min.css.map')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-error-webpack/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});

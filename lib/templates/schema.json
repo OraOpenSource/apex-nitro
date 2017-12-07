@@ -24,13 +24,13 @@
 			"type": "string",
 			"title": "Source Folder",
 			"description": "This is where you do the coding. It should point to a local directory.",
-			"placeholder": "Example: C:\\project\\src"
+			"placeholder": "Example: /Users/vmorneau/myProject/src"
 		},
 		"distFolder": {
 			"type": "string",
 			"title": "Distributable Folder",
 			"description": "This is where the files will be compiled. It should point to a local directory.",
-			"placeholder": "Example: C:\\project\\dist"
+			"placeholder": "Example: /Users/vmorneau/myProject/dist"
 		},
 		"js": {
 			"type": "object",
@@ -66,7 +66,7 @@
 						"type": "string",
 						"title": "Entry",
 						"description": "Entry",
-						"placeholder": "Example: C:\\project\\js\\app.js",
+						"placeholder": "Example: /Users/vmorneau/myProject/src/js/app.js",
 						"required": true
 					}
 				},
@@ -203,13 +203,13 @@
 					"type": "string",
 					"title": "Include Path",
 					"description": "Include a path to an external Sass folder. Allows to use the `@import` feature from within that folder.",
-					"placeholder": "Example: C:\\AnotherProject\\Sass"
+					"placeholder": "Example: /Users/vmorneau/AnotherProject/sass"
 				},
 				"lessIncludePath": {
 					"type": "string",
 					"title": "Include Path",
 					"description": "Include a path to an external Less folder. Allows to use the `@import` feature from within that folder.",
-					"placeholder": "Example: C:\\AnotherProject\\Less"
+					"placeholder": "Example: /Users/vmorneau/AnotherProject/less"
 				}
 			},
 			"required": [
@@ -245,8 +245,8 @@
 		},
 		"browsersync": {
 			"type": "object",
-			"title": "Browser",
-			"description": "Additionnal options on the browser behavior when using APEX Nitro.",
+			"title": "Other",
+			"description": "Additionnal options when using APEX Nitro.",
 			"properties": {
 				"notify": {
 					"type": "boolean",
@@ -279,7 +279,7 @@
 					"type": "string",
 					"title": "package.json Path",
 					"description": "Points to your project's `package.json` file.",
-					"placeholder": "Example: C:\\project\\package.json"
+					"placeholder": "Example: /Users/vmorneau/myProject/package.json"
 				}
 			},
 			"required": [
@@ -293,40 +293,46 @@
 		},
 		"apex": {
 			"type": "object",
-			"title": "APEX",
+			"title": "APEX Options",
 			"description": "Determines if the APEX builder should open alongside the application itself.",
 			"properties": {
 				"openBuilder": {
 					"type": "boolean",
 					"title": "Open Builder",
 					"description": "Opens the APEX builder when launching APEX Nitro."
-				},
-				"apexDestination": {
+				}
+			},
+			"required": [
+				"openBuilder"
+			]
+		},
+		"publish": {
+			"type": "object",
+			"title": "Publish Files",
+			"description": "Required if you want to publish your files to APEX automatically.",
+			"properties": {
+				"destination": {
 					"type": "string",
 					"title": "APEX Files Destination",
 					"description": "This is used for the 'publish' feature and will determine where the files should be uploaded.",
 					"enum": [
 						"application",
 						"workspace",
-						"theme"
+						"theme",
+						"plugin"
 					]
-				}
-			},
-			"required": [
-				"openBuilder",
-				"apexDestination"
-			]
-		},
-		"sqlcl": {
-			"type": "object",
-			"title": "SQLcl",
-			"description": "Required if you want to publish your files to APEX automatically.",
-			"properties": {
+				},
+				"pluginName": {
+					"type": "string",
+					"title": "Plugin Internal Name",
+					"description": "The internal name of the plugin is required to map the files to the correct plugin.",
+					"placeholder": "Example: COM.ORACLE.STARPLUGIN"
+				},
 				"path": {
 					"type": "string",
 					"title": "SQLcl Path",
-					"description": "Enter the path to SQLcl. If it's been added to your environment variable, it should be `sql`. Otherwise enter a full path. Example: `C:\\sqlcl\\sql`",
-					"placeholder": "Example: C:\\sqlcl\\sql"
+					"description": "Enter the path to SQLcl. If it's been added to your environment variable, it should be `sql`. Otherwise enter a full path. Example: `/Users/vmorneau/sqlcl/bin/sql`",
+					"placeholder": "Example: [sql] or [/Users/vmorneau/sqlcl/bin/sql]"
 				},
 				"connectionType": {
 					"type": "string",
@@ -397,7 +403,15 @@
 					"placeholder": "Example: barry/oracle@localhost:1521/orcl"
 				}
 			},
+			"required": [
+				"destination"
+			],
 			"requiredIf": [
+				{
+					"property": "pluginName",
+					"dependsOn": ["destination"],
+					"value": ["plugin"]
+				},
 				{
 					"property": "username",
 					"dependsOn": ["connectionType"],
@@ -439,51 +453,58 @@
 					"value": ["custom"]
 				}
 			],
-			"showIf": [{
-				"property": "username",
-				"dependsOn": ["connectionType"],
-				"value": ["basic"]
-			},
-			{
-				"property": "password",
-				"dependsOn": ["connectionType"],
-				"value": ["basic"]
-			},
-			{
-				"property": "host",
-				"dependsOn": ["connectionType"],
-				"value": ["basic"]
-			},
-			{
-				"property": "port",
-				"dependsOn": ["connectionType"],
-				"value": ["basic"]
-			},
-			{
-				"property": "basicType",
-				"dependsOn": ["connectionType"],
-				"value": ["basic"]
-			},
-			{
-				"property": "sid",
-				"dependsOn": ["connectionType", "basicType"],
-				"value": ["basic", "sid"]
-			},
-			{
-				"property": "serviceName",
-				"dependsOn": ["connectionType", "basicType"],
-				"value": ["basic", "service name"]
-			},
-			{
-				"property": "tns",
-				"dependsOn": ["connectionType", "basicType"],
-				"value": ["basic", "tns"]
-			},
-			{
-				"property": "connectionString",
-				"dependsOn": ["connectionType"],
-				"value": ["custom"]
-			}]
+			"showIf": [
+				{
+					"property": "pluginName",
+					"dependsOn": ["destination"],
+					"value": ["plugin"]
+				},
+				{
+					"property": "username",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "password",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "host",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "port",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "basicType",
+					"dependsOn": ["connectionType"],
+					"value": ["basic"]
+				},
+				{
+					"property": "sid",
+					"dependsOn": ["connectionType", "basicType"],
+					"value": ["basic", "sid"]
+				},
+				{
+					"property": "serviceName",
+					"dependsOn": ["connectionType", "basicType"],
+					"value": ["basic", "service name"]
+				},
+				{
+					"property": "tns",
+					"dependsOn": ["connectionType", "basicType"],
+					"value": ["basic", "tns"]
+				},
+				{
+					"property": "connectionString",
+					"dependsOn": ["connectionType"],
+					"value": ["custom"]
+				}
+			]
 		},
 		"themeroller": {
 			"type": "object",
@@ -498,7 +519,7 @@
 						"type": "string",
 						"title": "File",
 						"description": "File",
-						"placeholder": "Example: C:\\project\\Sass\\app.scss",
+						"placeholder": "Example: /Users/vmorneau/myProject/src/sass/app.scss",
 						"required": true
 					}
 				}

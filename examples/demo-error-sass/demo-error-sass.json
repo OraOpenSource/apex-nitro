@@ -1,0 +1,24 @@
+{
+	"mode": "advanced",
+	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
+	"srcFolder": "CHANGE_ME\\demo-error-sass\\src",
+	"distFolder": "CHANGE_ME\\demo-error-sass\\dist",
+	"js": {
+		"processor": "default",
+		"concat": false
+	},
+	"css": {
+		"language": "sass",
+		"concat": false
+	},
+	"browsersync": {
+		"notify": false,
+		"ghostMode": false
+	},
+	"header": {
+		"enabled": false
+	},
+	"apex": {
+		"openBuilder": false
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"mode": "error-js",
+	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:102",
+	"srcFolder": "CHANGE_ME\\demo-warning-js\\src",
+	"js": {
+		"processor": "default",
+		"concat": false,
+		"library": false
+	},
+	"css": {
+		"language": "css",
+		"concat": false
+	},
+	"browsersync": {
+		"notify": false,
+		"ghostMode": false
+	},
+	"header": {
+		"enabled": false
+	},
+	"apex": {
+		"openBuilder": false
+	}
+}
