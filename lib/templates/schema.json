@@ -561,7 +561,7 @@
 		"dependsOn": ["mode"],
 		"value": ["advanced"]
 	}, {
-		"property": "sqlcl",
+		"property": "publish",
 		"dependsOn": ["mode"],
 		"value": ["advanced"]
 	}, {
