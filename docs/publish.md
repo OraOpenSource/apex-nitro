@@ -1,23 +1,34 @@
-# Publish
+# APEX Nitro Publish
 When you are done developing, you might want to publish your new code directly to your APEX application.
 
 ```
 apex-nitro publish <project>
 ```
 
-![](img/apex-nitro-publish.png)
+![](img/command-publish.png)
 
-You can setup SQLcl by doing `apex-nitro config <project>`.
+The files will be uploaded and stored according to your configuration. Run `apex-nitro config <project>` and pick your file destination here:
 
-Under "Advanced", two parameters will be required:
-
-Name | Type | Default | Description
---- | --- | --- | ---
-`Path` | string | `sql` | Enter the path to SQLcl. If it's been added to PATH (environment variable), it is `sql`. Otherwise enter a full path. Example: `C:\sqlcl\sql`
-`Database Connect String` | string | `user/pass@server:port/sid` | Enter your database schema information for SQLcl to log in. Format should follow `user/pass@server:port/sid`.
+![](img/config-publish-destination.png)
 
 ### Troubleshooting
 
-**Error: command failed**: Please verify the parameters above. The CLI cannot validate them and will crash if `Path` or `Database Connect String` are invalid.
+1. **Command not found**
 
-The publish feature will only work if these parameters are valid.
+   ![](img/publish-fails-1.png)
+
+   `apex-nitro publish <project>` will fail if the `SQLcl path` in `apex-nitro config <project>` is invalid.
+
+   If you have added SQLcl to your environment variable, the `SQLcl path` should be `sql`.
+
+   If not, you can use an absolute path to the SQLcl directory in your system, such as `/Users/vmorneau/sqlcl/bin/sql`.
+
+2. **Connection String fails**
+
+   ![](img/publish-fails-2.png)
+
+   `apex-nitro publish <project>` can fail if the publish parameters in `apex-nitro config <project>` are invalid.
+
+   APEX Nitro **does not** validate the connection string. The publish feature will only work if these parameters are valid.
+
+   Double check your username, password, hostname, port, sid or service name.

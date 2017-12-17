@@ -1,6 +1,6 @@
-# Windows
+# Windows Troubleshooting
 
-A dependency of APEX Nitro (browsersync) requires C++ runtime libraries.
+A dependency of APEX Nitro (Browsersync) requires C++ runtime libraries.
 
 You might run into issues when installing on Windows if you don't have them.
 
