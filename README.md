@@ -1,6 +1,6 @@
 <h1 align="center">
 	<br>
-	<img src="https://raw.githubusercontent.com/OraOpenSource/apex-nitro/master/docs/img/header.png" alt="APEX Nitro" width="600">
+	<img src="https://raw.githubusercontent.com/OraOpenSource/apex-nitro/master/docs/img/apex-nitro-logo.png" alt="APEX Nitro" width="600">
 	<br>
 	<br>
 </h1>
@@ -97,7 +97,7 @@ apex-nitro publish <project>
 This feature is optional. [Read more](/docs/publish.md) to get SQLcl running on your environment.
 
 ## Troubleshoot
-[Read more about common issues.](/docs/troubleshoot.md)
+[Read more about common issues.](/docs/troubleshooting.md)
 
 ## Changelog
 [See changelog.](changelog.md)
