@@ -9,12 +9,17 @@
 
 [![npm](https://img.shields.io/npm/v/apex-nitro.svg)](https://www.npmjs.com/package/apex-nitro) [![Build Status](https://travis-ci.org/OraOpenSource/apex-nitro.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-nitro) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-nitro.svg)](https://david-dm.org/OraOpenSource/apex-nitro) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
-APEX Nitro makes front-end coding faster and easier by syncing static files more efficiently within an APEX application.
+## What APEX Nitro is
+APEX Nitro is a command line tool that runs in the background while you develop an APEX Application.
+
+While running, it watches for static file modifications inside of a given directory, compiles them into a better format and sends them back to your APEX application seamlessly. It makes front-end coding faster by syncing these local files to your APEX application in real-time.
+
+APEX Nitro also makes front-end development easier by establishing clear guidelines and by enforcing good programming practices. It starts by streamlining CSS and JavaScript and by entirely eliminating the (bad) practice of inline coding. Your APEX application benefits from an efficient 100% file-based approach.
 
 ## What APEX Nitro does  
 - Browser Synchronization
-- Minification
-- Concatenation
+- File Minification
+- File Concatenation
 - Source Mapping
 - Error Handling
 - CSS Preprocessing
@@ -23,7 +28,7 @@ APEX Nitro makes front-end coding faster and easier by syncing static files more
 
 For more info on the features, [read the documentation](/docs/features.md).
 
-## Additional Benefits
+## Benefits
 - Reduce development time
 - Reduce mundane tasks
 - Increase maintainability

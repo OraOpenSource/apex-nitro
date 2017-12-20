@@ -1,4 +1,4 @@
-# APEX Nitro Additional Benefits
+# APEX Nitro Benefits
 Technicalities aside, here are a few benefits of using APEX Nitro for your business.
 
 ### Reduce Development Time
