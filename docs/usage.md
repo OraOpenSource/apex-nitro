@@ -4,25 +4,25 @@
 After APEX Nitro is launched, create, edit or delete any file within your project's source folder. Example `/my_project/src/`:
 ```
 |-/src/
-	|-css
-		|-app.css
-	|-js
-		|-app.js
+   |-css
+      |-app.css
+   |-js
+      |-app.js
 ```
 
 APEX Nitro will compile your files to a new folder of your choice. Example `/my_project/dist/`:
 ```
 |-/dist/
-	|-css
-		|-app.css
-		|-app.css.map
-		|-app.min.css
-		|-app.min.css.map
-	|-js
-		|-app.js
-		|-app.js.map
-		|-app.min.js
-		|-app.min.js.map
+   |-css
+      |-app.css
+      |-app.css.map
+      |-app.min.css
+      |-app.min.css.map
+   |-js
+      |-app.js
+      |-app.js.map
+      |-app.min.js
+      |-app.min.js.map
 ```
 
 APEX Nitro will then synchronize the compiled folder (`/my_project/dist/`) to your APEX application.
@@ -33,48 +33,48 @@ Notice that the 2 source files are generating 8 dist files. That is the result o
 The example above is good, but lacks structure. A good pattern would be to modularize CSS by visual sections of your page, and modularize JavaScript by different modules of your application. Example `/my_project/src/`:
 ```
 |-/src/
-	|-lib
-		|-bootstrap
-	|-img
-		|-logo.png	
-		|-background.png	
-	|-scss
-		|-_buttons.scss
-		|-_cards.scss
-		|-_header.scss
-		|-_footer.scss
-		|-_reports.scss
-		|-_tables.scss
-		|-_variables.scss
-		|-app.scss
-	|-js
-		|-company.js
-		|-dept.js
-		|-emp.js
-		|-profile.js
-		|-role.js
-		|-user.js
-		|-util.js
+   |-lib
+      |-bootstrap
+   |-img
+      |-logo.png
+      |-background.png
+   |-scss
+      |-_buttons.scss
+      |-_cards.scss
+      |-_header.scss
+      |-_footer.scss
+      |-_reports.scss
+      |-_tables.scss
+      |-_variables.scss
+      |-app.scss
+   |-js
+      |-company.js
+      |-dept.js
+      |-emp.js
+      |-profile.js
+      |-role.js
+      |-user.js
+      |-util.js
 ```
 
 Compiles to `/my_project/dist/`:
 ```
 |-/dist/
-	|-lib
-		|-bootstrap
-	|-img
-		|-logo.png	
-		|-background.png
-	|-css
-		|-app.css
-		|-app.css.map
-		|-app.min.css
-		|-app.min.css.map
-	|-js
-		|-app.js
-		|-app.js.map
-		|-app.min.js
-		|-app.min.js.map
+   |-lib
+      |-bootstrap
+   |-img
+      |-logo.png
+      |-background.png
+   |-css
+      |-app.css
+      |-app.css.map
+      |-app.min.css
+      |-app.min.css.map
+   |-js
+      |-app.js
+      |-app.js.map
+      |-app.min.js
+      |-app.min.js.map
 ```
 
 Now that looks very similar to the basic example, only this time, we have reduced the number of files that are uploaded to the server. On a real life scenario, the number of source files can be much more complicated than this example.
@@ -85,34 +85,34 @@ If you have used APEX Nitro, you may have noticed that your APEX application pic
 Let's assume that you are using a version control system, like Git or SVN. Your repository tree should look similar to this:
 ```
 |-/my_project/
-	|-/apex/
-		|-/f12192.sql
-	|-/packages/
-		|-/my_pkg.pks
-		|-/my_pkg.pkb
-	|-/views/
-		|-/my_view.sql
-	|-/www/
-		|-/src/
-			|-css/
-				|-header.css
-				|-footer.css
-			|-js/
-				|-p10.js
-				|-p20.js
-			|-img/
-				|-background.png
-				|-logo.png
-		|-/dist/
-			|-css/
-				|-app.css
-				|-app.min.css
-			|-js/
-				|-app.js
-				|-app.min.js
-			|-img/
-				|-background.png
-				|-logo.png
+   |-/apex/
+      |-/f12192.sql
+   |-/packages/
+      |-/my_pkg.pks
+      |-/my_pkg.pkb
+   |-/views/
+      |-/my_view.sql
+   |-/www/
+      |-/src/
+         |-css/
+            |-header.css
+            |-footer.css
+         |-js/
+            |-p10.js
+            |-p20.js
+         |-img/
+            |-background.png
+            |-logo.png
+      |-/dist/
+         |-css/
+            |-app.css
+            |-app.min.css
+         |-js/
+            |-app.js
+            |-app.min.js
+         |-img/
+            |-background.png
+            |-logo.png
 ```
 
 From a structural perspective

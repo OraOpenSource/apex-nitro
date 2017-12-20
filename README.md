@@ -12,11 +12,11 @@
 ## What APEX Nitro is
 APEX Nitro is a command line tool that runs in the background while you develop an APEX Application.
 
-While running, it watches for static file modifications inside of a given directory, compiles them into a better format and sends them back to your APEX application seamlessly. It makes front-end coding faster by syncing these local files to your APEX application in real-time.
+While running, it watches for local static file (e.g. `js`, `css`) modifications inside of a given directory, compiles them into a better format and sends them back to your APEX application seamlessly. It makes front-end coding faster by syncing these local files to your APEX application in real-time.
 
 APEX Nitro also makes front-end development easier by establishing clear guidelines and by enforcing good programming practices. It starts by streamlining CSS and JavaScript and by entirely eliminating the (bad) practice of inline coding. Your APEX application benefits from an efficient 100% file-based approach.
 
-## What APEX Nitro does  
+### What APEX Nitro does  
 - Browser Synchronization
 - File Minification
 - File Concatenation
@@ -28,7 +28,7 @@ APEX Nitro also makes front-end development easier by establishing clear guideli
 
 For more info on the features, [read the documentation](/docs/features.md).
 
-## Benefits
+### Benefits
 - Reduce development time
 - Reduce mundane tasks
 - Increase maintainability
@@ -39,48 +39,63 @@ For more info on the features, [read the documentation](/docs/features.md).
 
 For more info on the benefits, [read the documentation](/docs/benefits.md).
 
-## System Requirements
+## Quickstart
+This following sections show the easiest way to get started with APEX Nitro.
+
+[Go to the full documentation](/docs/) to read more about using APEX Nitro.
+
+### System Requirements
 - [Node.js](https://nodejs.org) *>= v6*
 - [SQLcl](http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html) *>= v17.2 (optional, used for the publish feature)*
 
-## Install
+### Install
+Execute this command to install APEX Nitro:
 ```
 npm install -g apex-nitro
 ```
 
-*Note: you might encounter a few deprecation warnings during the installation. This is normal and we monitor these packages upon every release of APEX Nitro.*
-
-*Having problems on [Windows?](/docs/windows.md) [macOS?](/docs/macOS.md) [Linux?](/docs/linux.md)*
-
-## Project Configuration
-Before you can use APEX Nitro, execute the command below to configure your project.
-
+### Project Configuration
+Execute this command to configure an APEX Nitro project:
 ```
 apex-nitro config <project>
 ```
+
+A new browser tab will open and you can simply fill the form:
 
 ![](/docs/img/command-config.png)
 
 *You can read about the different options by hovering the help icons.*
 
-## APEX Application Setup
-[Read the documentation](/docs/setup.md) as you have to make one small modification to your APEX application.
+### APEX Application Setup
+APEX Nitro requires to make one small modification to your APEX application to allow real-time synchronization. Head to Shared Components, under Application Processes and create a new application process with the following attributes:
 
-## Launch
+Attribute | Value
+--- | ---
+Name | `APEX Nitro`
+Sequence | `-999`
+Process Point | `On Load: Before Header (page template header)`
+Condition | `owa_util.get_cgi_env('APEX-Nitro') is not null`
+Source (`PL/SQL`) | `apex_application.g_flow_images := owa_util.get_cgi_env('APEX-Nitro');` 
+
+![](/docs/img/setup-application-process.png)
+
+[Read the documentation](/docs/setup.md) for more information.
+
+### Launch
 ```
 apex-nitro launch <project>
 ```
 
 ![](/docs/img/command-launch.png)
 
-## Usage
+### Usage
 After APEX Nitro is launched, create, edit or delete any file within your project's source folder. Example `/my_project/src/`:
 ```
 |-/src/
-	|-css
-		|-app.css
-	|-js
-		|-app.js
+   |-css
+      |-app.css
+   |-js
+      |-app.js
 ```
 
 APEX Nitro will compile your files to a new folder of your choice. Example `/my_project/dist/`.
@@ -90,7 +105,7 @@ APEX Nitro will then synchronize the compiled folder (`/my_project/dist/`) to yo
 [**See common patterns.**](/docs/patterns.md)  
 [**Try our examples.**](/examples/)
 
-## Publish to APEX
+### Publish to APEX
 When you are done developing, you can upload your files to the *Shared Components* in APEX.
 
 ```

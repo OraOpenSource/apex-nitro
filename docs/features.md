@@ -83,10 +83,10 @@ Clicking on the link opens the code, and shows this mess:
 
 It's hard to read and harder to understand. To overcome this, APEX Nitro automatically adds source maps to your code, which aid in debugging minified and concatenated files by easily tracing the code back to the original source file.
 
-**Example of Sass source maps:**
+**Example of Sass source maps:**  
 ![](img/feature-sourcemaps-3.png)
 
-**Example of JavaScript source maps:**
+**Example of JavaScript source maps:**  
 ![](img/feature-sourcemaps-4.png)
 
 ### Error Handling
