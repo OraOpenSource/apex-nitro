@@ -44,7 +44,7 @@
     "gulp-header": "1.8.x",
     "gulp-if": "2.0.x",
     "gulp-jshint": "2.0.x",
-    "gulp-less": "3.3.x",
+    "gulp-less": "3.4.x",
     "gulp-load-plugins": "1.5.x",
     "gulp-notify": "3.0.x",
     "gulp-plumber": "1.1.x",
