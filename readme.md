@@ -14,7 +14,7 @@ APEX developers of all skills inevitably have to write JavaScript and CSS. Do yo
 APEX Nitro takes your front-end development to the next level by reducing mundane tasks, boosting performance, modularizing code, enhancing teamwork and more.
 
 ## What APEX Nitro is
-APEX Nitro is a tool that runs in the background while you develop an APEX Application, watching for local static file (e.g. `js`, `css`) modifications inside of a given directory, compiling them into a better format and sending them back to your APEX application seamlessly. It makes front-end coding faster by syncing these local files to your APEX application in real-time.
+APEX Nitro is a tool that runs in the background while you develop an APEX application, watching for local static file (e.g. `js`, `css`) modifications inside of a given directory, compiling them into a better format and sending them back to your APEX application seamlessly. It makes front-end coding faster by syncing these local files to your APEX application in real-time.
 
 APEX Nitro also establishes clear front-end guidelines and enforces good programming practices. It streamlines JavaScript and CSS by eliminating the *bad* practice of inline coding, so your APEX application benefits from an efficient 100% file-based approach.
 
