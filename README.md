@@ -9,12 +9,14 @@
 
 [![npm](https://img.shields.io/npm/v/apex-nitro.svg)](https://www.npmjs.com/package/apex-nitro) [![Build Status](https://travis-ci.org/OraOpenSource/apex-nitro.svg?branch=master)](https://travis-ci.org/OraOpenSource/apex-nitro) [![Dependency Status](https://david-dm.org/OraOpenSource/apex-nitro.svg)](https://david-dm.org/OraOpenSource/apex-nitro) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
+APEX developers of all skills inevitably have to write JavaScript and CSS. Do you feel the learning curve to be steep? That is 100% normal. Barely any guidelines exist within APEX to learn the fundamentals of these languages. Let’s fix that.
+
+APEX Nitro takes your front-end development to the next level by reducing mundane tasks, boosting performance, modularizing code, enhancing teamwork and more.
+
 ## What APEX Nitro is
-APEX Nitro is a command line tool that runs in the background while you develop an APEX Application.
+APEX Nitro is a tool that runs in the background while you develop an APEX Application, watching for local static file (e.g. `js`, `css`) modifications inside of a given directory, compiling them into a better format and sending them back to your APEX application seamlessly. It makes front-end coding faster by syncing these local files to your APEX application in real-time.
 
-While running, it watches for local static file (e.g. `js`, `css`) modifications inside of a given directory, compiles them into a better format and sends them back to your APEX application seamlessly. It makes front-end coding faster by syncing these local files to your APEX application in real-time.
-
-APEX Nitro also makes front-end development easier by establishing clear guidelines and by enforcing good programming practices. It starts by streamlining CSS and JavaScript and by entirely eliminating the (bad) practice of inline coding. Your APEX application benefits from an efficient 100% file-based approach.
+APEX Nitro also establishes clear front-end guidelines and enforces good programming practices. It streamlines JavaScript and CSS by eliminating the *bad* practice of inline coding, so your APEX application benefits from an efficient 100% file-based approach.
 
 ### What APEX Nitro does  
 - Browser Synchronization
