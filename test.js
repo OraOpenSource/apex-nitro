@@ -137,6 +137,68 @@ test.serial.cb('demo-basic', t => {
 	});
 });
 
+test.serial.cb('demo-empty-src', t => {
+	const config = {
+		mode: 'basic',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:102',
+		srcFolder: path.resolve('./examples/demo-empty-src/src'),
+		js: {
+			processor: 'default',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-empty-src'], undefined, config, () => {
+		t.end();
+	});
+});
+
+test.serial.cb('demo-invalid-dir', t => {
+	const config = {
+		mode: 'basic',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:102',
+		srcFolder: path.resolve('./examples/demo-invalid-dir/'),
+		js: {
+			processor: 'default',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-invalid-dir'], undefined, config, () => {
+		t.end();
+	});
+});
+
 test.serial.cb('demo-simple', t => {
 	t.plan(1);
 
