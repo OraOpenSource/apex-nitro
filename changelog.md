@@ -8,6 +8,8 @@
 - Simplifies the APEX Nitro config structure
 - Better performance at load time
 
+*Note: Sourcemaps are temporarily disabled for Sass. That is until the upstream bug is resolved on libsass here: https://github.com/sass/libsass/issues/2312*
+
 ## 4.0.0
 - Release candidate for the previous betas.
 
