@@ -40,6 +40,11 @@ The page-specific JavaScript files can be references in the appropriate page pro
 
 --- 
 
+### Examples
+[Head here](../examples) to look at our examples.
+
+--- 
+
 ### APEX Nitro and you
 Are **YOU** using APEX Nitro differently? 
 
