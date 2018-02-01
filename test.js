@@ -1,3 +1,5 @@
+/* eslint capitalized-comments: ["error", "never"] */
+
 import test from 'ava';
 
 const fs = require('fs');
@@ -8,8 +10,8 @@ const templates = require('./lib/templates/templates');
 const validations = require('./lib/util/validations');
 const launch = require('./lib/commands/launch');
 
-// Recursive loop through a given folder to find all files
-// Found here https://stackoverflow.com/a/20525865/2524979
+// recursive loop through a given folder to find all files
+// round here https://stackoverflow.com/a/20525865/2524979
 function getFiles(dir, files = []) {
 	fs.readdirSync(dir).forEach(filename => {
 		const filepath = path.join(dir, filename);
