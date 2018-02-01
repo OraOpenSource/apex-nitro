@@ -1,57 +1,33 @@
 # Changelog
 
 ## 4.1.0
-- **Completely new documentation**
-- **Support APEX Plugin development**
+- **Complete documentation rewrite**
+- **Supports APEX Plugin development**
 - **New notification system**
 - Adds Java 9 support for the publish feature
-- Simplifies the APEX Nitro config structure
+- Simplifies the APEX Nitro config
 - Better performance at load time
+- Supports multiple subdirectory levels in the source folder
+- Other bug fixes
 
 *Note: Sourcemaps are temporarily disabled for Sass. That is until the upstream bug is resolved on libsass here: https://github.com/sass/libsass/issues/2312*
 
+For more info check out https://github.com/OraOpenSource/apex-nitro/milestone/14
+
 ## 4.0.0
-- Release candidate for the previous betas.
-
-## 4.0.0-beta5
-
-- Simplifies APEX Setup: Build Option is no longer necessary
-- Adds more unit tests for a stronger build
-- Bug fixes
-
-## 4.0.0-beta4
-
-- Simplifies APEX Setup, **[please review yours](https://github.com/OraOpenSource/apex-nitro/blob/master/docs/setup.md)**
+- **APEX Front-End Boost is rebranded to APEX Nitro**
+- Simplifies APEX setup, **[please review yours](https://github.com/OraOpenSource/apex-nitro/blob/master/docs/setup.md)**
+	- Build Option is no longer necessary
 	- No longer requires a cookie
-	- [Fixes a bug](https://github.com/OraOpenSource/apex-nitro/issues/198) when server was localhost, thanks to @fuzziebrain
-- **If you were using the publish feature, please review your project configuration by doing `apex-nitro config <your project>`**
-- Bug fixes on the publish feature
-
-## 4.0.0-beta3
-
-- Rolling back one dependency because it broke the minification process
-	- gulp-uglify from 3.0.x to 2.1.x
-
-## 4.0.0-beta2
-
-- APEX Nitro now compiles the files before publishing them to the Shared Components
-- Simplifies APEX setup
-- Configuration Tool
+- New Configuration Tool `apex-nitro config <project>`
 	- Now you can add project from the web interface
 	- Password fields don't show in clear text anymore
-- Supports TypeScript as a JavaScript engine
-- [Other bug fixes](https://github.com/OraOpenSource/apex-nitro/milestone/13?closed=1)
-
-
-## 4.0.0-beta1
-
-- APEX Front-End Boost is rebranded to APEX Nitro
-- Adds a basic mode, where only App URL and Source Folder is needed
-- Adds `webpack` option, which allows to use ES6
-- Adds 7 examples that can be imported by users to try
-- Adds a JavaScript unit test framework, ensuring more consistent releases
-- APEX Builder doesn't reload on JS changes anymore (#196)
-- Fixes a Theme Roller bug (#191)
+	- Adds a basic mode, where only App URL and Source Folder is needed
+	- Supports TypeScript as a JavaScript engine
+	- Supports Webpack as a JavaScript engine, which allows to use ES6
+- Adds many [examples](https://github.com/OraOpenSource/apex-nitro/tree/master/examples) 
+- Adds a JavaScript Testing Framework for more robust releases
+- Bug fixes
 
 ## 3.1.3
 
