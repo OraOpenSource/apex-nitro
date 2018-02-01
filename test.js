@@ -138,10 +138,13 @@ test.serial.cb('demo-basic', t => {
 });
 
 test.serial.cb('demo-empty-src', t => {
+	t.plan(1);
+
 	const config = {
-		mode: 'basic',
+		mode: 'advanced',
 		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:102',
 		srcFolder: path.resolve('./examples/demo-empty-src/src'),
+		distFolder: path.resolve('./examples/demo-empty-src/dist'),
 		js: {
 			processor: 'default',
 			concat: false,
@@ -164,11 +167,22 @@ test.serial.cb('demo-empty-src', t => {
 	};
 
 	launch(['demo-empty-src'], undefined, config, () => {
+		const expected = [];
+
+		const files = (
+			fs.existsSync('./examples/demo-empty-src/dist/') ?
+			getFiles(path.resolve('./examples/demo-empty-src/dist/')) :
+			undefined
+		);
+
+		t.deepEqual(files, expected);
 		t.end();
 	});
 });
 
 test.serial.cb('demo-invalid-dir', t => {
+	t.plan(1);
+
 	const config = {
 		mode: 'basic',
 		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:102',
@@ -195,6 +209,7 @@ test.serial.cb('demo-invalid-dir', t => {
 	};
 
 	launch(['demo-invalid-dir'], undefined, config, () => {
+		t.pass();
 		t.end();
 	});
 });
@@ -241,6 +256,123 @@ test.serial.cb('demo-simple', t => {
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-simple/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-subfolders', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-subfolders/src'),
+		distFolder: path.resolve('./examples/demo-subfolders/dist'),
+		js: {
+			processor: 'default',
+			concat: false,
+			library: false
+		},
+		css: {
+			language: 'css',
+			concat: false
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-subfolders'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-subfolders/dist/css/file.css'),
+			path.resolve('./examples/demo-subfolders/dist/css/file.css.map'),
+			path.resolve('./examples/demo-subfolders/dist/css/file.min.css'),
+			path.resolve('./examples/demo-subfolders/dist/css/file.min.css.map'),
+			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.css'),
+			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.css.map'),
+			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.min.css'),
+			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.min.css.map'),
+			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.css'),
+			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.css.map'),
+			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.min.css'),
+			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.min.css.map'),
+			path.resolve('./examples/demo-subfolders/dist/js/file.js'),
+			path.resolve('./examples/demo-subfolders/dist/js/file.js.map'),
+			path.resolve('./examples/demo-subfolders/dist/js/file.min.js'),
+			path.resolve('./examples/demo-subfolders/dist/js/file.min.js.map'),
+			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.js'),
+			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.js.map'),
+			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.min.js'),
+			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.min.js.map'),
+			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.js'),
+			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.js.map'),
+			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.min.js'),
+			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.min.js.map'),
+			path.resolve('./examples/demo-subfolders/dist/lib/sublib/lib.js')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-subfolders/dist/'));
+		files.sort();
+
+		t.deepEqual(files, expected);
+		t.end();
+	});
+});
+
+test.serial.cb('demo-subfolders-concat', t => {
+	t.plan(1);
+
+	const config = {
+		mode: 'advanced',
+		appURL: 'https://apex.oracle.com/pls/apex/f?p=105990:101',
+		srcFolder: path.resolve('./examples/demo-subfolders-concat/src'),
+		distFolder: path.resolve('./examples/demo-subfolders-concat/dist'),
+		js: {
+			processor: 'default',
+			concat: true,
+			concatFilename: 'app'
+		},
+		css: {
+			language: 'css',
+			concat: true,
+			concatFilename: 'app'
+		},
+		browsersync: {
+			notify: false,
+			ghostMode: false
+		},
+		header: {
+			enabled: false
+		},
+		apex: {
+			openBuilder: false
+		}
+	};
+
+	launch(['demo-subfolders-concat'], undefined, config, () => {
+		const expected = [
+			path.resolve('./examples/demo-subfolders-concat/dist/css/app.css'),
+			path.resolve('./examples/demo-subfolders-concat/dist/css/app.css.map'),
+			path.resolve('./examples/demo-subfolders-concat/dist/css/app.min.css'),
+			path.resolve('./examples/demo-subfolders-concat/dist/css/app.min.css.map'),
+			path.resolve('./examples/demo-subfolders-concat/dist/js/app.js'),
+			path.resolve('./examples/demo-subfolders-concat/dist/js/app.js.map'),
+			path.resolve('./examples/demo-subfolders-concat/dist/js/app.min.js'),
+			path.resolve('./examples/demo-subfolders-concat/dist/js/app.min.js.map'),
+			path.resolve('./examples/demo-subfolders-concat/dist/lib/sublib/lib.js')
+		].sort();
+
+		const files = getFiles(path.resolve('./examples/demo-subfolders-concat/dist/'));
 		files.sort();
 
 		t.deepEqual(files, expected);
