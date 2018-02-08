@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "apex-publish-static-files": "2.0.x",
-    "babel-minify-webpack-plugin": "0.2.x",
+    "babel-minify-webpack-plugin": "0.3.x",
     "browser-sync": "2.23.x",
     "chalk": "2.3.x",
     "del": "3.0.x",
@@ -51,7 +51,7 @@
     "gulp-rename": "1.2.x",
     "gulp-size": "3.0.x",
     "gulp-sourcemaps": "2.6.x",
-    "gulp-typescript": "4.0.0-alpha.1",
+    "gulp-typescript": "4.0.x",
     "gulp-uglify": "3.0.x",
     "jshint": "2.x",
     "jshint-stylish": "2.2.x",
@@ -74,7 +74,7 @@
     "webpack": "3.10.x"
   },
   "devDependencies": {
-    "ava": "0.24.x",
+    "ava": "0.25.x",
     "xo": "0.18.x"
   },
   "xo": {
