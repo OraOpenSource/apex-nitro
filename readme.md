@@ -56,6 +56,8 @@ Execute this command to install APEX Nitro:
 npm install -g apex-nitro
 ```
 
+*Getting errors? Make sure to read the [troubleshooting section](/docs/troubleshooting.md).*
+
 ### Project Configuration
 Execute this command to configure an APEX Nitro project:
 ```

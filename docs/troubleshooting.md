@@ -8,6 +8,22 @@ Run `apex-nitro help`
 
 ![](img/command-help.png)
 
+### EACCES: permission denied
+When installing using `npm install -g apex-nitro`, you might get an error like this:
+```
+gyp verb `which` failed Error: not found: python2
+...
+...
+gyp ERR! stack Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/apex-nitro/node_modules/node-sass/build'
+...
+...
+```
+
+It's because you are trying to `npm install` as root. You can either follow the official npm solution: https://docs.npmjs.com/getting-started/fixing-npm-permissions (recommended) or simply run the following:
+```
+sudo npm install -g --unsafe-perm apex-nitro
+```
+
 ### EPERM: operation not permitted
 Sometimes when you are trying to launch a project with `apex-nitro launch <project>`, you might get an error like this:
 
