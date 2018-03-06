@@ -42,7 +42,6 @@ For more info on the features, [read the documentation](/docs/features.md).
 For more info on the benefits, [read the documentation](/docs/benefits.md).
 
 ## Quickstart
-
 This following sections show the easiest way to get started with APEX Nitro.
 
 [Go to the full documentation](/docs/) to read more about using APEX Nitro.
