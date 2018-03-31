@@ -97,6 +97,17 @@ test('header-invalid', t => {
 	}
 });
 
+test('src-dist-invalid', t => {
+	try {
+		validations.srcDistFolders({
+			srcFolder: 'test',
+			distFolder: 'test'
+		});
+	} catch (err) {
+		t.pass();
+	}
+});
+
 test.serial.cb('demo-basic', t => {
 	t.plan(1);
 
