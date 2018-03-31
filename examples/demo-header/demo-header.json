@@ -5,11 +5,14 @@
 	"distFolder": "CHANGE_ME\\demo-header\\dist",
 	"js": {
 		"processor": "default",
-		"concat": false
+		"concat": true,
+		"concatFilename": "app"
 	},
 	"css": {
 		"language": "css",
-		"concat": false
+		"concat": true,
+		"concatFilename": "app"
+
 	},
 	"browsersync": {
 		"notify": false,

@@ -453,11 +453,13 @@ test.serial.cb('demo-header', t => {
 		distFolder: path.resolve('./examples/demo-header/dist'),
 		js: {
 			processor: 'default',
-			concat: false
+			concat: true,
+			concatFilename: 'app'
 		},
 		css: {
 			language: 'css',
-			concat: false
+			concat: true,
+			concatFilename: 'app'
 		},
 		browsersync: {
 			notify: false,
