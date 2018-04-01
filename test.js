@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const npc = require('node-package-configurator');
 
+const util = require('./lib/util/util');
 const templates = require('./lib/templates/templates');
 const validations = require('./lib/util/validations');
 const launch = require('./lib/commands/launch');
@@ -104,6 +105,12 @@ test('src-dist-invalid', t => {
 			distFolder: 'test'
 		});
 	} catch (err) {
+		t.pass();
+	}
+});
+
+test('pad-str', t => {
+	if (util.padStr('test', '.js') === 'test.js' && util.padStr('test.js', '.js') === 'test.js') {
 		t.pass();
 	}
 });
@@ -353,7 +360,7 @@ test.serial.cb('demo-subfolders-concat', t => {
 		js: {
 			processor: 'default',
 			concat: true,
-			concatFilename: 'app'
+			concatFilename: 'app.js'
 		},
 		css: {
 			language: 'css',
