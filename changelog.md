@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.1.1
+- Performance enhancements on launch 
+- Cleans CLI UI [#249](https://github.com/OraOpenSource/apex-nitro/issues/249)
+- Config CLI now shows the URL [#248](https://github.com/OraOpenSource/apex-nitro/issues/248)
+- Reenables Sass sourcemaps [#254](https://github.com/OraOpenSource/apex-nitro/issues/254)
+- Validates if srcFolder = distFolder [#253](https://github.com/OraOpenSource/apex-nitro/issues/253)
+- Bug fixes [#251](https://github.com/OraOpenSource/apex-nitro/issues/251) [#252](https://github.com/OraOpenSource/apex-nitro/issues/252)
+
 ## 4.1.0
 - **Complete documentation rewrite**
 - **Supports APEX Plugin development**
