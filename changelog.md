@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.2.0-beta.1
+- Project configuration now includes an "HTTP Headers" array, which can be used to inject additional HTTP Header variables to your application at runtime. This will allow APEX Nitro to be used on Single Sign On environments.
+
 ## 4.1.1
 - Performance enhancements on launch 
 - Cleans CLI UI [#249](https://github.com/OraOpenSource/apex-nitro/issues/249)

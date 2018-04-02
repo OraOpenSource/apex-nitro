@@ -1,4 +1,3 @@
-
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"type": "object",
@@ -246,7 +245,7 @@
 		"browsersync": {
 			"type": "object",
 			"title": "Other",
-			"description": "Additionnal options when using APEX Nitro.",
+			"description": "Additional options when using APEX Nitro.",
 			"properties": {
 				"notify": {
 					"type": "boolean",
@@ -300,6 +299,34 @@
 					"type": "boolean",
 					"title": "Open Builder",
 					"description": "Opens the APEX builder when launching APEX Nitro."
+				},
+				"httpHeaders": {
+					"type": "array",
+					"title": "Additional HTTP Headers.",
+					"description": "This allow to add additional HTTP Headers when APEX Nitro launches your project. Useful for Single Sign On environments.",
+					"items": {
+						"type": "object",
+						"title": "HTTP Header",
+						"description": "HTTP Header",
+						"properties": {
+							"httpHeaderName": {
+								"type": "string",
+								"title": "HTTP Header Name",
+								"description": "HTTP Header Name",
+								"placeholder": "Example: My-HTTP-Header-Name"
+							},
+							"httpHeaderValue": {
+								"type": "string",
+								"title": "HTTP Header Value",
+								"description": "HTTP Header Value",
+								"placeholder": "Example: My-HTTP-Header-Value"
+							}
+						},
+						"required": [
+							"httpHeaderName",
+							"httpHeaderValue"
+						]
+					}
 				}
 			},
 			"required": [
@@ -406,8 +433,7 @@
 			"required": [
 				"destination"
 			],
-			"requiredIf": [
-				{
+			"requiredIf": [{
 					"property": "pluginName",
 					"dependsOn": ["destination"],
 					"value": ["plugin"]
@@ -453,8 +479,7 @@
 					"value": ["custom"]
 				}
 			],
-			"showIf": [
-				{
+			"showIf": [{
 					"property": "pluginName",
 					"dependsOn": ["destination"],
 					"value": ["plugin"]
