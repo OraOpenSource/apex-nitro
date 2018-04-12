@@ -49,7 +49,7 @@
     "gulp-notify": "3.2.x",
     "gulp-plumber": "1.2.x",
     "gulp-rename": "1.2.x",
-    "gulp-sass": "3.2.x",
+    "gulp-sass": "4.0.x",
     "gulp-size": "3.0.x",
     "gulp-sourcemaps": "2.6.x",
     "gulp-typescript": "^4.0.2",
@@ -67,7 +67,7 @@
     "typescript": "2.8.x",
     "uglify-save-license": "0.4.x",
     "update-notifier": "2.4.x",
-    "webpack": "4.4.x"
+    "webpack": "4.5.x"
   },
   "devDependencies": {
     "ava": "0.25.x",
