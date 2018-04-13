@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.1.2
+- Bug fixes
+	- Autoprefixer
+	- Webpack
+- Documentation enhancements
+
 ## 4.1.1
 - Performance enhancements on launch 
 - Cleans CLI UI [#249](https://github.com/OraOpenSource/apex-nitro/issues/249)
