@@ -245,22 +245,27 @@
 		},
 		"browsersync": {
 			"type": "object",
-			"title": "Other",
+			"title": "Additionnal Options",
 			"description": "Additionnal options when using APEX Nitro.",
 			"properties": {
-				"notify": {
+				"realTime": {
 					"type": "boolean",
-					"title": "Notify",
-					"description": "This option makes APEX Nitro alert you when a file is dynamically injected to you browser."
-
+					"title": "Enable Real-time Synchronization",
+					"description": "Enabling this will automatically inject CSS and reload JavaScript on your page. This is the default behavior, but it can be turned off."
 				},
 				"ghostMode": {
 					"type": "boolean",
-					"title": "Ghost Mode",
-					"description": "This option makes clicking, scrolling and typing being replicated on all devices."
+					"title": "Enable External Devices Synchronization",
+					"description": "Enabling this synchronizes clicking, scrolling and typing on all devices connected to your APEX Nitro app."
+				},
+				"notify": {
+					"type": "boolean",
+					"title": "Push Notifications on Success/Errors",
+					"description": "Enabling this will push system notifications to you if your code compiles successfully or fails."
 				}
 			},
 			"required": [
+				"realTime",
 				"notify",
 				"ghostMode"
 			]

@@ -32,8 +32,8 @@
   "dependencies": {
     "apex-publish-static-files": "2.0.x",
     "babel-minify-webpack-plugin": "0.3.x",
-    "browser-sync": "2.23.x",
-    "chalk": "2.3.x",
+    "browser-sync": "^2.23.7",
+    "chalk": "2.4.x",
     "del": "3.0.x",
     "gulp": "4.0.x",
     "gulp-autoprefixer": "5.0.x",
@@ -58,16 +58,16 @@
     "jshint-stylish": "2.2.x",
     "merge-stream": "1.0.x",
     "node-notifier": "5.2.x",
-    "node-package-configurator": "1.3.x",
+    "node-package-configurator": "^1.3.3",
     "nopt": "4.0.x",
     "opn": "5.3.x",
     "portscanner": "2.1.x",
     "replace-ext": "1.0.x",
     "through2": "2.0.x",
-    "typescript": "2.8.x",
+    "typescript": "^2.8.3",
     "uglify-save-license": "0.4.x",
-    "update-notifier": "2.4.x",
-    "webpack": "4.5.x"
+    "update-notifier": "2.5.x",
+    "webpack": "4.6.x"
   },
   "devDependencies": {
     "ava": "0.25.x",
