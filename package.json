@@ -32,12 +32,12 @@
   "dependencies": {
     "apex-publish-static-files": "2.0.x",
     "babel-minify-webpack-plugin": "0.3.x",
-    "browser-sync": "^2.23.7",
-    "chalk": "2.4.x",
+    "browser-sync": "2.24.4",
+    "chalk": "^2.4.1",
     "del": "3.0.x",
     "gulp": "4.0.x",
     "gulp-autoprefixer": "5.0.x",
-    "gulp-clean-css": "3.9.x",
+    "gulp-clean-css": "^3.9.4",
     "gulp-clip-empty-files": "0.1.x",
     "gulp-clone": "2.0.x",
     "gulp-concat": "2.6.x",
@@ -67,7 +67,7 @@
     "typescript": "^2.8.3",
     "uglify-save-license": "0.4.x",
     "update-notifier": "2.5.x",
-    "webpack": "4.6.x"
+    "webpack": "4.7.x"
   },
   "devDependencies": {
     "ava": "0.25.x",
