@@ -5,7 +5,8 @@
   "description": "Your essential APEX companion",
   "license": "MIT",
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && ava",
+    "postinstall": "npm rebuild node-sass"
   },
   "keywords": [
     "oracle",
