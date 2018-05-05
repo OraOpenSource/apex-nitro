@@ -47,7 +47,7 @@ This following sections show the easiest way to get started with APEX Nitro.
 [Go to the full documentation](/docs/) to read more about using APEX Nitro.
 
 ### System Requirements
-- [Node.js](https://nodejs.org) *>= v6*
+- [Node.js](https://nodejs.org)
 - [SQLcl](http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html) *>= v17.2 (optional, used for the publish feature)*
 
 ### Install
