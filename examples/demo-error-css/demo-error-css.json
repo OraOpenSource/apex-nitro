@@ -1,5 +1,5 @@
 {
-	"mode": "error-js",
+	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:102",
 	"srcFolder": "CHANGE_ME\\demo-error-css\\src",
 	"js": {
