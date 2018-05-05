@@ -191,7 +191,7 @@ test.serial.cb('demo-empty-src', t => {
 
 		const files = (
 			fs.existsSync('./examples/demo-empty-src/dist/') ?
-			getFiles(path.resolve('./examples/demo-empty-src/dist/')) :
+				getFiles(path.resolve('./examples/demo-empty-src/dist/')) :
 				undefined
 		);
 

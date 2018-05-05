@@ -69,11 +69,11 @@
     "typescript": "^2.8.3",
     "uglify-save-license": "0.4.x",
     "update-notifier": "2.5.x",
-    "webpack": "4.6.x"
+    "webpack": "4.7.x"
   },
   "devDependencies": {
     "ava": "0.25.x",
-    "xo": "0.20.x"
+    "xo": "0.21.x"
   },
   "xo": {
     "ignores": [
