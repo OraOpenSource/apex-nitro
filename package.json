@@ -33,7 +33,6 @@
   "dependencies": {
     "apex-publish-static-files": "2.0.x",
     "autoprefixer": "^8.4.1",
-    "babel-minify-webpack-plugin": "0.3.x",
     "browser-sync": "2.24.4",
     "chalk": "^2.4.1",
     "del": "3.0.x",
@@ -73,6 +72,7 @@
   },
   "devDependencies": {
     "ava": "0.25.x",
+    "babel-minify-webpack-plugin": "^0.3.1",
     "xo": "0.21.x"
   },
   "xo": {
