@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.1.4
+- Hot fix introduced by v4.1.3
+
 ## 4.1.3
 - Allows to disable automatic JS reload / CSS injection [#258](https://github.com/OraOpenSource/apex-nitro/issues/258)
 - Other dependency bug fixes
