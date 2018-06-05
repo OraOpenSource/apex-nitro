@@ -1,6 +1,7 @@
 # Changelog
 
 ## 4.1.5
+- Removes sourcemaps from production files (.min files) for performance and security reasons
 - System compatibility bug fixes (Windows, Mac, Linux) test suite
 
 ## 4.1.4
