@@ -268,11 +268,9 @@ test.serial.cb('demo-simple', t => {
 			path.resolve('./examples/demo-simple/dist/css/app.css'),
 			path.resolve('./examples/demo-simple/dist/css/app.css.map'),
 			path.resolve('./examples/demo-simple/dist/css/app.min.css'),
-			path.resolve('./examples/demo-simple/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-simple/dist/js/app.js'),
 			path.resolve('./examples/demo-simple/dist/js/app.js.map'),
-			path.resolve('./examples/demo-simple/dist/js/app.min.js'),
-			path.resolve('./examples/demo-simple/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-simple/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-simple/dist/'));
@@ -317,27 +315,21 @@ test.serial.cb('demo-subfolders', t => {
 			path.resolve('./examples/demo-subfolders/dist/css/file.css'),
 			path.resolve('./examples/demo-subfolders/dist/css/file.css.map'),
 			path.resolve('./examples/demo-subfolders/dist/css/file.min.css'),
-			path.resolve('./examples/demo-subfolders/dist/css/file.min.css.map'),
 			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.css'),
 			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.css.map'),
 			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.min.css'),
-			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.min.css.map'),
 			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.css'),
 			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.css.map'),
 			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.min.css'),
-			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.min.css.map'),
 			path.resolve('./examples/demo-subfolders/dist/js/file.js'),
 			path.resolve('./examples/demo-subfolders/dist/js/file.js.map'),
 			path.resolve('./examples/demo-subfolders/dist/js/file.min.js'),
-			path.resolve('./examples/demo-subfolders/dist/js/file.min.js.map'),
 			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.js'),
 			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.js.map'),
 			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.min.js'),
-			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.min.js.map'),
 			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.js'),
 			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.js.map'),
 			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.min.js'),
-			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.min.js.map'),
 			path.resolve('./examples/demo-subfolders/dist/lib/sublib/lib.js')
 		].sort();
 
@@ -384,11 +376,9 @@ test.serial.cb('demo-subfolders-concat', t => {
 			path.resolve('./examples/demo-subfolders-concat/dist/css/app.css'),
 			path.resolve('./examples/demo-subfolders-concat/dist/css/app.css.map'),
 			path.resolve('./examples/demo-subfolders-concat/dist/css/app.min.css'),
-			path.resolve('./examples/demo-subfolders-concat/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-subfolders-concat/dist/js/app.js'),
 			path.resolve('./examples/demo-subfolders-concat/dist/js/app.js.map'),
 			path.resolve('./examples/demo-subfolders-concat/dist/js/app.min.js'),
-			path.resolve('./examples/demo-subfolders-concat/dist/js/app.min.js.map'),
 			path.resolve('./examples/demo-subfolders-concat/dist/lib/sublib/lib.js')
 		].sort();
 
@@ -435,11 +425,9 @@ test.serial.cb('demo-concat', t => {
 			path.resolve('./examples/demo-concat/dist/css/app.css'),
 			path.resolve('./examples/demo-concat/dist/css/app.css.map'),
 			path.resolve('./examples/demo-concat/dist/css/app.min.css'),
-			path.resolve('./examples/demo-concat/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-concat/dist/js/app.js'),
 			path.resolve('./examples/demo-concat/dist/js/app.js.map'),
-			path.resolve('./examples/demo-concat/dist/js/app.min.js'),
-			path.resolve('./examples/demo-concat/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-concat/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-concat/dist/'));
@@ -486,11 +474,9 @@ test.serial.cb('demo-header', t => {
 			path.resolve('./examples/demo-header/dist/css/app.css'),
 			path.resolve('./examples/demo-header/dist/css/app.css.map'),
 			path.resolve('./examples/demo-header/dist/css/app.min.css'),
-			path.resolve('./examples/demo-header/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-header/dist/js/app.js'),
 			path.resolve('./examples/demo-header/dist/js/app.js.map'),
-			path.resolve('./examples/demo-header/dist/js/app.min.js'),
-			path.resolve('./examples/demo-header/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-header/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-header/dist/'));
@@ -535,11 +521,9 @@ test.serial.cb('demo-less', t => {
 			path.resolve('./examples/demo-less/dist/css/app.css'),
 			path.resolve('./examples/demo-less/dist/css/app.css.map'),
 			path.resolve('./examples/demo-less/dist/css/app.min.css'),
-			path.resolve('./examples/demo-less/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-less/dist/js/app.js'),
 			path.resolve('./examples/demo-less/dist/js/app.js.map'),
-			path.resolve('./examples/demo-less/dist/js/app.min.js'),
-			path.resolve('./examples/demo-less/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-less/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-less/dist/'));
@@ -583,11 +567,9 @@ test.serial.cb('demo-sass', t => {
 			path.resolve('./examples/demo-sass/dist/css/app.css'),
 			path.resolve('./examples/demo-sass/dist/css/app.css.map'),
 			path.resolve('./examples/demo-sass/dist/css/app.min.css'),
-			path.resolve('./examples/demo-sass/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-sass/dist/js/app.js'),
 			path.resolve('./examples/demo-sass/dist/js/app.js.map'),
-			path.resolve('./examples/demo-sass/dist/js/app.min.js'),
-			path.resolve('./examples/demo-sass/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-sass/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-sass/dist/'));
@@ -632,11 +614,9 @@ test.serial.cb('demo-typescript', t => {
 			path.resolve('./examples/demo-typescript/dist/css/app.css'),
 			path.resolve('./examples/demo-typescript/dist/css/app.css.map'),
 			path.resolve('./examples/demo-typescript/dist/css/app.min.css'),
-			path.resolve('./examples/demo-typescript/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-typescript/dist/js/app.js'),
 			path.resolve('./examples/demo-typescript/dist/js/app.js.map'),
-			path.resolve('./examples/demo-typescript/dist/js/app.min.js'),
-			path.resolve('./examples/demo-typescript/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-typescript/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-typescript/dist/'));
@@ -684,12 +664,10 @@ test.serial.cb('demo-webpack', t => {
 			path.resolve('./examples/demo-webpack/dist/css/app.css'),
 			path.resolve('./examples/demo-webpack/dist/css/app.css.map'),
 			path.resolve('./examples/demo-webpack/dist/css/app.min.css'),
-			path.resolve('./examples/demo-webpack/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-webpack/dist/img/banana.gif'),
 			path.resolve('./examples/demo-webpack/dist/js/bundle.js'),
 			path.resolve('./examples/demo-webpack/dist/js/bundle.js.map'),
-			path.resolve('./examples/demo-webpack/dist/js/bundle.min.js'),
-			path.resolve('./examples/demo-webpack/dist/js/bundle.min.js.map')
+			path.resolve('./examples/demo-webpack/dist/js/bundle.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-webpack/dist/'));
@@ -733,8 +711,7 @@ test.serial.cb('demo-error-js', t => {
 		const expected = [
 			path.resolve('./examples/demo-error-js/dist/css/app.css'),
 			path.resolve('./examples/demo-error-js/dist/css/app.css.map'),
-			path.resolve('./examples/demo-error-js/dist/css/app.min.css'),
-			path.resolve('./examples/demo-error-js/dist/css/app.min.css.map')
+			path.resolve('./examples/demo-error-js/dist/css/app.min.css')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-error-js/dist/'));
@@ -779,11 +756,9 @@ test.serial.cb('demo-warning-js', t => {
 			path.resolve('./examples/demo-warning-js/dist/css/app.css'),
 			path.resolve('./examples/demo-warning-js/dist/css/app.css.map'),
 			path.resolve('./examples/demo-warning-js/dist/css/app.min.css'),
-			path.resolve('./examples/demo-warning-js/dist/css/app.min.css.map'),
 			path.resolve('./examples/demo-warning-js/dist/js/app.js'),
 			path.resolve('./examples/demo-warning-js/dist/js/app.js.map'),
-			path.resolve('./examples/demo-warning-js/dist/js/app.min.js'),
-			path.resolve('./examples/demo-warning-js/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-warning-js/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-warning-js/dist/'));
@@ -827,8 +802,7 @@ test.serial.cb('demo-error-css', t => {
 		const expected = [
 			path.resolve('./examples/demo-error-css/dist/js/app.js'),
 			path.resolve('./examples/demo-error-css/dist/js/app.js.map'),
-			path.resolve('./examples/demo-error-css/dist/js/app.min.js'),
-			path.resolve('./examples/demo-error-css/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-error-css/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-error-css/dist/'));
@@ -872,8 +846,7 @@ test.serial.cb('demo-error-sass', t => {
 		const expected = [
 			path.resolve('./examples/demo-error-sass/dist/js/app.js'),
 			path.resolve('./examples/demo-error-sass/dist/js/app.js.map'),
-			path.resolve('./examples/demo-error-sass/dist/js/app.min.js'),
-			path.resolve('./examples/demo-error-sass/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-error-sass/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-error-sass/dist/'));
@@ -917,8 +890,7 @@ test.serial.cb('demo-error-less', t => {
 		const expected = [
 			path.resolve('./examples/demo-error-less/dist/js/app.js'),
 			path.resolve('./examples/demo-error-less/dist/js/app.js.map'),
-			path.resolve('./examples/demo-error-less/dist/js/app.min.js'),
-			path.resolve('./examples/demo-error-less/dist/js/app.min.js.map')
+			path.resolve('./examples/demo-error-less/dist/js/app.min.js')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-error-less/dist/'));
@@ -962,8 +934,7 @@ test.serial.cb('demo-error-typescript', t => {
 		const expected = [
 			path.resolve('./examples/demo-error-typescript/dist/css/app.css'),
 			path.resolve('./examples/demo-error-typescript/dist/css/app.css.map'),
-			path.resolve('./examples/demo-error-typescript/dist/css/app.min.css'),
-			path.resolve('./examples/demo-error-typescript/dist/css/app.min.css.map')
+			path.resolve('./examples/demo-error-typescript/dist/css/app.min.css')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-error-typescript/dist/'));
@@ -1010,8 +981,7 @@ test.serial.cb('demo-error-webpack', t => {
 		const expected = [
 			path.resolve('./examples/demo-error-webpack/dist/css/app.css'),
 			path.resolve('./examples/demo-error-webpack/dist/css/app.css.map'),
-			path.resolve('./examples/demo-error-webpack/dist/css/app.min.css'),
-			path.resolve('./examples/demo-error-webpack/dist/css/app.min.css.map')
+			path.resolve('./examples/demo-error-webpack/dist/css/app.min.css')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-error-webpack/dist/'));
