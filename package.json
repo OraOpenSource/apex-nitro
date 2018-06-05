@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "apex-publish-static-files": "2.0.x",
-    "autoprefixer": "^8.5.0",
+    "autoprefixer": "^8.6.0",
     "babel-minify-webpack-plugin": "^0.3.1",
     "browser-sync": "2.24.4",
     "chalk": "^2.4.1",
@@ -65,14 +65,14 @@
     "portscanner": "2.2.x",
     "replace-ext": "1.0.x",
     "through2": "2.0.x",
-    "typescript": "^2.8.3",
+    "typescript": "^2.9.1",
     "uglify-save-license": "0.4.x",
     "update-notifier": "2.5.x",
-    "webpack": "^4.8.3"
+    "webpack": "^4.10.2"
   },
   "devDependencies": {
     "ava": "0.25.x",
-    "xo": "0.21.x"
+    "xo": "^0.21.1"
   },
   "xo": {
     "ignores": [
