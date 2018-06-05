@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.1.5
+- System compatibility bug fixes (Windows, Mac, Linux) test suite
+
 ## 4.1.4
 - Hot fix introduced by v4.1.3
 
