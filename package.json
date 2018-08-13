@@ -31,16 +31,17 @@
   },
   "dependencies": {
     "apex-publish-static-files": "^2.0.0",
-    "autoprefixer": "^9.0.1",
+    "autoprefixer": "^9.1.0",
     "babel-minify-webpack-plugin": "^0.3.1",
     "browser-sync": "^2.24.6",
     "chalk": "^2.4.1",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
-    "gulp-clean-css": "^3.9.4",
+    "gulp-clean-css": "^3.10.0",
     "gulp-clip-empty-files": "^0.1.2",
     "gulp-clone": "^2.0.1",
     "gulp-concat": "^2.6.1",
+    "gulp-filter": "^5.1.0",
     "gulp-header": "^2.0.5",
     "gulp-if": "^2.0.2",
     "gulp-jshint": "^2.1.0",
@@ -48,14 +49,14 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
-    "gulp-postcss": "^7.0.1",
+    "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-typescript": "^4.0.2",
-    "gulp-uglify": "^3.0.1",
-    "jshint": "^2.9.5",
+    "gulp-uglify-es": "^1.0.4",
+    "jshint": "^2.9.6",
     "jshint-stylish": "^2.2.1",
     "merge-stream": "^1.0.1",
     "node-notifier": "^5.2.1",
@@ -65,18 +66,19 @@
     "portscanner": "^2.2.0",
     "replace-ext": "^1.0.0",
     "through2": "^2.0.3",
-    "typescript": "^2.9.2",
+    "typescript": "^3.0.1",
     "uglify-save-license": "^0.4.1",
     "update-notifier": "^2.5.0",
-    "webpack": "^4.16.2"
+    "webpack": "^4.16.5"
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "xo": "^0.21.1"
+    "xo": "^0.22.0"
   },
   "xo": {
     "ignores": [
-      "examples/**/*.js"
+      "examples/**/*.js",
+      "**/*.ts"
     ]
   }
 }
