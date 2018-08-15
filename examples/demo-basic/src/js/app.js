@@ -1,3 +1,3 @@
 (function(){
-    console.log("demo-basic");
+  console.log("demo-basic");
 })();
