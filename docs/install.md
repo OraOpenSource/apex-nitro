@@ -27,7 +27,7 @@ Having problems installing APEX Nitro? Look at the most common issues below.
 
 ### Peer Dependencies
 
-Example: 
+Example:
 
 > /usr/local/bin/apex-nitro -> /usr/local/lib/node_modules/apex-nitro/bin/apex-nitro.js
 npm WARN ajv-keywords@3.2.0 requires a peer of ajv@^6.0.0 but none is installed. You must install peer dependencies yourself.
