@@ -9,13 +9,14 @@
 
 APEX Nitro leverages `npm` (the node package manager) for installation. Execute the following on your command line to install APEX Nitro:
 
-```
+```bash
 npm install -g apex-nitro
 ```
 
 _You might encounter a few deprecation warnings during the installation. This is normal and we monitor these packages upon every release of APEX Nitro._
 
 Notes on the command above:
+
 - `npm install` tells that we are about to install a module from the node package registry.
 - `-g` tells that we are installing the following package **globally**.
 - `apex-nitro` is the name of the package we are about to install.
@@ -23,6 +24,15 @@ Notes on the command above:
 ## Troubleshooting
 
 Having problems installing APEX Nitro? Look at the most common issues below.
+
+### Peer Dependencies
+
+Example: 
+
+> /usr/local/bin/apex-nitro -> /usr/local/lib/node_modules/apex-nitro/bin/apex-nitro.js
+npm WARN ajv-keywords@3.2.0 requires a peer of ajv@^6.0.0 but none is installed. You must install peer dependencies yourself.
+
+This is a warning that we'd like to suppress during the installation, but it's not possible at the moment due to npm mechanics. It's normal and does not affect APEX Nitro features.
 
 ### Windows
 
