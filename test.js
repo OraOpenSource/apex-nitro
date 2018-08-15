@@ -146,7 +146,8 @@ test.serial.cb('demo-basic', t => {
 	launch(['demo-basic'], undefined, config, () => {
 		const expected = [
 			path.resolve('./examples/demo-basic/src/css/app.css'),
-			path.resolve('./examples/demo-basic/src/js/app.js')
+			path.resolve('./examples/demo-basic/src/js/app.js'),
+			path.resolve('./examples/demo-basic/src/html/test.html')
 		].sort();
 
 		const files = getFiles(path.resolve('./examples/demo-basic/src/'));
