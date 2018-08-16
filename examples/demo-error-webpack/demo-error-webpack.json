@@ -7,9 +7,7 @@
 		"processor": "webpack",
 		"concat": false,
 		"entries": ["CHANGE_ME\\demo-error-webpack\\src\\js\\app.js"],
-		"bundleFilename": "bundle",
-		"library": true,
-		"libraryName": "demo"
+		"bundleFilename": "bundle"
 	},
 	"css": {
 		"language": "css",

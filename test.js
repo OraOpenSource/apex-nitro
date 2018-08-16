@@ -640,9 +640,7 @@ test.serial.cb('demo-webpack', t => {
 			processor: 'webpack',
 			concat: false,
 			entries: [path.resolve('./examples/demo-webpack/src/js/app.js')],
-			bundleFilename: 'bundle',
-			library: true,
-			libraryName: 'demo'
+			bundleFilename: 'bundle'
 		},
 		css: {
 			language: 'css',
@@ -958,9 +956,7 @@ test.serial.cb('demo-error-webpack', t => {
 			processor: 'webpack',
 			concat: false,
 			entries: [path.resolve('./examples/demo-error-webpack/src/js/app.js')],
-			bundleFilename: 'bundle',
-			library: true,
-			libraryName: 'demo'
+			bundleFilename: 'bundle'
 		},
 		css: {
 			language: 'css',
