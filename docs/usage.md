@@ -1,8 +1,10 @@
 # APEX Nitro Usage
 
-### Basic Usage
-After APEX Nitro is launched, create, edit or delete any file within your project's source folder. Example `/my_project/src/`:
-```
+## Folder Structure
+
+One of the most important things to learn in APEX Nitro is the file structure. APEX Nitro enforces a clean file structure, following a few mandatory folder names:
+
+```bash
 |-/src/
    |-css
       |-app.css
@@ -10,8 +12,68 @@ After APEX Nitro is launched, create, edit or delete any file within your projec
       |-app.js
 ```
 
-APEX Nitro will compile your files to a new folder of your choice. Example `/my_project/dist/`:
+Any file in the `/css/` and `/js/` folders will get a special compilation, as they constitute your application custom static files, so these two folders are very important to have.
+
+_Note: the `/css/` folder can be replaced by `/scss/` or `/less/` depending on your project configuration._
+
+Any other folder names will be synchronized to your application without any special compilation. Example:
+
+```bash
+|-/src/
+   |-css
+      |-app.css
+   |-js
+      |-app.js
+   |-lib
+      |-bootstrap.js
+      |-bootstrap.css
+   |-img
+      |-logo.png
 ```
+
+## Configuration - Basic Mode
+
+A basic mode configuration is the best way to start with APEX Nitro. Again with the same example:
+
+```bash
+|-/src/
+   |-css
+      |-app.css
+   |-js
+      |-app.js
+   |-img
+      |-logo.png
+```
+
+We would reference these files as:
+
+```bash
+#APP_IMAGES#js/app.js
+#APP_IMAGES#css/app.css
+#APP_IMAGES#img/logo.png
+```
+
+## Configuration - Advanced Mode (Default)
+
+A project using advanced mode configuration is the best way and most efficient way to use APEX Nitro because it boosts the performance and the maintainability of your files.
+
+### Without Concatenation
+
+Again with the same example:
+
+```bash
+|-/src/
+   |-css
+      |-app.css
+   |-js
+      |-app.js
+   |-img
+      |-logo.png
+```
+
+APEX Nitro compiles the `/src/` folder into a new folder called `/dist/`:
+
+```bash
 |-/dist/
    |-css
       |-app.css
@@ -23,15 +85,24 @@ APEX Nitro will compile your files to a new folder of your choice. Example `/my_
       |-app.js.map
       |-app.min.js
       |-app.min.js.map
+   |-img
+      |-logo.png
 ```
 
-APEX Nitro will then synchronize the compiled folder (`/my_project/dist/`) to your APEX application.
+Now we would reference these files as:
 
-Notice that the 2 source files are generating 8 dist files. That is the result of minification and sourcemaps. While this doesn't look like a good thing, it starts to make sense when we blow up and expand the source folder. Look at the advanced usage example below.
-
-### Advanced Usage
-The example above is good, but lacks structure. A good pattern would be to modularize CSS by visual sections of your page, and modularize JavaScript by different modules of your application. Example `/my_project/src/`:
+```bash
+#APP_IMAGES#js/app#MIN#.js
+#APP_IMAGES#css/app#MIN#.css
+#APP_IMAGES#img/logo.png
+...
 ```
+
+### With Concatenation
+
+The advanced usage without concatenation is good, but lacks structure. A better pattern would be to split CSS and JavaScript files according to logical modules of your application. Example:
+
+```bash
 |-/src/
    |-lib
       |-bootstrap
@@ -58,7 +129,8 @@ The example above is good, but lacks structure. A good pattern would be to modul
 ```
 
 Compiles to `/my_project/dist/`:
-```
+
+```bash
 |-/dist/
    |-lib
       |-bootstrap
@@ -77,13 +149,22 @@ Compiles to `/my_project/dist/`:
       |-app.min.js.map
 ```
 
-Now that looks very similar to the basic example, only this time, we have reduced the number of files that are uploaded to the server. On a real life scenario, the number of source files can be much more complicated than this example.
+Even if there are more source files, we would still reference these files as:
 
-### Team Usage
+```bash
+#APP_IMAGES#js/app#MIN#.js
+#APP_IMAGES#css/app#MIN#.css
+#APP_IMAGES#img/logo.png
+...
+```
+
+## Using APEX Nitro in a Team
+
 If you have used APEX Nitro, you may have noticed that your APEX application picks up the files from your local machine (`localhost`). Your teammates obviously don't have access to your `localhost`, so how do you work as a team using APEX Nitro?
 
 Let's assume that you are using a version control system, like Git or SVN. Your repository tree should look similar to this:
-```
+
+```bash
 |-/my_project/
    |-/apex/
       |-/f12192.sql
@@ -116,10 +197,12 @@ Let's assume that you are using a version control system, like Git or SVN. Your 
 ```
 
 From a structural perspective
+
 - `/my_project/src/` is where you do the coding.
 - `/my_project/dist/` is what's being exposed to your APEX application.
 
 To work as a team, here's the typical workflow:
+
 1. Have everyone on the team install and configure APEX Nitro.
 2. The configuration file can be exported and shared when running `apex-nitro config my_project`. Teammates can import your configuration file.
 3. Have everyone launch APEX Nitro when they are working on the project.
@@ -136,7 +219,9 @@ Alternatively, if a developer in your project doesn't do any JavaScript/CSS deve
 `apex-nitro publish my_project` will upload your files directly in APEX Shared Components, so all your teammates will pick up your changes without installing APEX Nitro.
 
 ### Patterns
+
 [See common patterns.](patterns.md)
 
 ### Examples
+
 [Try our examples.](../examples/)
