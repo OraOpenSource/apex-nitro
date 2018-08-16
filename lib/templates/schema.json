@@ -76,17 +76,6 @@
 					"description": "This is the name of the bundle file.",
 					"placeholder": "Example: bundle"
 				},
-				"library": {
-					"type": "boolean",
-					"title": "Expose as a library",
-					"description": "Expose your bundles to your app as a global library."
-				},
-				"libraryName": {
-					"type": "string",
-					"title": "Library Name",
-					"description": "This is the name of the concatenated file.",
-					"placeholder": "Example: app"
-				},
 				"tsConcat": {
 					"type": "boolean",
 					"title": "Concatenate TypeScript Files",
@@ -102,7 +91,6 @@
 			"required": [
 				"processor",
 				"concat",
-				"library",
 				"tsConcat"
 			],
 			"requiredIf": [{
@@ -124,11 +112,6 @@
 					"property": "bundleFilename",
 					"dependsOn": ["processor"],
 					"value": ["webpack"]
-				},
-				{
-					"property": "libraryName",
-					"dependsOn": ["processor", "library"],
-					"value": ["webpack", true]
 				}
 			],
 			"showIf": [{
@@ -160,16 +143,6 @@
 					"property": "bundleFilename",
 					"dependsOn": ["processor"],
 					"value": ["webpack"]
-				},
-				{
-					"property": "library",
-					"dependsOn": ["processor"],
-					"value": ["webpack"]
-				},
-				{
-					"property": "libraryName",
-					"dependsOn": ["processor", "library"],
-					"value": ["webpack", true]
 				}
 			]
 		},
