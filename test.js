@@ -45,8 +45,8 @@ test('get-config-project', t => {
 			project: 'invalidproject',
 			mapping: templates.mapping()
 		});
-	} catch (err) {
-		if (err instanceof TypeError) {
+	} catch (error) {
+		if (error instanceof TypeError) {
 			t.pass();
 		}
 	}
@@ -60,8 +60,8 @@ test('cli-project-syntax', t => {
 test('cli-project-syntax-invalid', t => {
 	try {
 		validations.cliProjectSyntax(undefined, 'syntax');
-	} catch (err) {
-		if (err instanceof TypeError) {
+	} catch (error) {
+		if (error instanceof TypeError) {
 			t.pass();
 		}
 	}
@@ -93,7 +93,7 @@ test('header-invalid', t => {
 				enabled: true
 			}
 		});
-	} catch (err) {
+	} catch (error) {
 		t.pass();
 	}
 });
@@ -104,7 +104,7 @@ test('src-dist-invalid', t => {
 			srcFolder: 'test',
 			distFolder: 'test'
 		});
-	} catch (err) {
+	} catch (error) {
 		t.pass();
 	}
 });
