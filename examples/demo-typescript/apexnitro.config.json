@@ -1,6 +1,8 @@
 {
 	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
+	"srcFolder": "./src",
+	"distFolder": "./dist",
 	"js": {
 		"processor": "typescript",
 		"tsConcat": true,
@@ -8,7 +10,7 @@
 	},
 	"css": {
 		"language": "css",
-		"concat": false
+		"cssConcat": false
 	},
 	"browsersync": {
 		"notify": false,

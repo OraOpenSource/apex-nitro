@@ -1,15 +1,17 @@
 {
 	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
+	"srcFolder": "./src",
+	"distFolder": "./dist",
 	"js": {
-		"processor": "default",
-		"concat": true,
-		"concatFilename": "app"
+		"processor": "javascript",
+		"jsConcat": true,
+		"jsConcatFilename": "app"
 	},
 	"css": {
 		"language": "css",
-		"concat": true,
-		"concatFilename": "app"
+		"cssConcat": true,
+		"cssConcatFilename": "app"
 
 	},
 	"browsersync": {

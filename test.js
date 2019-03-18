@@ -9,6 +9,8 @@ const util = require('./lib/util/util');
 const validations = require('./lib/util/validations');
 const launch = require('./lib/commands/launch');
 
+const originalCwd = process.cwd();
+
 // recursive loop through a given folder to find all files
 // round here https://stackoverflow.com/a/20525865/2524979
 function getFiles(dir, files = []) {
@@ -76,15 +78,24 @@ test('pad-str', t => {
 test.serial.cb('demo-basic', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-basic');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-basic/src/css/app.css'),
-			path.resolve('./examples/demo-basic/src/js/app.js'),
-			path.resolve('./examples/demo-basic/src/html/test.html')
+			path.resolve(dir, 'src/css/app.css'),
+			path.resolve(dir, 'src/js/app.js'),
+			path.resolve(dir, 'src/html/test.html')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-basic/src/'));
+		const files = getFiles(path.resolve(dir, 'src'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -94,25 +105,25 @@ test.serial.cb('demo-basic', t => {
 test.serial.cb('demo-empty-src', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-empty-src');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [];
 
 		const files = (
-			fs.existsSync('./examples/demo-empty-src/dist/') ?
-				getFiles(path.resolve('./examples/demo-empty-src/dist/')) :
+			fs.existsSync(path.resolve(dir, 'dist')) ?
+				getFiles(path.resolve(dir, 'dist')) :
 				undefined
 		);
 
+		process.cwd = function () {
+			return originalCwd;
+		};
+
 		t.deepEqual(files, expected);
-		t.end();
-	});
-});
-
-test.serial.cb('demo-invalid-dir', t => {
-	t.plan(1);
-
-	launch(() => {
-		t.pass();
 		t.end();
 	});
 });
@@ -120,18 +131,27 @@ test.serial.cb('demo-invalid-dir', t => {
 test.serial.cb('demo-simple', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-simple');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-simple/dist/css/app.css'),
-			path.resolve('./examples/demo-simple/dist/css/app.css.map'),
-			path.resolve('./examples/demo-simple/dist/css/app.min.css'),
-			path.resolve('./examples/demo-simple/dist/js/app.js'),
-			path.resolve('./examples/demo-simple/dist/js/app.js.map'),
-			path.resolve('./examples/demo-simple/dist/js/app.min.js')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css'),
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-simple/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -141,31 +161,40 @@ test.serial.cb('demo-simple', t => {
 test.serial.cb('demo-subfolders', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-subfolders');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-subfolders/dist/css/file.css'),
-			path.resolve('./examples/demo-subfolders/dist/css/file.css.map'),
-			path.resolve('./examples/demo-subfolders/dist/css/file.min.css'),
-			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.css'),
-			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.css.map'),
-			path.resolve('./examples/demo-subfolders/dist/css/sub1/file1.min.css'),
-			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.css'),
-			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.css.map'),
-			path.resolve('./examples/demo-subfolders/dist/css/sub2/file2.min.css'),
-			path.resolve('./examples/demo-subfolders/dist/js/file.js'),
-			path.resolve('./examples/demo-subfolders/dist/js/file.js.map'),
-			path.resolve('./examples/demo-subfolders/dist/js/file.min.js'),
-			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.js'),
-			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.js.map'),
-			path.resolve('./examples/demo-subfolders/dist/js/sub1/file1.min.js'),
-			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.js'),
-			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.js.map'),
-			path.resolve('./examples/demo-subfolders/dist/js/sub2/file2.min.js'),
-			path.resolve('./examples/demo-subfolders/dist/lib/sublib/lib.js')
+			path.resolve(dir, 'dist/css/file.css'),
+			path.resolve(dir, 'dist/css/file.css.map'),
+			path.resolve(dir, 'dist/css/file.min.css'),
+			path.resolve(dir, 'dist/css/sub1/file1.css'),
+			path.resolve(dir, 'dist/css/sub1/file1.css.map'),
+			path.resolve(dir, 'dist/css/sub1/file1.min.css'),
+			path.resolve(dir, 'dist/css/sub2/file2.css'),
+			path.resolve(dir, 'dist/css/sub2/file2.css.map'),
+			path.resolve(dir, 'dist/css/sub2/file2.min.css'),
+			path.resolve(dir, 'dist/js/file.js'),
+			path.resolve(dir, 'dist/js/file.js.map'),
+			path.resolve(dir, 'dist/js/file.min.js'),
+			path.resolve(dir, 'dist/js/sub1/file1.js'),
+			path.resolve(dir, 'dist/js/sub1/file1.js.map'),
+			path.resolve(dir, 'dist/js/sub1/file1.min.js'),
+			path.resolve(dir, 'dist/js/sub2/file2.js'),
+			path.resolve(dir, 'dist/js/sub2/file2.js.map'),
+			path.resolve(dir, 'dist/js/sub2/file2.min.js'),
+			path.resolve(dir, 'dist/lib/sublib/lib.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-subfolders/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -175,19 +204,28 @@ test.serial.cb('demo-subfolders', t => {
 test.serial.cb('demo-subfolders-concat', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-subfolders-concat');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-subfolders-concat/dist/css/app.css'),
-			path.resolve('./examples/demo-subfolders-concat/dist/css/app.css.map'),
-			path.resolve('./examples/demo-subfolders-concat/dist/css/app.min.css'),
-			path.resolve('./examples/demo-subfolders-concat/dist/js/app.js'),
-			path.resolve('./examples/demo-subfolders-concat/dist/js/app.js.map'),
-			path.resolve('./examples/demo-subfolders-concat/dist/js/app.min.js'),
-			path.resolve('./examples/demo-subfolders-concat/dist/lib/sublib/lib.js')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css'),
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js'),
+			path.resolve(dir, 'dist/lib/sublib/lib.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-subfolders-concat/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -197,18 +235,27 @@ test.serial.cb('demo-subfolders-concat', t => {
 test.serial.cb('demo-concat', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-concat');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-concat/dist/css/app.css'),
-			path.resolve('./examples/demo-concat/dist/css/app.css.map'),
-			path.resolve('./examples/demo-concat/dist/css/app.min.css'),
-			path.resolve('./examples/demo-concat/dist/js/app.js'),
-			path.resolve('./examples/demo-concat/dist/js/app.js.map'),
-			path.resolve('./examples/demo-concat/dist/js/app.min.js')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css'),
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-concat/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -218,18 +265,27 @@ test.serial.cb('demo-concat', t => {
 test.serial.cb('demo-header', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-header');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-header/dist/css/app.css'),
-			path.resolve('./examples/demo-header/dist/css/app.css.map'),
-			path.resolve('./examples/demo-header/dist/css/app.min.css'),
-			path.resolve('./examples/demo-header/dist/js/app.js'),
-			path.resolve('./examples/demo-header/dist/js/app.js.map'),
-			path.resolve('./examples/demo-header/dist/js/app.min.js')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css'),
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-header/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -239,18 +295,27 @@ test.serial.cb('demo-header', t => {
 test.serial.cb('demo-less', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-less');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-less/dist/css/app.css'),
-			path.resolve('./examples/demo-less/dist/css/app.css.map'),
-			path.resolve('./examples/demo-less/dist/css/app.min.css'),
-			path.resolve('./examples/demo-less/dist/js/app.js'),
-			path.resolve('./examples/demo-less/dist/js/app.js.map'),
-			path.resolve('./examples/demo-less/dist/js/app.min.js')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css'),
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-less/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -260,18 +325,27 @@ test.serial.cb('demo-less', t => {
 test.serial.cb('demo-sass', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-sass');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-sass/dist/css/app.css'),
-			path.resolve('./examples/demo-sass/dist/css/app.css.map'),
-			path.resolve('./examples/demo-sass/dist/css/app.min.css'),
-			path.resolve('./examples/demo-sass/dist/js/app.js'),
-			path.resolve('./examples/demo-sass/dist/js/app.js.map'),
-			path.resolve('./examples/demo-sass/dist/js/app.min.js')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css'),
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-sass/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -281,18 +355,27 @@ test.serial.cb('demo-sass', t => {
 test.serial.cb('demo-typescript', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-typescript');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-typescript/dist/css/app.css'),
-			path.resolve('./examples/demo-typescript/dist/css/app.css.map'),
-			path.resolve('./examples/demo-typescript/dist/css/app.min.css'),
-			path.resolve('./examples/demo-typescript/dist/js/app.js'),
-			path.resolve('./examples/demo-typescript/dist/js/app.js.map'),
-			path.resolve('./examples/demo-typescript/dist/js/app.min.js')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css'),
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-typescript/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -302,15 +385,24 @@ test.serial.cb('demo-typescript', t => {
 test.serial.cb('demo-error-js', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-error-js');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-error-js/dist/css/app.css'),
-			path.resolve('./examples/demo-error-js/dist/css/app.css.map'),
-			path.resolve('./examples/demo-error-js/dist/css/app.min.css')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-error-js/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -320,18 +412,27 @@ test.serial.cb('demo-error-js', t => {
 test.serial.cb('demo-warning-js', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-warning-js');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-warning-js/dist/css/app.css'),
-			path.resolve('./examples/demo-warning-js/dist/css/app.css.map'),
-			path.resolve('./examples/demo-warning-js/dist/css/app.min.css'),
-			path.resolve('./examples/demo-warning-js/dist/js/app.js'),
-			path.resolve('./examples/demo-warning-js/dist/js/app.js.map'),
-			path.resolve('./examples/demo-warning-js/dist/js/app.min.js')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css'),
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-warning-js/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -341,15 +442,24 @@ test.serial.cb('demo-warning-js', t => {
 test.serial.cb('demo-error-css', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-error-css');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-error-css/dist/js/app.js'),
-			path.resolve('./examples/demo-error-css/dist/js/app.js.map'),
-			path.resolve('./examples/demo-error-css/dist/js/app.min.js')
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-error-css/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -359,15 +469,24 @@ test.serial.cb('demo-error-css', t => {
 test.serial.cb('demo-error-sass', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-error-sass');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-error-sass/dist/js/app.js'),
-			path.resolve('./examples/demo-error-sass/dist/js/app.js.map'),
-			path.resolve('./examples/demo-error-sass/dist/js/app.min.js')
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-error-sass/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -377,15 +496,24 @@ test.serial.cb('demo-error-sass', t => {
 test.serial.cb('demo-error-less', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-error-less');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-error-less/dist/js/app.js'),
-			path.resolve('./examples/demo-error-less/dist/js/app.js.map'),
-			path.resolve('./examples/demo-error-less/dist/js/app.min.js')
+			path.resolve(dir, 'dist/js/app.js'),
+			path.resolve(dir, 'dist/js/app.js.map'),
+			path.resolve(dir, 'dist/js/app.min.js')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-error-less/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();
@@ -395,15 +523,24 @@ test.serial.cb('demo-error-less', t => {
 test.serial.cb('demo-error-typescript', t => {
 	t.plan(1);
 
+	const dir = path.resolve('./examples/demo-error-typescript');
+	process.cwd = function () {
+		return dir;
+	};
+
 	launch(() => {
 		const expected = [
-			path.resolve('./examples/demo-error-typescript/dist/css/app.css'),
-			path.resolve('./examples/demo-error-typescript/dist/css/app.css.map'),
-			path.resolve('./examples/demo-error-typescript/dist/css/app.min.css')
+			path.resolve(dir, 'dist/css/app.css'),
+			path.resolve(dir, 'dist/css/app.css.map'),
+			path.resolve(dir, 'dist/css/app.min.css')
 		].sort();
 
-		const files = getFiles(path.resolve('./examples/demo-error-typescript/dist/'));
+		const files = getFiles(path.resolve(dir, 'dist'));
 		files.sort();
+
+		process.cwd = function () {
+			return originalCwd;
+		};
 
 		t.deepEqual(files, expected);
 		t.end();

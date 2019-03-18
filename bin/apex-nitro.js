@@ -7,7 +7,6 @@ const update = require('update-notifier');
 
 const pkg = require('../package.json');
 const apexnitro = require('../lib');
-const util = require('../lib/util/util');
 
 // Close the pool cleanly if Node.js is interrupted
 process
@@ -56,7 +55,6 @@ commander
 	.command('build')
 	.description('Build an APEX Nitro project')
 	.action(() => {
-		util.getConfig();
 		apexnitro.launch(() => {});
 	});
 
@@ -64,7 +62,6 @@ commander
 	.command('launch')
 	.description('Launch an APEX Nitro project')
 	.action(() => {
-		util.getConfig();
 		apexnitro.launch();
 	});
 
@@ -72,7 +69,6 @@ commander
 	.command('publish')
 	.description('Publish an APEX Nitro project')
 	.action(() => {
-		util.getConfig();
 		apexnitro.publish();
 	});
 
