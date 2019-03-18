@@ -1,14 +1,13 @@
 {
 	"mode": "advanced",
-	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
-	"srcFolder": "CHANGE_ME\\demo-sass\\src",
-	"distFolder": "CHANGE_ME\\demo-sass\\dist",
+	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:102",
 	"js": {
 		"processor": "default",
-		"concat": false
+		"concat": false,
+		"library": false
 	},
 	"css": {
-		"language": "sass",
+		"language": "css",
 		"concat": false
 	},
 	"browsersync": {

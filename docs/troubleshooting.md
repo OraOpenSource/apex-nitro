@@ -121,12 +121,6 @@ If you use the default settings of APEX Nitro, the concatenation is done automat
 
 There are advanced methods for dealing with the concatenation order. Let's break it down for each language.
 
-### JavaScript
-
-- In the APEX Nitro config, change the JavaScript processor to `webpack`
-- Then you can use the `require` functionality, which allows you to import other JavaScript files in the order you want
-- See this [example](../examples/demo-webpack/src/js)
-
 ### CSS
 
 - In the APEX Nitro config, change the CSS processor to `less` or `sass`

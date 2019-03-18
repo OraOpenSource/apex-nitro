@@ -1,14 +1,12 @@
 {
 	"mode": "advanced",
-	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:102",
-	"srcFolder": "CHANGE_ME\\demo-error-typescript\\src",
+	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
 	"js": {
-		"processor": "typescript",
-		"concat": false,
-		"library": false
+		"processor": "default",
+		"concat": false
 	},
 	"css": {
-		"language": "css",
+		"language": "sass",
 		"concat": false
 	},
 	"browsersync": {

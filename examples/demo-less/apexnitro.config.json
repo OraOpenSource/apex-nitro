@@ -1,17 +1,13 @@
 {
 	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
-	"srcFolder": "CHANGE_ME\\demo-concat\\src",
-	"distFolder": "CHANGE_ME\\demo-concat\\dist",
 	"js": {
 		"processor": "default",
-		"concat": true,
-		"concatFilename": "app"
+		"concat": false
 	},
 	"css": {
-		"language": "css",
-		"concat": true,
-		"concatFilename": "app"
+		"language": "less",
+		"concat": false
 	},
 	"browsersync": {
 		"notify": false,
@@ -21,6 +17,7 @@
 		"enabled": false
 	},
 	"apex": {
-		"openBuilder": false
+		"openBuilder": false,
+		"apexDestination": "application"
 	}
 }

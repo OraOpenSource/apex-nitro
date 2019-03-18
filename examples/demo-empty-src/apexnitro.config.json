@@ -1,8 +1,6 @@
 {
 	"mode": "advanced",
-	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
-	"srcFolder": "CHANGE_ME\\demo-subfolders\\src",
-	"distFolder": "CHANGE_ME\\demo-subfolders\\dist",
+	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:102",
 	"js": {
 		"processor": "default",
 		"concat": false,

@@ -1,39 +1,27 @@
 #!/usr/bin/env node
 
 const chalk = require('chalk');
-const nopt = require('nopt');
+const commander = require('commander');
+const figlet = require('figlet');
 const update = require('update-notifier');
+
 const pkg = require('../package.json');
-const nitro = require('../lib');
+const apexnitro = require('../lib');
+const util = require('../lib/util/util');
 
-// Workaround for MacOS which doesn't allow to sigint
-process.on('SIGINT', () => {
-	process.exit();
-});
+// Close the pool cleanly if Node.js is interrupted
+process
+	.once('SIGTERM', () => {
+		process.exit();
+	})
+	.once('SIGINT', () => {
+		process.exit();
+	});
 
-// Options that can be passed to commands
-const options = {
-	config: String,
-	launch: String,
-	publish: String
-};
-
-// Shorthands for the above commands
-const shorthands = {
-	v: '--version',
-	c: 'config',
-	l: 'launch',
-	p: 'publish'
-};
-
-const parsed = nopt(options, shorthands);
-
-// Cmd.args contains basic commands like "new" and "help"
-// cmd.opts contains options, like --libsass and --version
-const cmd = {
-	args: parsed.argv.remain,
-	opts: parsed
-};
+// Print ASCII logo
+console.log(chalk.magenta(figlet.textSync('APEX Nitro', {
+	horizontalLayout: 'fitted'
+})));
 
 // Check for updates once a day
 const notifier = update({
@@ -52,23 +40,37 @@ if (notifier.update) {
 	});
 }
 
-// No other arguments given
-if (typeof cmd.args[0] === 'undefined') {
-	if (typeof cmd.opts.version === 'undefined') {
-		// Otherwise, just show the help screen
-		nitro.help();
-	} else {
-		// If -v or --version was passed, show the version of the CLI
-		process.stdout.write('APEX Nitro version ' + pkg.version + '\n');
-	}
-} else if (typeof nitro[cmd.args[0]] === 'undefined') {
-	// Arguments given
-	// If the command typed in doesn't exist, show the help screen
-	nitro.help();
-} else {
-	// Otherwise, just run it already!
-	// Every command function is passed secondary commands, and options
-	// So if the user types "apex-nitro launch myApp --test",
-	// "myApp" is a secondary command, and "--test" is an option
-	nitro[cmd.args[0]](cmd.args.slice(1), cmd.opts);
+// Register CLI commands
+commander
+	.version(pkg.version)
+	.description(pkg.description);
+
+commander
+	.command('init')
+	.description('Initialize an APEX Nitro project')
+	.action(() => {
+		apexnitro.init();
+	});
+
+commander
+	.command('launch')
+	.description('Launch an APEX Nitro project')
+	.action(() => {
+		util.getConfig();
+		apexnitro.launch();
+	});
+
+commander
+	.command('publish')
+	.description('Publish an APEX Nitro project')
+	.action(() => {
+		util.getConfig();
+		apexnitro.publish();
+	});
+
+if (!process.argv.slice(2).length > 0) {
+	commander.outputHelp();
+	process.exit();
 }
+
+commander.parse(process.argv);

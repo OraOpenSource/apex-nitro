@@ -1,25 +1,26 @@
 {
 	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
-	"srcFolder": "CHANGE_ME\\demo-less\\src",
-	"distFolder": "CHANGE_ME\\demo-less\\dist",
 	"js": {
 		"processor": "default",
-		"concat": false
+		"concat": true,
+		"concatFilename": "app"
 	},
 	"css": {
-		"language": "less",
-		"concat": false
+		"language": "css",
+		"concat": true,
+		"concatFilename": "app"
+
 	},
 	"browsersync": {
 		"notify": false,
 		"ghostMode": false
 	},
 	"header": {
-		"enabled": false
+		"enabled": true,
+		"packageJsonPath": "package.json"
 	},
 	"apex": {
-		"openBuilder": false,
-		"apexDestination": "application"
+		"openBuilder": false
 	}
 }

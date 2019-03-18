@@ -1,15 +1,15 @@
 {
 	"mode": "advanced",
-	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:102",
-	"srcFolder": "CHANGE_ME\\demo-error-css\\src",
+	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
 	"js": {
 		"processor": "default",
-		"concat": false,
-		"library": false
+		"concat": true,
+		"concatFilename": "app"
 	},
 	"css": {
 		"language": "css",
-		"concat": false
+		"concat": true,
+		"concatFilename": "app"
 	},
 	"browsersync": {
 		"notify": false,

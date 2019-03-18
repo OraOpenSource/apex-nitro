@@ -1,17 +1,14 @@
 {
 	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:101",
-	"srcFolder": "CHANGE_ME\\demo-subfolders-concat\\src",
-	"distFolder": "CHANGE_ME\\demo-subfolders-concat\\dist",
 	"js": {
 		"processor": "default",
-		"concat": true,
-		"concatFilename": "app"
+		"concat": false,
+		"library": false
 	},
 	"css": {
 		"language": "css",
-		"concat": true,
-		"concatFilename": "app"
+		"concat": false
 	},
 	"browsersync": {
 		"notify": false,

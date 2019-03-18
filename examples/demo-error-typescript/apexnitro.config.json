@@ -1,10 +1,8 @@
 {
 	"mode": "advanced",
 	"appURL": "https://apex.oracle.com/pls/apex/f?p=105990:102",
-	"srcFolder": "CHANGE_ME\\demo-empty-src\\src",
-	"distFolder": "CHANGE_ME\\demo-empty-src\\dist",
 	"js": {
-		"processor": "default",
+		"processor": "typescript",
 		"concat": false,
 		"library": false
 	},
