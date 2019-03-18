@@ -53,6 +53,14 @@ commander
 	});
 
 commander
+	.command('build')
+	.description('Build an APEX Nitro project')
+	.action(() => {
+		util.getConfig();
+		apexnitro.launch(() => {});
+	});
+
+commander
 	.command('launch')
 	.description('Launch an APEX Nitro project')
 	.action(() => {
