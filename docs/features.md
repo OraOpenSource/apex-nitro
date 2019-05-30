@@ -218,64 +218,6 @@ APEX Nitro comes with auto-prefixer out of the box. No longer does the developer
 
 APEX Nitro enables this feature automatically. There is no way and no need to disable it.
 
-## Theme Roller Customization
-
-Theme Roller was introduced in APEX 5.0 as a way to quickly change the look and feel of an application. Under the hood, Theme Roller is simply toggling CSS classes to your APEX components. The CSS of your application takes care of styling the appropriate classes.
-
-![Theme Roller](img/feature-themeroller-0.jpg)
-
-For Theme Roller to be dynamic, it needs variable support, so that the color you picked in the color picker applies to multiple selectors in the CSS code. Theme Roller uses Less, a CSS preprocessor, to achieve that. Less allows the use of variables, and then compiles to CSS on the fly so your browser can understand the stylesheet.
-
-APEX Nitro is highly compatible with APEX Theme Roller providing a way to add custom Theme Roller attributes to an application. This is disabled by default to reduce the initial complexity of using APEX Nitro.
-
-Here how to use it
-
-1. To enable it, select a CSS preprocessor for your application (using Sass in this example).
-
-   ![Theme Roller](img/feature-themeroller-1.png)
-
-2. Have one of your (Sass, Less) files contain variables. [Related blog post for more info.](http://vmorneau.me/customizing-theme-roller/) Example:
-
-   ```sass
-   /*
-   {
-   "translate": false,
-   "groups":[
-      {
-         "name": "Global",
-         "common": true,
-         "sequence": 1
-      }
-   ]
-   }
-   */
-
-   /*
-   {
-      "var": "@background-color",
-      "name": "Body Background",
-      "type": "color",
-      "style": "big",
-      "group": "Global"
-   }
-   */
-   $background-color: #efefef;
-
-   body {
-   background-color:  $background-color;
-   }
-   ```
-
-3. Have the APEX Nitro project configuration to list all your (Sass, Less) files inside the Theme Roller section. This will tell APEX Nitro to compile a Theme Roller compatible file based on your variables. This file will be named `themeroller.less`.
-
-   ![Theme Roller](img/feature-themeroller-2.png)
-
-4. Reference `themeroller.less` from step 3 in your application's theme style.
-
-   ![Theme Roller](img/feature-themeroller-3.png)
-
-Now when you open Theme Roller on your application, you should see your new variables too.
-
 ## Responsive Development
 
 Due to the nature of the APEX builder, most APEX developers approach their application with a "Desktop first" design, which goes against the popular "Mobile first" trend these days. 

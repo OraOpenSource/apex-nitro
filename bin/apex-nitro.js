@@ -2,7 +2,6 @@
 
 const chalk = require('chalk');
 const commander = require('commander');
-const figlet = require('figlet');
 const update = require('update-notifier');
 
 const pkg = require('../package.json');
@@ -18,13 +17,7 @@ process
 	});
 
 // Print ASCII logo
-console.log(
-	chalk.magenta(
-		figlet.textSync('APEX Nitro', {
-			horizontalLayout: 'fitted'
-		})
-	)
-);
+console.log(chalk.magenta('APEX Nitro'));
 
 // Check for updates once a day
 const notifier = update({

@@ -84,7 +84,7 @@ APEX Nitro doesn't provide any way of validating your connection info. Please va
 
 APEX Nitro uses an HTTP header variable to communicate between the local files and the APEX application (with web sockets).
 
-When APEX Nitro is launched, [this part](https://github.com/OraOpenSource/apex-nitro/blob/master/lib/gulp/browsersync.js#L21) initializes the HTTP variable. Unfortunately, this is not supported on an HTTP server from Oracle Forms (Weblogic).
+When APEX Nitro is launched it initializes the HTTP header variable. Unfortunately, this is not supported on an HTTP server from Weblogic.
 
 See https://github.com/OraOpenSource/apex-nitro/issues/223 for more details.
 

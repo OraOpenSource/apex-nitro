@@ -42,13 +42,6 @@ Property | Description | Options
 Concatenate JavaScript Files | Enable this to concatenate all your JavaScript files into one. | true, false
 Concatenate JavaScript Filename | This is the name of the concatenated file. |
 
-#### Processor: TypeScript
-
-Property | Description | Options
---|--|--
-Concatenate TypeScript Files | Enable this to concatenate all your Typescript files into one. | true, false
-Concatenate TypeScript Filename | This is the name of the concatenated file. |
-
 ### CSS
 
 Settings for serving JavaScript to your application.

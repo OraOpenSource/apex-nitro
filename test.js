@@ -27,37 +27,6 @@ function getFiles(dir, files = []) {
 	return files;
 }
 
-test('header-valid', t => {
-	validations.header({
-		header: {
-			enabled: false
-		}
-	});
-	t.pass();
-});
-
-test('header-valid2', t => {
-	validations.header({
-		header: {
-			enabled: true,
-			packageJsonPath: path.resolve(__dirname, 'package.json')
-		}
-	});
-	t.pass();
-});
-
-test('header-invalid', t => {
-	try {
-		validations.header({
-			header: {
-				enabled: true
-			}
-		});
-	} catch (error) {
-		t.pass();
-	}
-});
-
 test('src-dist-invalid', t => {
 	try {
 		validations.srcDistFolders({
@@ -352,36 +321,6 @@ test.serial.cb('demo-sass', t => {
 	});
 });
 
-test.serial.cb('demo-typescript', t => {
-	t.plan(1);
-
-	const dir = path.resolve('./examples/demo-typescript');
-	process.cwd = function () {
-		return dir;
-	};
-
-	launch(() => {
-		const expected = [
-			path.resolve(dir, 'dist/css/app.css'),
-			path.resolve(dir, 'dist/css/app.css.map'),
-			path.resolve(dir, 'dist/css/app.min.css'),
-			path.resolve(dir, 'dist/js/app.js'),
-			path.resolve(dir, 'dist/js/app.js.map'),
-			path.resolve(dir, 'dist/js/app.min.js')
-		].sort();
-
-		const files = getFiles(path.resolve(dir, 'dist'));
-		files.sort();
-
-		process.cwd = function () {
-			return originalCwd;
-		};
-
-		t.deepEqual(files, expected);
-		t.end();
-	});
-});
-
 test.serial.cb('demo-error-js', t => {
 	t.plan(1);
 
@@ -506,33 +445,6 @@ test.serial.cb('demo-error-less', t => {
 			path.resolve(dir, 'dist/js/app.js'),
 			path.resolve(dir, 'dist/js/app.js.map'),
 			path.resolve(dir, 'dist/js/app.min.js')
-		].sort();
-
-		const files = getFiles(path.resolve(dir, 'dist'));
-		files.sort();
-
-		process.cwd = function () {
-			return originalCwd;
-		};
-
-		t.deepEqual(files, expected);
-		t.end();
-	});
-});
-
-test.serial.cb('demo-error-typescript', t => {
-	t.plan(1);
-
-	const dir = path.resolve('./examples/demo-error-typescript');
-	process.cwd = function () {
-		return dir;
-	};
-
-	launch(() => {
-		const expected = [
-			path.resolve(dir, 'dist/css/app.css'),
-			path.resolve(dir, 'dist/css/app.css.map'),
-			path.resolve(dir, 'dist/css/app.min.css')
 		].sort();
 
 		const files = getFiles(path.resolve(dir, 'dist'));
