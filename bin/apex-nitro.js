@@ -18,9 +18,13 @@ process
 	});
 
 // Print ASCII logo
-console.log(chalk.magenta(figlet.textSync('APEX Nitro', {
-	horizontalLayout: 'fitted'
-})));
+console.log(
+	chalk.magenta(
+		figlet.textSync('APEX Nitro', {
+			horizontalLayout: 'fitted'
+		})
+	)
+);
 
 // Check for updates once a day
 const notifier = update({
@@ -31,18 +35,19 @@ const notifier = update({
 if (notifier.update) {
 	notifier.notify({
 		defer: false,
-		message: chalk.bold('APEX Nitro') + ' update available ' +
+		message:
+			chalk.bold('APEX Nitro') +
+			' update available ' +
 			chalk.dim(notifier.update.current) +
 			chalk.reset(' → ') +
 			chalk.green(notifier.update.latest) +
-			' \nRun:\n' + chalk.cyan.bold('npm install -g apex-nitro')
+			' \nRun:\n' +
+			chalk.cyan.bold('npm install -g apex-nitro')
 	});
 }
 
 // Register CLI commands
-commander
-	.version(pkg.version)
-	.description(pkg.description);
+commander.version(pkg.version).description(pkg.description);
 
 commander
 	.command('init')

@@ -5,7 +5,8 @@
   "description": "Your essential APEX companion",
   "license": "MIT",
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && ava",
+    "fix": "xo --fix"
   },
   "keywords": [
     "oracle",
@@ -73,6 +74,8 @@
   },
   "devDependencies": {
     "ava": "^1.3.1",
+    "cross-spawn": "^6.0.5",
+    "log-symbols": "^3.0.0",
     "xo": "^0.24.0"
   },
   "xo": {
