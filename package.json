@@ -43,6 +43,7 @@
     "log-symbols": "^3.0.0",
     "node-notifier": "^5.4.0",
     "opn": "^6.0.0",
+    "ora": "^3.4.0",
     "update-notifier": "^3.0.0"
   },
   "devDependencies": {
