@@ -1,9 +1,6 @@
 # Folders
 node_modules
 
-# Examples
-examples/*/dist
-
 # Mac
 .DS_Store
 

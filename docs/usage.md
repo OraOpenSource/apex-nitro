@@ -217,11 +217,3 @@ By using this workflow, you are ensuring that your JavaScript/CSS development do
 Alternatively, if a developer in your project doesn't do any JavaScript/CSS development, that person may not want to go through all of these steps. For this person to benefit from your JavaScript/CSS changes, you can simply use `apex-nitro publish my_project` at step 6 from the workflow above.
 
 `apex-nitro publish my_project` will upload your files directly in APEX Shared Components, so all your teammates will pick up your changes without installing APEX Nitro.
-
-### Patterns
-
-[See common patterns.](patterns.md)
-
-### Examples
-
-[Try our examples.](../examples/)

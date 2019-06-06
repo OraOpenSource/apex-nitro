@@ -119,9 +119,7 @@ After APEX Nitro is launched, create, edit or delete any file within your projec
 
 APEX Nitro will synchronize the content of the source folder directly to your APEX application.
 
-[**Read more about usage.**](/docs/usage.md)  
-[**See common patterns.**](/docs/patterns.md)  
-[**Try our examples.**](/examples/)
+[**Read more about usage.**](/docs/usage.md)
 
 ### File Reference
 

@@ -52,8 +52,6 @@
   },
   "xo": {
     "ignores": [
-      "examples/**/*.js",
-      "**/*.ts"
     ]
   }
 }

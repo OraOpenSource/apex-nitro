@@ -125,4 +125,3 @@ There are advanced methods for dealing with the concatenation order. Let's break
 
 - In the APEX Nitro config, change the CSS processor to `less` or `sass`
 - Then you can use the `import` functionality, which allows you to inject other CSS files in the order you want
-- See this [example](../examples/demo-sass/src/scss)

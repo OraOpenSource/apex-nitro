@@ -274,5 +274,3 @@ This is particularly useful to tag your files with the version of your applicati
  */
 !function(){console.log("demo-header")}();
 ```
-
-[This example is also shown here.](../examples/demo-header)
