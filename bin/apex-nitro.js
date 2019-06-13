@@ -42,6 +42,12 @@ if (notifier.update) {
 // Register CLI commands
 commander.version(pkg.version).description(pkg.description);
 
+// Error on unknown command
+commander.on('command:*', () => {
+	console.log(chalk.red('Unknown command: ' + commander.args.join(' ')), '\n');
+	commander.help();
+});
+
 commander
 	.command('init')
 	.description('Initialize an APEX Nitro project')
@@ -70,9 +76,8 @@ commander
 		apexnitro.publish();
 	});
 
-if (!process.argv.slice(2).length > 0) {
-	commander.outputHelp();
-	process.exit();
-}
+	commander.parse(process.argv);
 
-commander.parse(process.argv);
+	if (!process.argv.slice(2).length > 0) {
+		commander.help();
+	}
