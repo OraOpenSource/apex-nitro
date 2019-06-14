@@ -76,8 +76,8 @@ commander
 		apexnitro.publish();
 	});
 
-	commander.parse(process.argv);
+commander.parse(process.argv);
 
-	if (!process.argv.slice(2).length > 0) {
-		commander.help();
-	}
+if (!process.argv.slice(2).length > 0) {
+	commander.help();
+}
