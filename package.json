@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "apex-publish-static-files": "^2.0.1",
-    "browser-sync": "^2.26.5",
+    "browser-sync": "^2.26.7",
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
     "cross-spawn": "^6.0.5",
