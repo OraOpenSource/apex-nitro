@@ -50,14 +50,14 @@ commander.on('command:*', () => {
 
 commander
 	.command('init')
-	.description('Initialize an APEX Nitro project')
+	.description('Initialize a new APEX Nitro project')
 	.action(() => {
 		apexnitro.init();
 	});
 
 commander
 	.command('build')
-	.description('Build an APEX Nitro project')
+	.description('Compile the source files and generate the final files that APEX will consume')
 	.action(() => {
 		apexnitro.launch(() => {});
 	});
@@ -71,7 +71,7 @@ commander
 
 commander
 	.command('publish')
-	.description('Publish an APEX Nitro project')
+	.description('Upload the final files to APEX Shared Components')
 	.action(() => {
 		apexnitro.publish();
 	});
