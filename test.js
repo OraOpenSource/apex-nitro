@@ -1,4 +1,5 @@
 /* eslint capitalized-comments: ["error", "never"] */
+/* eslint no-unused-vars: ["error", { "caughtErrors": "none" }] */
 
 import test from 'ava';
 
