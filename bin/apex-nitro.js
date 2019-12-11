@@ -70,10 +70,10 @@ commander
 	});
 
 commander
-	.command('publish')
+	.command('upload')
 	.description('Upload the final files to APEX Shared Components')
 	.action(() => {
-		apexnitro.publish();
+		apexnitro.upload();
 	});
 
 commander.parse(process.argv);
