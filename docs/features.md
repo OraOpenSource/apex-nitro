@@ -1,118 +1,176 @@
-# APEX Nitro Features
+# Features
 
-Here are the main features of APEX Nitro. Some of these are activated automatically, some of them you need to activate yourself in your project configuration.
+This document explains the main features of APEX Nitro in greater details.
 
-## Browser Synchronization
+## Browser synchronization in real time
 
-This is perhaps the number one reason to use APEX Nitro. Browser synchronization allows you to see real-time changes to the application without manual refresh.
+Perhaps the number one reason to use APEX Nitro, browser synchronization allows you to experience real time changes to your APEX app.
 
-When you have launched APEX Nitro, a service runs in the background and watches for any changes made to any files within your project source directory. When a change is detected, APEX Nitro re-compiles the source code and injects it automatically to your APEX application through web socket technologies.
+Traditionally, if you make change to JavaScript or CSS within the APEX builder, you are required to save your page, run your page and test your changes. That involves a lot of clicks and it is not very efficient, especially when you have to do this over and over again. On the other hand, if you were already coding in files, you had to upload those files in APEX, then test those changes. This process is painfully redundant.
 
-![Browsersync](img/feature-browsersync.gif)
+APEX Nitro connects your favorite code editor to your APEX app in real time. It detects that you are making changes to a file, then sends the code to APEX automatically. It is a time-saver like no other.
 
-## Minification
+![feature-browsersync](img/feature-browsersync.gif)
 
-APEX Nitro automatically removes unnecessary characters from external files without changing the functionality. These unnecessary characters usually include white space characters, new line, comments and sometimes block delimiters, which are used to add readability to the code but are not required for it to execute. This considerably enhances the performance due to smaller file sizes.
+## Writing next generation JavaScript
 
-**Example:**
+JavaScript is a language that evolves very quickly. Some of the newest JavaScript features are incredibly powerful, and sometimes remove the need for additional libraries like jQuery. However, browsers are not implementing the newest JavaScript features at the same pace, so when writing next generation JavaScript it is important to compile that code back to a commonly supported standard. The process of transforming next generation code into current generation code can be quite tricky.
 
-1. `/project/src/js/app.js`
+APEX Nitro comes with a compiler out of the box so you don't have to worry about browser compatibility. Write your best JavaScript today, and let APEX Nitro making it work in APEX.
 
-   ```javascript
-   apex.server.process(
-      "test", {
-         x01: "test",
-         pageItems: "#P1_DEPTNO,#P1_EMPNO"
-      }, {
-         success: function(data) {
-               console.log(data);
-         }
-      }
-   );
-   ```
+Example:
 
-**Compiles to:**
+`/myprojectpath/src/myproject.js`
 
-1. `/project/dist/js/app.min.js`
+```javascript
+[1, 2, 3].map(n => n ** 2);
 
-   ```javascript
-   apex.server.process("test",{x01:"test",pageItems:"#P1_DEPTNO,#P1_EMPNO"},{success:function(e){console.log(e)}});
-   ```
+const x = [1, 2, 3];
+foo([...x]);
+
+let name = "Guy Fieri";
+let place = "Flavortown";
+`Hello ${name}, ready for ${place}?`;
+```
+
+Compiles to:
+
+`/myprojectpath/build/myproject.js`
+
+```javascript
+"use strict";
+
+[1, 2, 3].map(function (n) {
+  return Math.pow(n, 2);
+});
+
+var x = [1, 2, 3];
+foo([].concat(x));
+
+var name = "Guy Fieri";
+var place = "Flavortown";
+"Hello ".concat(name, ", ready for ").concat(place, "?");
+```
+
+## File minification
+
+APEX Nitro automatically removes unnecessary characters from your files without changing the functionality. These unnecessary characters usually include white space characters, new line, comments and sometimes block delimiters, which are used to add readability to the code but are not required for it to execute. This considerably enhances the performance due to smaller file sizes. Also, some variables are renamed in the process to save even more file size.
+
+Example:
+
+`/myprojectpath/src/myproject.js`
+
+```javascript
+apex.server.process(
+  "test",
+  {
+    x01: "test",
+    pageItems: "#P1_DEPTNO,#P1_EMPNO"
+  },
+  {
+    success: function(data) {
+      console.log(data);
+    }
+  }
+);
+```
+
+Compiles to:
+
+`/myprojectpath/build/myproject.min.js`
+
+```javascript
+apex.server.process("test",{x01:"test",pageItems:"#P1_DEPTNO,#P1_EMPNO"},{success:function(e){console.log(e)}});
+```
 
 This example has a compression ratio of 41.05%. It makes a considerable difference on large files.
 
-Because of the minification process, you are able to use the `#MIN#` substitution string in APEX when referencing your files. Example: `#APP_IMAGES#js/app#MIN#.js`
+Because of the minification process, we want to use the `#MIN#` substitution string in APEX when referencing files. Example: `#APP_IMAGES#myproject#MIN#.js`
 
-![Minification](img/feature-minification.png)
+![feature-minification](img/feature-minification.png)
 
-APEX Nitro does the minification automatically, but without it the reference would have to be `#APP_IMAGES#js/app.js`.
+APEX Nitro does the minification automatically in Pro mode.
 
-## Concatenation
+## Single file output
 
-APEX Nitro automatically combines multiple source files into a single file. This reduces the number of HTTP requests to the server thereby increasing performance. In addition, referencing a single external file within an APEX app makes programming simpler.
+As your application JavaScript annd CSS codebase grow, you may want to split your code into smaller files for maintainability purposes. However, having to serve multiple files to your APEX app is not efficient, especailly when you start adding or removing files. A good practice is to serve a single file to your app.
 
-**Example:**
+APEX Nitro allows you to create the file structure you want, with as many files as you need, then compiles them into a single library for your APEX app.
 
-1. `/project/src/js/app1.js`
+Example
 
-   ```javascript
-   console.log(1);
-   ```
+```javascript
+// 📁 hi.js
+function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}
 
-2. `/project/src/js/app2.js`
+export {sayHi};
 
-   ```javascript
-   console.log(2);
-   ```
+// 📁 bye.js
+function sayBye(user) {
+  alert(`Bye, ${user}!`);
+}
 
-**Compile to:**
+export {sayBye};
 
-1. `/project/dist/js/app.js` *(unminified)*:
+// 📁 main.js
+import {sayHi} from './hi.js';
+import {sayBye} from './bye.js';
 
-   ```javascript
-   console.log(1);
-   console.log(2);
-   ```
+sayHi('John'); // Hello, John!
+sayBye('John'); // Bye, John!
+```
 
-2. `/project/dist/js/app.min.js` *(minified)*:
+Compiles to
 
-   ```javascript
-   console.log(1);console.log(2);
-   ```
+```javascript
+(function () {
+  'use strict';
 
-Regardless of the number of source files and their file names, they are always going to be compiled as one. That makes it easy to reference in APEX. Example: `#APP_IMAGES#js/app#MIN#.js`.
+  function sayHi(user) {
+    alert("Hello, ".concat(user, "!"));
+  }
 
-APEX Nitro does **not** concatenate automatically, it has to be activated in the project configuration through `apex-nitro config <project>`. When activating the concatenation, you also have to provide a name for the concatenated file.
+  // 📁 bye.js
+  function sayBye(user) {
+    alert("Bye, ".concat(user, "!"));
+  }
 
-![Concatenation](img/feature-concatenation.png)
+  sayHi('John'); // Hello, John!
 
-## Source Mapping
+  sayBye('John'); // Bye, John!
 
-Once CSS and JavaScript code has been minified and concatenated, it becomes difficult to identify where an error occurs in the original source file. When that happens, your browser's debugger indicates that the error is on line 1.
+}());
+```
 
-**Example without source maps:**
-![Sourcemaps Example 1](img/feature-sourcemaps-1.png)
+## Sourcemaps
 
-Clicking on the link opens the code, and shows this mess:
-![Sourcemaps Example 2](img/feature-sourcemaps-2.png)
+After CSS and JavaScript code has been minified and merged to a single file output, it becomes difficult to identify where an error occurs in the original source file. When that happens, your browser's debugger indicates that the error is on line 1.
 
-It's hard to read and harder to understand. To overcome this, APEX Nitro automatically adds source maps to your code, which aid in debugging minified and concatenated files by easily tracing the code back to the original source file.
+Example without sourcemaps:  
+![feature-sourcemaps-4](img/feature-sourcemaps-1.png)
 
-**Example of Sass source maps:**  
-![Sourcemaps Example 3](img/feature-sourcemaps-3.png)
+Clicking on the link opens the code, and shows this mess:  
+![feature-sourcemaps-4](img/feature-sourcemaps-2.png)
 
-**Example of JavaScript source maps:**  
-![Sourcemaps Example 4](img/feature-sourcemaps-4.png)
+It's hard to read and understand. To overcome this, APEX Nitro automatically adds sourcemaps to your code, which aid in debugging minified and concatenated files by easily tracing the code back to the original source file.
 
-## Error Handling
+Example of Sass sourcemaps:  
+![feature-sourcemaps-4](img/feature-sourcemaps-3.png)
 
-As opposed to PL/SQL being a compiled language, CSS and JavaScript are interpreted at runtime. The obvious downside of interpreted languages is that we can slip syntactically invalid code into production. APEX Nitro includes code linters that will notify the developer of syntax errors upon saving a file.
+Example of JavaScript sourcemaps:  
+![feature-sourcemaps-4](img/feature-sourcemaps-4.png)
 
-**Example of a JavaScript error warning:**
+## Code linting
+
+As opposed to PL/SQL being a compiled language, CSS and JavaScript are interpreted at runtime. The obvious downside of interpreted languages is that we can slip syntactically invalid code very easily. APEX Nitro includes code linters that will notify the developer of syntax errors upon saving a file.
+
+Example of a JavaScript error warning:
 
 ![Error JavaScript](img/feature-error-js.png)
 
-**Example of a CSS error warning:**
+Example of a CSS error warning:
 
 ![Error CSS](img/feature-error-css.png)
 
@@ -122,155 +180,84 @@ When an error is raised, the source file will not be compiled. You will have to 
 
 A CSS preprocessor is a program that allows generation of CSS from the preprocessor enhanced syntax making the CSS structure more readable and easier to maintain. The main benefits of a CSS preprocessor are to implement CSS variables, nesting and functions. APEX Nitro comes pre-wired for SASS and Less.
 
-**Example:**
+Example:
 
-1. `/project/src/scss/_module1.scss`
+`/myprojectpath/src/myproject.scss`
 
-   ```scss
-   .parent-class {
-      background-color: lightblue;
+```scss
+$primary-color: #333;
 
-      .child-class {
-         background-color: lightpink;
-      }
-   }
-   ```
+body {
+  color: $primary-color;
+  
+  ul {
+    margin: 0;
+  }
+}
+```
 
-2. `/project/src/scss/app.scss`
+Compiles to:
 
-   ```scss
-   @import "module1";
+`/myprojectpath/build/myproject.css`
 
-   $primary-color: lightgreen;
+```css
+body {
+  color: #333;
+}
+body ul {
+  margin: 0;
+}
 
-   .t-Login-region {
-      background-color: $primary-color;
-   }
-   ```
+```
 
-**Compiles to:**
-
-1. `/project/dist/css/app.css`
-
-   ```css
-   .parent-class {
-   background-color: lightblue; }
-   .parent-class .child-class {
-      background-color: lightpink; }
-
-   .t-Login-region {
-   background-color: lightgreen; }
-   ```
-
-2. `/project/dist/css/app#MIN#.css`
-
-   ```css
-   .parent-class{background-color:#add8e6}.parent-class .child-class{background-color:#ffb6c1}.t-Login-region{background-color:#90ee90}
-   ```
-
-## Auto-Prefixer
+## CSS Autoprefixer
 
 Some CSS properties require complex knowledge of browser vendor-specific prefixes. These special CSS properties are hard to remember and can cause a lot of problems in browser compatibility.
 
-APEX Nitro comes with auto-prefixer out of the box. No longer does the developer need to remember which properties apply to Chrome vs. Firefox vs. Internet Explorer. It’s all taken care of automatically with auto-prefixing.
+APEX Nitro comes with auto-prefixer out of the box. No longer does the developer need to remember which properties apply to Chrome, Safari, Firefix or older browsers.
 
-**Example:**
+Example:
 
-1. `/project/src/css/app.css`
+`/myprojectpath/src/myproject.css`
 
-   ```css
-   .example {
-      display: flex;
-      transition: all .5s;
-      user-select: none;
-      background: linear-gradient(to bottom, white, black);
-   }
-   ```
+```css
+.example {
+    display: grid;
+    transition: all .5s;
+    user-select: none;
+    background: linear-gradient(to bottom, white, black);
+}
+```
 
-**Compiles to:**
+Compiles to:
 
-1. `/project/dist/css/app.css`
+`/myprojectpath/build/myproject.css`
 
-   ```css
-   .example {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-transition: all .5s;
-      -o-transition: all .5s;
-      transition: all .5s;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-         -ms-user-select: none;
-               user-select: none;
-      background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
-      background: -webkit-linear-gradient(top, white, black);
-      background: -o-linear-gradient(top, white, black);
-      background: linear-gradient(to bottom, white, black);
-   }
-   ```
-
-2. `/project/dist/css/app#MIN#.css`
-
-   ```css
-   .example{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transition:all .5s;-o-transition:all .5s;transition:all .5s;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:-webkit-gradient(linear,left top,left bottom,from(white),to(black));background:-webkit-linear-gradient(top,#fff,#000);background:-o-linear-gradient(top,#fff,#000);background:linear-gradient(to bottom,#fff,#000)}
-   ```
-
-APEX Nitro enables this feature automatically. There is no way and no need to disable it.
+```css
+.example {
+    display: -ms-grid;
+    display: grid;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+    background: -o-linear-gradient(top, white, black);
+    background: linear-gradient(to bottom, white, black);
+}
+```
 
 ## Responsive Development
 
-Due to the nature of the APEX builder, most APEX developers approach their application with a "Desktop first" design, which goes against the popular "Mobile first" trend these days. 
+Due to the nature of the APEX builder, a lot of APEX developers design their application with a "Desktop first" UI. A mobile is something developer should keep in mind all the time, not at the end of a development cycle.
 
-APEX Nitro allows to simulate the testing of multiple devices at once.
+By setting the `launch.ghostMode` to `true` option in your `apexnitro.config.json`, you can make responsive design development much easier by mirroring of clicks, scrolls and input typing in multiple devices at once.
 
-By activating the `Enable External Devices Synchronization` option of your project configuration, you can make responsive design development much easier.
+When you run `apex-nitro launch`, look for the external URL:
 
-![Responsive Development](img/feature-responsive-1.png)
+![feature-responsive-2](img/feature-ghostMode-external.png)
 
-Then when you do `apex-nitro launch <project>`, look for the external URL:
-
-![Responsive Development](img/feature-responsive-2.png)
-
-By connecting multiple devices to that external URL on the same network, all devices start synchronizing together as far as navigating, clicking, typing and scrolling.
-
-## Automatic Heading
-
-This is particularly useful to tag your files with the version of your application. APEX Nitro injects the content of a JSON file into the compiled version of your CSS and JavaScript. 
-
-**Example:**
-
-1. `/project/demo-header.json`
-
-   ```javascript
-   {
-   "name": "demo-header",
-   "version": "1.0.0",
-   "author": "OraOpenSource",
-   "description": "Demo App for APEX Nitro demo header",
-   "license": "MIT"
-   }
-   ```
-
-2. `/project/src/js/app.js`
-
-```javascript
-(function(){
-    console.log("demo-header");
-})();
-```
-
-**Compiles to:**
-
-1. `/project/dist/js/app.min.js`
-
-```javascript
-/*!
- * demo-header - Demo App for APEX Nitro demo header
- * @author OraOpenSource
- * @version v1.0.0
- * @link
- * @license MIT
- */
-!function(){console.log("demo-header")}();
-```
+By connecting multiple devices to that external URL on the same network, all devices start synchronizing together (clicking, typing and scrolling).

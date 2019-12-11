@@ -1,12 +1,14 @@
-# APEX Application Setup
+# Setup your APEX app
 
-APEX Nitro requires two small additions to your APEX application to run properly.
+To enable APEX Nitro in your app, you must make two small changes in your application `Shared Components` to allow APEX Nitro to communicate properly with APEX.
 
-## Build Option
+## Changes to your application `Shared Components`
 
-APEX Nitro isn't meant to run in production. For security purposes, a build option is used to limit the scope of APEX Nitro only to the development environment.
+### 1) Build Option
 
-Head to `Shared Components > Build Options` and create a new build option with the following attributes:
+APEX Nitro is only relevant in your development environment. For security purposes, a build option is used to limit APEX Nitro running only in the development environment.
+
+Go to `Shared Components > Build Options` and create a new build option with the following attributes:
 
 | Attribute         | Value      |
 | ----------------- | ---------- |
@@ -14,11 +16,11 @@ Head to `Shared Components > Build Options` and create a new build option with t
 | Status            | `Include`  |
 | Default on Export | `Exclude`  |
 
-_Note: When you import an application in a different schema, anything tagged with the `DEV_ONLY` build option will not be run. If you re-import back into a development environment you'll need to manually change the status to `Include`._
+_Note: When you export your application in a different environment, our `DEV_ONLY` components will be excluded. If you re-import your application back into a development environment, make sure to manually change the status to back to `Include`._
 
-## Application Process
+### 2) Application Process
 
-Head to `Shared Components > Application Processes` and create a new application process with the following attributes:
+Go to `Shared Components > Application Processes` and create a new application process with the following attributes:
 
 | Attribute     | Value                                           | Comment                                                 |
 | ------------- | ----------------------------------------------- | ------------------------------------------------------- |
@@ -38,47 +40,49 @@ owa_util.get_cgi_env('APEX-Nitro') is not null
 - _#2 (source)_
 
 ```sql
-apex_application.g_flow_images := owa_util.get_cgi_env('APEX-Nitro');
--- apex_application.g_company_images := owa_util.get_cgi_env('APEX-Nitro');
--- apex_application.g_theme_file_prefix := owa_util.get_cgi_env('APEX-Nitro');
--- :G_APEX_NITRO_IMAGES := owa_util.get_cgi_env('APEX-Nitro');
+apex_application.g_flow_images := owa_util.get_cgi_env('APEX-Nitro'); /* (1) */
+-- apex_application.g_company_images := owa_util.get_cgi_env('APEX-Nitro'); /* (2) */
+-- apex_application.g_theme_file_prefix := owa_util.get_cgi_env('APEX-Nitro'); /* (3) */
+-- :G_APEX_NITRO_IMAGES := owa_util.get_cgi_env('APEX-Nitro'); /* (4) */
 ```
 
 There are four choices (see commented lines), but you must pick one. Refer to the Matrix below to choose the best option for your application.
 
-| Substitution String | Purpose | How to use |
-| -- | -- | -- |
-| apex_application.g_flow_images | Application Static Files | `#APP_IMAGES#js/app#MIN#.js` <br> `#APP_IMAGES#css/app#MIN#.css` |
-| apex_application.g_company_images | Workspace Static Files | `#WORKSPACE_IMAGES#js/app#MIN#.js` <br> `#WORKSPACE_IMAGES#css/app#MIN#.css` |
-| apex_application.g_theme_file_prefix | Theme Static Files | `#THEME_IMAGES#js/app#MIN#.js` <br> `#THEME_IMAGES#css/app#MIN#.css` |
-| :G_APEX_NITRO_IMAGES | Custom Application Item that contains the path of your files. Supports APEX plugin development | `&G_APEX_NITRO_IMAGES.js/app#MIN#.js` <br> `&G_APEX_NITRO_IMAGES.css/app#MIN#.css` |
+| Option | Files location in APEX                                                                           | Substitution String Override         | How to use                                                                    |
+| ------ | ------------------------------------------------------------------------------------------------ | ------------------------------------ | ----------------------------------------------------------------------------- |
+| 1      | Application Static Files                                                                         | apex_application.g_flow_images       | `#APP_IMAGES#app#MIN#.js` <br /> `#APP_IMAGES#app#MIN#.css`                   |
+| 2      | Workspace Static Files                                                                           | apex_application.g_company_images    | `#WORKSPACE_IMAGES#app#MIN#.js` <br /> `#WORKSPACE_IMAGES#app#MIN#.css`       |
+| 3      | Theme Static Files                                                                               | apex_application.g_theme_file_prefix | `#THEME_IMAGES#app#MIN#.js` <br /> `#THEME_IMAGES#app#MIN#.css`               |
+| 4      | Custom Application Item that contains the path for your files (supports APEX plugin development) | :G_APEX_NITRO_IMAGES                 | `&G_APEX_NITRO_IMAGES.app#MIN#.js` <br /> `&G_APEX_NITRO_IMAGES.app#MIN#.css` |
 
 ![setup-application-process](img/setup-application-process.png)
 
-## References
+## Referencing your files in APEX
 
-In APEX, you can reference your files at many levels
+In the steps above, you have enabled APEX Nitro to connect to your APEX app. Now you have to reference your files for them to be included when you run your application. You can do in many ways.
 
-| Level       | Access Point                                                                                                             |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Application | `Shared Components` > `User Interfaces` > `User Interface Details` > `JavaScript / Cascading Style Sheets` > `File URLs` |
-| Theme       | `Shared Components` > `Themes` > `Create / Edit Theme` > `JavaScript and Cascading Style Sheets` > `File URLs`           |
-| Theme Style | `Shared Components` > `Themes` > `Create / Edit Theme` > `Theme Styles` > `Create / Edit Theme Style` > `File URLs`      |
-| Template    | `Shared Components` > `Templates` > `Edit Page Template` > `JavaScript / Cascading Style Sheet` > `File URLs`            |
-| Plugin      | `Shared Components` > `Plug-ins` > `Create / Edit Plug-in:` > `File URLs to Load`                                        |
-| Page        | `Page Designer` > `Page X` > `JavaScript / CSS` > `File URLs`                                                            |
+| Level       | Access Point                                                                                                             | Purpose                                                                                                  |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| Application | `Shared Components` > `User Interfaces` > `User Interface Details` > `JavaScript / Cascading Style Sheets` > `File URLs` | Files available for all pages in your app                                                      |
+| Theme       | `Shared Components` > `Themes` > `Create / Edit Theme` > `JavaScript and Cascading Style Sheets` > `File URLs`           | Files available for all pages that uses a specific theme in your app                           |
+| Theme Style | `Shared Components` > `Themes` > `Create / Edit Theme` > `Theme Styles` > `Create / Edit Theme Style` > `File URLs`      | Files available for all pages that uses a specific theme style of a specific theme in your app |
+| Template    | `Shared Components` > `Templates` > `Edit Page Template` > `JavaScript / Cascading Style Sheet` > `File URLs`            | Files available for all pages that uses a specific page template in your app                   |
+| Plugin      | `Shared Components` > `Plug-ins` > `Create / Edit Plug-in:` > `File URLs to Load`                                        | Files available for all pages that uses a specific APEX plugin in your app                     |
+| Page        | `Page Designer` > `Page X` > `JavaScript / CSS` > `File URLs`                                                            | Files available on one specific page in your app                                               |
 
-![](img/setup-reference-application.png)
+Example referencing at the application level:
+
+![setup-reference-application](img/setup-reference-application.png)
 
 ## APEX Plugin Development
 
-APEX Nitro supports plugin development as well. There is one additional setting to
+APEX Nitro is useful for APEX plugin development, because often times plugins comes with important JavaScript, CSS and other files bundled. To enable APEX Nitro for plugin development, follow those simple steps:
 
 - Add an application item called `G_APEX_NITRO_IMAGES` ![plugin-item](img/plugin-item.png)
-- In your application process code (see above), use `:G_APEX_NITRO_IMAGES := owa_util.get_cgi_env('APEX-Nitro');` ![plugin-process](img/plugin-process.png)
-- In your plugin, under the section `Files`, add `&G_APEX_NITRO_IMAGES.` to the File Prefix: ![plugin-prefix](img/plugin-prefix.png)
+- In your `Application Processes > APEX Nitro` PL/SQL source code, use `:G_APEX_NITRO_IMAGES := owa_util.get_cgi_env('APEX-Nitro');` ![plugin-process](img/plugin-process.png)
+- In the APEX plugin you are developing, under the section `Files`, add `&G_APEX_NITRO_IMAGES.` to the File Prefix: ![plugin-prefix](img/plugin-prefix.png)
 
-What that means for your environments:
+Notes:
 
 - In the development environment, `G_APEX_NITRO_IMAGES` will be populated when APEX Nitro is launched and the plugin file prefix will point to the APEX Nitro files.
 - In the production environment, `G_APEX_NITRO_IMAGES` will be empty, and the plugin file prefix will point to the database files as it should.

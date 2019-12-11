@@ -1,12 +1,9 @@
-# APEX Nitro Documentation
+# APEX Nitro full documentation
 
-Master your way around APEX Nitro with this in depth documentation.
-
-- [**APEX Nitro Features**](features.md)
-  - [Other Benefits](benefits.md)
-- [**APEX Nitro Installation**](install.md)
-  - [Project Configuration](config.md)
-  - [APEX Application Setup](setup.md)
-- [**APEX Nitro Usage**](usage.md)
-  - [Publishing files to APEX](publish.md)
+- [Features](features.md)
+- [Installation](install.md)
+- [Initialize your project](init.md)
+- [APEX app Setup](setup.md)
+- [File structure patterns](structure.md)
+- [Uploading your files to APEX Shared Components](upload.md)
 - [Troubleshooting](troubleshooting.md)
