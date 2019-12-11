@@ -7,7 +7,6 @@ import test from 'ava';
 // const path = require('path');
 
 const util = require('./lib/util/util');
-const validations = require('./lib/util/validations');
 // const launch = require('./lib/commands/launch');
 
 // const originalCwd = process.cwd();
@@ -27,17 +26,6 @@ const validations = require('./lib/util/validations');
 
 // 	return files;
 // }
-
-test('src-dist-invalid', t => {
-	try {
-		validations.srcDistFolders({
-			srcFolder: 'test',
-			distFolder: 'test'
-		});
-	} catch (error) {
-		t.pass();
-	}
-});
 
 test('pad-str', t => {
 	if (util.padStr('test', '.js') === 'test.js' && util.padStr('test.js', '.js') === 'test.js') {
