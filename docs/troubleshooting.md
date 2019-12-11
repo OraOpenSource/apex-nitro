@@ -51,3 +51,11 @@ You will access your APEX app normally, along with a benign warning near your br
 ![troubleshoot-certificate-3](img/troubleshoot-certificate-3.png)
 
 This is normal and it will only occur on your development environment.
+
+## Issues with `app-icon.css` and `app-icon.svg`
+
+Somewhere around APEX 18.2, two files are automatically added to the Shared Components > Static Application Files: `app-icon.css` and `app-icon.svg`. Those two files are at the root of #APP_IMAGES#.
+
+There is currently no plan to have APEX Nitro support those two static files, as we think they should not be there to begin with.
+
+You will have to manually manage those two files, if you wish to support them, which we don't recommend.
