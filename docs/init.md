@@ -44,6 +44,7 @@ After choosing a mode, the following questions will depend on the mode you picke
 | launch.openApp          | Opens your APEX app in your browser when using `apex-nitro launch`                                                               | `true`        |
 | launch.openBuilder      | Opens the APEX builder for your app when using `apex-nitro launch`                                                               | `false`       |
 | upload.destination      | Destination for your files when uploading them to the APEX Shared Components using `apex-nitro upload`                           | `application` |
+| upload.pluginName       | Plugin internal name. Only applies if your `upload.destination` is `plugin`                                                      |
 | upload.path             | Path to the binary files of SQLcl. Used for uploading files to the APEX Shared Component using `apex-nitro upload`               | `sqlcl`       |
 | upload.username         | User to your APEX parsing schema. Used for uploading files to the APEX Shared Component using `apex-nitro upload`                |
 | upload.password         | (Optional) Password to your APEX parsing schema. Used for uploading files to the APEX Shared Component using `apex-nitro upload` |
