@@ -50,6 +50,8 @@ apex-nitro init
 
 ![command-init](/docs/img/command-init.png)
 
+Read more on [initializing your APEX Nitro project](/docs/init.md)
+
 ### Setup your APEX app
 
 To enable APEX Nitro in your app, you must make a small tweak in your application. In the APEX builder, go to `Shared Components > Application Processes` and create a new application process with the following attributes:
@@ -77,13 +79,15 @@ Read the documentation for more information about the [APEX app setup](/docs/set
 
 ### Launch your app
 
-Enable real time coding in your application.
+Enable real time coding in your app by executing a simple command:
 
 ```bash
 apex-nitro launch
 ```
 
 ![command-launch](/docs/img/command-launch.png)
+
+Then open up your favorite code editor where your JavaScript, CSS files are. Any change you make to your files will be synchronized to your APEX app in real time.
 
 ### File structure
 
