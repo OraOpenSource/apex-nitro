@@ -11,7 +11,7 @@
 
 > Front-end development in Oracle APEX at its best.
 
-APEX Nitro is a command line tool that watches for file modifications (JavaScript, CSS, other) on your machine, compiles them into a better format and synchronizes them to your APEX app in real time.
+APEX Nitro is a build tool for APEX Front-end development. It watches for file changes (JavaScript, CSS, other) on your machine, compiles them into a better format and synchronizes them to your APEX app in real time.
 
 ## What APEX Nitro does
 
