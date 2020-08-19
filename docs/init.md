@@ -41,7 +41,7 @@ After choosing a mode, the following questions will depend on the mode you picke
 | launch.port             | Port that will be used to synchronize code in real time when using `apex-nitro launch`                                           | `4000`        |
 | launch.ghostMode        | Clicks, Scrolls & Form inputs on any device will be mirrored to all devices during development when using `apex-nitro launch`    | `false`       |
 | launch.notify           | Enables small notifications in the browser when code changes are detected when using `apex-nitro launch`                         | `true`        |
-| launch.openApp          | Opens your APEX app in your browser when using `apex-nitro launch`                                                               | `true`        |
+| launch.open             | Opens your APEX app in your browser when using `apex-nitro launch`                                                               | `true`        |
 | launch.openBuilder      | Opens the APEX builder for your app when using `apex-nitro launch`                                                               | `false`       |
 | upload.destination      | Destination for your files when uploading them to the APEX Shared Components using `apex-nitro upload`                           | `application` |
 | upload.pluginName       | Plugin internal name. Only applies if your `upload.destination` is `plugin`                                                      |

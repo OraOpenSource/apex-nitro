@@ -54,8 +54,16 @@ This is normal and it will only occur on your development environment.
 
 ## Issues with `app-icon.css` and `app-icon.svg`
 
-Somewhere around APEX 18.2, two files are automatically added to the Shared Components > Static Application Files: `app-icon.css` and `app-icon.svg`. Those two files are at the root of #APP_IMAGES#.
+Since APEX 18.2, two files are automatically added to the Shared Components > Static Application Files: `app-icon.css` and `app-icon.svg`. Those two files are at the root of #APP_IMAGES#.
 
 There is currently no plan to have APEX Nitro support those two static files, as we think they should not be there to begin with.
 
 You will have to manually manage those two files, if you wish to support them, which we don't recommend.
+
+## Couldn't open browser
+
+The following warning message can happen if you run APEX Nitro in a headless environment such as Docker:
+
+`[APEX Nitro] Couldn't open browser (if you are using BrowserSync in a headless environment, you might want to set the open option to false)`
+
+This is just a warning and should not affect your experience. If you wish to turn it off, simply edit your project `apexnitro.config.json` and change `launch.open` to `false`.
