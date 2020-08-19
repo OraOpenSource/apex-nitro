@@ -31,7 +31,7 @@
     "apex-nitro": "./bin/apex-nitro.js"
   },
   "dependencies": {
-    "apex-publish-static-files": "^2.0.2",
+    "apex-publish-static-files": "^2.0.3",
     "browser-sync": "^2.26.12",
     "chalk": "^4.1.0",
     "commander": "^6.0.0",
