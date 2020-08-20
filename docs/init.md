@@ -62,11 +62,11 @@ The properties will depend on which Pro template you picked.
 
 ### JavaScript (default)
 
-More info: https://github.com/dfrechdev/apex-nitro-template-js
+More info: https://github.com/vincentmorneau/apex-nitro-template-default
 
 TODO
 
-![command-init-apex-nitro-template-js](./img/command-init-apex-nitro-template-js.png)
+![command-init-apex-nitro-template-default](./img/command-init-apex-nitro-template-default.png)
 
 ### React (beta)
 

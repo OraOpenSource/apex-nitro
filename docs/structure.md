@@ -208,7 +208,7 @@ That is because APEX Nitro can't possibly know that you have included Moment.js 
 ```json
 {
 	"mode": "pro",
-	"template": "apex-nitro-template-js",
+	"template": "apex-nitro-template-default",
 	"libraryName": "myproject",
 	"main": "./src/main.js",
 	"srcFolder": "./src",
