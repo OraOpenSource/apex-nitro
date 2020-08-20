@@ -71,8 +71,8 @@ Now your files have to be referenced in APEX. A recommended location is in the U
 ![setup-reference-application](/docs/img/setup-reference-application.png)
 
 ```bash
-#APP_IMAGES#myproject.js
-#APP_IMAGES#myproject.css
+#APP_IMAGES#myproject#MIN#.js
+#APP_IMAGES#myproject#MIN#.css
 ```
 
 Read the documentation for more information about the [APEX app setup](/docs/setup.md).

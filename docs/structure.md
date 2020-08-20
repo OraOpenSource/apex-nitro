@@ -30,8 +30,8 @@ Notes:
 In APEX, we would reference those files as:
 
 ```bash
-#APP_IMAGES#myproject.css
-#APP_IMAGES#myproject.js
+#APP_IMAGES#myproject#MIN#.css
+#APP_IMAGES#myproject#MIN#.js
 ```
 
 ### Basic structure 2 (subfolders)
