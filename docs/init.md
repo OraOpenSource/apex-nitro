@@ -60,19 +60,13 @@ The properties will depend on which Pro template you picked.
 
 ![command-init-pro](./img/command-init-pro.png)
 
-### JavaScript (default)
+### Default
 
 More info: https://github.com/vincentmorneau/apex-nitro-template-default
 
 TODO
 
 ![command-init-apex-nitro-template-default](./img/command-init-apex-nitro-template-default.png)
-
-### React (beta)
-
-More info: https://github.com/vincentmorneau/apex-nitro-template-react
-
-Work in progress (coming soon)
 
 ### Custom Git repository
 

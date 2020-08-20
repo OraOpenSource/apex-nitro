@@ -59,15 +59,15 @@ commander
 	.command('build')
 	.description('Compile the source files and generate the final files that APEX will consume')
 	.action(() => {
-		apexnitro.launch(() => { });
+		apexnitro.launch(() => {}, {});
 	});
 
 commander
 	.command('launch')
 	.description('Launch an APEX Nitro project')
-	.option("-nm, --nomin", "Skip building the .min files for production")
-	.action(opts => {
-		apexnitro.launch(opts);
+	.option('-nm, --nomin', 'Skip building the .min files for production')
+	.action(options => {
+		apexnitro.launch(undefined, options);
 	});
 
 commander

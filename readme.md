@@ -89,6 +89,8 @@ apex-nitro launch
 
 Then open up your favorite code editor where your JavaScript, CSS files are. Any change you make to your files will be synchronized to your APEX app in real time.
 
+Tip: use `apex-nitro launch --nomin` to skip the building of production files that includes *.min.js and *.min.css. This will accelerate the build time while you are developing.
+
 ### File structure
 
 Create, edit or delete any file in your local source folder. Example:
