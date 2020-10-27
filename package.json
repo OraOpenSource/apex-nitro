@@ -32,20 +32,21 @@
   },
   "dependencies": {
     "apex-publish-static-files": "^2.0.3",
-    "browser-sync": "^2.26.12",
+    "await-spawn": "^4.0.1",
+    "browser-sync": "^2.26.13",
     "chalk": "^4.1.0",
-    "commander": "^6.0.0",
-    "del": "^5.1.0",
+    "commander": "^6.2.0",
+    "del": "^6.0.0",
     "fs-extra": "^9.0.1",
     "inquirer": "^7.3.3",
     "node-notifier": "^8.0.0",
-    "open": "^7.1.0",
-    "ora": "^5.0.0",
-    "update-notifier": "^4.1.1"
+    "open": "^7.3.0",
+    "ora": "^5.1.0",
+    "update-notifier": "^5.0.0"
   },
   "devDependencies": {
-    "ava": "^3.11.1",
-    "xo": "^0.33.0"
+    "ava": "^3.13.0",
+    "xo": "^0.34.1"
   },
   "xo": {
     "ignores": []
