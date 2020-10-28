@@ -93,6 +93,8 @@ Your APEX application must references the APEX Nitro files. A recommended locati
 
 ### Build your files
 
+*Only available in Pro mode*
+
 Compiles all local files into a single build more efficient for APEX consumption.
 
 ```bash

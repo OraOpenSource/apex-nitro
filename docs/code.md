@@ -1,4 +1,4 @@
-# File structure patterns
+# APEX Nitro code patterns
 
 One of the most beneficial aspect of APEX Nitro that it helps creating a clean and logical file structure for JavaScript, CSS and others.
 

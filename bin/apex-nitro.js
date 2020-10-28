@@ -57,7 +57,7 @@ commander
 
 commander
 	.command('build')
-	.description('Compile the source files and generate the final files that APEX will consume')
+	.description('Build the source files for APEX to consume')
 	.action(() => {
 		apexnitro.launch(() => {}, {});
 	});
@@ -72,7 +72,7 @@ commander
 
 commander
 	.command('upload')
-	.description('Upload the final files to APEX Shared Components')
+	.description('Upload the build to APEX Shared Components')
 	.action(() => {
 		apexnitro.upload();
 	});

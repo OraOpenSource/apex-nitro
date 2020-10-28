@@ -4,6 +4,8 @@ This is where the APEX Nitro magic happens. APEX Nitro compiles your local files
 
 ### Build your files
 
+*Only available in Pro mode*
+
 Compiles all local files into a single build more efficient for APEX consumption.
 
 ```bash
