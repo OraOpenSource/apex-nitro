@@ -7,14 +7,15 @@
 
 ## Install
 
-APEX Nitro is installed from [npm](https://www.npmjs.com/package/apex-nitro), the Node.js package manager. After installing Node.js, open a command line and execute the following:
+APEX Nitro is installed from [npm](https://www.npmjs.com/package/apex-nitro), the Node.js package manager. After installing Node.js, open a command line and run the following:
 
 ```bash
 npm install -g apex-nitro
 ```
 
-Notes:
+Explanation:
 
-- `npm install` tells that we are about to install a module from the npm registry.
-- `-g` tells that we are installing apex-nitro **globally** on your system.
-- `apex-nitro` the package we are installing.
+- `npm` invokes npm
+- `install` install a module from the npm registry
+- `-g` installation should be done **globally**
+- `apex-nitro` the name of the package we are installing

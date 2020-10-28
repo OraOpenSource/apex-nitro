@@ -1,4 +1,4 @@
-# Setup your APEX app
+# Connect your APEX app
 
 To enable APEX Nitro in your app, you must make two small changes in your application `Shared Components` to allow APEX Nitro to communicate properly with APEX.
 
@@ -56,23 +56,6 @@ There are four choices (see commented lines), but you must pick one. Refer to th
 | 4      | Custom Application Item that contains the path for your files (supports APEX plugin development) | :G_APEX_NITRO_IMAGES                 | `&G_APEX_NITRO_IMAGES.app#MIN#.js` <br /> `&G_APEX_NITRO_IMAGES.app#MIN#.css` |
 
 ![setup-application-process](img/setup-application-process.png)
-
-## Referencing your files in APEX
-
-In the steps above, you have enabled APEX Nitro to connect to your APEX app. Now you have to reference your files for them to be included when you run your application. You can do in many ways.
-
-| Level       | Access Point                                                                                                             | Purpose                                                                                                  |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| Application | `Shared Components` > `User Interfaces` > `User Interface Details` > `JavaScript / Cascading Style Sheets` > `File URLs` | Files available for all pages in your app                                                      |
-| Theme       | `Shared Components` > `Themes` > `Create / Edit Theme` > `JavaScript and Cascading Style Sheets` > `File URLs`           | Files available for all pages that uses a specific theme in your app                           |
-| Theme Style | `Shared Components` > `Themes` > `Create / Edit Theme` > `Theme Styles` > `Create / Edit Theme Style` > `File URLs`      | Files available for all pages that uses a specific theme style of a specific theme in your app |
-| Template    | `Shared Components` > `Templates` > `Edit Page Template` > `JavaScript / Cascading Style Sheet` > `File URLs`            | Files available for all pages that uses a specific page template in your app                   |
-| Plugin      | `Shared Components` > `Plug-ins` > `Create / Edit Plug-in:` > `File URLs to Load`                                        | Files available for all pages that uses a specific APEX plugin in your app                     |
-| Page        | `Page Designer` > `Page X` > `JavaScript / CSS` > `File URLs`                                                            | Files available on one specific page in your app                                               |
-
-Example referencing at the application level:
-
-![setup-reference-application](img/setup-reference-application.png)
 
 ## APEX Plugin Development
 

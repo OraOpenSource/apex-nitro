@@ -32,7 +32,7 @@ To fix this problem, close down any program that might interfere with your proje
 
 Behind the scenens, `apex-nitro launch` uses an HTTP header variable to communicate between the local files and the APEX app (using web sockets).
 
-Make sure you are picking up APEX Nitro's HTTP header variable with the [required setup](./setup.md)
+Make sure you are picking up APEX Nitro's HTTP header variable with the [required setup](./connect.md)
 
 See https://github.com/OraOpenSource/apex-nitro/issues/223 for more details.
 

@@ -11,7 +11,7 @@
 
 > Front-end development in Oracle APEX at its best.
 
-APEX Nitro is a build tool for APEX Front-end development. It watches for file changes (JavaScript, CSS, other) on your machine, compiles them into a better format and synchronizes them to your APEX app in real time.
+APEX Nitro is a build tool for APEX front-end development. It watches for file changes (JavaScript, CSS, other) on your system, compiles them into a better format and synchronizes them to your APEX app in real time.
 
 ## What APEX Nitro does
 
@@ -52,9 +52,21 @@ apex-nitro init
 
 Read more on [initializing your APEX Nitro project](/docs/init.md)
 
-### Setup your APEX app
+### Write your code
 
-To enable APEX Nitro in your app, you must make a small tweak in your application. In the APEX builder, go to `Shared Components > Application Processes` and create a new application process with the following attributes:
+Create, edit or delete any file in your source folder. Example:
+
+```bash
+|-/src/
+  |-myproject.css
+  |-myproject.js
+```
+
+Read more about [APEX Nitro code patterns](/docs/code.md).
+
+### Connect your APEX app
+
+To enable APEX Nitro in your app, you must make a small tweak in your application. Go to `Shared Components > Application Processes` and create a new application process with the following attributes:
 
 | Attribute         | Value                                                                   |
 | ----------------- | ----------------------------------------------------------------------- |
@@ -66,7 +78,11 @@ To enable APEX Nitro in your app, you must make a small tweak in your applicatio
 
 ![setup-application-process](/docs/img/setup-application-process.png)
 
-Now your files have to be referenced in APEX. A recommended location is in the User Interface Attributes:
+Read the documentation for more information about how to [connect your APEX app](/docs/connect.md).
+
+### Reference your files
+
+Your APEX application must references the APEX Nitro files. A recommended location is in the User Interface Attributes:
 
 ![setup-reference-application](/docs/img/setup-reference-application.png)
 
@@ -75,11 +91,19 @@ Now your files have to be referenced in APEX. A recommended location is in the U
 #APP_IMAGES#myproject#MIN#.css
 ```
 
-Read the documentation for more information about the [APEX app setup](/docs/setup.md).
+### Build your files
+
+Compiles all local files into a single build more efficient for APEX consumption.
+
+```bash
+apex-nitro build
+```
+
+![command-build](/docs/img/command-build.png)
 
 ### Launch your app
 
-Enable real time coding in your app by executing a simple command:
+Enable real time coding in your app:
 
 ```bash
 apex-nitro launch
@@ -87,23 +111,9 @@ apex-nitro launch
 
 ![command-launch](/docs/img/command-launch.png)
 
-Then open up your favorite code editor where your JavaScript, CSS files are. Any change you make to your files will be synchronized to your APEX app in real time.
+This includes the `apex-nitro build` step.
 
-Tip: use `apex-nitro launch --nomin` to skip the building of production files that includes *.min.js and *.min.css. This will accelerate the build time while you are developing.
-
-### File structure
-
-Create, edit or delete any file in your local source folder. Example:
-
-```bash
-|-/src/
-  |-myproject.css
-  |-myproject.js
-```
-
-APEX Nitro will synchronize the content of that folder to your APEX app.
-
-Read more about [APEX Nitro file structure patterns](/docs/structure.md).
+Open up your favorite code editor. Any change you make to your files will be synchronized to your APEX app in real time.
 
 ### Uploading your files to APEX Shared Components
 
@@ -113,13 +123,15 @@ apex-nitro upload
 
 ![command-upload](/docs/img/command-upload.png)
 
-Note: Uploading your files to APEX is optional as you might want to put the files elsewhere than the Shared Components.
-
 [Read more](/docs/upload.md) about uploading your files.
 
 ## Troubleshoot
 
 [Read more about common issues.](/docs/troubleshooting.md)
+
+## Moving from APEX Nitro v4 to v5
+
+[Are your an APEX Nitro v4 user? Read about moving to v5.](/docs/migration.md)
 
 ## Changelog
 

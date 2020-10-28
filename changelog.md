@@ -13,8 +13,9 @@ BREAKING CHANGE: APEX Nitro v5 is NOT backwards compatible with v4.
   - Pick a Pro template and get going fast with predefined file structure
   - Write your own APEX Nitro Pro template
 - New configuration system through `apex-nitro init`
-  - Configuration is now stored at the project folder level, making it sharable
-- `apex-nitro publish` is now `apex-nitro upload`
+  - `apexnitro.config.json` is now a file that can be stored on your project repository
+- `apex-nitro publish` renamed `apex-nitro upload`
+- New command: `apex-nitro build`
 - Complete documentation rewrite
 
 ## 4.1.6
@@ -74,7 +75,7 @@ For more info check out https://github.com/OraOpenSource/apex-nitro/milestone/14
 ## 4.0.0
 
 - **APEX Front-End Boost is rebranded to APEX Nitro**
-- Simplifies APEX setup, **[please review yours](https://github.com/OraOpenSource/apex-nitro/blob/master/docs/setup.md)**
+- Simplifies APEX setup, **[please review yours](https://github.com/OraOpenSource/apex-nitro/blob/master/docs/connect.md)**
   - Build Option is no longer necessary
   - No longer requires a cookie
 - New Configuration Tool `apex-nitro config <project>`
