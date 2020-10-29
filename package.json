@@ -5,8 +5,7 @@
   "description": "Front-end development in Oracle APEX at its best",
   "license": "MIT",
   "scripts": {
-    "test": "xo && ava",
-    "fix": "xo --fix"
+    "test": "xo"
   },
   "keywords": [
     "oracle",
@@ -45,7 +44,6 @@
     "update-notifier": "^5.0.0"
   },
   "devDependencies": {
-    "ava": "^3.13.0",
     "xo": "^0.34.1"
   },
   "xo": {
