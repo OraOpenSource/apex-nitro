@@ -84,7 +84,9 @@ Read the documentation for more information about how to [connect your APEX app]
 
 Your APEX application must references the APEX Nitro files. A recommended location is in the User Interface Attributes:
 
-![setup-reference-application](/docs/img/setup-reference-application.png)
+![setup-reference-application1](/docs/img/setup-reference-application1.png)
+
+![setup-reference-application2](/docs/img/setup-reference-application2.png)
 
 ```bash
 #APP_IMAGES#myproject#MIN#.js

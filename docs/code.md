@@ -199,9 +199,7 @@ For example, `Moment.js` is a popular library to parse, validate, manipulate, an
 </script>
 ```
 
-With this code, `moment` is then a globally accessible variable. However, if we try to access the `moment` object in APEX Nitro, we will receive an error like this:
-
-![external-no-undef](./img/external-no-undef.png)
+With this code, `moment` is then a globally accessible variable. However, if we try to access the `moment` object in APEX Nitro, we will receive an error.
 
 That is because APEX Nitro can't possibly know that you have included Moment.js externally in your app. To fix that, open your project `apexnitro.config.json` file, look for the `external` array and add the `moment` object:
 

@@ -13,6 +13,8 @@ Your APEX application must references the APEX Nitro files. Now you have to refe
 
 Example referencing at the application level:
 
-![setup-reference-application](img/setup-reference-application.png)
+![setup-reference-application1](/docs/img/setup-reference-application1.png)
+
+![setup-reference-application2](/docs/img/setup-reference-application2.png)
 
 We recommend using the Application level (User Interface Attributes), because this will make your files available across the entire application.
