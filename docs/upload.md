@@ -12,13 +12,14 @@ apex-nitro upload
 
 The files will be uploaded and stored according to your `apexnitro.config.json` properties.
 
-| Property                | Description                                                                  | Default       |
-| ----------------------- | ---------------------------------------------------------------------------- | ------------- |
-| upload.destination      | Destination for your files when uploading them to the APEX Shared Components | `application` |
-| upload.path             | Path to the binary files of SQLcl.                                           | `sql`       |
-| upload.username         | User to your APEX parsing schema.                                            |
-| upload.password         | (Optional) Password to your APEX parsing schema.                             |
-| upload.connectionString | Connection string to your APEX parsing schema.                               |
+| Property                | Description                                                                      | Default       |
+| ----------------------- | -------------------------------------------------------------------------------- | ------------- |
+| upload.tns_admin        | Path to TNS_ADMIN directory. Required when connecting to Oracle Cloud for wallet |               |
+| upload.destination      | Destination for your files when uploading them to the APEX Shared Components     | `application` |
+| upload.path             | Path to the binary files of SQLcl.                                               | `sql`       |
+| upload.username         | User to your APEX parsing schema.                                                |
+| upload.password         | (Optional) Password to your APEX parsing schema.                                 |
+| upload.connectionString | Connection string to your APEX parsing schema.                                   |
 
 Note: `apex-nitro upload` is optional as you might want to put the files on a web server rather than the Shared Components.
 
