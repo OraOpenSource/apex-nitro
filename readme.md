@@ -26,7 +26,7 @@ Read the [complete documentation](/docs/features.md) for more info on all featur
 ## Requirements
 
 - [Node.js](https://nodejs.org)
-- [SQLcl](http://www.oracle.com/technetwork/developer-tools/sqlcl/overview/index.html) _(optional, used to upload your files to APEX Shared Components)_
+- [Oracle Instant Client](https://www.oracle.com/ca-en/database/technologies/instant-client/downloads.html) _(optional, used to upload your files to APEX Shared Components)_
 
 ## Quickstart
 

@@ -16,7 +16,7 @@ The files will be uploaded and stored according to your `apexnitro.config.json` 
 | ----------------------- | -------------------------------------------------------------------------------- | ------------- |
 | upload.tns_admin        | Path to TNS_ADMIN directory. Required when connecting to Oracle Cloud for wallet |               |
 | upload.destination      | Destination for your files when uploading them to the APEX Shared Components     | `application` |
-| upload.path             | Path to the binary files of SQLcl.                                               | `sql`       |
+| upload.libDir             | Path to the binary files of Oracle Instant Client.                                               |        |
 | upload.username         | User to your APEX parsing schema.                                                |
 | upload.password         | (Optional) Password to your APEX parsing schema.                                 |
 | upload.connectionString | Connection string to your APEX parsing schema.                                   |
@@ -24,16 +24,6 @@ The files will be uploaded and stored according to your `apexnitro.config.json` 
 Note: `apex-nitro upload` is optional as you might want to put the files on a web server rather than the Shared Components.
 
 ## Troubleshooting
-
-### ENOENT
-
-![upload-fail-1](img/upload-fail-1.png)
-
-`apex-nitro upload` will fail if your `apexnitro.config.json` `upload.path` property is invalid.
-
-If you have added SQLcl as an environment variable, the `upload.path` should be `sql` or `sqlcl`.
-
-You can also use an absolute path to the SQLcl directory on your system, such as `/Users/vmorneau/sqlcl/bin/sql`.
 
 ### Could not establish the connection
 
